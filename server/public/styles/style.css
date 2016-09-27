@@ -23,6 +23,11 @@ h2{
   margin-left: 125px;
 }
 
+.container {
+
+}
+
+
 #dataside {
 
   height:450px;
@@ -33,7 +38,6 @@ h2{
   margin-top: 30px;
   padding-top:20px;
   background-color: white;
-  margin-left: 20px;
 
 }
 
@@ -45,6 +49,7 @@ h2{
   border-radius: 4px;
     margin-top: 30px;
     background-color: white;
+    overflow: scroll;
 }
 
 .nav li {
@@ -59,7 +64,6 @@ h2{
 
 #telephone:hover {
   background-color: pink;
-  
 }
 
 #inperson{
@@ -69,7 +73,6 @@ height: 30px;
 
 #inperson:hover {
   background-color: lightyellow;
-
 }
 
 #nonvictim {
@@ -79,11 +82,6 @@ height: 30px;
 
 #nonvictim:hover {
   background-color: lightgreen;
-}
-
-#back {
-  width: 110px;
-  height: 30px;
 }
 
 .button{
@@ -125,25 +123,7 @@ height: 30px;
   margin-left: 200px;
 }
 
-#pinkview {
-  height:450px;
-  border: solid gray;
-  border-width: thin;
-  border-radius: 4px;
-  margin-top: 30px;
-  background-color: white;
-  padding-top: 20px;
-  margin-botton:20px;
-  overflow: scroll;
-}
 
+/*accordian*/
 
-
-#back {
-  font-size: 15px;
-}
-
-#back:hover {
-  background-color: rgb(20, 160, 225);
-  color: white;
-}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
