@@ -1,16 +1,23 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var path = require ('path');
+var path = require('path');
 
-var index = require('./routes/index');
+//define routes here;
+var reportRoute = require('./routes/reportRoute');
+var dataRoute = require('./routes/dataRoute');
+
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, './public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/', index);
+//set app.use for route here;
+app.use('/reportRoute', reportRoute);
+app.use('/dataRoute', dataRoute);
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, './public/views/index.html'));
+});
 
 //****************************START SERVER ************************//
 app.set('port', process.env.PORT || 3000);
