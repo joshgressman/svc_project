@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 $routeProvider
@@ -12,11 +12,11 @@ $routeProvider
     })
   .when('/phone', {
           templateUrl: '/views/partials/phone.html',
-          controller: "phoneController"
+          controller: "dataEntryController"
         })
   .when('/inperson', {
           templateUrl: '/views/partials/inperson.html',
-          controller: "phoneController"
+          controller: "dataEntryController"
         })
   .when('/nonvictim', {
           templateUrl: '/views/partials/nonvictim.html',

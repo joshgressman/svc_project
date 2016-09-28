@@ -84,7 +84,7 @@ router.get('/playground', function (req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT...', function (err, result) {
+    client.query('SELECT * FROM victim ORDER BY contact_date ASC', function (err, result) {
       done();
 
       if (err) {

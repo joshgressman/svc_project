@@ -1,22 +1,25 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Federal Data</title>
-    <script type="text/javascript" src="/public/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/public/vendors/angular-route.min.js"></script>
-    <script src="/public/vendors/ui-bootstrap-tpls-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/public/scripts/clientapp.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/fedData.js"></script>
-    <link rel="stylesheet" href="/public/vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/styles/style.css">
+    <script type="text/javascript" src="../vendors/angular.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-route.min.js"></script>
+    <script src="../vendors/ui-bootstrap-tpls-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/clientapp.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/adminController.js"></script>
+    <link rel="stylesheet" href="../vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body class="data">
     <header>
 
-    </header>
+    </header> -->
+    <!-- ng-app="myApp" -->
+<div class="data" ng-app="myApp">
+  <!-- Federal Data -->
     <h2>Administrative Tools</h2>
     <div class="container">
         <div class="row">
@@ -27,11 +30,16 @@
                     <li><button class="button">Options</button></li>
                 </ul>
             </div>
-            <div class="col-md-9" id="dataview" ng-app="bootstrapUI">
+
+            <!-- I am unsure whether the above buttons are included in this partial. -->
+            <!-- Below is where the actual code start -->
+             <!-- ng-app="myApp" -->
+
+            <div class="col-md-9" id="dataview" ng-controller="adminController">
                 <p>
                     Click a Button to do a thing!
                 </p>
-                <div ng-controller="fedData">
+                <div>
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -60,23 +68,61 @@
                     </label>
                     </div>
                     <uib-accordion close-others="oneAtATime">
+
+                        <!-- //Individuals who recieved services during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Type of Individual</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{people}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Total Individuals
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{people}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- //NEW individuals who recieved services during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Type of Individual</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    New Individuals
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{newPeople}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -89,11 +135,11 @@
                                     <strong>Race/Ethnicity</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      <strong>Primary</strong>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Primary</strong>
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -101,11 +147,11 @@
                                     American Indian of Alaskan Native
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -113,11 +159,11 @@
                                     Asian
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -125,11 +171,11 @@
                                     Black or African American
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -137,11 +183,11 @@
                                     Hispanic or Latino
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -149,11 +195,11 @@
                                     Natice Hawaiian or Other Pacific Islander
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -161,11 +207,11 @@
                                     White Non-Latino or Caucassian
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -173,11 +219,11 @@
                                     Some Other Race
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -185,11 +231,11 @@
                                     Multiple Races
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -197,11 +243,11 @@
                                     Not Reported
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -209,11 +255,11 @@
                                     Not Tracked
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -221,51 +267,619 @@
                                     Race/Ethnicity Total
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
                                     </p>
-                                  </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Demographics: Gender Identity -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Demographics: Gender Identity
+                                    <strong>Gender Identity</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Male
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Female
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Not Reported
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Not Tracked
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Total
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Demographics: Age -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Demographics: Age
+                                    <strong>Age Range</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    0 - 12
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    13 - 17
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    18 - 24
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    25 - 59
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    60 and Older
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Not Reported
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Not Tracked
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Total
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Types of Victimization: total number during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: total number during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Types of Victimization
+                                    <strong>Victimization Types</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adult Physical Assaul
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adult Sexual Assault
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adults Sexual Abuse/Assault
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Arson
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Bullying
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Burglary
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Physical Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Pornography
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Sexual Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Domestic And/Or Family Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    DUI/DWI Incidents
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Elder Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Hate Crime
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Human Trafficking: Labor
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Human Trafficking: Sex
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Identity Theft
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Kidnapping
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Mass Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other Vehicular Victimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Robbery
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Mass Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other Vehicular Vicimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Robbery
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Stalking/Harassment
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Survivors of Homicide Victims
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Teen Dating Victimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Terrorism
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Types of Victimization: Special classification of individuals -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special classification of individuals">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Types of Victimization
+                                    <strong>Types of Victimization</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Deaf/Hard of Hearing
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    LGBTQ
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Cognitive/Physical/Mental Disabilities
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -275,35 +889,137 @@
 
                         <h3>Direct Services</h3>
 
-
+                        <!-- Individuals assisted with a victim compensation application during the reporting period -->
 
                         <div uib-accordion-group class="panel-default text-center" heading="Individuals assisted with a victim compensation application during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Type of Service
+                                    <strong>Type of Individual</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Individuals Assisted
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Individuals who received services during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Type of Service
+                                    <strong>Service</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Serviced</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Information/Referral
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Personal Advocacy/Accompaniment
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Emotional Support or Safety Services
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Shelter/Housing Services
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Criminal/Civil Justive Systems
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- (A) Information & Referral: Total services provided during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="(A) Information &amp; Referral: Total services provided during the reporting period">
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    <strong>Service Details</strong>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Serviced</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     (A1) Information about the criminal justice process
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -311,7 +1027,11 @@
                                     (A2) Information about victims rights
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -319,7 +1039,11 @@
                                     (A3) Referral to other victim suppost programs
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -327,37 +1051,242 @@
                                     (A4) Referral to other services, supports, resources
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- (B) Personal Advocacy/Accompaniment: Total services provided during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="(B) Personal Advocacy/Accompaniment: Total services provided during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Service Details</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Serviced</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Victim Advocacy/Accompaniment to Emergency Medical Care
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Victim Advocacy/Accompaniment to Medical Forensic Exam
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Law Enforcement Interview Advocacy/Accompaniment
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Individual Advocacy
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Support Groups
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- (C) Emotional Support of Safety Services: Total services provided during the reporting period -->
+
                         <div uib-accordion-group class="panel-default text-center" heading="(C) Emotional Support of Safety Services: Total services provided during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Service Details</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Serviced</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Crisis Intervention (in-person)
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Hotline/Crisis Counseling
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Individual Counseling
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Support Groups
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div uib-accordion-group class="panel-default text-center" heading="(E) Criminal/Civil Justice System Assistance: Total services provided during the reporting period">
+
+                        <!-- (D) Criminal/Civil Justice System Assistance: Total services provided during the reporting period -->
+
+                        <div uib-accordion-group class="panel-default text-center" heading="(D) Criminal/Civil Justice System Assistance: Total services provided during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Service Details</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Serviced</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Notification of Criminal Justice Events
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Victim Impact Statement Assistance
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Assistance with Restitution
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Civil Legal Assistance in Obtaining Protection or Restraining Order
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other Emergency-Justice Related Assistance
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Criminal Advocacy/Accompaniment
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -366,6 +1295,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</div>
+<!-- </body>
+</html> -->
