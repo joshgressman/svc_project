@@ -43,13 +43,21 @@
                   <label for="location">Location (Where services are being provided):</label>
                   <input class="locationInput" type="text" ng-model="form.location" />
               </div> -->
-              <!-- <div class="county">
-                  <label for="county">County:</label>
-                  <input type="radio" name="location" ng-model="form.county" value="Hennepin">Hennepin
-                  <input type="radio" name="location" ng-model="form.county" value="Scott">Scott
-                  <input type="radio" name="location" ng-model="form.county" value="Carver">Carver
-                  <input type="radio" name="location" ng-model="form.county" value="">Other <input type="text" ng-model="form.county" name="otherCounty" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-              </div> -->
+              <div class="county">
+                <label for="county">County:</label>
+                <select>
+                <option  value="">Select One</option>
+                <option ng-model="form.county" value="Anoka">Anoka</option>
+                <option ng-model="form.county" value="Carver">Carver</option>
+                <option ng-model="form.county" value="Dakota">Dakota</option>
+                <option ng-model="form.county" value="Hennepin">Hennepin</option>
+                <option ng-model="form.county" value="Ramsey">Ramsey</option>
+                <option ng-model="form.county" value="Scott">Scott</option>
+                <option ng-model="form.county" value="Washington">Washington</option>
+                <option ng-model="form.county" value="unKnown/pass">Unknown</option>
+              </select>
+                <input type="text" ng-model="form.county" name="otherCounty" placeholder="Other County"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+              </div>
           </div>
           <div id="victimInfo">
               <div class="zipCode">
