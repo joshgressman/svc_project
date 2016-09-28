@@ -14,11 +14,16 @@
            <form ng-submit="searchUpdate()">
              <div class="searchEntry">
                  <label for="searchEntry">Enter Confirmation #:</label>
-                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" />
+                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" ng-click="results = true" />
              </div>
            </form>
          </div>
-         </div>
-        </div>
+         <div ng-show="results" id="resultsForm">
+
+             <p>This is where some information goes from the form</p>
+           <!-- This is where the results should go from the search -->
+
     </div>
+</div>
+</div>
 </div>
