@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -16,7 +16,10 @@
 <body class="data">
     <header>
 
-    </header>
+    </header> -->
+    <!-- ng-app="myApp" -->
+<div class="data" ng-app="myApp">
+  <!-- Federal Data -->
     <h2>Administrative Tools</h2>
     <div class="container">
         <div class="row">
@@ -27,11 +30,16 @@
                     <li><button class="button">Options</button></li>
                 </ul>
             </div>
-            <div class="col-md-9" id="dataview" ng-app="myApp">
+
+            <!-- I am unsure whether the above buttons are included in this partial. -->
+            <!-- Below is where the actual code start -->
+             <!-- ng-app="myApp" -->
+
+            <div class="col-md-9" id="dataview" ng-controller="adminController">
                 <p>
                     Click a Button to do a thing!
                 </p>
-                <div ng-controller="adminController">
+                <div>
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -1007,11 +1015,11 @@
                                     (A1) Information about the criminal justice process
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{number}}
-                                      </p>
-                                  </p>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -1019,11 +1027,11 @@
                                     (A2) Information about victims rights
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{number}}
-                                      </p>
-                                  </p>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -1031,11 +1039,11 @@
                                     (A3) Referral to other victim suppost programs
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{number}}
-                                      </p>
-                                  </p>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -1043,11 +1051,11 @@
                                     (A4) Referral to other services, supports, resources
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{number}}
-                                      </p>
-                                  </p>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1287,6 +1295,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</div>
+<!-- </body>
+</html> -->

@@ -1,22 +1,24 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>County Data</title>
-    <script type="text/javascript" src="/public/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/public/vendors/angular-route.min.js"></script>
-    <script src="/public/vendors/ui-bootstrap-tpls-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/public/scripts/clientapp.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/fedData.js"></script>
-    <link rel="stylesheet" href="/public/vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/styles/style.css">
+    <script type="text/javascript" src="../vendors/angular.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-route.min.js"></script>
+    <script src="../vendors/ui-bootstrap-tpls-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/clientapp.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/adminController.js"></script>
+    <link rel="stylesheet" href="../vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body class="data">
     <header>
 
-    </header>
+    </header> -->
+    <!-- ng-app="myApp" -->
+<div class="data" ng-app="myApp">
     <h2>Administrative Tools</h2>
     <div class="container">
         <div class="row">
@@ -27,16 +29,22 @@
                     <li><button class="button">Options</button></li>
                 </ul>
             </div>
-            <div class="col-md-9" id="dataview" ng-app="bootstrapUI">
+
+            <!-- I am unsure whether the above buttons are included in this partial. -->
+            <!-- Below is where the actual code start -->
+            <div class="col-md-9" id="dataview" ng-controller="adminController">
                 <p>
                     Click a Button to do a thing!
                 </p>
-                <div ng-controller="fedData">
+                <div>
+
+                  <!-- Template for the Accordion -->
+
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                          <a href class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
                             <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
                               {{heading}}
                             </span>
@@ -48,6 +56,8 @@
                             </div>
                         </div>
                     </script>
+
+                    <!-- End Template -->
 
                     <p>
                         <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button>
@@ -61,15 +71,31 @@
                     </div>
                     <uib-accordion close-others="oneAtATime">
 
-                      <!-- Individuals who recieved services during the reporting period -->
+                        <!-- Individuals who recieved services during the reporting period -->
 
                         <div uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Type of Individual</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{people}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Total Individuals
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{people}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +105,26 @@
                         <div uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Number of People
+                                    <strong>Type of Individual</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    New Individuals
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{newPeople}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -92,10 +134,938 @@
                         <div uib-accordion-group class="panel-default text-center" heading="Hennepin County Zip Code Totals">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    County Totals
+                                    <strong>Zip Code</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Total</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55111
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55305
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55311
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55316
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55317
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55327
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55328
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55331
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55340
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55341
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55343
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55344
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55345
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55346
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55347
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55356
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55357
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55359
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55361
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55364
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55369
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55373
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55374
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55375
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55384
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55387
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55388
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55391
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55392
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55401
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55402
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55403
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55404
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55405
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55406
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55407
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55408
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55409
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55410
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55411
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55412
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55413
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55414
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55415
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55416
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55417
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55418
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55419
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55420
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55422
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55423
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55424
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55425
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55426
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55427
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55428
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55429
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55430
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55431
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55435
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55436
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55437
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55438
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55439
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55441
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55442
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55443
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55444
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55445
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55446
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55447
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55450
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55454
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    55455
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Unknown
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Total
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -109,14 +1079,14 @@
                                     <strong>Race/Ethnicity</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      <strong>Primary</strong>
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Primary</strong>
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            <strong>Secondary</strong>
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      <strong>Secondary</strong>
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -124,14 +1094,14 @@
                                     American Indian of Alaskan Native
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -139,14 +1109,14 @@
                                     Asian
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -154,14 +1124,14 @@
                                     Black or African American
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -169,44 +1139,44 @@
                                     Hispanic or Latino
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Natice Hawaiian or Other Pacific Islander
+                                    Native Hawaiian or Other Pacific Islander
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    White Non-Latino or Caucassian
+                                    White Non-Latino or Caucasian
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -214,14 +1184,14 @@
                                     Some Other Race
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -229,14 +1199,14 @@
                                     Multiple Races
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -244,14 +1214,14 @@
                                     Not Reported
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -259,14 +1229,14 @@
                                     Not Tracked
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -274,14 +1244,14 @@
                                     Race/Ethnicity Total
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                         </div>
@@ -291,10 +1261,62 @@
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Demographics: Gender Identity
+                                    <strong>Gender Identity</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Male
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Female
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Transgender
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Unknown
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -302,14 +1324,114 @@
                         <!-- Demographics: Immigrant Status -->
 
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Demographics: Immigrant Status
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    {{newPeople}}
-                                </div>
-                            </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  <strong>Location</strong>
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          <strong>Number</strong>
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Africa
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Asia
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Europe
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Mex/Cen/South America
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Middle East
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Other
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Unknown/Pass
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  No
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
                         </div>
 
                         <!-- Demographics: Age -->
@@ -317,10 +1439,62 @@
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Demographics: Age
+                                    <strong>Age Range</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Total</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    0 - 18
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    19 - 50
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    50+ Years
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Unknown
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{number}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -328,14 +1502,114 @@
                         <!-- Demographics: Disability -->
 
                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Disability">
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Demographics: Disability
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    {{newPeople}}
-                                </div>
-                            </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  <strong>Status</strong>
+                              </div>
+                              <div class="col-md-3 text-center">
+                                <p class="row">
+                                    <p class="col-md-6 text-center">
+                                        <strong>Number</strong>
+                                    </p>
+                                </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Blind/Visually Impaired
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Physical Disabilities
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Mental Illness
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Deaf/Hard of Hearing
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Intellectual of Developmental Disabilities
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  None
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Other
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Unknown/Pass/Doesn't Know
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{newPeople}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
                         </div>
 
                         <!-- Types of Victimization -->
@@ -343,10 +1617,350 @@
                         <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization">
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                    Types of Victimization
+                                    <strong>Victimization Types</strong>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    {{newPeople}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adult Physical Assaul
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adult Sexual Assault
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Adults Sexual Abuse/Assault
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Arson
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Bullying
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Burglary
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Physical Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Pornography
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Child Sexual Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Domestic And/Or Family Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    DUI/DWI Incidents
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Elder Abuse or Neglect
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Hate Crime
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Human Trafficking: Labor
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Human Trafficking: Sex
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Identity Theft
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Kidnapping
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Mass Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other Vehicular Victimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Robbery
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Mass Violence
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other Vehicular Vicimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Robbery
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Stalking/Harassment
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Survivors of Homicide Victims
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Teen Dating Victimization
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Terrorism
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    Other
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{type}}
+                                        </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -354,54 +1968,118 @@
 
 
 
-                        <h1>Direct Services</h1>
+                        <h3>Direct Services</h3>
 
 
 
                         <!-- Type of Service (NEW Clients) -->
 
                         <div uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Type of Service
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    {{newPeople}}
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Client Services Provided for NEW & REPEAT Clients -->
-
-                        <div uib-accordion-group class="panel-default text-center" heading="Client Services Provided for NEW &amp; REPEAT Clients">
                           <div class="row">
                               <div class="col-md-9 text-left">
                                   <strong>Service</strong>
                               </div>
                               <div class="col-md-3 text-center">
-                                <p class="row">
-                                  <p class="col-md-6 text-center">
-                                    <strong>Primary</strong>
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          <strong>Number</strong>
+                                      </p>
                                   </p>
-                                  <p class="col-md-6 text-center">
-                                    <strong>Secondary</strong>
-                                  </p>
-                                </p>
                               </div>
                           </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Crisis Counseling
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{type}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Legal Advocacy: Criminal Justice
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{type}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Legal Advocacy: Civil Legal
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{type}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Medical Advocacy
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{type}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-9 text-left">
+                                  Other In-Person Advocacy Services
+                              </div>
+                              <div class="col-md-3 text-center">
+                                  <p class="row">
+                                      <p class="col-md-6 text-center">
+                                          {{type}}
+                                      </p>
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+
+                        <!-- Client Services Provided for NEW & REPEAT Clients -->
+
+                        <div uib-accordion-group class="panel-default text-center" heading="Client Services Provided for NEW &amp; REPEAT Clients">
+                            <div class="row">
+                                <div class="col-md-9 text-left">
+                                    <strong>Service</strong>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Primary</strong>
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            <strong>Secondary</strong>
+                                        </p>
+                                    </p>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     First Contact
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -409,14 +2087,14 @@
                                     Follow-Up
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -424,14 +2102,14 @@
                                     Information or Referral
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -439,14 +2117,14 @@
                                     Personal Advocacy
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -454,14 +2132,14 @@
                                     Support During Evidentiary Exam
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -469,14 +2147,14 @@
                                     Criminal Justice Support
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -484,14 +2162,14 @@
                                     Legal Advocacy
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -499,14 +2177,14 @@
                                     Financial Assistance
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -514,29 +2192,29 @@
                                     Reparations Filing Assistance
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9 text-left">
-                                  Group Treatment/Support
+                                    Group Treatment/Support
                                 </div>
                                 <div class="col-md-3 text-center">
-                                  <p class="row">
-                                    <p class="col-md-6 text-center">
-                                      {{primary}}
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            {{primary}}
+                                        </p>
+                                        <p class="col-md-6 text-center">
+                                            {{secondary}}
+                                        </p>
                                     </p>
-                                    <p class="col-md-6 text-center">
-                                      {{secondary}}
-                                    </p>
-                                  </p>
                                 </div>
                             </div>
                         </div>
@@ -545,6 +2223,7 @@
             </div>
         </div>
     </div>
-</body>
+</div>
+<!-- </body>
 
-</html>
+</html> -->
