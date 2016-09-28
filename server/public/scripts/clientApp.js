@@ -38,6 +38,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/formData/summaryData.html',
             controller: "adminController"
         })
+        .when('/search', {
+            templateUrl: '/views/partials/search.html',
+            controller: "dataEntryController"
+        })
         .otherwise({
             redirectTo: '/home'
         })
