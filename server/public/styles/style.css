@@ -123,6 +123,15 @@ height: 30px;
   margin-left: 200px;
 }
 
+#back {
+  font-size: 15px;
+}
+
+#back:hover {
+  background-color: rgb(20, 160, 225);
+  color: white;
+}
+
 
 /*accordian*/
 
