@@ -16,8 +16,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     $scope.dateStart = "2016-09-20";
     $scope.dateEnd = "2016-09-22";
 
-    //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
-    //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
     var federalObjectArray = [{
             table: undefined,
@@ -46,7 +44,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
         console.log(data);
         $http({
             method: "POST",
-            url: '/dataRoute/' + query.table,
+            url: '/reportRoute/' + query.table,
             data: data
         }).then(function(response) {
             console.log("Get Success");
@@ -58,13 +56,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
             console.log("Get Error");
         });
       });
-        //Other Specify doesn't need a count
     }
-
-
-
-
-    // SELECT COUNT (*) FROM victim WHERE victim_ethnicity iLIKE 'Native American' AND victim_new is null AND victim_prior_oct is true AND contact_date >= " + "'" +  dateRange.start + "'" + " AND contact_date < " + "'" + dateRange.end + "'"
 
 
 
