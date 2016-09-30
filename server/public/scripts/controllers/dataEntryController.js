@@ -26,7 +26,9 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     forensicExamSupport: '',
     accompanyMedicalAppt:'',
     accompanyDentalAppt: '',
+    crisis_counseling: '',
     infoAndReferral: '',
+    info_crimjustice: '',
     safeAtHome: '',
     emergencyFinancialAsst: '',
     reparationsClaimAsst: '',
@@ -51,6 +53,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     elderAbuse: '',
     teenDating: '',
     sexualViolenceOther: '',
+    sexualViolenceOther_specify: '',
     age: '',
     gender: '',
     trans: '',
@@ -69,7 +72,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     homeless: '',
     limitedEnglish: '',
     veteran: '',
-    supported_on_call: ''
+    supported: ''
   }
 
 
