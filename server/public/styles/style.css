@@ -21,8 +21,12 @@ header{
 }
 
 h2{
-  margin-left: 125px;
+
   color: gray;
+}
+
+#alert{
+padding-left: 200px;
 }
 
 .container {
