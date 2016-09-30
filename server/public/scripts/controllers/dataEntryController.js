@@ -1,20 +1,6 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-    $scope.searchForm = {};
 
-    $scope.searchUpdate = function() {
-        var data = $scope.searchForm;
-        console.log('data', data);
-        // $http.post('dataRoute', data)
-        // .then(function(response){
-        //   if(response.status == 201){
-        //     $scope
-        //   }
-        // })
-        $scope.searchForm = ""
-    }
-    $scope.dateStart = "2016-09-20";
-    $scope.dateEnd = "2016-09-22";
 
   $scope.form = {
     counselor: '',
@@ -30,6 +16,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     svcPrompt: '',
     previousContact: '',
     previousVisit: '',
+    transportation: '',
     counseling: '',
     supportGroup: '',
     lawEnforcementInterview: '',
