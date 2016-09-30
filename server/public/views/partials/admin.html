@@ -4,15 +4,48 @@
  <div class="col-md-2" id="dataside">
    <ul class = "nav">
      <li><button class="adminBtn" Onclick="window.location.href='#reports'">Federal</button></li>
-      <li><button class="adminBtn" Onclick="window.location.href='#countyReports'">County</button></li>
+    <li><button class="adminBtn" Onclick="window.location.href='#countyReports'">County</button></li>
      <li><button class="adminBtn" Onclick="window.location.href='#data'">Data Entry</button></li>
      <li><button class="adminBtn" Onclick="window.location.href='#search'">Search/Update</button></li>
    </ul>
  </div>
- <div class="col-md-9" id="dataview">
-   <p>
-     Some instruction will go here for admin!
-   </p>
+ <div class="col-md-9" id="insDiv">
+
+     <div>
+         <script type="text/ng-template" id="group-template.html">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <h4 class="panel-title">
+               <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                 <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                   {{heading}}
+                 </span>
+               </a>
+             </h4>
+                 </div>
+                 <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                     <div class="panel-body" style="text-align: right" ng-transclude></div>
+                 </div>
+             </div>
+         </script>
+
+
+         <uib-accordion close-others="oneAtATime">
+
+             <!-- //Individuals who recieved services during the reporting period -->
+
+             <div uib-accordion-group class="panel-default text-center" heading="Administration Instructions"  is-disabled="status.isFirstDisabled">
+                 <div class="row">
+                     <div class="col-md-9 text-left">
+                         <strong>Some instructions for users will go here for admin</strong>
+                     </div>
+
+                 </div>
+
+             </div>
+
+         </uib-accordion>
+     </div>
  </div>
 </div>
 </div>
