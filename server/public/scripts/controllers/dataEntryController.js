@@ -63,11 +63,13 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     notDisabled: '',
     unknownDisabled: '',
     otherDisabled: '',
+    otherDisabled_specify: '',
     ethnicBackground: '',
     immigrantStatus: '',
     homeless: '',
     limitedEnglish: '',
-    veteran: ''
+    veteran: '',
+    supported_on_call: ''
   }
 
 
