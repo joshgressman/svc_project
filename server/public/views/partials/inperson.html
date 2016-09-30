@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitPinkForm()">
+      <form ng-submit="submitVictimForm()">
         <div id="svcAdvocacy">
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -94,6 +94,11 @@
                 <label for="dateCheck">If YES, was contact made before October 1st, 2015</label>
                 <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" value="true">Yes
                 <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" value="false">No
+            </div>
+            <div class="transportation">
+                <label for="transportation">Did you provide (taxi) transportation?</label>
+                <input type="radio" name="transportation" ng-model="form.transportation"  value="true" >Yes
+                <input type="radio" name="transportation" ng-model="form.transportation"  value = "false">No
             </div>
 
             <div ng-show="newFiscalYear">
@@ -349,6 +354,7 @@
         </div>
     </form>
   </div>
+  <input  type="submit" name="submit" value="Submit"  />
   </div>
 </div>
 </div>
