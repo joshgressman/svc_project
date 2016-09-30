@@ -10,70 +10,50 @@ if (process.env.DATABASE_URL != undefined) {
   connectionString = 'postgres://localhost:5432/svc';
 }
 
-//GET for federal report;
-router.get('/federal', function (req, res) {
-  pg.connect(connectionString, function (err, client, done) {
-    if (err) {
-      console.log('ERROR, connection to PG', err);
-      res.sendStatus(500);
-    }
+//POST-GET for federal report;
+router.post('/:id', function(req, res) {
+  var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
+  var iLike = " iLIKE ";
+  var checkFirstTimer = " AND victim_prior_contact is null AND victim_prior_oct is true ";
+  var greaterThanOrEqual = " AND contact_date >= ";
+  var lessThan = " AND contact_date < ";
+    var query = "";
+    var dateStart = req.body.start;
+    var dateEnd = req.body.end;
+    var text = "'" + req.body.text + "'";
+    console.log(text);
+    var table = req.params.id
+    console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
-    client.query('SELECT...', function (err, result) {
-      done();
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
+            console.log('ERROR, connection to PG');
+            res.sendStatus(500);
+        }
+        if (text == "'TOTAL'") {
+            stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
+            greaterThanOrEqual = " contact_date >= "
+            query = stringQueryWhere + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (text == "'NEW'") {
+            checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
+            query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else {
+            query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        }
+        client.query(query,
+            function(err, result) {
+                done();
 
-      if (err) {
-        console.log('GET ERROR, federal:', err);
-        res.sendStatus(500);
-      }
+                if (err) {
+                    console.log('QUERY ERROR with Federal, Q5A:', err);
+                    res.sendStatus(500);
+                }
 
-      console.log('Federal Report:', result.rows);
-      res.send(result.rows);
+                console.log('Federal Report, Q5A:', result.rows);
+                res.send(result.rows);
+
+            });
     });
-  });
-});
-
-//GET for hennepin county report;
-router.get('/hennepin', function (req, res) {
-  pg.connect(connectionString, function (err, client, done) {
-    if (err) {
-      console.log('ERROR, connection to PG', err);
-      res.sendStatus(500);
-    }
-
-    client.query('SELECT...', function (err, result) {
-      done();
-
-      if (err) {
-        console.log('GET ERROR, hennepin:', err);
-        res.sendStatus(500);
-      }
-
-      console.log('Hennepin County Report:', result.rows);
-      res.send(result.rows);
-    });
-  });
-});
-
-//GET for summary report;
-router.get('/summary', function (req, res) {
-  pg.connect(connectionString, function (err, client, done) {
-    if (err) {
-      console.log('ERROR, connection to PG', err);
-      res.sendStatus(500);
-    }
-
-    client.query('SELECT...', function (err, result) {
-      done();
-
-      if (err) {
-        console.log('GET ERROR, summary:', err);
-        res.sendStatus(500);
-      }
-
-      console.log('Summary Report:', result.rows);
-      res.send(result.rows);
-    });
-  });
 });
 
 //GET for data playground report;

@@ -1,6 +1,6 @@
 <div ng-controller="dataEntryController">
-<h2>SVC In-Person Counseling Form</h2>
-<div class="alert alert-warning">
+<div class="alert alert-warning" id="alert">
+  <h2>SVC In-Person Counseling Form</h2>
   <strong>SVC In-Person Form:</strong> Please ensure you are using the yellow form on this page.
 </div>
 <div class="container">
@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitPinkForm()">
+      <form ng-submit="submitVictimForm()">
         <div id="svcAdvocacy">
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -354,6 +354,7 @@
         </div>
     </form>
   </div>
+  <input  type="submit" name="submit" value="Submit"  />
   </div>
 </div>
 </div>

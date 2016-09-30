@@ -1,6 +1,7 @@
 <div ng-controller="dataEntryController">
-<h2>SVC Telephone Contact Form</h2>
-<div class="alert alert-danger">
+
+<div class="alert alert-danger" id="alert">
+  <h2>SVC Telephone Contact Form</h2>
   <strong>SVC Telephone Form:</strong> Please ensure you are using the pink form on this page.
 </div>
 <div class="container">
@@ -15,7 +16,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitPinkForm()">
+      <form ng-submit="submitVictimForm()">
           <div id="svcAdvocacy">
               <div class="counselor">
                   <label for="counselorName">Advocate/Counselor Name:</label>
@@ -104,19 +105,19 @@
                   <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" value=true>Crisis counseling
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.info_refer" value=true>Information and/or referral
+                  <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" value=true>Information and/or referral
                 </div>
                 <div>
                   <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" value=true>Information about criminal justice process
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.other_justice" value=true>Other emergency justice-related assistance
+                  <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" value=true>Other emergency justice-related assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.emer_financial" value=true>Emergency financial assistance
+                  <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" value=true>Emergency financial assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.reparations" value=true>Reperations claims assistance
+                  <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" value=true>Reperations claims assistance
                 </div>
               </div>
               <div class="referrals">
@@ -315,7 +316,7 @@
                 </select>
                 <input type="text" ng-model="form.immigrantStatus" name="other.immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 <div>
-                  <label for="otherStatus">Ohter (check all that apply):</label>
+                  <label for="otherStatus">Other (check all that apply):</label>
                   <div>
                       <input type="checkbox" name="clientStatus" ng-model="form.homeless" value="true">Currently Homeless
                   </div>
@@ -330,6 +331,7 @@
 
       </form>
   </div>
+  <input  type="submit" name="submit" value="Submit" />
 </div>
   </div>
 </div>

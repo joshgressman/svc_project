@@ -21,8 +21,29 @@ header{
 }
 
 h2{
-  margin-left: 125px;
+
   color: gray;
+}
+
+label {
+  padding: 5px 5px 5px 5px;
+}
+
+
+
+input[type="radio"] {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+  margin-left: 8px;
+
+}
+
+#alert{
+padding-left: 200px;
 }
 
 .container {
@@ -131,6 +152,8 @@ height: 30px;
 
 #back {
   font-size: 15px;
+  width: 110px;
+  height: 30px;
 }
 
 #back:hover {
@@ -175,6 +198,15 @@ margin-top: 10px;
     color: rgb(32, 108, 145);
     padding: 25px 0 0 0;
     font-size: 2.5em;
+  }
+
+  .dateRange {
+    margin: 10px 0 20px 0;
+    padding: 0 0 0 20px;
+  }
+
+  .otherClientServices{
+    margin-bottom: 8px;
   }
 /*accordian*/
 
