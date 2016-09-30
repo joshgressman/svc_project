@@ -35,7 +35,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
             table: "victim_ethnicity",
             text: "Black or African American"
         }
-
     ];
 
     $scope.getStuff = function(){

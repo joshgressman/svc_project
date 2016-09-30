@@ -296,7 +296,7 @@ router.post('/:id', function(req, res) {
             stringQueryWhere = "SELECT COUNT (*) FROM victim";
             query = stringQueryWhere + greaterThanOrEqual + dateStart + lessThan + dateEnd;
         } else if (text == "NEW") {
-            checkFirstTimer = "victim_new is null AND victim_prior_oct is true";
+            checkFirstTimer = "victim_prior_contact is null AND victim_prior_oct is true";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + dateStart + lessThan + dateEnd;
         } else {
             query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + dateStart + lessThan + dateEnd;
@@ -304,6 +304,7 @@ router.post('/:id', function(req, res) {
         client.query(query,
             function(err, result) {
                 done();
+                stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
 
                 if (err) {
                     console.log('QUERY ERROR with Federal, Q5A:', err);
