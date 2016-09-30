@@ -15,16 +15,22 @@
 }
 
 header{
-  height: 50px;
-  background-color: black
+  height: 110px;
+  /*background-color: black*/
+  border-bottom: solid thin gray;
 }
 
 h2{
   margin-left: 125px;
+  color: gray;
 }
 
 .container {
 
+}
+
+#headText {
+  margin: 20px 0 0 50px;
 }
 
 
@@ -133,19 +139,45 @@ height: 30px;
 }
 
 #searchBox {
-margin: 110px 0 0 100px;
-padding: 45px 0 0 100px;
+margin: 20px 0 0 100px;
+padding: 0 0 0 100px;
 border: solid gray;
 border-width: thin;
 width: 600px;
-height: 200px;
+height: 100px;
 background-color: lightgray;
 }
 
 .adminBtn{
+
   width: 110px;
+  height: 30px;
+}
+.adminBtn:hover {
+  background-color: lightgreen;
 }
 
+#resultsForm{
+margin-top: 10px;
+
+}
+.header_image {
+  background: url("/images/svc.png") no-repeat;
+  background-size: 180px 80px;
+    float: left;
+    display: inline-block;
+    width: 200px;
+    height: 160px;
+    margin-top: 5px;
+  }
+
+  #headText {
+    color: rgb(32, 108, 145);
+    padding: 25px 0 0 0;
+    font-size: 2.5em;
+  }
 /*accordian*/
+
+
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

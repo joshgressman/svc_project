@@ -150,11 +150,10 @@ router.put('/victim/:id', function(req, res) {
             'supported_on_call = $72 ' +
             'WHERE id = $73', [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
                 newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
-                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, id
-            ],
-            function(err, result) {
-                done();
+                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, id],
 
+                function (err, result) {
+                  done();
                 if (err) {
                     console.log('PUT ERROR, victim:', err);
                     res.sendStatus(500);

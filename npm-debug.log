@@ -11,6 +11,8 @@
 8 verbose lifecycle svc_project@1.0.0~start: unsafe-perm in lifecycle true
 9 verbose lifecycle svc_project@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/kimmai/Desktop/test/svc_project/node_modules/.bin:/usr/local/Cellar/node/6.3.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 10 verbose lifecycle svc_project@1.0.0~start: CWD: /Users/kimmai/Desktop/test/svc_project
+9 verbose lifecycle svc_project@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/joshgressman/Desktop/svc_project/node_modules/.bin:/usr/local/Cellar/node/6.3.1/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.5/bin
+10 verbose lifecycle svc_project@1.0.0~start: CWD: /Users/joshgressman/Desktop/svc_project
 11 silly lifecycle svc_project@1.0.0~start: Args: [ '-c', 'node server/app.js' ]
 12 silly lifecycle svc_project@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle svc_project@1.0.0~start: Failed to exec start script
@@ -27,6 +29,8 @@
 15 verbose pkgid svc_project@1.0.0
 16 verbose cwd /Users/kimmai/Desktop/test/svc_project
 17 error Darwin 15.3.0
+16 verbose cwd /Users/joshgressman/Desktop/svc_project
+17 error Darwin 15.6.0
 18 error argv "/usr/local/Cellar/node/6.3.1/bin/node" "/usr/local/bin/npm" "start"
 19 error node v6.3.1
 20 error npm  v3.10.3

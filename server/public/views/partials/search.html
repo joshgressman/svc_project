@@ -14,11 +14,17 @@
            <form ng-submit="searchUpdate()">
              <div class="searchEntry">
                  <label for="searchEntry">Enter Confirmation #:</label>
-                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" />
+                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" ng-click="results = true" />
              </div>
            </form>
          </div>
-         </div>
-        </div>
+         <div ng-show="results" id="resultsForm">
+
+             <h3>This is where some information goes from the form</h3>
+           insert inputs with the value of the retunred object. value="person.info"
+           will work like a placeholder. Could also copy the previouse forms and switch the ng-model to value.
+
     </div>
+</div>
+</div>
 </div>
