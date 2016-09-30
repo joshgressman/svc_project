@@ -10,7 +10,7 @@ if (process.env.DATABASE_URL != undefined) {
   connectionString = 'postgres://localhost:5432/svc';
 }
 
-//POST-GET for federal report;
+//POST-GET for reports;
 router.post('/:id', function(req, res) {
   var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
   var iLike = " iLIKE ";
@@ -45,11 +45,11 @@ router.post('/:id', function(req, res) {
                 done();
 
                 if (err) {
-                    console.log('QUERY ERROR with Federal, Q5A:', err);
+                    console.log('QUERY ERROR:', err);
                     res.sendStatus(500);
                 }
 
-                console.log('Federal Report, Q5A:', result.rows);
+                console.log('QUERY RESULTS:', result.rows);
                 res.send(result.rows);
 
             });

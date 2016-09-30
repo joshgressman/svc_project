@@ -187,7 +187,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Deaf/Hard of Hearing"
     }
 ];
-    var disabilityStatusTotal = [disability_physical, disability_mental, disability_developmental, disability_other];
+    var disabilityStatusTotal = ['disability_physical', 'disability_mental', 'disability_developmental', 'disability_other'];
     $scope.getStuff = function() {
         federalObjectArray.forEach(function(query, index) {
             var data = {};
