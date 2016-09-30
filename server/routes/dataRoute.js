@@ -21,10 +21,10 @@ router.post('/victim', function(req, res) {
             res.sendStatus(500);
         }
 
-        client.query('INSERT INTO victim (date_entered, advocate_name, contact_date, start_time, end_time, service_location, service_county, victim_zipcode, victim_type, victim_referral_source, victim_new, victim_prior_oct, crisis_counseling_individual, crisis_counseling_group, legal_law_enforcement_interview, legal_prosecution_related, legal_court_advocacy, legal_oft_hro, legal_immigration, legal_intervention, medical_exam_support, medical_accompaniment_medical, medical_accompaniment_dental, transportation, crisis_counseling, information_referral, information_criminal_justice, other_emergency_justice, safe_at_home, emergency_financial, reparations_claims, referral_svc, referral_agency, referral_other, violence_adult_sexual, violence_adult_child_family, violence_adult_child_other, violence_bullying, violence_child_pornography, violence_domestic, violence_elder, violence_exposing, violence_internet, violence_minor_family, violence_minor_other, violence_phone, violence_exploitation, violence_harassment, violence_stalking, violence_teen_dating, violence_other, violence_other_specify, violence_unknown, victim_age, victim_gender, victim_trans, victim_pronoun, victim_sexual_orientation, disability_blind, disability_physical, disability_mental,disability_deaf, disability_developmental, disability_other, disability_other_specify, disability_unknown, disability_none, victim_ethnicity, victim_immigrant, homeless, limited_english, veteran, supported_on_call) ' +
-            'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $70, $71, $72, $73)', [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
+        client.query('INSERT INTO victim (date_entered, advocate_name, contact_date, start_time, end_time, service_location, service_county, victim_zipcode, victim_type, victim_referral_source, victim_prior_contact, victim_prior_oct, crisis_counseling_individual, crisis_counseling_group, legal_law_enforcement_interview, legal_prosecution_related, legal_court_advocacy, legal_oft_hro, legal_immigration, legal_intervention, medical_exam_support, medical_accompaniment_medical, medical_accompaniment_dental, transportation, crisis_counseling, information_referral, information_criminal_justice, other_emergency_justice, safe_at_home, emergency_financial, reparations_claims, referral_svc, referral_agency, referral_other, violence_adult_sexual, violence_adult_child_family, violence_adult_child_other, violence_bullying, violence_child_pornography, violence_domestic, violence_elder, violence_exposing, violence_internet, violence_minor_family, violence_minor_other, violence_phone, violence_exploitation, violence_harassment, violence_stalking, violence_teen_dating, violence_other, violence_other_specify, violence_unknown, victim_age, victim_gender, victim_trans, victim_sexual_orientation, disability_blind, disability_physical, disability_mental,disability_deaf, disability_developmental, disability_other, disability_other_specify, disability_unknown, disability_none, victim_ethnicity, victim_immigrant, homeless, limited_english, veteran, supported_on_call) ' +
+            'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $70, $71, $72)', [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
                 newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
-                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something
+                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something
             ],
             function(err, result) {
                 done();
@@ -86,7 +86,7 @@ router.put('/victim/:id', function(req, res) {
             'victim_zipcode = $8, ' +
             'victim_type = $9, ' +
             'victim_referral_source = $10, ' +
-            'victim_new = $11, ' +
+            'victim_prior_contact = $11, ' +
             'victim_prior_oct = $12, ' +
             'crisis_counseling_individual = $13, ' +
             'crisis_counseling_group = $14, ' +
@@ -132,26 +132,25 @@ router.put('/victim/:id', function(req, res) {
             'victim_age = $54, ' +
             'victim_gender = $55, ' +
             'victim_trans = $56, ' +
-            'victim_pronoun = $57, ' +
-            'victim_sexual_orientation = $58, ' +
-            'disability_blind = $59, ' +
-            'disability_physical = $60, ' +
-            'disability_mental = $61, ' +
-            'disability_deaf = $62, ' +
-            'disability_developmental = $63, ' +
-            'disability_other = $64, ' +
-            'disability_other_specify = $65, ' +
-            'disability_unknown = $66, ' +
-            'disability_none = $67, ' +
-            'victim_ethnicity = $68, ' +
-            'victim_immigrant = $69' +
-            'homeless = $70, ' +
-            'limited_english = $71, ' +
-            'veteran = $72, ' +
-            'supported_on_call = $73 ' +
-            'WHERE id = $74', [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
+            'victim_sexual_orientation = $57, ' +
+            'disability_blind = $58, ' +
+            'disability_physical = $59, ' +
+            'disability_mental = $60, ' +
+            'disability_deaf = $61, ' +
+            'disability_developmental = $62, ' +
+            'disability_other = $63, ' +
+            'disability_other_specify = $64, ' +
+            'disability_unknown = $65, ' +
+            'disability_none = $66, ' +
+            'victim_ethnicity = $67, ' +
+            'victim_immigrant = $68' +
+            'homeless = $69, ' +
+            'limited_english = $70, ' +
+            'veteran = $71, ' +
+            'supported_on_call = $72 ' +
+            'WHERE id = $73', [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
                 newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
-                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, id
+                newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, id
             ],
             function(err, result) {
                 done();
@@ -271,19 +270,21 @@ router.delete('/nonvictim/:id', function(req, res) {
 
 
 
-var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
-var iLike = "iLIKE";
-var checkFirstTimer = "AND victim_new is null AND victim_prior_oct is true ";
-var greaterThanOrEqual = "AND contact_date >= ";
-var lessThan = "AND contact_date < ";
+
 
 
 
 router.post('/:id', function(req, res) {
+  var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
+  var iLike = " iLIKE ";
+  var checkFirstTimer = " AND victim_prior_contact is null AND victim_prior_oct is true ";
+  var greaterThanOrEqual = " AND contact_date >= ";
+  var lessThan = " AND contact_date < ";
     var query = "";
     var dateStart = req.body.start;
     var dateEnd = req.body.end;
-    var text = req.body.text;
+    var text = "'" + req.body.text + "'";
+    console.log(text);
     var table = req.params.id
     console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
@@ -292,14 +293,24 @@ router.post('/:id', function(req, res) {
             console.log('ERROR, connection to PG');
             res.sendStatus(500);
         }
+<<<<<<< HEAD
         if (text == "TOTAL") {
             stringQueryWhere = "SELECT COUNT (*) FROM victim";
             query = stringQueryWhere + greaterThanOrEqual + dateStart + lessThan + dateEnd;
         } else if (text == "NEW") {
             checkFirstTimer = "victim_prior_contact is null AND victim_prior_oct is true";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + dateStart + lessThan + dateEnd;
+=======
+        if (text == "'TOTAL'") {
+            stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
+            greaterThanOrEqual = " contact_date >= "
+            query = stringQueryWhere + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (text == "'NEW'") {
+            checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
+            query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+>>>>>>> 3de3d585bd1c31cdc1669cb8258ffaada7eaf47e
         } else {
-            query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + dateStart + lessThan + dateEnd;
+            query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         }
         client.query(query,
             function(err, result) {
