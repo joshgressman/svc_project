@@ -1,18 +1,75 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
-$scope.searchForm = {};
 
-$scope.searchUpdate = function () {
-  var data = $scope.searchForm;
-  console.log('data', data);
-  // $http.post('dataRoute', data)
-  // .then(function(response){
-  //   if(response.status == 201){
-  //     $scope
-  //   }
-  // })
-  $scope.searchForm=""
-}
+  $scope.form = {
+    counselor: '',
+    date: '',
+    sTime: '',
+    eTime: '',
+    location: '',
+    county: '',
+    county_other_specify: '',
+    clientNumber: '',
+    zipCode: '',
+    victimType: '',
+    svcPrompt: '',
+    previousContact: '',
+    previousVisit: '',
+    counseling: '',
+    supportGroup: '',
+    lawEnforcementInterview: '',
+    prosecutionRelatedAdvocacy: '',
+    courtAdvocacy: '',
+    assistOFP_HRO: '',
+    immigrationSupport: '',
+    interventionWithOthers: '',
+    forensicExamSupport: '',
+    accompanyMedicalAppt:'',
+    accompanyDentalAppt: '',
+    infoAndReferral: '',
+    safeAtHome: '',
+    emergencyFinancialAsst: '',
+    reparationsClaimAsst: '',
+    svcServices: '',
+    otherAgencyReferral: '',
+    otherServicesReferral: '',
+    adultSexAssault: '',
+    adultAbusedAsChild_family: '',
+    adultAbusedAsChild_other: '',
+    exposing: '',
+    minorCSA_family: '',
+    minorCSA_other: '',
+    obscenePhoneCall: '',
+    exploitation_trafficking: '',
+    sexualHarassment: '',
+    stalking: '',
+    internetRelated: '',
+    unknownViolence: '',
+    bullying: '',
+    childPorn: '',
+    domesticViolence: '',
+    elderAbuse: '',
+    teenDating: '',
+    sexualViolenceOther: '',
+    age: '',
+    gender: '',
+    trans: '',
+    orientation: '',
+    blind_visImpair: '',
+    physDisabled: '',
+    mentDisabled: '',
+    deafHardHearing: '',
+    devDisabled: '',
+    notDisabled: '',
+    unknownDisabled: '',
+    otherDisabled: '',
+    ethnicBackground: '',
+    immigrantStatus: '',
+    homeless: '',
+    limitedEnglish: '',
+    veteran: ''
+  }
+
 
 
 
