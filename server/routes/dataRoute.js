@@ -158,10 +158,8 @@ router.put('/victim/:id', function(req, res) {
             'WHERE id = $75',
             [newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something, newVictim.something,
             newVictim.something, newVictim.something, id],
-
-            function(err, result) {
-                done();
-
+                function (err, result) {
+                  done();
                 if (err) {
                     console.log('PUT ERROR, victim:', err);
                     res.sendStatus(500);
