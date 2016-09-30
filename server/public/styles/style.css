@@ -25,6 +25,23 @@ h2{
   color: gray;
 }
 
+label {
+  padding: 5px 5px 5px 5px;
+}
+
+
+
+input[type="radio"] {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+  margin-left: 8px;
+
+}
+
 #alert{
 padding-left: 200px;
 }
@@ -186,6 +203,10 @@ margin-top: 10px;
   .dateRange {
     margin: 10px 0 20px 0;
     padding: 0 0 0 20px;
+  }
+
+  .otherClientServices{
+    margin-bottom: 8px;
   }
 /*accordian*/
 
