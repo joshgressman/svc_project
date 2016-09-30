@@ -185,9 +185,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "disability_deaf",
         text: "Deaf/Hard of Hearing"
-    }
-];
-    var disabilityStatusTotal = [disability_physical, disability_mental, disability_developmental, disability_other];
+    }, {
+        table: "exception_compensation",
+        text: "Individuals Assisted"
+    }];
+    var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other"];
+    var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
     $scope.getStuff = function() {
         federalObjectArray.forEach(function(query, index) {
             var data = {};
@@ -199,12 +202,26 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 disabilityStatusTotal.forEach(function(table) {
                     $http({
                         method: "POST",
-                        url: '/reportRoute/' + query.table,
+                        url: '/reportRoute/' + table,
                         data: data
                     }).then(function(response) {
                         console.log("Get Success");
                         console.log(response);
                         $scope.federalInfo.disabilityTotal += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "exception_compensation") {
+                victimCompensationTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/' + table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log(response);
+                        $scope.federalInfo.victimCompensation += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
                     });
