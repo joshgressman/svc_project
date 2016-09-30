@@ -13,8 +13,8 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
         // })
         $scope.searchForm = ""
     }
-    $scope.dateStart = "";
-    $scope.dateEnd = "";
+    $scope.dateStart = "2016-09-20";
+    $scope.dateEnd = "2016-09-22";
 
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
