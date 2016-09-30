@@ -6,7 +6,6 @@ var path = require('path');
 //define routes here;
 var reportRoute = require('./routes/reportRoute');
 var dataRoute = require('./routes/dataRoute');
-var federalRoute = require('./routes/federalRoutes');
 
 app.use(bodyParser.json());
 
@@ -15,7 +14,6 @@ app.use(express.static(path.join(__dirname, './public')));
 //set app.use for route here;
 app.use('/reportRoute', reportRoute);
 app.use('/dataRoute', dataRoute);
-app.use('/federalRoutes', federalRoute);
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));

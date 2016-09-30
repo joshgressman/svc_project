@@ -15,7 +15,6 @@
 
 <body class="data">
     <header>
-
     </header> -->
     <!-- ng-app="myApp" -->
 <div class="data" ng-app="myApp">
@@ -24,9 +23,9 @@
         <div class="row">
             <div class="col-md-2" id="dataside">
                 <ul class="nav">
-                    <li><button class="button">Reports</button></li>
-                    <li><button class="button">Data Entry</button></li>
-                    <li><button class="button">Options</button></li>
+                  <li><button class="button" Onclick="window.location.href='#reports'">Federal</button></li>
+                  <li><button class="button" Onclick="window.location.href='#summaryReport'">Summary</button></li>
+                  <li><button class="button" Onclick="window.location.href='#admin'">Home</button></li>
                 </ul>
             </div>
 
@@ -62,7 +61,7 @@
                     <p>
                         <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button>
                     </p>
-
+                        <button ng-click="getStuff()">Get Stuff!</button>
                     <div class="checkbox">
                         <label>
                       <input type="checkbox" ng-model="oneAtATime">

@@ -1,0 +1,24 @@
+<h2>Administration Search & Edit</h2>
+<div class="container" ng-controller="dataEntryController">
+    <div class="row">
+        <div class="col-md-2" id="dataside">
+            <ul class="nav">
+              <li><button id="" Onclick="window.location.href='#reports'">Reports</button></li>
+              <li><button id="" Onclick="window.location.href='#data'">Data Entry</button></li>
+              <li><button id="back" Onclick="window.location.href='#admin'">&#8678 Back</button></li>
+            </ul>
+        </div>
+        <div class="col-md-9" id="dataview">
+         <div id="searchBox">
+           <h3 id="searchText">Edit Form</h3>
+           <form ng-submit="searchUpdate()">
+             <div class="searchEntry">
+                 <label for="searchEntry">Enter Confirmation #:</label>
+                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" />
+             </div>
+           </form>
+         </div>
+         </div>
+        </div>
+    </div>
+</div>

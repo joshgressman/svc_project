@@ -123,6 +123,28 @@ height: 30px;
   margin-left: 200px;
 }
 
+#back {
+  font-size: 15px;
+}
+
+#back:hover {
+  background-color: rgb(20, 160, 225);
+  color: white;
+}
+
+#searchBox {
+margin: 110px 0 0 100px;
+padding: 45px 0 0 100px;
+border: solid gray;
+border-width: thin;
+width: 600px;
+height: 200px;
+background-color: lightgray;
+}
+
+.adminBtn{
+  width: 110px;
+}
 
 /*accordian*/
 
