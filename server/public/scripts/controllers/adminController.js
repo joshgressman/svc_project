@@ -2,15 +2,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
 //Assuming this is the controller for the data viewing, below is the code needed for the accordions
 
-//Filler Numbers
-$scope.people = 1;
-$scope.newPeople = 11;
-$scope.primary = 5;
-$scope.secondary = 10;
-$scope.type = 13;
-$scope.number = 26;
-//End Filler
-
 $scope.oneAtATime = true;
 $scope.status = {
   isCustomHeaderOpen: false,
@@ -20,6 +11,54 @@ $scope.status = {
 
 //End accordion code
 
+$scope.dateStart = "2016-09-20";
+$scope.dateEnd = "2016-09-22";
+
+//POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
+//still need [0].(object named thing) for result.rows
+$scope.federalInfo = {};
+var federalObjectArray = [{
+        table: undefined,
+        text: "TOTAL"
+    }, {
+        table: undefined,
+        text: "NEW"
+    }, {
+        table: "victim_ethnicity",
+        text: "American Indian or Alaskan Native"
+    }, {
+        table: "victim_ethnicity",
+        text: "Asian"
+    }, {
+        table: "victim_ethnicity",
+        text: "Black or African American"
+    }
+
+];
+
+$scope.getStuff = function(){
+  federalObjectArray.forEach(function(query, index){
+    var data = {};
+    data.start = $scope.dateStart;
+    data.end = $scope.dateEnd;
+    data.text = query.text;
+    console.log(data);
+    $http({
+        method: "POST",
+        url: '/reportRoute/' + query.table,
+        data: data
+    }).then(function(response) {
+        console.log("Get Success");
+        console.log(response);
+        console.log(query.table);
+        var objectParam = query.table;
+        $scope.federalInfo.objectParam = response.data[0];
+    }, function() {
+        console.log("Get Error");
+    });
+  });
+
+}
 
 
 

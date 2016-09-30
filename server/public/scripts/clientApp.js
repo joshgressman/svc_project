@@ -32,7 +32,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         })
         .when('/countyReport', {
             templateUrl: '/views/partials/formData/countyData.html',
-            controller: "dataEntryController"
+            controller: "adminController"
         })
         .when('/summaryReport', {
             templateUrl: '/views/partials/formData/summaryData.html',

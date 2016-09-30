@@ -37,9 +37,13 @@
              <!-- ng-app="myApp" -->
 
             <div class="col-md-9" id="dataview" ng-controller="adminController">
-                <p>
-                    Click a Button to do a thing!
-                </p>
+              <div class="dateRange">
+                <P>Select a date ranges for reporting</P>
+                  <label for="startDate">Start Date:</label>
+                  <input class="startDate" type="date" ng-model="form.StartDate" />
+                  <label for="endDate">End Date:</label>
+                  <input class="endDate" type="date" ng-model="form.endDate" />
+              </div>
                 <div>
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
