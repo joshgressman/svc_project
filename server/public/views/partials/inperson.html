@@ -95,6 +95,11 @@
                 <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" value="true">Yes
                 <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" value="false">No
             </div>
+            <div class="transportation">
+                <label for="transportation">Did you provide (taxi) transportation?</label>
+                <input type="radio" name="transportation" ng-model="form.transportation"  value="true" >Yes
+                <input type="radio" name="transportation" ng-model="form.transportation"  value = "false">No
+            </div>
 
             <div ng-show="newFiscalYear">
               <div class="alert alert-info">

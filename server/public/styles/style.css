@@ -22,6 +22,7 @@ header{
 
 h2{
   margin-left: 125px;
+  color: gray;
 }
 
 .container {
@@ -148,7 +149,12 @@ background-color: lightgray;
 }
 
 .adminBtn{
+
   width: 110px;
+  height: 30px;
+}
+.adminBtn:hover {
+  background-color: lightgreen;
 }
 
 #resultsForm{
