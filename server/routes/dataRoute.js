@@ -293,14 +293,6 @@ router.post('/:id', function(req, res) {
             console.log('ERROR, connection to PG');
             res.sendStatus(500);
         }
-<<<<<<< HEAD
-        if (text == "TOTAL") {
-            stringQueryWhere = "SELECT COUNT (*) FROM victim";
-            query = stringQueryWhere + greaterThanOrEqual + dateStart + lessThan + dateEnd;
-        } else if (text == "NEW") {
-            checkFirstTimer = "victim_prior_contact is null AND victim_prior_oct is true";
-            query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + dateStart + lessThan + dateEnd;
-=======
         if (text == "'TOTAL'") {
             stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
             greaterThanOrEqual = " contact_date >= "
@@ -308,7 +300,6 @@ router.post('/:id', function(req, res) {
         } else if (text == "'NEW'") {
             checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
->>>>>>> 3de3d585bd1c31cdc1669cb8258ffaada7eaf47e
         } else {
             query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         }
