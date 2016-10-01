@@ -37,6 +37,10 @@ router.post('/:id', function(req, res) {
         } else if (text == "'NEW'") {
             checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_age") {
+            query = stringQueryWhere + table + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_sexual_orientation") {
+            query = stringQueryWhere + table + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         } else {
             query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         }

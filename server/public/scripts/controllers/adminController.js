@@ -52,11 +52,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Multiple Races"
     }, {
         table: "victim_ethnicity",
-        text: "Not Reported"
+        text: "unknwon"
     }, {
         table: "victim_ethnicity",
         text: "Not Tracked"
     }, {
+      //fix: not boolean totals
         table: "victim_ethnicity",
         text: "Race/Ethnicity Total"
     }, {
@@ -75,31 +76,32 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_gender",
         text: "Not Tracked"
     }, {
+      //fix: not boolean totals
         table: "victim_gender",
         text: "Total"
     }, {
-      //LOOK AT CHANGING THE LOGIC OF THE NUMBER CALLS - QUERY CRITERIA;
         table: "victim_age",
-        text: "0 - 12"
+        text: "(victim_age <= 0 AND victim_age >= 12)"
     }, {
         table: "victim_age",
-        text: "13 - 17"
+        text: "(victim_age <= 13 AND victim_age >= 17)"
     }, {
         table: "victim_age",
-        text: "18 - 24"
+        text: "(victim_age <= 18 AND victim_age >= 24)"
     }, {
         table: "victim_age",
-        text: "25 - 59"
+        text: "(victim_age <= 25 AND victim_age >= 59)"
     }, {
         table: "victim_age",
-        text: "60 and Older"
+        text: "(victim_age <= 60)"
     }, {
         table: "victim_age",
-        text: "Not Reported"
+        text: "iLIKE 'unknown'"
     }, {
         table: "victim_age",
         text: "Not Tracked"
     }, {
+      //fix: not boolean totals
         table: "victim_age",
         text: "Total"
     }, {
@@ -133,8 +135,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_minor_family",
         text: "true"
     }, {
-      table: "violence_minor_other",
-      text: "true"
+        table: "violence_minor_other",
+        text: "true"
     }, {
         table: "violence_phone",
         text: "true"
@@ -155,33 +157,64 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         table: "violence_unknown",
-        text: ""
+        text: "true"
     }, {
         table: "disability_deaf",
         text: "true"
     }, {
-      //fix
         table: "exception_disability",
-        text: "Cognitive/Physical/Mental Disabilities"
+        text: "true"
     }, {
-      //fix
+      //total: make others like this?
         table: "victim_sexual_orientation",
-        text: "LGBTQ"
+        text: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
     }, {
-        table: "disability_deaf",
-        text: "Deaf/Hard of Hearing"
+        table: "homeless",
+        text: "true"
     }, {
-        table: "exception_compensation",
-        text: "Individuals Assisted"
+      //fix: not boolean totals
+        table: "victim_immigrant",
+        text: "true"
+    }, {
+        table: "veteran",
+        text: "true"
+    }, {
+        table: "limited_english",
+        text: "true"
+    }, {
+        table: "information_referral",
+        text: "true"
+    }, {
+        table: "criminal_justice",
+        text: "true"
+    }, {
+      //continue here Q9-A2
+        table: "",
+        text: ""
+    }, {
+        table: "",
+        text: ""
+    }, {
+        table: "",
+        text: ""
+    }, {
+        table: "",
+        text: ""
+    }, {
+        table: "",
+        text: ""
     }];
 
-    var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other"];
+    var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other", "disability_blind"];
     var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
+    var criminalJusticProcessTotal = ["information_criminal_justice", "legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy"];
+
     $scope.getStuff = function() {
       console.log('getting stuff');
         federalObjectArray.forEach(function(query, index) {
             var data = {};
 
+            //converts date to workable format
             var start = $scope.dateStart;
             var convertedStart = start.toISOString().slice(0,10);
             var end = $scope.dateEnd;
@@ -215,6 +248,20 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         console.log("Get Success");
                         console.log(response);
                         $scope.federalInfo.victimCompensation += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "criminal_justice") {
+                criminalJusticProcessTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/' + table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log(response);
+                        $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
                     });
