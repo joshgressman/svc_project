@@ -11,11 +11,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //End accordion code
 
-    $scope.dateStart = "2016-09-20";
-    $scope.dateEnd = "2016-09-22";
+    $scope.dateStart = "";
+    $scope.dateEnd = "";
 
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
+    //only need to get counts for reports;
+    //table actually equals the column the thing is in;
+    //text equals the query criteria;
     $scope.federalInfo = {};
     var federalObjectArray = [{
         table: undefined,
@@ -67,7 +70,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Other"
     }, {
         table: "victim_gender",
-        text: "Not Reported"
+        text: "unknown"
     }, {
         table: "victim_gender",
         text: "Not Tracked"
@@ -75,6 +78,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_gender",
         text: "Total"
     }, {
+      //LOOK AT CHANGING THE LOGIC OF THE NUMBER CALLS - QUERY CRITERIA;
         table: "victim_age",
         text: "0 - 12"
     }, {
@@ -99,87 +103,68 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_age",
         text: "Total"
     }, {
-        table: "victim_type",
-        text: "Adult Physical Assault"
+        table: "violence_adult_sexual",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Adult Sexual Assault"
+        table: "violence_adult_child_family",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Adults Sexual Abuse/Assault"
+        table: "violence_adult_child_other",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Arson"
+        table: "violence_bullying",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Bullying"
+        table: "violence_child_pornography",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Burglary"
+        table: "violence_domestic",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Child Physical Abuse or Neglect"
+        table: "violence_elder",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Child Pornography"
+        table: "violence_exposing",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Child Sexual Abuse or Neglect"
+        table: "violence_internet",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Domestic And/Or Family Violence"
+        table: "violence_minor_family",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "DUI/DWI Incidents"
+      table: "violence_minor_other",
+      text: "true"
     }, {
-        table: "victim_type",
-        text: "Elder Abuse or Neglect"
+        table: "violence_phone",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Hate Crime"
+        table: "violence_exploitation",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Human Trafficking: Labor"
+        table: "violence_harassment",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Human Trafficking: Sex"
+        table: "violence_stalking",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Identity theft"
+        table: "violence_teen_dating",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Kidnapping"
+        table: "violence_other",
+        text: "true"
     }, {
-        table: "victim_type",
-        text: "Mass Violence"
-    }, {
-        table: "victim_type",
-        text: "Other Vehicular Victimization"
-    }, {
-        table: "victim_type",
-        text: "Robbery"
-    }, {
-        table: "victim_type",
-        text: "Stalking/Harassment"
-    }, {
-        table: "victim_type",
-        text: "Survivors of Homicide Victims"
-    }, {
-        table: "victim_type",
-        text: "Teen Dating Victimization"
-    }, {
-        table: "victim_type",
-        text: "Terrorism"
-    }, {
-        table: "victim_type",
-        text: "Other"
+        table: "violence_unknown",
+        text: ""
     }, {
         table: "disability_deaf",
-        text: "Deaf/Hard of Hearing"
+        text: "true"
     }, {
+      //fix
         table: "exception_disability",
         text: "Cognitive/Physical/Mental Disabilities"
     }, {
+      //fix
         table: "victim_sexual_orientation",
         text: "LGBTQ"
     }, {
@@ -189,13 +174,21 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "exception_compensation",
         text: "Individuals Assisted"
     }];
+
     var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other"];
     var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
     $scope.getStuff = function() {
+      console.log('getting stuff');
         federalObjectArray.forEach(function(query, index) {
             var data = {};
-            data.start = $scope.dateStart;
-            data.end = $scope.dateEnd;
+
+            var start = $scope.dateStart;
+            var convertedStart = start.toISOString().slice(0,10);
+            var end = $scope.dateEnd;
+            var convertedEnd = end.toISOString().slice(0,10);
+
+            data.start = convertedStart;
+            data.end = convertedEnd;
             data.text = query.text;
             console.log(data);
             if (query.table == "exception_disability") {
