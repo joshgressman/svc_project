@@ -21,51 +21,58 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     //text equals the query criteria;
     $scope.federalInfo = {};
     var federalObjectArray = [{
+      //Question 1
         table: undefined,
         text: "TOTAL"
     }, {
+      //Question 4
         table: undefined,
         text: "NEW"
     }, {
+
+      //Question 5A
         table: "victim_ethnicity",
-        text: "American Indian or Alaskan Native"
+        text: "Native American"
     }, {
         table: "victim_ethnicity",
         text: "Asian"
     }, {
         table: "victim_ethnicity",
-        text: "Black or African American"
+        text: "African American/Black"
     }, {
         table: "victim_ethnicity",
-        text: "Hispanic or Latino"
+        text: "Chican@/Latin@"
     }, {
         table: "victim_ethnicity",
-        text: "Native Hawaiian or Other Pacific Islander"
+        text: "Native Hawaiian/Pacific Islander"
     }, {
         table: "victim_ethnicity",
         text: "White Non-Latino or Caucasian"
     }, {
         table: "victim_ethnicity",
-        text: "Some Other Race"
+        text: "Other"
     }, {
         table: "victim_ethnicity",
-        text: "Multiple Races"
+        text: "Multi-Racial"
     }, {
         table: "victim_ethnicity",
-        text: "unknwon"
+        text: "unknown"
     }, {
         table: "victim_ethnicity",
         text: "Not Tracked"
     }, {
-      //fix: not boolean totals
-        table: "victim_ethnicity",
-        text: "Race/Ethnicity Total"
+        table: "victim_ethnicity_total",
+        textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown' or victim_ethnicity iLike 'Not Tracked')"
     }, {
+      //Question 5B
         table: "victim_gender",
         text: "Male"
     }, {
         table: "victim_gender",
         text: "Female"
+    }, {
+        table: "victim_gender",
+        text: "Non-binary"
     }, {
         table: "victim_gender",
         text: "Other"
@@ -76,35 +83,35 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_gender",
         text: "Not Tracked"
     }, {
-      //fix: not boolean totals
-        table: "victim_gender",
-        text: "Total"
+        table: "victim_gender_total",
+        textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender iLike 'unknown'"
+    }, {
+      //Question 5C
+        table: "victim_age",
+        textSpecial: "(victim_age >= 0 AND victim_age <= 12)"
     }, {
         table: "victim_age",
-        text: "(victim_age <= 0 AND victim_age >= 12)"
+        textSpecial: "(victim_age >= 13 AND victim_age <= 17)"
     }, {
         table: "victim_age",
-        text: "(victim_age <= 13 AND victim_age >= 17)"
+        textSpecial: "(victim_age >= 18 AND victim_age <= 24)"
     }, {
         table: "victim_age",
-        text: "(victim_age <= 18 AND victim_age >= 24)"
+        textSpecial: "(victim_age >= 25 AND victim_age <= 59)"
     }, {
         table: "victim_age",
-        text: "(victim_age <= 25 AND victim_age >= 59)"
+        textSpecial: "(victim_age >= 60)"
     }, {
         table: "victim_age",
-        text: "(victim_age <= 60)"
-    }, {
-        table: "victim_age",
-        text: "iLIKE 'unknown'"
+        textSpecial: "iLIKE 'unknown'"
     }, {
         table: "victim_age",
         text: "Not Tracked"
     }, {
-      //fix: not boolean totals
         table: "victim_age",
-        text: "Total"
+        textSpecial: "(victim_age >= 0 AND victim_age iLIke 'unknown')"
     }, {
+      //Question 6A
         table: "violence_adult_sexual",
         text: "true"
     }, {
@@ -159,22 +166,25 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_unknown",
         text: "true"
     }, {
+      //Question 6B
+        table: "violence_more_than_one",
+        text: "true"
+    }, {
+      //Question 6C
         table: "disability_deaf",
         text: "true"
     }, {
         table: "exception_disability",
         text: "true"
     }, {
-      //total: make others like this?
-        table: "victim_sexual_orientation",
-        text: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
+        table: "victim_sexual_orientation_total",
+        textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
     }, {
         table: "homeless",
         text: "true"
     }, {
-      //fix: not boolean totals
-        table: "victim_immigrant",
-        text: "true"
+        table: "victim_immigrant_total",
+        text: "victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East'"
     }, {
         table: "veteran",
         text: "true"
@@ -182,32 +192,87 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "limited_english",
         text: "true"
     }, {
+      //Question 7
+        table: "exception_compensation",
+        text: "true"
+    }, {
+      //Question 8/9A0=9A4
         table: "information_referral",
         text: "true"
     }, {
         table: "criminal_justice",
         text: "true"
     }, {
-      //continue here Q9-A2
-        table: "",
-        text: ""
+        table: "contact_type",
+        text: "in-person"
     }, {
-        table: "",
-        text: ""
+        table: "referral_agency",
+        text: "true"
     }, {
-        table: "",
-        text: ""
+        table: "referral_other",
+        text: "true"
     }, {
-        table: "",
-        text: ""
+      //Question 8/9B0-9B9
+        table: "personal_advocacy",
+        text: "true"
     }, {
-        table: "",
-        text: ""
+        table: "medical_advocacy",
+        text: "true"
+    }, {
+        table: "medical_exam_support",
+        text: "true"
+    }, {
+        table: "legal_law_enforcement_interview",
+        text: "true"
+    }, {
+        table: "legal_immigration",
+        text: "true"
+    }, {
+        table: "legal_intervention",
+        text: "true"
+    }, {
+      //Question 9C0-9C7 9C0: unduplicated totals; 9C1: totals
+        table: "hotline_crisis",
+        text: "contact_type iLike 'phone'"
+    }, {
+        table: "crisis_counseling_individual",
+        text: "true"
+    }, {
+        table: "crisis_counseling_group",
+        text: "true"
+    }, {
+        table: "emergency_financial",
+        text: "true"
+    }, {
+      //Question 9E0-9E10
+        table: "criminal_civic",
+        text: "true"
+    }, {
+        table: "legal_oft_hro",
+        text: "true"
+    }, {
+        table: "other_emergency_justice",
+        text: "true"
+    }, {
+        table: "legal_immigration",
+        text: "true"
+    }, {
+        table: "legal_prosecution_related",
+        text: "true"
+    }, {
+        table: "legal_law_enforcement_interview",
+        text: "true"
+    }, {
+        table: "legal_court_advocacy",
+        text: "true"
     }];
 
     var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other", "disability_blind"];
     var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
     var criminalJusticProcessTotal = ["information_criminal_justice", "legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy"];
+    var personalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental", "medical_exam_support", "legal_law_enforcement_interview", "legal_immigration", "legal_intervention", "transportation"];
+    var medicalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental"];
+    var criminalCivicTotal = ["legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy", "legal_oft_hro", "legal_immigration", "legal_intervention"];
 
     $scope.getStuff = function() {
       console.log('getting stuff');
@@ -223,6 +288,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             data.start = convertedStart;
             data.end = convertedEnd;
             data.text = query.text;
+            data.textSpecial = query.textSpecial;
             console.log(data);
             if (query.table == "exception_disability") {
                 disabilityStatusTotal.forEach(function(table) {
@@ -262,6 +328,48 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         console.log("Get Success");
                         console.log(response);
                         $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "personal_advocacy") {
+                personalAdvocacyTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/' + table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log(response);
+                        $scope.federalInfo.personalAdvocacy += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "medical_advocacy") {
+                medicalAdvocacyTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/' + table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log(response);
+                        $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "criminal_civic") {
+                criminalCivicTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/' + table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log(response);
+                        $scope.federalInfo.criminalCivic += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
                     });

@@ -21,6 +21,7 @@ router.post('/:id', function(req, res) {
     var dateStart = req.body.start;
     var dateEnd = req.body.end;
     var text = "'" + req.body.text + "'";
+    var textSpecial = req.body.text;
     console.log(text);
     var table = req.params.id
     console.log('Date range of query: ' + dateStart + " - " + dateEnd);
@@ -38,9 +39,19 @@ router.post('/:id', function(req, res) {
             checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         } else if (table ==  "victim_age") {
-            query = stringQueryWhere + table + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        } else if (table ==  "victim_sexual_orientation") {
-            query = stringQueryWhere + table + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_sexual_orientation_total") {
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_ethnicity_total") {
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_gender_total") {
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_immigrant_total") {
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (text == "hotline_crisis") {
+            stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
+            greaterThanOrEqual = " contact_date >= "
+            query = stringQueryWhere + text + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         } else {
             query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         }
