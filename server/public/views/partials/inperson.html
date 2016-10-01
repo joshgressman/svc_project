@@ -64,11 +64,11 @@
         <div id="victimInfo">
             <div class="clientNumber">
                 <label for="clientNumber">Client Number:</label>
-                <input class="clientNumberInput" type="text" ng-model="form.clientNumber" />
+                <input class="clientNumberInput" type="number" ng-model="form.clientNumber" />
             </div>
             <div class="zipCode">
                 <label for="zipCode">Zip Code:</label>
-                <input class="zipCodeInput" type="text" ng-model="form.zipCode" />
+                <input class="zipCodeInput" type="number" ng-model="form.zipCode" />
             </div>
             <div class="victimType">
                 <label for="victimType">Type of Victim/Survivor:</label>
@@ -255,7 +255,7 @@
             <label for="victimDemoSurvey">Victim/Survivor Demographic Survey</label>
             <div class="victimDemoSurvey">
                 <label for="age">Age:</label>
-                <input class="ageInput" type="text" ng-model="form.age" />
+                <input class="ageInput" type="number" ng-model="form.age" />
                 <label for="gender">Gender:</label>
                 <input type="radio" name="gender" ng-model="form.gender" value="Male"> Male
                 <input type="radio" name="gender" ng-model="form.gender" value="Female"> Female
@@ -352,9 +352,10 @@
               </div>
             </div>
         </div>
+
     </form>
   </div>
-  <input  type="submit" name="submit" value="Submit"  />
+  <input id="subBtn"  type="submit" name="submit" value="Submit"  />
   </div>
 </div>
 </div>

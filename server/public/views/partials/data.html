@@ -9,10 +9,50 @@
                 <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
             </ul>
         </div>
-        <div class="col-md-9" id="dataview">
-            <p>
-                Some instruction will go here for volunteers!
-            </p>
+        <div class="col-md-9" id="insDiv">
+
+            <div>
+                <script type="text/ng-template" id="group-template.html">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                      <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                          {{heading}}
+                        </span>
+                      </a>
+                    </h4>
+                        </div>
+                        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                            <div class="panel-body" style="text-align: right" ng-transclude></div>
+                        </div>
+                    </div>
+                </script>
+
+
+                <uib-accordion close-others="oneAtATime">
+
+                    <!-- //Individuals who recieved services during the reporting period -->
+
+                    <div uib-accordion-group class="panel-default text-center" heading="Data Entry Instructions" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                        <div class="row">
+                            <div class="col-md-9 text-left">
+                                <strong>Data Entry Basics:</strong>
+                                <p>
+                                  SVC input forms are color coded to repersent the type of service that was provided. Pink forms are for telephone services, yellow is for in-person services and green is for non-victim services.
+                                </p>
+                                <p>
+                                  The required data entry portal for your form can be found on the screen to the left. Select the button that
+                                  matches the type of form you're entering. (Pink = telephone, yellow = in-person, green = non-victim).
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </uib-accordion>
+            </div>
         </div>
     </div>
 </div>

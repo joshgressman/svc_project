@@ -46,7 +46,7 @@
              </div>
              <div class="callerPhone">
                  <label for="callerPhone">Phone Number:</label>
-                 <input class="callerPhone" type="text" ng-model="form.callerPhone" />
+                 <input class="callerPhone" type="number" ng-model="form.callerPhone" />
              </div>
              <div class="callerZip">
                  <label for="callerZip">Zip Code:</label>
@@ -63,7 +63,7 @@
              <div class="callerType">
                  <label for="callerType">Type of Caller:</label>
                  <select>
-                     <option ng-model="form.callerType" value="null">Select Onc</option>
+                     <option ng-model="form.callerType" value="null">Select One</option>
                      <option ng-model="form.callerType" value="caseConsultation">Case Consultation</option>
                      <option ng-model="form.callerType" value="generalInformation">General Information</option>
                      <option ng-model="form.callerType" value="medicalAdvocacy">Medical Advocacy</option>
@@ -170,7 +170,7 @@
            </div>
 
          </div>
-         <input  type="submit" name="submit" value="Submit" />
+         <input id="subBtn" type="submit" name="submit" value="Submit" />
      </form>
   </div>
   </div>
