@@ -1,10 +1,7 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 4ce587515f8f641bc1837909d6926b9de9289eda
   $scope.form = {
     counselor: '',
     date: '',
@@ -79,6 +76,24 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     veteran: '',
     supported: ''
   }
+
+  $scope.submitVictimForm = function() {
+      var data = $scope.form;
+      data.date_entered = new Date();
+      console.log('sending to server...', data);
+      // $http.post('/victim', data).then(function(response) {
+      //   console.log('success');
+      //
+      //   },
+      //   function(response) {
+      //     console.log('error');
+      //     $scope.message = "Please try again."
+      //   });
+      
+      }
+
+
+
 
 
     ///**********END OF CONTROLLER***************************************///////

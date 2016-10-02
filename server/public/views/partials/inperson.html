@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitVictimForm()">
+      <form name="victimForm" ng-submit="submitVictimForm()">
         <div id="svcAdvocacy">
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -354,7 +354,7 @@
         </div>
     </form>
   </div>
-  <input  type="submit" name="submit" value="Submit"  />
+  <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
   </div>
 </div>
 </div>
