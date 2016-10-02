@@ -746,7 +746,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 }, function() {
                     console.log("Get Error");
                 });
-            // }
+            }
         });
     };
 

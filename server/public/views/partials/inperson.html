@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-click="submitVictimForm()">
+      <form name="victimForm" ng-submit="submitVictimForm()">
         <div id="svcAdvocacy">
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -115,7 +115,7 @@
             </div>
             <div class="counseling">
               <label for="counseling"> Crisis Counseling:</label>
-              <input type="radio" name="counseling" ng-model="form.counseling" value="true"> One-to-One Counseling
+              <input type="radio" name="counseling" ng-model="form.counseling" ng-value="true"> One-to-One Counseling
               <input type="radio" name="counseling" ng-model="form.supportGroup" value="true"> Support Group
             </div>
             <div class="legalAdvocacyCriminal">
@@ -355,7 +355,7 @@
 
     </form>
   </div>
-  <input id="subBtn"  type="submit" name="submit" value="Submit"  />
+  <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
   </div>
 </div>
 </div>
