@@ -14,17 +14,18 @@ if (process.env.DATABASE_URL != undefined) {
 router.post('/:id', function(req, res) {
   var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
   var iLike = " iLIKE ";
-  var checkFirstTimer = " AND victim_prior_contact is null AND victim_prior_oct is true ";
+  var is = " is ";
+  var checkFirstTimer = " AND (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
   var greaterThanOrEqual = " AND contact_date >= ";
   var lessThan = " AND contact_date < ";
     var query = "";
     var dateStart = req.body.start;
     var dateEnd = req.body.end;
-    var text = "'" + req.body.text + "'";
-    var textSpecial = req.body.text;
-    console.log(text);
+    var text = req.body.text;
+    var textSpecial = req.body.textSpecial;
+    // console.log(text);
     var table = req.params.id
-    console.log('Date range of query: ' + dateStart + " - " + dateEnd);
+    // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -35,25 +36,40 @@ router.post('/:id', function(req, res) {
             stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
             greaterThanOrEqual = " contact_date >= "
             query = stringQueryWhere + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('total:', query);
         } else if (text == "'NEW'") {
-            checkFirstTimer = " victim_prior_contact is null AND victim_prior_oct is true ";
+            checkFirstTimer = " (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('new:', query);
         } else if (table ==  "victim_age") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('victim age:', query);
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('sexual orientation:', query);
+        } else if (table ==  "victim_victimization_count") {
+            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('victimization count:', query);
         } else if (table ==  "victim_ethnicity_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('ethnicity:', query);
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('gender:', query);
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('immigrant:', query);
         } else if (text == "hotline_crisis") {
             stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
             greaterThanOrEqual = " contact_date >= "
-            query = stringQueryWhere + text + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            query = stringQueryWhere + "'" + text + "'" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('hotline:', query);
+        } else if (text == "true"){
+            query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log(query);
         } else {
-            query = stringQueryWhere + table + iLike + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log(query);
         }
         client.query(query,
             function(err, result) {
