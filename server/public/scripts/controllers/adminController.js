@@ -858,11 +858,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     data: data
                 }).then(function(response) {
                     console.log("Get Success");
-                    // console.log(response);
-                    // console.log(query.table);
+                    console.log('response:', response);
+                    console.log('query table:', query.table);
                     var objectParam = query.table;
                     $scope.federalInfo.objectParam = response.data[0];
-                    // console.log(response.data[0]);
+
+                    console.log(response.data[0]);
                 }, function() {
                     console.log("Get Error");
                 });
