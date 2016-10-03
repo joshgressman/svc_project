@@ -11,13 +11,265 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //End accordion code
 
-    $scope.dateStart = "2016-09-20";
-    $scope.dateEnd = "2016-09-22";
+    $scope.dateStart = "";
+    $scope.dateEnd = "";
 
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
     var federalObjectArray = [{
+      //Question 1
+        table: undefined,
+        text: "TOTAL"
+    }, {
+      //Question 4
+        table: undefined,
+        text: "NEW"
+    }, {
+      //Question 5A
+        table: "victim_ethnicity",
+        text: "Native American"
+    }, {
+        table: "victim_ethnicity",
+        text: "Asian"
+    }, {
+        table: "victim_ethnicity",
+        text: "African American/Black"
+    }, {
+        table: "victim_ethnicity",
+        text: "Chican@/Latin@"
+    }, {
+        table: "victim_ethnicity",
+        text: "Native Hawaiian/Pacific Islander"
+    }, {
+        table: "victim_ethnicity",
+        text: "White Non-Latino or Caucasian"
+    }, {
+        table: "victim_ethnicity",
+        text: "Other"
+    }, {
+        table: "victim_ethnicity",
+        text: "Multi-Racial"
+    }, {
+        table: "victim_ethnicity",
+        text: "unknown"
+    }, {
+        table: "victim_ethnicity",
+        text: "Not Tracked"
+    }, {
+        table: "victim_ethnicity_total",
+        textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
+    }, {
+      //Question 5B
+        table: "victim_gender",
+        text: "Male"
+    }, {
+        table: "victim_gender",
+        text: "Female"
+    }, {
+        table: "victim_gender",
+        text: "Non-binary"
+    }, {
+        table: "victim_gender",
+        text: "Other"
+    }, {
+        table: "victim_gender",
+        text: "unknown"
+    }, {
+        table: "victim_gender",
+        text: "Not Tracked"
+    }, {
+        table: "victim_gender_total",
+        textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender iLike 'unknown'"
+    }, {
+      //Question 5C
+        table: "victim_age",
+        textSpecial: "(victim_age >= 0 AND victim_age <= 12)"
+    }, {
+        table: "victim_age",
+        textSpecial: "(victim_age >= 13 AND victim_age <= 17)"
+    }, {
+        table: "victim_age",
+        textSpecial: "(victim_age >= 18 AND victim_age <= 24)"
+    }, {
+        table: "victim_age",
+        textSpecial: "(victim_age >= 25 AND victim_age <= 59)"
+    }, {
+        table: "victim_age",
+        textSpecial: "(victim_age >= 60)"
+    }, {
+        table: "victim_age",
+        textSpecial: "victim_age is null"
+    }, {
+        table: "victim_age",
+        textSpecial: "(victim_age >= 0 OR victim_age is null)"
+    }, {
+      //Question 6A
+        table: "violence_adult_sexual",
+        text: "true"
+    }, {
+        table: "violence_adult_child_family",
+        text: "true"
+    }, {
+        table: "violence_adult_child_other",
+        text: "true"
+    }, {
+        table: "violence_bullying",
+        text: "true"
+    }, {
+        table: "violence_child_pornography",
+        text: "true"
+    }, {
+        table: "violence_domestic",
+        text: "true"
+    }, {
+        table: "violence_elder",
+        text: "true"
+    }, {
+        table: "violence_exposing",
+        text: "true"
+    }, {
+        table: "violence_internet",
+        text: "true"
+    }, {
+        table: "violence_minor_family",
+        text: "true"
+    }, {
+        table: "violence_minor_other",
+        text: "true"
+    }, {
+        table: "violence_phone",
+        text: "true"
+    }, {
+        table: "violence_exploitation",
+        text: "true"
+    }, {
+        table: "violence_harassment",
+        text: "true"
+    }, {
+        table: "violence_stalking",
+        text: "true"
+    }, {
+        table: "violence_teen_dating",
+        text: "true"
+    }, {
+        table: "violence_other",
+        text: "true"
+    }, {
+        table: "violence_unknown",
+        text: "true"
+    }, {
+      //Question 6B
+        table: "victim_victimization_count",
+        textSpecial: "victim_victimization_count >= 2"
+    }, {
+      //Question 6C
+        table: "disability_deaf",
+        text: "true"
+    }, {
+        table: "exception_disability",
+        text: "true"
+    }, {
+        table: "victim_sexual_orientation_total",
+        textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
+    }, {
+        table: "homeless",
+        text: "true"
+    }, {
+        table: "victim_immigrant_total",
+        textSpecial: "victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other'"
+    }, {
+        table: "veteran",
+        text: "true"
+    }, {
+        table: "limited_english",
+        text: "true"
+    }, {
+      //Question 7
+        table: "exception_compensation",
+        text: "true"
+    }, {
+      //Question 8/9A0=9A4
+        table: "information_referral",
+        text: "true"
+    }, {
+        table: "criminal_justice",
+        text: "true"
+    }, {
+        table: "contact_type",
+        text: "in-person"
+    }, {
+        table: "referral_agency",
+        text: "not null"
+    }, {
+        table: "referral_other",
+        text: "not null"
+    }, {
+      //Question 8/9B0-9B9
+        table: "personal_advocacy",
+        text: "true"
+    }, {
+        table: "medical_advocacy",
+        text: "true"
+    }, {
+        table: "medical_exam_support",
+        text: "true"
+    }, {
+        table: "legal_law_enforcement_interview",
+        text: "true"
+    }, {
+        table: "legal_immigration",
+        text: "true"
+    }, {
+        table: "legal_intervention",
+        text: "true"
+    }, {
+      //Question 9C0-9C7 9C0: unduplicated totals; 9C1: totals
+        table: "contact_type",
+        text: "phone"
+    }, {
+        table: "crisis_counseling_individual",
+        text: "true"
+    }, {
+        table: "crisis_counseling_group",
+        text: "true"
+    }, {
+        table: "emergency_financial",
+        text: "true"
+    }, {
+      //Question 9E0-9E10
+        table: "criminal_civic",
+        text: "true"
+    }, {
+        table: "legal_oft_hro",
+        text: "true"
+    }, {
+        table: "other_emergency_justice",
+        text: "true"
+    }, {
+        table: "legal_immigration",
+        text: "true"
+    }, {
+        table: "legal_prosecution_related",
+        text: "true"
+    }, {
+        table: "legal_law_enforcement_interview",
+        text: "true"
+    }, {
+        table: "legal_court_advocacy",
+        text: "true"
+    }];
+
+    var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other", "disability_blind"];
+    var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
+    var criminalJusticProcessTotal = ["information_criminal_justice", "legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy"];
+    var personalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental", "medical_exam_support", "legal_law_enforcement_interview", "legal_immigration", "legal_intervention", "transportation"];
+    var medicalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental"];
+    var criminalCivicTotal = ["legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy", "legal_oft_hro", "legal_immigration", "legal_intervention"];
+    var individualCounselingTotal = ["crisis_counseling_individual", ];
+
+    $scope.countyInfo = {};
+    var countyObjectArray = [{
             table: undefined,
             text: "TOTAL"
         }, {
@@ -256,37 +508,37 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             text: "Total"
         }, {
             table: "victim_ethnicity",
-            text: "American Indian or Alaskan Native"
+            text: "Native American"
         }, {
             table: "victim_ethnicity",
             text: "Asian"
         }, {
             table: "victim_ethnicity",
-            text: "Black or African American"
+            text: "African American/Black"
         }, {
             table: "victim_ethnicity",
-            text: "Hispanic or Latino"
+            text: "Chican@/Latin@"
         }, {
             table: "victim_ethnicity",
-            text: "Native Hawaiian or Other Pacific Islander"
+            text: "Native Hawaiian/Pacific Islander"
         }, {
             table: "victim_ethnicity",
             text: "White Non-Latino or Caucasian"
         }, {
             table: "victim_ethnicity",
-            text: "Some Other Race"
+            text: "Other"
         }, {
             table: "victim_ethnicity",
-            text: "Multiple Races"
+            text: "Multi-Racial"
         }, {
             table: "victim_ethnicity",
-            text: "Not Reported"
+            text: "unknown"
         }, {
             table: "victim_ethnicity",
             text: "Not Tracked"
         }, {
-            table: "victim_ethnicity",
-            text: "Race/Ethnicity Total"
+            table: "victim_ethnicity_total",
+            textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
         }, {
             table: "victim_gender",
             text: "Male"
@@ -295,16 +547,22 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             text: "Female"
         }, {
             table: "victim_gender",
+            text: "Non-binary"
+        }, {
+            table: "victim_gender",
             text: "Other"
         }, {
             table: "victim_gender",
-            text: "Not Reported"
+            text: "unknown"
         }, {
             table: "victim_gender",
             text: "Not Tracked"
         }, {
-            table: "victim_gender",
-            text: "Total"
+            table: "victim_gender_total",
+            textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender iLike 'unknown'"
+        }, {
+            table: "victim_trans",
+            text: "true"
         }, {
             table: "victim_immigrant",
             text: "Africa"
@@ -313,10 +571,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             text: "Asia"
         }, {
             table: "victim_immigrant",
-            text: "Europ"
+            text: "Europe"
         }, {
             table: "victim_immigrant",
-            text: "Mex/Cen/South America"
+            text: "Mex/Cen/So America"
         }, {
             table: "victim_immigrant",
             text: "Middle East"
@@ -325,36 +583,34 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             text: "Other"
         }, {
             table: "victim_immigrant",
-            text: "Unknown/Pass"
+            text: "Unknown"
         }, {
             table: "victim_immigrant",
             text: "No"
         }, {
-            table: "victim_age",
-            text: "0 - 12"
+            table: "victim_immigrant_total",
+            textSpecial: "victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other'"
         }, {
             table: "victim_age",
-            text: "13 - 17"
+            textSpecial: "(victim_age >= 0 AND victim_age <= 17)"
         }, {
             table: "victim_age",
-            text: "18 - 24"
+            textSpecial: "(victim_age >= 18 AND victim_age <= 29)"
         }, {
             table: "victim_age",
-            text: "25 - 59"
+            textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
         }, {
             table: "victim_age",
-            text: "60 and Older"
+            textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
         }, {
             table: "victim_age",
-            text: "null"
-            //Not Reported
+            textSpecial: "(victim_age >= 66)"
         }, {
             table: "victim_age",
-            text: "Not Tracked"
-            //Revisiting later?
+            textSpecial: "victim_age is null"
         }, {
             table: "victim_age",
-            text: "Total"
+            textSpecial: "(victim_age >= 0 OR victim_age is null)"
         }, {
             table: "disability_blind",
             text: "true"
@@ -380,100 +636,97 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             table: "disability_unknown",
             text: "true"
         }, {
-            table: "victim_type",
-            text: "Adult Physical Assault"
+            table: "violence_adult_sexual",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Adult Sexual Assault"
+            table: "violence_adult_child_family",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Adults Sexual Abuse/Assault"
+            table: "violence_adult_child_other",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Arson"
+            table: "violence_bullying",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Bullying"
+            table: "violence_child_pornography",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Burglary"
+            table: "violence_domestic",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Child Physical Abuse or Neglect"
+            table: "violence_elder",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Child Pornography"
+            table: "violence_exposing",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Child Sexual Abuse or Neglect"
+            table: "violence_internet",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Domestic And/Or Family Violence"
+            table: "violence_minor_family",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "DUI/DWI Incidents"
+            table: "violence_minor_other",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Elder Abuse or Neglect"
+            table: "violence_phone",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Hate Crime"
+            table: "violence_exploitation",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Human Trafficking: Labor"
+            table: "violence_harassment",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Human Trafficking: Sex"
+            table: "violence_stalking",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Identity theft"
+            table: "violence_teen_dating",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Kidnapping"
+            table: "violence_other",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Mass Violence"
+            table: "violence_unknown",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Other Vehicular Victimization"
+            table: "victim_victimization_count",
+            textSpecial: "victim_victimization_count >= 2"
         }, {
-            table: "victim_type",
-            text: "Robbery"
+            table: "counseling_individual_totals",
+            text: "true"
         }, {
-            table: "victim_type",
-            text: "Stalking/Harassment"
-        }, {
-            table: "victim_type",
-            text: "Survivors of Homicide Victims"
-        }, {
-            table: "victim_type",
-            text: "Teen Dating Victimization"
-        }, {
-            table: "victim_type",
-            text: "Terrorism"
-        }, {
-            table: "victim_type",
-            text: "Other"
-        },
+            table: "crisis_counseling_group",
+            textSpecial: "true"
+        }];
 
-    ];
-    $scope.getStuff = function() {
-        federalObjectArray.forEach(function(query, index) {
+    $scope.getStuffCounty = function() {
+      console.log('getting stuff');
+        countyObjectArray.forEach(function(query, index) {
             var data = {};
-            data.start = $scope.dateStart;
-            data.end = $scope.dateEnd;
+
+            //converts date to workable format
+            var start = $scope.dateStart;
+            var convertedStart = start.toISOString().slice(0,10);
+            var end = $scope.dateEnd;
+            var convertedEnd = end.toISOString().slice(0,10);
+
+            data.start = convertedStart;
+            data.end = convertedEnd;
             data.text = query.text;
-            console.log(data);
-            if (query.table == "exception_disability") {
-                disabilityStatusTotal.forEach(function(table) {
+            data.textSpecial = query.textSpecial;
+            console.log('clientside data to query:', data);
+
+            if (query.table == "counseling_individual_totals") {
+                individualCounselingTotal.forEach(function(table) {
                     $http({
                         method: "POST",
-                        url: '/reportRoute/' + table,
+                        url: '/reportRoute/county' + table,
                         data: data
                     }).then(function(response) {
-                        console.log("Get Success");
-                        console.log(response);
-                        $scope.federalInfo.disabilityTotal += parseInt(response.data[0]);
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.countyInfo.individualTotal += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -481,57 +734,149 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             } else {
                 $http({
                     method: "POST",
-                    url: '/reportRoute/' + query.table,
+                    url: '/reportRoute/county/' + query.table,
                     data: data
                 }).then(function(response) {
                     console.log("Get Success");
-                    console.log(response);
-                    console.log(query.table);
+                    // console.log(response);
+                    // console.log(query.table);
                     var objectParam = query.table;
-                    $scope.federalInfo.objectParam = response.data[0];
+                    $scope.countyInfo.objectParam = response.data[0];
+                    // console.log(response.data[0]);
                 }, function() {
                     console.log("Get Error");
                 });
             }
         });
-    }
+    };
+
+    $scope.getStuffFederal = function() {
+      console.log('getting stuff');
+        federalObjectArray.forEach(function(query, index) {
+            var data = {};
+
+            //converts date to workable format
+            var start = $scope.dateStart;
+            var convertedStart = start.toISOString().slice(0,10);
+            var end = $scope.dateEnd;
+            var convertedEnd = end.toISOString().slice(0,10);
+
+            data.start = convertedStart;
+            data.end = convertedEnd;
+            data.text = query.text;
+            data.textSpecial = query.textSpecial;
+            console.log('clientside data to query:', data);
+
+            if (query.table == "exception_disability") {
+                disabilityStatusTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.disabilityTotal += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "exception_compensation") {
+                victimCompensationTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.victimCompensation += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "criminal_justice") {
+                criminalJusticProcessTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "personal_advocacy") {
+                personalAdvocacyTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.personalAdvocacy += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "medical_advocacy") {
+                medicalAdvocacyTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else if (query.table == "criminal_civic") {
+                criminalCivicTotal.forEach(function(table) {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log(response);
+                        $scope.federalInfo.criminalCivic += parseInt(response.data[0]);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                });
+            } else {
+                $http({
+                    method: "POST",
+                    url: '/reportRoute/federal/' + query.table,
+                    data: data
+                }).then(function(response) {
+                    console.log("Get Success");
+                    console.log('response:', response);
+                    console.log('query table:', query.table);
+                    var objectParam = query.table;
+                    $scope.federalInfo.objectParam = response.data[0];
+
+                    console.log(response.data[0]);
+                }, function() {
+                    console.log("Get Error");
+                });
+            }
+        });
+    };
 
 
 
 
 //Where the Playground dropdowns code starts
       $scope.playground = {};
-      // $scope.dropdownTracker = [{dropdown: true}]
-      // var dropdownNum = 0;
       $scope.selectedCategories;
-      // $scope.checkSelection = function(){
-      //   console.log("$scope.selected", $scope.selected);
-      //   switch($scope.selected){
-      //     case "violenceTypeSelected":
-      //     $scope.violenceTypeSelected = true;
-      //     $scope.disabilityStatusSelected = false;
-      //     break;
-      //     case "disabilityStatusSelected":
-      //     $scope.disabilityStatusSelected = true;
-      //     $scope.violenceTypeSelected = false;
-      //   }
-      // };
-      // $scope.checkSelectionOne = function(){
-      //   console.log("$scope.selectedOne", $scope.selectedOne);
-      //   switch($scope.selectedOne){
-      //     case undefined:
-      //     $scope.violenceTypeSelected = false;
-      //     $scope.disabilityStatusSelected = false;
-      //     break;
-      //     case "violenceTypeSelectedOne":
-      //     $scope.violenceTypeSelected = true;
-      //     $scope.disabilityStatusSelected = false;
-      //     break;
-      //     case "disabilityStatusSelectedOne":
-      //     $scope.disabilityStatusSelected = true;
-      //     $scope.violenceTypeSelected = false;
-      //   }
-      // };
       $scope.checkSelection = function(){
         console.log("$scope.selectedCategories", $scope.selectedCategories)
       }
@@ -552,11 +897,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         console.log("$scope.playground.disability_physical", $scope.playground.disability_physical);
         console.log("$scope.playground.disability_mental", $scope.playground.disability_mental);
       }
-      // $scope.nextDropdown = function(){
-      //   dropdownNum++;
-      //   $scope.dropdownTracker.push({dropdown: true});
-      //   console.log("$scope.dropdownTracker", $scope.dropdownTracker);
-      // }
+
 //End code for Playground dropdowns
 
     ///**********END OF CONTROLLER***************************************///////
