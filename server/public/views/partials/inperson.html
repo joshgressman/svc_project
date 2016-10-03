@@ -115,7 +115,7 @@
             </div>
             <div class="counseling">
               <label for="counseling"> Crisis Counseling:</label>
-              <input type="radio" name="counseling" ng-model="form.counseling" value="true"> One-to-One Counseling
+              <input type="radio" name="counseling" ng-model="form.counseling" ng-value="true"> One-to-One Counseling
               <input type="radio" name="counseling" ng-model="form.supportGroup" value="true"> Support Group
             </div>
             <div class="legalAdvocacyCriminal">
@@ -321,7 +321,7 @@
                 <option ng-model="form.ethnicBackground" value="Native American">Native American</option>
                 <option ng-model="form.ethnicBackground" value="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</option>
                 <option ng-model="form.ethnicBackground" value="White non-Latino/Caucasian">White non-Latino/Caucasian</option>
-                <option ng-model="form.ethnicBackground" value="unknown/pass">Unknown/pass</option>
+                <option ng-model="form.ethnicBackground" value="unknown">Unknown/pass</option>
                 <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
               </select>
                 <input type="text" ng-model="form.ethnicBackground" name="otherEthnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
@@ -333,13 +333,13 @@
                 <option ng-model="form.immigrantStatus" value="Europe">Europe</option>
                 <option ng-model="form.immigrantStatus" value="Mex/Cen/So America">Mex/Cen/So America</option>
                 <option ng-model="form.immigrantStatus" value="Middle East">Middle East</option>
-                <option ng-model="form.immigrantStatus" value="Unknown/pass/doesnt know">Unknown/pass/doesnt know</option>
+                <option ng-model="form.immigrantStatus" value="Unknown">Unknown/pass/doesnt know</option>
                 <option ng-model="form.immigrantStatus" value="No">No</option>
                 <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
               </select>
               <input type="text" ng-model="form.immigrantStatus" name="other.immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
               <div>
-                <label for="otherStatus">Ohter (check all that apply):</label>
+                <label for="otherStatus">Other (check all that apply):</label>
                 <div>
                     <input type="checkbox" name="clientStatus" ng-model="form.homeless" value="true">Currently Homeless
                 </div>
@@ -355,11 +355,7 @@
 
     </form>
   </div>
-<<<<<<< HEAD
-  <input id="subBtn"  type="submit" name="submit" value="Submit"  />
-=======
   <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
->>>>>>> keri
   </div>
 </div>
 </div>
