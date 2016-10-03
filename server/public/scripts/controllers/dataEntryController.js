@@ -1,5 +1,9 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+  $scope.myFunction = function() {
+      window.print();
+  }
+
   $scope.form = {
     counselor: '',
     date: '',
