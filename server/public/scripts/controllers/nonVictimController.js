@@ -1,5 +1,6 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
+<<<<<<< HEAD
   $scope.print = function() {
       window.print();
   }
@@ -54,6 +55,39 @@ $scope.nonVictimInfo = {};
 
       }
 
+=======
+  $scope.form = {
+      counselor: '',
+      date: '',
+      sTime: '',
+      eTime: '',
+      callerName: '',
+      callerPhone: '',
+      callerZip: '',
+      county: '',
+      svcSource: '',
+      medical: '',
+      school: '',
+      govtSocial: '',
+      communityMember: '',
+      lawEnforcer: '',
+      legalSystem: '',
+      citySocial: '',
+      otherOraganization: '',
+      medicalReferral: '',
+      schoolReferral: '',
+      govtSocialReferral: '',
+      communityMemberReferral: '',
+      lawEnforcerReferral: '',
+      legalSystemReferral: '',
+      citySocialReferral: '',
+      otherOraganizationReferral: '',
+      advacacyLocation: '',
+      dispatched: '',
+      responded: '',
+      reason: '',
+    };
+>>>>>>> f133701091e54e3f8a593f9c9b383bb5ced016eb
 
 ///**********END OF CONTROLLER***************************************///////
 }]);
