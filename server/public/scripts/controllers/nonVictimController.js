@@ -1,6 +1,6 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
-<<<<<<< HEAD
+
   $scope.print = function() {
       window.print();
   }
@@ -55,7 +55,7 @@ $scope.nonVictimInfo = {};
 
       }
 
-=======
+
   $scope.form = {
       counselor: '',
       date: '',
@@ -87,7 +87,7 @@ $scope.nonVictimInfo = {};
       responded: '',
       reason: '',
     };
->>>>>>> f133701091e54e3f8a593f9c9b383bb5ced016eb
+
 
 ///**********END OF CONTROLLER***************************************///////
 }]);
