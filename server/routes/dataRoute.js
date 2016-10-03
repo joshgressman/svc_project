@@ -42,7 +42,7 @@ router.post('/victim', function (req, res) {
 
 router.post('/nonvictim', function (req, res) {
   var newNonVictim = req.body;
-  console.log('new nonvictim added:', newNonVictim);
+  console.log('new non victim added:', newNonVictim);
 
   pg.connect(connectionString, function (err, client, done) {
     if (err) {
@@ -50,16 +50,14 @@ router.post('/nonvictim', function (req, res) {
       res.sendStatus(500);
     }
 
-<<<<<<< HEAD
         client.query('INSERT INTO nonvictim (date_entered, advocate_name, contact_date, start_time, end_time, caller_name, caller_phone, caller_zip, caller_county, caller_org_type, caller_org_name, call_type, call_referral_type, call_referral_name, referral_source, advocacy_request, advocacy_location, advocacy_med, advocacy_med_responder, advocate_dispatched, dispatched_notes) ' +
         'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30)',
         [newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
          newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.dispatched,
          newNonVictim.responded, newNonVictim.reason],
-=======
-    client.query('INSERT INTO nonvictim (date_entered, advocate_name, contact_date, start_time, end_time, caller_name, caller_phone, caller_zip, caller_county, caller_org_type, caller_org_name, call_type, call_referral_type, call_referral_name, referral_source, advocacy_request, advocacy_location, advocacy_med, advocacy_med_responder, advocate_dispatched, dispatched_notes) ' + 'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)', [newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something], function (err, result) {
-      done();
->>>>>>> f133701091e54e3f8a593f9c9b383bb5ced016eb
+
+         function (err, result) {
+           done();
 
       if (err) {
         console.log('POST ERROR, nonvictim', err);
@@ -277,6 +275,6 @@ router.delete('/nonvictim/:id', function (req, res) {
                     res.sendStatus(200);
                   });
   });
-});
+// });
 
 module.exports = router;

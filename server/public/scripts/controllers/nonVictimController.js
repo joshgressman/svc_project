@@ -44,7 +44,7 @@ $scope.nonVictimInfo = {};
         var data = $scope.form;
         console.log(data);
         console.log('sending to server non vict data', data);
-        $http.post('dataRoute/nonvictim', data).then(function(response){
+        $http.post('/dataRoute/nonvictim', data).then(function(response){
           console.log('success');
         },
         function(response){
