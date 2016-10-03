@@ -50,8 +50,10 @@ router.post('/nonvictim', function(req, res) {
         }
 
         client.query('INSERT INTO nonvictim (date_entered, advocate_name, contact_date, start_time, end_time, caller_name, caller_phone, caller_zip, caller_county, caller_org_type, caller_org_name, call_type, call_referral_type, call_referral_name, referral_source, advocacy_request, advocacy_location, advocacy_med, advocacy_med_responder, advocate_dispatched, dispatched_notes) ' +
-        'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)',
-        [newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something, newNonVictim.something],
+        'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30)',
+        [newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
+         newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.dispatched,
+         newNonVictim.responded, newNonVictim.reason],
 
         function(err, result) {
             done();
