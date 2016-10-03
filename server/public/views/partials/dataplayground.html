@@ -25,28 +25,164 @@
                 </div>
 
                 <!-- start dynamic dropdowns -->
-                <label for="pickAThing">Select a Category</label>
+                <!-- <label for="pickAThing">Select a Category</label>
                 <select ng-model="selected" ng-change="checkSelection()">
-                  <option value="undefined">-----------</option>
+                  <option value="undefined">-</option>
                   <option value="violenceTypeSelected">Type of Sexual Violence</option>
                   <option value="disabilityStatusSelected">Disability Status</option>
-                </select>
+                </select> -->
+                <div>
+                  <label for="pickAThing">Select a Category</label>
+                  <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
+                    <!-- If there are multiple selected, it will come across as an array -->
+                    <option value="individualsServiced">Individuals Serviced</option>
+                    <option value="ethnicity">Race/Ethnicity</option>
+                    <option value="genderIdentity">Gender Identity</option>
+                    <option value="age">Age</option>
+                    <option value="victimizationTypes">Types of Victimization: Totals</option>
+                    <option value="vicimizationTypesSpecial">Types of Victimization: Special</option>
+                    <option value="victimCompensation">Individuals assisted with a Victim Compensation Application</option>
+                    <option value="servicesReceived">Individuals who received Services</option>
+                    <option value="infoAndReferral">Information and Referral</option>
+                    <option value="personalAdvocacy">Personal Advocacy/Accompaniment</option>
+                    <option value="emotionalSupport">Emotional Support of Safety Services</option>
+                    <option value="justiceSystemAssistance">Criminal/Civil Justice System Assistance</option>
+                  </select>
+                </div>
 
 
-
-                <div ng-show="violenceTypeSelected || violenceTypeSelectedOne">
+                <div ng-show="individualsServiced">
+                  <h3>individualsServiced</h3>
                   <div>
-                    <input type="checkbox" ng-model="playground.violence_adult_sexual" value="true">Adult Sexual Assault
+                    <input type="checkbox" ng-model="playground.individualsServiced" value="true">individualsServiced
                   </div>
                   <div>
-                    <input type="checkbox" ng-model="playground.violence_bullying" value="true">Bullying
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.violence_child_pornography" value="true">Child Pornography
+                    <input type="checkbox" ng-model="playground.newIndividualsServiced" value="true">newIndividualsServiced
                   </div>
                 </div>
 
-                <div ng-show="disabilityStatusSelected || disabilityStatusSelectedOne">
+                <div ng-show="ethnicity">
+                  <h3>ethnicity</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="genderIdentity">
+                  <h3>genderIdentity</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="age">
+                  <h3>age</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="victimizationTypes">
+                  <h3>victimizationTypes</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="vicimizationTypesSpecial">
+                  <h3>vicimizationTypesSpecial</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="victimCompensation">
+                  <h3>victimCompensation</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="servicesReceived">
+                  <h3>servicesReceived</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="infoAndReferral">
+                  <h3>infoAndReferral</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="personalAdvocacy">
+                  <h3>personalAdvocacy</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="emotionalSupport">
+                  <h3>emotionalSupport</h3>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                  </div>
+                  <div>
+                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                  </div>
+                </div>
+                <div ng-show="justiceSystemAssistance">
+                  <h3>justiceSystemAssistance</h3>
                   <div>
                     <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
                   </div>
@@ -58,46 +194,48 @@
                   </div>
                 </div>
 
+                <button ng-click="submiting()">Ju-lee, DO THE THING!</button>
 
 
-                <button ng-click="nextDropdown()">Add</button>
 
-                <div ng-show="dropdownTracker[1].dropdown">
+                <!-- <button ng-click="nextDropdown()">Add</button> -->
+
+                <!-- <div ng-show="dropdownTracker[1].dropdown">
                   <label for="pickAThing">Select a Category</label>
                   <select ng-model="selectedOne" ng-change="checkSelectionOne()">
                     <option value="undefined">-----------</option>
                     <option value="violenceTypeSelectedOne">Type of Sexual Violence</option>
                     <option value="disabilityStatusSelectedOne">Disability Status</option>
                   </select>
-                </div>
+                </div> -->
                 <!-- end dynamic dropdowns -->
 
 
                 <!-- Multi Select Drop dropdowns -->
-                <label for="ethnicBackground">Ethnic Background</label>
+                <!-- <label for="ethnicBackground">Ethnic Background</label>
                 <select multiple ng-model="typeOEthnicity">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
                   <option value="audi">Audi</option>
-                </select>
+                </select> -->
 
 
 
-                <label for="victimType">Victim Type</label>
+                <!-- <label for="victimType">Victim Type</label>
                 <select multiple ng-model="typeOVictim">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
                   <option value="audi">Audi</option>
-                </select>
+                </select> -->
 
                 <!-- End Multi Select Drop dropdowns -->
 
 
 
                 <!-- Grabs the Data -->
-                <button ng-click="getTest()">Submit</button>
+                <!-- <button ng-click="getTest()">Submit</button> -->
 
 
 

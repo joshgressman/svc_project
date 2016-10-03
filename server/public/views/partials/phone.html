@@ -81,13 +81,13 @@
               </div>
               <div class="previousContact">
                   <label for="previousContact">Has the Victim/Survivor contacted SVC before?</label>
-                  <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="previousVisit = true" value="true" >Yes
-                  <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="newFiscalYear = true" value = "false">No
+                  <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="previousVisit = true" ng-value="true" >Yes
+                  <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="newFiscalYear = true" ng-value = "false">No
               </div>
               <div ng-show="previousVisit" class="dateCheck">
                   <label for="dateCheck">If YES, was contact made before October 1st, 2015</label>
-                  <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" value="true">Yes
-                  <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" value="false">No
+                  <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" ng-value="true">Yes
+                  <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" ng-value="false">No
               </div>
               <div ng-show="newFiscalYear">
                 <div class="alert alert-info">
@@ -102,22 +102,22 @@
               <div class="otherClientServices">
                 <label for="otherClientServices">Services/Information Provided (check all that apply):</label>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" value=true>Crisis counseling
+                  <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" ng-value=true>Crisis counseling
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" value=true>Information and/or referral
+                  <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" ng-value=true>Information and/or referral
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" value=true>Information about criminal justice process
+                  <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" ng-value=true>Information about criminal justice process
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" value=true>Other emergency justice-related assistance
+                  <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" ng-value=true>Other emergency justice-related assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" value=true>Emergency financial assistance
+                  <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" ng-value=true>Emergency financial assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" value=true>Reperations claims assistance
+                  <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" ng-value=true>Reperations claims assistance
                 </div>
               </div>
               <div class="referrals">
@@ -148,8 +148,8 @@
           </div>
           <div class="supported">
               <label for="supported">Did you feel that you were supported on this call?</label>
-              <input type="radio" name="supported" ng-model="form.supported"  value="true" >Yes
-              <input type="radio" name="supported" ng-model="form.supported"  value = "false">No
+              <input type="radio" name="supported" ng-model="form.supported"  ng-value="true" >Yes
+              <input type="radio" name="supported" ng-model="form.supported"  ng-value = "false">No
           </div>
           <div ng-show="newFiscalYear" class="demoCollection">
             <div class="alert alert-info">
@@ -160,66 +160,66 @@
                   <table>
                     <tr>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_sexassault" value=true>Adult sexual assault
+                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_sexassault" ng-value="true">Adult sexual assault
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_abused_as_child_family" value=true>Adult abused as a child - Family
+                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_abused_as_child_family" ng-value="true">Adult abused as a child - Family
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_abused_as_child_other" value=true>Adult abused as a child - Other
+                            <input type="checkbox" name="sexualViolence" ng-model="form.adult_abused_as_child_other" ng-value="true">Adult abused as a child - Other
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.exposing" value=true>Exposing
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.minor_csa_family" value="true">Minor/CSA - Family
-                        </td>
-                        <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.minor_csa_other" value="true">Minor/CSA - Other
-                        </td>
-                        <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.obscenePhoneCall" value="true">Obscene Phone Call
-                        </td>
-                        <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.exploitation_trafficking" value="true">Sexual exploitation/Sex trafficking
+                            <input type="checkbox" name="sexualViolence" ng-model="form.exposing" ng-value="true">Exposing
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.sexualHarassment" value="true">Sexual Harassment
+                            <input type="checkbox" name="sexualViolence" ng-model="form.minor_csa_family" ng-value="true">Minor/CSA - Family
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.stalking" value="true">Stalking
+                            <input type="checkbox" name="sexualViolence" ng-model="form.minor_csa_other" ng-value="true">Minor/CSA - Other
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.internetRelated" value="true">Internet - Related
+                            <input type="checkbox" name="sexualViolence" ng-model="form.obscenePhoneCall" ng-value="true">Obscene Phone Call
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.unknownViolence" value="true">Unknown/Pass/Doesn't Know
+                            <input type="checkbox" name="sexualViolence" ng-model="form.exploitation_trafficking" ng-value="true">Sexual exploitation/Sex trafficking
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.bullying" value="true">Bullying
+                            <input type="checkbox" name="sexualViolence" ng-model="form.sexualHarassment" ng-value="true">Sexual Harassment
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.childPorn" value="true">Child Pornography
+                            <input type="checkbox" name="sexualViolence" ng-model="form.stalking" ng-value="true">Stalking
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.domesticViolence" value="true">Domestic Violence
+                            <input type="checkbox" name="sexualViolence" ng-model="form.internetRelated" ng-value="true">Internet - Related
                         </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.elderAbuse" value="true">Elder Abuse
+                            <input type="checkbox" name="sexualViolence" ng-model="form.unknownViolence" ng-value="true">Unknown/Pass/Doesn't Know
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="sexualViolence" ng-model="form.bullying" ng-value="true">Bullying
+                        </td>
+                        <td>
+                            <input type="checkbox" name="sexualViolence" ng-model="form.childPorn" ng-value="true">Child Pornography
+                        </td>
+                        <td>
+                            <input type="checkbox" name="sexualViolence" ng-model="form.domesticViolence" ng-value="true">Domestic Violence
+                        </td>
+                        <td>
+                            <input type="checkbox" name="sexualViolence" ng-model="form.elderAbuse" ng-value="true">Elder Abuse
                         </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="checkbox" name="sexualViolence" ng-model="form.teenDating" value="true">Teen Dating
+                        <input type="checkbox" name="sexualViolence" ng-model="form.teenDating" ng-value="true">Teen Dating
                       </td>
                         <td>
-                            <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                            <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                         </td>
                     </tr>
                   </table>
@@ -233,9 +233,9 @@
                   <input type="radio" name="gender" value="Female"> Female
                   <input type="radio" name="gender" value="Non-binary">Non-binary
                   <label for="transgender">Transgender:</label>
-                  <input type="radio" name="transgender" value="true"> Yes
-                  <input type="radio" name="transgender" value="false"> No
-                  <input type="radio" name="transgender" value="null"> Unknown/Pass
+                  <input type="radio" name="transgender" ng-value="true"> Yes
+                  <input type="radio" name="transgender" ng-value="false"> No
+                  <input type="radio" name="transgender" ng-value="null"> Unknown/Pass
                   <div>
                     <!-- <label for="pronouns">Preferred Gender Pronouns:</label>
                     <input class="pronounInput" type="text" ng-model="form.pronouns" /> -->
@@ -259,30 +259,30 @@
                   <tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.blind_visImpair" value="true">Blind/Visually Impaired
+                            <input type="checkbox" name="disability" ng-model="form.blind_visImpair" ng-value="true">Blind/Visually Impaired
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.devDisabled" value="true">Physical disabilities
+                            <input type="checkbox" name="disability" ng-model="form.devDisabled" ng-value="true">Physical disabilities
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.physDisabled" value="true">Mental illness
+                            <input type="checkbox" name="disability" ng-model="form.physDisabled" ng-value="true">Mental illness
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.mentDisabled" value="true">Deaf/hard hearing
+                            <input type="checkbox" name="disability" ng-model="form.mentDisabled" ng-value="true">Deaf/hard hearing
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.deafHardHearing" value="true">Intellectual or developmental disabilities
+                            <input type="checkbox" name="disability" ng-model="form.deafHardHearing" ng-value="true">Intellectual or developmental disabilities
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.unknownDisabled" value="true">Unknown/pass/doesn't know
+                            <input type="checkbox" name="disability" ng-model="form.unknownDisabled" ng-value="true">Unknown/pass/doesn't know
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.notDisabled" value="true">None
+                            <input type="checkbox" name="disability" ng-model="form.notDisabled" ng-value="true">None
                         </td>
                         <td>
-                            <input type="checkbox" name="disability" ng-model="form.otherDisabled" value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                            <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                         </td>
                     </tr>
                 </table>
@@ -318,21 +318,20 @@
                 <div>
                   <label for="otherStatus">Other (check all that apply):</label>
                   <div>
-                      <input type="checkbox" name="clientStatus" ng-model="form.homeless" value="true">Currently Homeless
+                      <input type="checkbox" name="clientStatus" ng-model="form.homeless" ng-value="true">Currently Homeless
                   </div>
                   <div>
-                      <input type="checkbox" name="clientStatus" ng-model="form.limitedEnglish" value="true">Limited English proficiency
+                      <input type="checkbox" name="clientStatus" ng-model="form.limitedEnglish" ng-value="true">Limited English proficiency
                   </div>
                   <div>
-                      <input type="checkbox" name="clientStatus" ng-model="form.veteran" value="true">U.S. Veteran
+                      <input type="checkbox" name="clientStatus" ng-model="form.veteran" ng-value="true">U.S. Veteran
                   </div>
                 </div>
           </div>
 
       </form>
   </div>
-  <input id="subBtn" type="submit" name="submit" value="Submit" />
-</div>
+    <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  /></div>
   </div>
 </div>
 </div>
