@@ -25,13 +25,56 @@
                 </div>
 
                 <!-- start dynamic dropdowns -->
-                <label for="pickAThing">Select a Category</label>
+                <!-- <label for="pickAThing">Select a Category</label>
                 <select ng-model="selected" ng-change="checkSelection()">
-                  <option value="undefined">-----------</option>
+                  <option value="undefined">-</option>
                   <option value="violenceTypeSelected">Type of Sexual Violence</option>
                   <option value="disabilityStatusSelected">Disability Status</option>
-                </select>
+                </select> -->
+                <div>
+                  <label for="pickAThing">Select a Category</label>
+                  <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
+                    <!-- If there are multiple selected, it will come across as an array -->
+                    <option value="individualsServiced">Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="ethnicity">Race/Ethnicity</option>
+                    <option value="genderIdentity">Gender Identity</option>
+                    <option value="age">Age</option>
+                    <option value="victimizationTypes">Types of Victimization: Totals</option>
+                    <option value="vicimizationTypesSpecial">Types of Victimization: Special</option>
+                    <option value="victimCompensation">Individuals assisted with a Victim Compensation Application</option>
+                    <option value="servicesReceived">Individuals who received Services</option>
+                    <option value="infoAndReferral">Information and Referral</option>
+                    <option value="personalAdvocacy">Personal Advocacy/Accompaniment</option>
+                    <option value="emotionalSupport">Emotional Support of Safety Services</option>
+                    <option value="justiceSystemAssistance">Criminal/Civil Justice System Assistance</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
+                    <option value="newIndividualsServiced">NEW Individuals Serviced</option>
 
+                  </select>
+                </div>
 
 
                 <div ng-show="violenceTypeSelected || violenceTypeSelectedOne">
@@ -60,44 +103,44 @@
 
 
 
-                <button ng-click="nextDropdown()">Add</button>
+                <!-- <button ng-click="nextDropdown()">Add</button> -->
 
-                <div ng-show="dropdownTracker[1].dropdown">
+                <!-- <div ng-show="dropdownTracker[1].dropdown">
                   <label for="pickAThing">Select a Category</label>
                   <select ng-model="selectedOne" ng-change="checkSelectionOne()">
                     <option value="undefined">-----------</option>
                     <option value="violenceTypeSelectedOne">Type of Sexual Violence</option>
                     <option value="disabilityStatusSelectedOne">Disability Status</option>
                   </select>
-                </div>
+                </div> -->
                 <!-- end dynamic dropdowns -->
 
 
                 <!-- Multi Select Drop dropdowns -->
-                <label for="ethnicBackground">Ethnic Background</label>
+                <!-- <label for="ethnicBackground">Ethnic Background</label>
                 <select multiple ng-model="typeOEthnicity">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
                   <option value="audi">Audi</option>
-                </select>
+                </select> -->
 
 
 
-                <label for="victimType">Victim Type</label>
+                <!-- <label for="victimType">Victim Type</label>
                 <select multiple ng-model="typeOVictim">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
                   <option value="audi">Audi</option>
-                </select>
+                </select> -->
 
                 <!-- End Multi Select Drop dropdowns -->
 
 
 
                 <!-- Grabs the Data -->
-                <button ng-click="getTest()">Submit</button>
+                <!-- <button ng-click="getTest()">Submit</button> -->
 
 
 

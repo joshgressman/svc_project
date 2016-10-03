@@ -501,38 +501,40 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
 //Where the Playground dropdowns code starts
       $scope.playground = {};
-      $scope.dropdownTracker = [{dropdown: true}]
-      var dropdownNum = 0;
-      $scope.selected = "";
-      $scope.selectedOne = "";
+      // $scope.dropdownTracker = [{dropdown: true}]
+      // var dropdownNum = 0;
+      $scope.selectedCategories;
+      // $scope.checkSelection = function(){
+      //   console.log("$scope.selected", $scope.selected);
+      //   switch($scope.selected){
+      //     case "violenceTypeSelected":
+      //     $scope.violenceTypeSelected = true;
+      //     $scope.disabilityStatusSelected = false;
+      //     break;
+      //     case "disabilityStatusSelected":
+      //     $scope.disabilityStatusSelected = true;
+      //     $scope.violenceTypeSelected = false;
+      //   }
+      // };
+      // $scope.checkSelectionOne = function(){
+      //   console.log("$scope.selectedOne", $scope.selectedOne);
+      //   switch($scope.selectedOne){
+      //     case undefined:
+      //     $scope.violenceTypeSelected = false;
+      //     $scope.disabilityStatusSelected = false;
+      //     break;
+      //     case "violenceTypeSelectedOne":
+      //     $scope.violenceTypeSelected = true;
+      //     $scope.disabilityStatusSelected = false;
+      //     break;
+      //     case "disabilityStatusSelectedOne":
+      //     $scope.disabilityStatusSelected = true;
+      //     $scope.violenceTypeSelected = false;
+      //   }
+      // };
       $scope.checkSelection = function(){
-        console.log("$scope.selected", $scope.selected);
-        switch($scope.selected){
-          case "violenceTypeSelected":
-          $scope.violenceTypeSelected = true;
-          $scope.disabilityStatusSelected = false;
-          break;
-          case "disabilityStatusSelected":
-          $scope.disabilityStatusSelected = true;
-          $scope.violenceTypeSelected = false;
-        }
-      };
-      $scope.checkSelectionOne = function(){
-        console.log("$scope.selectedOne", $scope.selectedOne);
-        switch($scope.selectedOne){
-          case undefined:
-          $scope.violenceTypeSelected = false;
-          $scope.disabilityStatusSelected = false;
-          break;
-          case "violenceTypeSelectedOne":
-          $scope.violenceTypeSelected = true;
-          $scope.disabilityStatusSelected = false;
-          break;
-          case "disabilityStatusSelectedOne":
-          $scope.disabilityStatusSelected = true;
-          $scope.violenceTypeSelected = false;
-        }
-      };
+        console.log("$scope.selectedCategories", $scope.selectedCategories)
+      }
       $scope.showFields = false;
       $scope.typeOViolence = "";
       $scope.typeODisability = "";
@@ -550,11 +552,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         console.log("$scope.playground.disability_physical", $scope.playground.disability_physical);
         console.log("$scope.playground.disability_mental", $scope.playground.disability_mental);
       }
-      $scope.nextDropdown = function(){
-        dropdownNum++;
-        $scope.dropdownTracker.push({dropdown: true});
-        console.log("$scope.dropdownTracker", $scope.dropdownTracker);
-      }
+      // $scope.nextDropdown = function(){
+      //   dropdownNum++;
+      //   $scope.dropdownTracker.push({dropdown: true});
+      //   console.log("$scope.dropdownTracker", $scope.dropdownTracker);
+      // }
 //End code for Playground dropdowns
 
     ///**********END OF CONTROLLER***************************************///////
