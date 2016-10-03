@@ -1,10 +1,24 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
+(function() {
 
-myApp.config(['$routeProvider', function($routeProvider) {
+  'use strict';
+
+  angular
+    .module('myApp', ['ngRoute', 'ui.bootstrap', 'auth0.lock', 'angular-jwt'])
+    .config(function($routeProvider, lockProvider) {
+
+      lockProvider.init({
+        clientID: 'ENU2nYXIx5cdiOpkaTUWNn5NhesOSETI',
+        domain: 'kerij.auth0.com'
+      });
+
     $routeProvider
         .when('/home', {
             templateUrl: '/views/partials/home.html',
             controller: "homeController"
+        })
+        .when('/login', {
+            templateUrl: '/views/partials/login.html',
+            controller: "loginController"
         })
         .when('/data', {
             templateUrl: '/views/partials/data.html',
@@ -48,6 +62,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         })
         .otherwise({
             redirectTo: '/home'
-        })
+        });
+      });
 
-}]);
+})();

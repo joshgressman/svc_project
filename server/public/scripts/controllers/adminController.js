@@ -1,4 +1,12 @@
-myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+(function() {
+
+  angular
+    .module('myApp')
+    .controller('adminController', adminController);
+
+    adminController.$inject = ['$scope', '$http', '$location'];
+
+    function adminController($scope, $http, $location) {
 
     //Assuming this is the controller for the data viewing, below is the code needed for the accordions
 
@@ -869,8 +877,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 });
             }
         });
+      };
     };
-
+})();
 
 
 
@@ -933,4 +942,4 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 //End code for Playground dropdowns
 
     ///**********END OF CONTROLLER***************************************///////
-}]);
+// }]);
