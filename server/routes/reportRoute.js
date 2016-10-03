@@ -18,7 +18,7 @@ router.post('/federal/:id', function(req, res) {
     var is = " is ";
     var checkFirstTimer = " AND (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
     var greaterThanOrEqual = " AND contact_date >= ";
-    var lessThan = " AND contact_date < ";
+    var lessThan = " AND contact_date <= ";
     var query = "";
     var dateStart = req.body.start;
     var dateEnd = req.body.end;

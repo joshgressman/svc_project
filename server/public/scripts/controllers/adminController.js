@@ -19,11 +19,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     $scope.federalInfo = {};
     var federalObjectArray = [{
       //Question 1
-        table: undefined,
+        table: "total_overall",
         text: "TOTAL"
     }, {
       //Question 4
-        table: undefined,
+        table: "total_new",
         text: "NEW"
     }, {
       //Question 5A
@@ -861,13 +861,13 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     console.log('response:', response);
                     console.log('query table:', query.table);
                     var objectParam = query.table;
-                    $scope.federalInfo.objectParam = response.data[0];
-
+                    $scope.federalInfo[objectParam] = response.data[0];
                     console.log(response.data[0]);
                 }, function() {
                     console.log("Get Error");
                 });
             }
+            console.log($scope.federalInfo);
         });
     };
 
