@@ -78,5 +78,25 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     veteran: '',
     supported: ''
   }
+
+  $scope.submitVictimForm = function() {
+      var data = $scope.form;
+
+      //formats input date into workable format;
+      var unformatedInput = new Date();
+      var dateEntered = unformatedInput.toISOString().slice(0,10);
+      data.date_entered = dateEntered;
+
+      console.log('sending to server...', data);
+      $http.post('/dataRoute/victim', data).then(function(response) {
+        console.log('success');
+
+        },
+        function(response) {
+          console.log('error');
+          $scope.message = "Please try again."
+        });
+      }
+
     ///**********END OF CONTROLLER***************************************///////
 }]);
