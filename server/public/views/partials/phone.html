@@ -1,6 +1,7 @@
 <div ng-controller="dataEntryController">
-<h2>SVC Telephone Contact Form</h2>
-<div class="alert alert-danger">
+
+<div class="alert alert-danger" id="alert">
+  <h2>SVC Telephone Contact Form</h2>
   <strong>SVC Telephone Form:</strong> Please ensure you are using the pink form on this page.
 </div>
 <div class="container">
@@ -15,7 +16,7 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitPinkForm()">
+      <form ng-submit="submitVictimForm()">
           <div id="svcAdvocacy">
               <div class="counselor">
                   <label for="counselorName">Advocate/Counselor Name:</label>
@@ -62,7 +63,7 @@
           <div id="victimInfo">
               <div class="zipCode">
                   <label for="zipCode">Victim/Survivor Zip Code:</label>
-                  <input class="zipCodeInput" type="text" ng-model="form.zipCode" />
+                  <input class="zipCodeInput" type="number" ng-model="form.zipCode" />
               </div>
               <div class="victimType">
                   <label for="victimType">Type of Victim/Survivor:</label>
@@ -104,19 +105,19 @@
                   <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" value=true>Crisis counseling
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.info_refer" value=true>Information and/or referral
+                  <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" value=true>Information and/or referral
                 </div>
                 <div>
                   <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" value=true>Information about criminal justice process
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.other_justice" value=true>Other emergency justice-related assistance
+                  <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" value=true>Other emergency justice-related assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.emer_financial" value=true>Emergency financial assistance
+                  <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" value=true>Emergency financial assistance
                 </div>
                 <div>
-                  <input type="checkbox" name="clientService" ng-model="form.reparations" value=true>Reperations claims assistance
+                  <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" value=true>Reperations claims assistance
                 </div>
               </div>
               <div class="referrals">
@@ -144,6 +145,11 @@
 
                 </table>
               </div>
+          </div>
+          <div class="supported">
+              <label for="supported">Did you feel that you were supported on this call?</label>
+              <input type="radio" name="supported" ng-model="form.supported"  value="true" >Yes
+              <input type="radio" name="supported" ng-model="form.supported"  value = "false">No
           </div>
           <div ng-show="newFiscalYear" class="demoCollection">
             <div class="alert alert-info">
@@ -221,7 +227,7 @@
               <label for="victimDemoSurvey">Victim/Survivor Demographic Survey</label>
               <div class="victimDemoSurvey">
                   <label for="age">Age:</label>
-                  <input class="ageInput" type="text" ng-model="form.age" />
+                  <input class="ageInput" type="number" ng-model="form.age" />
                   <label for="gender">Gender:</label>
                   <input type="radio" name="gender" value="Male"> Male
                   <input type="radio" name="gender" value="Female"> Female
@@ -236,14 +242,14 @@
                     <label for="sexualOrientation">Sexual Orientation:</label>
                     <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->
                     <select>
-                      <select>
+
                           <option ng-model="form.sexualOrientation" value="null">Select One</option>
                           <option ng-model="form.sexualOrientation" value="Hetrosexual">Hetrosexual</option>
                           <option ng-model="form.sexualOrientation" value="Lesbian">Lesbian</option>
                           <option ng-model="form.sexualOrientation" value="Gay">Gay</option>
                           <option ng-model="form.sexualOrientation" value="Bi-sexual">Bi-sexual</option>
                           <option ng-model="form.sexualOrientation" value="Unknown/pass">Unknown/pass</option>
-                      </select>
+                      
                     </select>
                   </div>
               </div>
@@ -310,7 +316,7 @@
                 </select>
                 <input type="text" ng-model="form.immigrantStatus" name="other.immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 <div>
-                  <label for="otherStatus">Ohter (check all that apply):</label>
+                  <label for="otherStatus">Other (check all that apply):</label>
                   <div>
                       <input type="checkbox" name="clientStatus" ng-model="form.homeless" value="true">Currently Homeless
                   </div>
@@ -322,8 +328,10 @@
                   </div>
                 </div>
           </div>
+
       </form>
   </div>
+  <input id="subBtn" type="submit" name="submit" value="Submit" />
 </div>
   </div>
 </div>

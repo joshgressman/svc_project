@@ -1,5 +1,4 @@
-myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location){
-
+myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
   $scope.form = {
     counselor: '',
@@ -15,6 +14,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     svcPrompt: '',
     previousContact: '',
     previousVisit: '',
+    transportation: '',
     counseling: '',
     supportGroup: '',
     lawEnforcementInterview: '',
@@ -26,7 +26,9 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     forensicExamSupport: '',
     accompanyMedicalAppt:'',
     accompanyDentalAppt: '',
+    crisis_counseling: '',
     infoAndReferral: '',
+    info_crimjustice: '',
     safeAtHome: '',
     emergencyFinancialAsst: '',
     reparationsClaimAsst: '',
@@ -51,6 +53,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     elderAbuse: '',
     teenDating: '',
     sexualViolenceOther: '',
+    sexualViolenceOther_specify: '',
     age: '',
     gender: '',
     trans: '',
@@ -63,15 +66,13 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     notDisabled: '',
     unknownDisabled: '',
     otherDisabled: '',
+    otherDisabled_specify: '',
     ethnicBackground: '',
     immigrantStatus: '',
     homeless: '',
     limitedEnglish: '',
-    veteran: ''
+    veteran: '',
+    supported: ''
   }
-
-
-
-
-///**********END OF CONTROLLER***************************************///////
+    ///**********END OF CONTROLLER***************************************///////
 }]);
