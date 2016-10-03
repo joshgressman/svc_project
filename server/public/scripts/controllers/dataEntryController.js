@@ -1,5 +1,9 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+
+
+
+
   $scope.form = {
     counselor: '',
     date: '',
@@ -74,5 +78,27 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     veteran: '',
     supported: ''
   }
+
+
+  $scope.submitVictimForm = function() {
+      var data = $scope.form;
+      data.date_entered = new Date();
+      console.log('sending to server...', data);
+      // $http.post('/victim', data).then(function(response) {
+      //   console.log('success');
+      //
+      //   },
+      //   function(response) {
+      //     console.log('error');
+      //     $scope.message = "Please try again."
+      //   });
+
+      }
+
+
+
+
+
+
     ///**********END OF CONTROLLER***************************************///////
 }]);
