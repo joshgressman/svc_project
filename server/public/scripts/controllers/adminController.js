@@ -1,5 +1,8 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+  $scope.myFunction = function() {
+      window.print();
+  }
     //Assuming this is the controller for the data viewing, below is the code needed for the accordions
 
     $scope.oneAtATime = true;

@@ -14,14 +14,118 @@
   <script type="text/javascript" src="../scripts/controllers/adminController.js"></script>
 </head>
 <body ng-app="myApp" class="noStyle">
-  <header>
-   <div class ="header_image"></div><h2 id="headText">Federal Print Reporting</h2>
-  </header>
+
+  <div ng-controller="adminController">
+    <h4 id="headText">Federal Reporting</h4>
+    <div class="dateRange">
+      <P>Select a date ranges for reporting</P>
+        <label for="startDate">Start Date:</label>
+        <input class="startDate" type="date" ng-model="dateStart" />
+        <label for="endDate">End Date:</label>
+        <input class="endDate" type="date" ng-model="dateEnd" />
+        <button class="button" name="queryButton" ng-click="getStuffFederal()">Go</button> <button onclick="print()">Print this page</button>
+    </div>
+    <!-- <button onclick="print()">Print this page</button> -->
+
+
+
+           <div class ="reportContainer">
+
+            <p class="reportsText">Individuals who recieved services during the reporting period: {{federalInfo.total_overall.count}} </p>
+            <p class="reportsText">NEW individuals who recieved services during the reporting period: {{federalInfo.total_new.count}} </p>
+            <p class="reportsText"> Race/Ethnicity </p>
+            <strong>Demographics</strong>
+            <p class="reportsText">American Indian of Alaskan Native: {{federalInfo.victim_ethnicity_native_american.count}} </p>
+            <p class="reportsText">Asian: {{federalInfo.victim_ethnicity_asian.count}}</p>
+            <p class="reportsText">Black or African American: {{federalInfo.victim_ethnicity_african_american_black.count}}</p>
+            <p class="reportsText">Hispanic or Latino: {{federalInfo.victim_ethnicity_chicano_latino.count}}</p>
+            <p class="reportsText">Native Hawaiian or other Pacific Islander: {{federalInfo.victim_ethnicity_hawaiian_pacific_islander.count}}</p>
+            <p class="reportsText">White Non-Latino or Caucasian: {{federalInfo.victim_ethnicity_white.count}}</p>
+            <p class="reportsText">Some Other Race: {{federalInfo.victim_ethnicity_other.count}}</p>
+            <p class="reportsText">Multiple Races: {{federalInfo.victim_ethnicity_multi-racial.count}}</p>
+            <p class="reportsText">Not Reported: {{federalInfo.victim_gender_unknown.count}}</p>
+            <p class="reportsText">Race/Ethnicity Total: {{federalInfo.victim_ethnicity_total.count}}</p>
+            <strong>Gender</strong>
+            <p class="reportsText">Male: {{federalInfo.victim_gender_Male.count}}</p>
+            <p class="reportsText">Female: {{federalInfo.victim_gender_Female.count}}</p>
+            <p class="reportsText">Non-binary:{{federalInfo.victim_gender_Non-binary.count}}</p>
+            <p class="reportsText">Other: {{federalInfo.victim_gender_Other.count}}</p>
+            <p class="reportsText">Not Reported: {{federalInfo.victim_gender_unknown.count}}</p>
+            <p class="reportsText">Total: {{federalInfo.victim_gender_total.count}}</p>
+            <strong>Age</strong>
+             <p class="reportsText">0 - 12: {{federalInfo.victim_age_012.count}}</p>
+             <p class="reportsText">13 - 17: {{federalInfo.victim_age_1317.count}}</p>
+             <p class="reportsText">18 - 24: {{federalInfo.victim_age_1824.count}}</p>
+             <p class="reportsText">25 - 59: {{federalInfo.victim_age_2559.count}}</p>
+             <p class="reportsText">60 and Older: {{federalInfo.victim_age_60.count}}</p>
+             <p class="reportsText">Not Reported: {{federalInfo.victim_age_null.count}}</p>
+             <p class="reportsText">Total: {{federalInfo.victim_age_total.count}}</p>
+             <strong>Types of Victimization</strong>
+             <p class="reportsText">Adult Sexual Assult: {{federalInfo.violence_adult_sexual.count}} </p>
+             <p class="reportsText">Adult Sexually Abused/Assulted as Children: {{NEW}}</p>
+             <p class="reportsText">Adult Sexually Abused/Assaulted as Children by Family:{{federalInfo.violence_adult_child_family.count}}</p>
+             <p class="reportsText">Adult Sexually Abused/Assaulted as Children by Other:{{federalInfo.violence_adult_child_other.count}}</p>
+             <p class="reportsText">Bullying: {{federalInfo.violence_bullying.count}}</p>
+             <p class="reportsText">Child Pornography: {{federalInfo.violence_child_pornography.count}}</p>
+             <p class="reportsText">Child Sexual Abuse/Assault Total: {{NEW}}</p>
+             <p class="reportsText">Child Sexual Abuse/Assault by Family: {{federalInfo.violence_minor_family.count}}</p>
+             <p class="reportsText">Child Sexual Abuse/Assault by Other: {{federalInfo.violence_minor_other.count}}</p>
+             <p class="reportsText">Domestic And/Or Family Violence: {{federalInfo.violence_domestic.count}}</p>
+             <p class="reportsText">Elder Abuse or Neglect: {{federalInfo.violence_elder.count}}</p>
+             <p class="reportsText">Human Trafficking: Sex: {{federalInfo.violence_exploitation.count}}</p>
+             <p class="reportsText">Stalking/Harassment Total: {{NEW}}</p>
+             <p class="reportsText">Stalking/Harassment - Exposing: {{federalInfo.violence_exposing.count}}</p>
+             <p class="reportsText">Stalking/Harassment - Harassment: {{federalInfo.violence_harassment.count}}</p>
+             <p class="reportsText">Stalking/Harassment - Internet: {{federalInfo.violence_internet.count}}</p>
+             <p class="reportsText">Stalking/Harassment - Phone: {{federalInfo.violence_phone.count}}</p>
+             <p class="reportsText">Stalking/Harassment - Stalking: {{federalInfo.violence_stalking.count}}</p>
+             <p class="reportsText">Teen Dating Victimization: {{federalInfo.violence_teen_dating.count}}</p>
+             <p class="reportsText">Other: {{federalInfo.violence_other.count}}</p>
+             <p class="reportsText">Unknown/Pass/Doesn't Know: {{federalInfo.violence_unknown.count}}</p>
+             <strong>Types of Victimization: Special classification of individuals</strong>
+             <p class="reportsText">Deaf/Hard of Hearing: {{federalInfo.disability_deaf.count}} </p>
+             <p class="reportsText">Homeless: {{federalInfo.homeless.count}}</p>
+             <p class="reportsText">Immigrants/Refugees/Asylum Seekers: {{federalInfo.victim_immigrant_total.count}}</p>
+             <p class="reportsText">LGBTQ: {{federalInfo.victim_sexual_orientation_total.count}}</p>
+             <p class="reportsText">Veterans: {{federalInfo.veteran.count}}</p>
+             <p class="reportsText">Victims with Disabilities: Cognitive/Physical/Mental: {{FIX}}</p>
+             <p class="reportsText">Victims with Limited English Proficiency: {{federalInfo.limited_english.count}}</p>
+             <p class="reportsText">Individuals assisted with a victim compensation application during the reporting period:{{FIX}} </p>
+             <strong>Individuals who received services during the reporting period</strong>
+             <p class="reportsText">Information/Referral: {{federalInfo.information_referral.count}}</p>
+             <p class="reportsText">Personal Advocacy/Accompaniment: {{FIX}}</p>
+             <p class="reportsText">Emotional Support or Safety Service: {{FIX}}</p>
+             <p class="reportsText">Criminal/Civial Justice System:   {{FIX}}</p>
+             <strong>(A) Information & Referral: Total services provided during the reporting period</strong>
+             <p class="reportsText">(A1) Information about the criminal justice process:{{FIX}}</p>
+             <p class="reportsText">(A2) Information about victims rights: {{federalInfo.contact_type_in-person.count}}</p>
+             <p class="reportsText">(A3) Referral to other victim suppost programs:{{federalInfo.referral_agency.count}}</p>
+             <p class="reportsText">(A4) Referral to other services, supports, resources:  {{federalInfo.referral_other.count}}</p>
+             <strong>(B) Personal Advocacy/Accompaniment: Total services provided during the reporting period</strong>
+             <p class="reportsText">(B1) Victim Advocacy/Accompaniment to Emergency Medical Care:{{number}}</p>
+             <p class="reportsText">(B2) Victim Advocacy/Accompaniment to Medical Forensic Exam: {{federalInfo.medical_exam_support.count}}</p>
+             <p class="reportsText">(B3) Law Enforcement Interview Advocacy/Accompaniment: {{federalInfo.legal_law_enforcement_interview.count}}</p>
+             <p class="reportsText">(B6) Immigration Assistance:{{federalInfo.legal_immigration.count}}</p>
+             <p class="reportsText">(B7) Intervention with Employer, Creditor, Landlord, or Academic Institution:{{federalInfo.legal_intervention.count}}</p>
+             <p class="reportsText">(B9 Transportation Assistance):{{federalInfo.transportation.count}}</p>
+             <strong>(C) Emotional Support of Safety Services: Total services provided during the reporting period</strong>
+             <p class="reportsText">(C1) Crisis Intervention:{{federalInfo.total_overall.count}}</p>
+             <p class="reportsText">(C2) Hotline/Crisis Counseling: {{federalInfo.contact_type_phone.count}}</p>
+             <p class="reportsText">(C4) Individual Counseling: {{federalInfo.crisis_counseling_individual.count}}</p>
+             <p class="reportsText">(C5) Support Groups:{{federalInfo.crisis_counseling_group.count}}</p>
+             <p class="reportsText">(C7) Emergency Financial Assistance:{{federalInfo.emergency_financial.count}}</p>
+             <strong>(E) Criminal/Civil Justice System Assistance: Total services provided during the reporting period</strong>
+             <p class="reportsText">(E4) Civil Legal Assistance in Obtaining Protection or Restraining Order:{{federalInfo.legal_oft_hro.count}}</p>
+             <p class="reportsText">(E6) Other Emergency-Justice Related Assistance:{{federalInfo.other_emergency_justice.count}}</p>
+             <p class="reportsText">(E7) Immigration Assistance:{{federalInfo.legal_immigrantion.count}}</p>
+             <p class="reportsText">(E8) Prosecution Interview Advocacy/Accompaniment:{{federalInfo.legal_prosecution_related.count}}</p>
+             <p class="reportsText">(E9) Law Enforcement Interview Advocacy/Accompaniment:{{federalInfo.legal_law_enforcement_interview.count}}</p>
+             <p class="reportsText">(E10) Criminal Advocacy/Accompaniment:{{federalInfo.legal_court_advocacy.count}}</p>
+            </div>
+
+
+
   <button>Back</button>
-
-  <footer>
-
-  </footer>
-
+</div>
 </body>
 </html>

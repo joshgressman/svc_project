@@ -48,9 +48,9 @@ router.post('/federal/:id', function(req, res) {
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-        } else if (table ==  "victim_victimization_count") {
-            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('victimization count:', query);
+        // } else if (table ==  "victim_victimization_count") {
+        //     query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        //     // console.log('victimization count:', query);
         } else if (table ==  "victim_ethnicity_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity:', query);
@@ -135,9 +135,9 @@ router.post('/county/:id', function(req, res) {
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-        } else if (table ==  "victim_victimization_count") {
-            query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('victimization count:', query);
+        // } else if (table ==  "victim_victimization_count") {
+        //     query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        //     // console.log('victimization count:', query);
 
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
