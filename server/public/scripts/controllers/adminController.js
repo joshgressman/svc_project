@@ -14,6 +14,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
+
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
@@ -61,11 +62,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "victim_ethnicity",
         text: "unknown",
-        textSpecial: "unknown"        
+        textSpecial: "unknown"
     }, {
     //     table: "victim_ethnicity",
     //     text: "Not Tracked",
-    //     text: "not_tracked"        
+    //     text: "not_tracked"
     // }, {
         table: "victim_ethnicity_total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
@@ -102,23 +103,23 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         textSpecial: "(victim_age >= 13 AND victim_age <= 17)"
     }, {
         table: "victim_age",
-        text: "1824",        
+        text: "1824",
         textSpecial: "(victim_age >= 18 AND victim_age <= 24)"
     }, {
         table: "victim_age",
-        text: "2559",        
+        text: "2559",
         textSpecial: "(victim_age >= 25 AND victim_age <= 59)"
     }, {
         table: "victim_age",
-        text: "60",        
+        text: "60",
         textSpecial: "(victim_age >= 60)"
     }, {
         table: "victim_age",
-         text: "null",       
+         text: "null",
         textSpecial: "victim_age is null"
     }, {
         table: "victim_age",
-        text: "total",        
+        text: "total",
         textSpecial: "(victim_age >= 0 OR victim_age is null)"
     }, {
         //Question 6A
@@ -777,11 +778,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         case "victim_age":
                             objectParam += '_' + query.text;
                             console.log('new age OP:', objectParam);
-                            break; 
+                            break;
                         case "victim_zipcode":
                             objectParam += '_' + query.text;
                             console.log('new zip OP:', objectParam);
-                            break;                                                                   
+                            break;
                     };
 
                     $scope.countyInfo.objectParam = response.data[0];
@@ -911,11 +912,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         case "victim_age":
                             objectParam += '_' + query.text;
                             console.log('new age OP:', objectParam);
-                            break;                                     
+                            break;
                         case "contact_type":
                             objectParam += '_' + query.text;
                             console.log('new age OP:', objectParam);
-                            break;                     
+                            break;
                     };
 
                     $scope.federalInfo[objectParam] = response.data[0];
