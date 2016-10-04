@@ -17,6 +17,10 @@
 
       <form ng-submit="submitVictimForm()">
           <div id="svcAdvocacy">
+            <div class="advocayType">
+                <label for="advocayType">Type of Advocacy:</label>
+                <input class="" type="text" ng-model="form.advocacyType" value="phone" placeholder="Phone Advocay" readonly/>
+            </div>
               <div class="counselor">
                   <label for="counselorName">Advocate/Counselor Name:</label>
                   <input class="counselorInput" type="text" ng-model="form.counselor" />
