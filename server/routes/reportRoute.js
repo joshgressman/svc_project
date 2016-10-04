@@ -41,10 +41,10 @@ router.post('/federal/:id', function(req, res) {
         } else if (text == "NEW") {
             checkFirstTimer = " (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('new:', query);
+            console.log('new:', query);
         } else if (table ==  "victim_age") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('victim age:', query);
+            console.log('victim age:', query);
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);

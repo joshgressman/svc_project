@@ -28,35 +28,45 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         //Question 5A
         table: "victim_ethnicity",
-        text: "Native American"
+        text: "Native American",
+        textSpecial: "native_american"
     }, {
         table: "victim_ethnicity",
-        text: "Asian"
+        text: "Asian",
+        textSpecial: "asian"
     }, {
         table: "victim_ethnicity",
-        text: "African American/Black"
+        text: "African American/Black",
+        textSpecial: "african_american_black"
     }, {
         table: "victim_ethnicity",
-        text: "Chican@/Latin@"
+        text: "Chican@/Latin@",
+        textSpecial: "chicano_latino"
     }, {
         table: "victim_ethnicity",
-        text: "Native Hawaiian/Pacific Islander"
+        text: "Native Hawaiian/Pacific Islander",
+        textSpecial: "hawaiian_pacific_islander"
     }, {
         table: "victim_ethnicity",
-        text: "White Non-Latino or Caucasian"
+        text: "White Non-Latino or Caucasian",
+        textSpecial: "white"
     }, {
         table: "victim_ethnicity",
-        text: "Other"
+        text: "Other",
+        textSpecial: "other"
     }, {
         table: "victim_ethnicity",
-        text: "Multi-Racial"
+        text: "Multi-Racial",
+        textSpecial: "multi-racial"
     }, {
         table: "victim_ethnicity",
-        text: "unknown"
+        text: "unknown",
+        textSpecial: "unknown"        
     }, {
-        table: "victim_ethnicity",
-        text: "Not Tracked"
-    }, {
+    //     table: "victim_ethnicity",
+    //     text: "Not Tracked",
+    //     text: "not_tracked"        
+    // }, {
         table: "victim_ethnicity_total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
     }, {
@@ -76,32 +86,39 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_gender",
         text: "unknown"
     }, {
-        table: "victim_gender",
-        text: "Not Tracked"
-    }, {
+        // table: "victim_gender",
+        // text: "Not Tracked"
+    // }, {
         table: "victim_gender_total",
         textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender iLike 'unknown'"
     }, {
         //Question 5C
         table: "victim_age",
+        text: "012",
         textSpecial: "(victim_age >= 0 AND victim_age <= 12)"
     }, {
         table: "victim_age",
+        text: "1317",
         textSpecial: "(victim_age >= 13 AND victim_age <= 17)"
     }, {
         table: "victim_age",
+        text: "1824",        
         textSpecial: "(victim_age >= 18 AND victim_age <= 24)"
     }, {
         table: "victim_age",
+        text: "2559",        
         textSpecial: "(victim_age >= 25 AND victim_age <= 59)"
     }, {
         table: "victim_age",
+        text: "60",        
         textSpecial: "(victim_age >= 60)"
     }, {
         table: "victim_age",
+         text: "null",       
         textSpecial: "victim_age is null"
     }, {
         table: "victim_age",
+        text: "total",        
         textSpecial: "(victim_age >= 0 OR victim_age is null)"
     }, {
         //Question 6A
@@ -224,6 +241,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "legal_intervention",
         text: "true"
     }, {
+        table: "transportation",
+        text: "true"
+    }, {
         //Question 9C0-9C7 9C0: unduplicated totals; 9C1: totals
         table: "contact_type",
         text: "phone"
@@ -266,7 +286,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     var personalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental", "medical_exam_support", "legal_law_enforcement_interview", "legal_immigration", "legal_intervention", "transportation"];
     var medicalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental"];
     var criminalCivicTotal = ["legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy", "legal_oft_hro", "legal_immigration", "legal_intervention"];
-    var individualCounselingTotal = ["crisis_counseling_individual", ];
+
+    //add adult sexual assault total
+    //add child sexual assault total
+    //add stalking total
 
     $scope.countyInfo = {};
     var countyObjectArray = [{
@@ -738,11 +761,31 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     data: data
                 }).then(function(response) {
                     console.log("Get Success");
-                    // console.log(response);
-                    // console.log(query.table);
+                    console.log(response);
+                    console.log(query.table);
                     var objectParam = query.table;
+
+                    switch(objectParam) {
+                        // case "victim_ethnicity":
+                        //     objectParam += '_' + query.text;
+                        //     console.log('new ethnicity OP:', objectParam);
+                        //     break;
+                        case "victim_gender":
+                            objectParam += '_' + query.text;
+                            console.log('new gender OP:', objectParam);
+                            break;
+                        case "victim_age":
+                            objectParam += '_' + query.text;
+                            console.log('new age OP:', objectParam);
+                            break; 
+                        case "victim_zipcode":
+                            objectParam += '_' + query.text;
+                            console.log('new zip OP:', objectParam);
+                            break;                                                                   
+                    };
+
                     $scope.countyInfo.objectParam = response.data[0];
-                    // console.log(response.data[0]);
+                    console.log(response.data[0]);
                 }, function() {
                     console.log("Get Error");
                 });
@@ -755,14 +798,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         federalObjectArray.forEach(function(query, index) {
             var data = {};
 
-            //converts date to workable format
-            var start = $scope.dateStart;
-            var convertedStart = start.toISOString().slice(0, 10);
-            var end = $scope.dateEnd;
-            var convertedEnd = end.toISOString().slice(0, 10);
-
-            data.start = convertedStart;
-            data.end = convertedEnd;
+            data.start = $scope.dateStart;
+            data.end = $scope.dateEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
             console.log('clientside data to query:', data);
@@ -861,6 +898,26 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     console.log('response:', response);
                     console.log('query table:', query.table);
                     var objectParam = query.table;
+
+                    switch(objectParam) {
+                        case "victim_ethnicity":
+                            objectParam += '_' + query.textSpecial;
+                            console.log('new ethnicity OP:', objectParam);
+                            break;
+                        case "victim_gender":
+                            objectParam += '_' + query.text;
+                            console.log('new gender OP:', objectParam);
+                            break;
+                        case "victim_age":
+                            objectParam += '_' + query.text;
+                            console.log('new age OP:', objectParam);
+                            break;                                     
+                        case "contact_type":
+                            objectParam += '_' + query.text;
+                            console.log('new age OP:', objectParam);
+                            break;                     
+                    };
+
                     $scope.federalInfo[objectParam] = response.data[0];
                     console.log(response.data[0]);
                     console.log($scope.federalInfo);
