@@ -79,10 +79,8 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
       var data = $scope.form;
 
       //formats input date into workable format;
-      var unformatedInput = new Date();
-      var dateEntered = unformatedInput.toISOString().slice(0,10);
-      data.date_entered = dateEntered;
-
+      data.date_entered = new Date();
+     
       console.log('sending to server...', data);
       $http.post('/dataRoute/victim', data).then(function(response) {
         console.log('success');
