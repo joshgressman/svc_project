@@ -18,7 +18,7 @@ header{
   height: 110px;
   /*background-color: black*/
   border-bottom: solid thin gray;
-  
+
 }
 
 h2{
@@ -65,7 +65,7 @@ margin-top: -40px;
 
 #dataside {
 
-  height:450px;
+  height:540px;     
   margin-right: 10px;
   border: solid gray;
   border-width: thin;
@@ -78,7 +78,7 @@ margin-top: -40px;
 
 #dataview {
 
-  height:450px;
+  height:540px;
   border: solid gray;
   border-width: thin;
   border-radius: 4px;
