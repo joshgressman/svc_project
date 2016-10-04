@@ -1,9 +1,8 @@
 <div ng-controller="nonVictimController">
 
-<div class="alert alert-success" id="alert">
-  <h2>SVC Non-Victim Telephone Contact Form</h2>
-  <strong>SVC Non-Victim Form:</strong> Please ensure you are using the green form on this page.
-</div>
+  <div class="alert alert-success" id="alert">
+    <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the pink form on this page.
+  </div>
 <div class="container">
 
   <div class="row">
@@ -15,7 +14,8 @@
       </ul>
     </div>
     <div class="col-md-9" id="dataview">
-      <form ng-submit="submitGreenForm()">
+      <button onclick="print()">Print this page</button>
+      <form ng-submit="submitNonVictimForm()">
          <div id="svcAdvocacy">
              <div class="counselor">
                  <label for="counselorName">Advocate/Counselor Name:</label>
@@ -157,8 +157,8 @@
            </p>
            <div class="dispatched">
                <label for="dispatched">Was an advocate dispatched?:</label>
-               <input type="radio" name="dispatched" ng-model="form.dispatched" value="yes">YES
-               <input type="radio" name="dispatched" ng-model="form.dispatched" value="no">NO
+               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
+               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
            </div>
            <div class="responded">
              <label for="responded">If yes, who responded?:</label>

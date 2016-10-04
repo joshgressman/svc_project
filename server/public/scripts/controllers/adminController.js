@@ -18,11 +18,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
     var federalObjectArray = [{
-      //Question 1
+        //Question 1
         table: "total_overall",
         text: "TOTAL"
     }, {
-      //Question 4
+        //Question 4
         table: "total_new",
         text: "NEW"
     }, {
@@ -995,30 +995,297 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             }
         });
     }
-    $scope.showFields = false;
-    $scope.getTest = function() {
-        console.log("The Button was hit! GONDOR CALLS FOR AID!");
-    }
-    function makeFalse(){
-      $scope.individualsServiced = false;
-      $scope.newIndividualsServiced = false;
-      $scope.ethnicity = false;
-      $scope.genderIdentity = false;
-      $scope.age = false;
-      $scope.victimizationTypes = false;
-      $scope.vicimizationTypesSpecial = false;
-      $scope.victimCompensation = false;
-      $scope.servicesReceived = false;
-      $scope.infoAndReferral = false;
-      $scope.personalAdvocacy = false;
-      $scope.emotionalSupport = false;
-      $scope.justiceSystemAssistance = false;
+
+    function makeFalse() {
+        $scope.individualsServiced = false;
+        $scope.newIndividualsServiced = false;
+        $scope.ethnicity = false;
+        $scope.genderIdentity = false;
+        $scope.age = false;
+        $scope.victimizationTypes = false;
+        $scope.vicimizationTypesSpecial = false;
+        $scope.victimCompensation = false;
+        $scope.servicesReceived = false;
+        $scope.infoAndReferral = false;
+        $scope.personalAdvocacy = false;
+        $scope.emotionalSupport = false;
+        $scope.justiceSystemAssistance = false;
     };
-    $scope.submiting = function(){
-      console.log("$scope.playground", $scope.playground);
+    $scope.submiting = function() {
+        console.log("$scope.playground", $scope.playground);
+        $scope.showFields = true;
+        var parameterArray = Object.getOwnPropertyNames($scope.playground);
+        console.log(parameterArray);
+        parameterArray.forEach(function(parameter) {
+            console.log("forEach running!");
+            $scope[parameter] = true;
+            federalObjectArray.forEach(function(object){
+              if(object.bound !== parameter){
+                return;
+              }else{
+                var data = {};
+                // data.start = convertedStart;
+                // data.end = convertedEnd;
+                data.text = object.text;
+                data.tableInfo = object.tableInfo;
+                data.textSpecial = query.textSpecial;
+                $http({
+                    method: "POST",
+                    url: '/reportRoute/playground' + object.table,
+                    data: data
+                }).then(function(response) {
+                    console.log("Get Success");
+                    console.log('response:', response);
+                    // console.log('query table:', query.table);
+                    // var objectParam = query.table;
+                    // $scope.federalInfo[objectParam] = response.data[0];
+                    // console.log(response.data[0]);
+                    // console.log($scope.federalInfo);
+                }, function() {
+                    console.log("Get Error");
+                });
+              }
+            });
+        });
+
     }
 
     //End code for Playground dropdowns
+
+
+    var plygroundObjectArray = [{
+        //Question 1
+        bound: "showIndividual",
+        table: "total_overall",
+        infoTable: "victim",
+        text: "TOTAL"
+    }, {
+        //Question 4
+        bound: "showNewIndividual",
+        table: "total_new",
+        infoTable: "victim",
+        text: "NEW"
+    }, {
+        //Question 5A
+        bound: "showAIndian",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Native American"
+    }, {
+        bound: "showAsian",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Asian"
+    }, {
+        bound: "showBlack",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "African American/Black"
+    }, {
+        bound: "showLatino",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Chican@/Latin@"
+    }, {
+        bound: "showPacificIslander",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Native Hawaiian/Pacific Islander"
+    }, {
+        bound: "showCaucassian",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "White Non-Latino or Caucasian"
+    }, {
+        bound: "showOtherRace",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Other"
+    }, {
+        bound: "showMultipleRaces",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Multi-Racial"
+    }, {
+        bound: "showNotReportedRace",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "unknown"
+    }, {
+        bound: "showNotTrackedRace",
+        table: "victim_ethnicity",
+        infoTable: "victim",
+        text: "Not Tracked"
+    }, {
+        bound: "showEthnicityTotal",
+        table: "victim_ethnicity_total",
+        infoTable: "victim",
+        textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
+    }, {
+        //Question 5B
+        bound: "showMale",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "Male"
+    }, {
+        bound: "showFemale",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "Female"
+    }, {
+        bound: "showNonBinary",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "Non-Binary"
+    }, {
+        bound: "showOtherGender",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "Other"
+    }, {
+        bound: "showGenderNotReported",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "unknown"
+    }, {
+        bound: "showGenderNotTracked",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "Not Tracked"
+    }, {
+        //Question 6A
+        bound: "violenceAdultAssault",
+        table: "violence_adult_sexual",
+        infoTable: "victim",
+        text: "true"
+    }, {
+
+
+
+
+
+        bound: "violenceAdultAbuseTotal",
+        table: "violence_adult_sexual", //Check Table name
+        infoTable: "victim",
+        text: ""
+
+
+
+
+
+    }, {
+        bound: "violenceAdultAbuseFamily",
+        table: "violence_adult_child_family",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceAdultAbuseOther",
+        table: "violence_adult_child_other",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceBurglary",
+        table: "violence_bullying",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceChildPornography",
+        table: "violence_child_pornography",
+        infoTable: "victim",
+        text: "true"
+    }, {
+
+
+
+
+
+        bound: "violenceChildAbuseTotal",
+        table: "violence_child_sexual", //Check Table name
+        infoTable: "victim",
+        text: ""
+
+
+
+
+
+    }, {
+        bound: "violenceDomestic",
+        table: "violence_domestic",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceElderAbuse",
+        table: "violence_elder",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalkingExposing",
+        table: "violence_exposing",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalkingTotal",
+        table: "violence_exposing",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalkingInternet",
+        table: "violence_internet",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceChildAbuseFamily",
+        table: "violence_minor_family",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceChildAbuseOther",
+        table: "violence_minor_other",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalkingPhone",
+        table: "violence_phone",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceSex",
+        table: "violence_exploitation",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalkingHarassment",
+        table: "violence_harassment",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceStalking",
+        table: "violence_stalking",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceTeenDating",
+        table: "violence_teen_dating",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceOther",
+        table: "violence_other",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceUnknown",
+        table: "violence_unknown",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        //Question 6B
+        bound: "showNewIndividual",
+        table: "victim_victimization_count",
+        infoTable: "victim",
+        textSpecial: "victim_victimization_count >= 2"
+    }];
+
 
     ///**********END OF CONTROLLER***************************************///////
 }]);

@@ -18,6 +18,7 @@ header{
   height: 110px;
   /*background-color: black*/
   border-bottom: solid thin gray;
+
 }
 
 h2{
@@ -44,10 +45,17 @@ input[type="checkbox"] {
 
 #alert{
 padding-left: 200px;
+
 }
 
-.container {
+.grayAlert{
+  /*color: gray;*/
+  font-size: 1.2em;
+}
 
+
+.container {
+margin-top: -40px;
 }
 
 #headText {
@@ -57,7 +65,7 @@ padding-left: 200px;
 
 #dataside {
 
-  height:450px;
+  height:540px;     
   margin-right: 10px;
   border: solid gray;
   border-width: thin;
@@ -70,7 +78,7 @@ padding-left: 200px;
 
 #dataview {
 
-  height:450px;
+  height:540px;
   border: solid gray;
   border-width: thin;
   border-radius: 4px;
