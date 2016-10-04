@@ -32,8 +32,8 @@
                   <option value="disabilityStatusSelected">Disability Status</option>
                 </select> -->
                 <div>
-                  <label for="pickAThing">Select a Category</label>
-                  <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
+                    <label for="pickAThing">Select a Category</label>
+                    <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
                     <!-- If there are multiple selected, it will come across as an array -->
                     <option value="individualsServiced">Individuals Serviced</option>
                     <option value="ethnicity">Race/Ethnicity</option>
@@ -52,194 +52,239 @@
 
 
                 <div ng-show="individualsServiced">
-                  <h3>individualsServiced</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.individualsServiced" value="true">individualsServiced
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.newIndividualsServiced" value="true">newIndividualsServiced
-                  </div>
+                    <h3>individualsServiced</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showIndividual" value="true">individualsServiced
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showNewIndividual" value="true">newIndividualsServiced
+                    </div>
                 </div>
 
                 <div ng-show="ethnicity">
-                  <h3>ethnicity</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>ethnicity</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showAIndian" value="true">American Indian of Alaskan Native
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showAsian" value="true">Asian
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showBlack" value="true">Black or African American
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showLatino" value="true">Hispanic or Latino
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showPacificIslander" value="true">Native Hawaiian or Other Pacific Islander
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showCaucassian" value="true">White Non-Latino or Caucassian
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showOtherRace" value="true">Some Other Race
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showMultipleRaces" value="true">Multiple Races
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showNotReportedRace" value="true">Not Reported
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showNotTrackedRace" value="true">Not Tracked
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showEthnicityTotal" value="true">Race/Ethnicity Total
+                    </div>
                 </div>
                 <div ng-show="genderIdentity">
-                  <h3>genderIdentity</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>genderIdentity</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showMale" value="true">Male
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showFemale" value="true">Female
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showNonBinary" value="true">Non-Binary
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showOtherGender" value="true">Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showGenderNotReported" value="true">Not Reported
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showGenderNotTracked" value="true">Not Tracked
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.showGenderTotal" value="true">Total
+                    </div>
                 </div>
                 <div ng-show="age">
-                  <h3>age</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>age</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="victimizationTypes">
-                  <h3>victimizationTypes</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>victimizationTypes</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceAdultSexual" value="true">Adult Sexual Assault
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceAdultAbuseTotal" value="true">Adult Sexually Abused/Assaulted Total
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceAdultAbuseFamily" value="true">Adult Sexually Abused/Assaulted by Family
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceAdultAbuseOther" value="true">Adult Sexually Abused/Assaulted by Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceBullying" value="true">Bullying
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceChildPornography" value="true">Child Pornography
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceChildAbuseTotal" value="true">Child Sexual Abuse/Assault Total
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceChildAbuseFamily" value="true">Child Sexual Abuse/Assault by Family
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceChildAbuseOther" value="true">Child Sexual Abuse/Assault by Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceDomestic" value="true">Domestic And/Or Family Violence
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceElderAbuse" value="true">Elder Abuse or Neglect
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceSex" value="true">Human Trafficking: Sex
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalkingTotal" value="true">Stalking/Harassment - Total
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalkingExposing" value="true">Stalking/Harassment - Exposing
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalkingHarassment" value="true">Stalking/Harassment - Harassment
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalkingInternet" value="true">Stalking/Harassment - Internet
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalkingPhone" value="true">Stalking/Harassment - Phone
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceStalking" value="true">Stalking/Harassment - Stalking
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceTeenDating" value="true">Teen Dating Victimization
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceOther" value="true">Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.violenceUnknown" value="true">Unknown/Pass/Doesn't Know
+                    </div>
                 </div>
                 <div ng-show="vicimizationTypesSpecial">
-                  <h3>vicimizationTypesSpecial</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>vicimizationTypesSpecial</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="victimCompensation">
-                  <h3>victimCompensation</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>victimCompensation</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="servicesReceived">
-                  <h3>servicesReceived</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>servicesReceived</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="infoAndReferral">
-                  <h3>infoAndReferral</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>infoAndReferral</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="personalAdvocacy">
-                  <h3>personalAdvocacy</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>personalAdvocacy</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="emotionalSupport">
-                  <h3>emotionalSupport</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>emotionalSupport</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
                 <div ng-show="justiceSystemAssistance">
-                  <h3>justiceSystemAssistance</h3>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                  </div>
-                  <div>
-                    <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                  </div>
+                    <h3>justiceSystemAssistance</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                    </div>
                 </div>
 
                 <button ng-click="submiting()">Ju-lee, DO THE THING!</button>
-
-
-
-                <!-- <button ng-click="nextDropdown()">Add</button> -->
-
-                <!-- <div ng-show="dropdownTracker[1].dropdown">
-                  <label for="pickAThing">Select a Category</label>
-                  <select ng-model="selectedOne" ng-change="checkSelectionOne()">
-                    <option value="undefined">-----------</option>
-                    <option value="violenceTypeSelectedOne">Type of Sexual Violence</option>
-                    <option value="disabilityStatusSelectedOne">Disability Status</option>
-                  </select>
-                </div> -->
-                <!-- end dynamic dropdowns -->
-
-
-                <!-- Multi Select Drop dropdowns -->
-                <!-- <label for="ethnicBackground">Ethnic Background</label>
-                <select multiple ng-model="typeOEthnicity">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select> -->
-
-
-
-                <!-- <label for="victimType">Victim Type</label>
-                <select multiple ng-model="typeOVictim">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select> -->
-
-                <!-- End Multi Select Drop dropdowns -->
-
-
-
-                <!-- Grabs the Data -->
-                <!-- <button ng-click="getTest()">Submit</button> -->
-
-
-
-
 
 
 
@@ -267,9 +312,9 @@
                             </div>
                         </script>
 
-                        <p>
+                        <!-- <p>
                             <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button>
-                        </p>
+                        </p> -->
 
                         <div class="checkbox">
                             <label>
@@ -281,7 +326,7 @@
 
 
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                            <div ng-show="showIndividual" uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
@@ -308,9 +353,7 @@
                                 </div>
                             </div>
 
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
+                            <div ng-show="showNewIndividual" uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
@@ -337,9 +380,7 @@
                                 </div>
                             </div>
 
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="County Totals">
+                            <div ng-show="showCounties" uib-accordion-group class="panel-default text-center" heading="County Totals">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Zip Code</strong>
@@ -1278,62 +1319,9 @@
                                 </div>
                             </div>
 
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Medical Advocacy Totals">
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Services</strong>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Forensic Exam Support
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{number}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Accompaniment to Medical Appointment
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{number}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Accompaniment to Dental Appointment
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{number}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- The Rows are currently misaligned, this can be fixed by adjusting the padding. It would be preferable to adjust the padding on the text (The left) rather than the numbers (the right) -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Race/Ethnicity">
+                            <div ng-show="ethnicity" uib-accordion-group class="panel-default text-center" heading="Demographics: Race/Ethnicity">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Race/Ethnicity</strong>
@@ -1349,7 +1337,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showAIndian" class="row">
                                     <div class="col-md-9 text-left">
                                         American Indian of Alaskan Native
                                     </div>
@@ -1364,7 +1352,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showAsian" class="row">
                                     <div class="col-md-9 text-left">
                                         Asian
                                     </div>
@@ -1379,7 +1367,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showBlack" class="row">
                                     <div class="col-md-9 text-left">
                                         Black or African American
                                     </div>
@@ -1394,7 +1382,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showLatino" class="row">
                                     <div class="col-md-9 text-left">
                                         Hispanic or Latino
                                     </div>
@@ -1409,7 +1397,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showPacificIslander" class="row">
                                     <div class="col-md-9 text-left">
                                         Natice Hawaiian or Other Pacific Islander
                                     </div>
@@ -1424,7 +1412,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showCaucassian" class="row">
                                     <div class="col-md-9 text-left">
                                         White Non-Latino or Caucassian
                                     </div>
@@ -1439,7 +1427,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showOtherRace" class="row">
                                     <div class="col-md-9 text-left">
                                         Some Other Race
                                     </div>
@@ -1454,7 +1442,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showMultipleRaces" class="row">
                                     <div class="col-md-9 text-left">
                                         Multiple Races
                                     </div>
@@ -1469,7 +1457,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showNotReportedRace" class="row">
                                     <div class="col-md-9 text-left">
                                         Not Reported
                                     </div>
@@ -1484,7 +1472,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showNotTrackedRace" class="row">
                                     <div class="col-md-9 text-left">
                                         Not Tracked
                                     </div>
@@ -1499,7 +1487,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showEthnicityTotal" class="row">
                                     <div class="col-md-9 text-left">
                                         Race/Ethnicity Total
                                     </div>
@@ -1516,9 +1504,7 @@
                                 </div>
                             </div>
 
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
+                            <div ng-show="genderIdentity" uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Gender Identity</strong>
@@ -1531,7 +1517,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showMale" class="row">
                                     <div class="col-md-9 text-left">
                                         Male
                                     </div>
@@ -1543,7 +1529,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showFemale" class="row">
                                     <div class="col-md-9 text-left">
                                         Female
                                     </div>
@@ -1555,7 +1541,19 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showNonBinary" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Non-Binary
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="showOtherGender" class="row">
                                     <div class="col-md-9 text-left">
                                         Other
                                     </div>
@@ -1567,7 +1565,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showGenderNotReported" class="row">
                                     <div class="col-md-9 text-left">
                                         Not Reported
                                     </div>
@@ -1579,7 +1577,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showGenderNotTracked" class="row">
                                     <div class="col-md-9 text-left">
                                         Not Tracked
                                     </div>
@@ -1591,7 +1589,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="showGenderTotal" class="row">
                                     <div class="col-md-9 text-left">
                                         Total
                                     </div>
@@ -1604,8 +1602,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
 
                             <div uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
                                 <div class="row">
@@ -1959,19 +1955,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adult Physical Assaul
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                <div ng-show="violenceAdultSexual" class="row">
                                     <div class="col-md-9 text-left">
                                         Adult Sexual Assault
                                     </div>
@@ -1983,9 +1967,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceAdultAbuseTotal" class="row">
                                     <div class="col-md-9 text-left">
-                                        Adults Sexual Abuse/Assault
+                                        Adults Sexual Abused/Assaulted as Children Total
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -1995,9 +1979,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceAdultAbuseFamily" class="row">
                                     <div class="col-md-9 text-left">
-                                        Arson
+                                        Adults Sexual Abused/Assaulted as Children by Family
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2007,7 +1991,19 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceAdultAbuseOther" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Adults Sexual Abused/Assaulted as Children by Other
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{type}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="violenceBullying" class="row">
                                     <div class="col-md-9 text-left">
                                         Bullying
                                     </div>
@@ -2019,31 +2015,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Burglary
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Child Physical Abuse or Neglect
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                <div ng-show="violenceChildPornography" class="row">
                                     <div class="col-md-9 text-left">
                                         Child Pornography
                                     </div>
@@ -2055,9 +2027,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceChildAbuseTotal" class="row">
                                     <div class="col-md-9 text-left">
-                                        Child Sexual Abuse or Neglect
+                                        Child Sexual Abused/Assault Total
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2067,7 +2039,31 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceChildAbuseFamily" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Child Sexual Abused/Assault by Family
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{type}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="violenceChildAbuseOther" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Child Sexual Abused/Assault by Other
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{type}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="violenceDomestic" class="row">
                                     <div class="col-md-9 text-left">
                                         Domestic And/Or Family Violence
                                     </div>
@@ -2079,19 +2075,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        DUI/DWI Incidents
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                <div ng-show="violenceElderAbuse" class="row">
                                     <div class="col-md-9 text-left">
                                         Elder Abuse or Neglect
                                     </div>
@@ -2103,31 +2087,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Hate Crime
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Human Trafficking: Labor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                <div ng-show="violenceSex" class="row">
                                     <div class="col-md-9 text-left">
                                         Human Trafficking: Sex
                                     </div>
@@ -2139,9 +2099,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalkingExposing" class="row">
                                     <div class="col-md-9 text-left">
-                                        Identity Theft
+                                        Stalking/Harassment - Exposing
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2151,9 +2111,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalkingHarassment" class="row">
                                     <div class="col-md-9 text-left">
-                                        Kidnapping
+                                        Stalking/Harassment - Harassment
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2163,9 +2123,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalkingInternet" class="row">
                                     <div class="col-md-9 text-left">
-                                        Mass Violence
+                                        Stalking/Harassment - Internet
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2175,9 +2135,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalkingPhone" class="row">
                                     <div class="col-md-9 text-left">
-                                        Other Vehicular Victimization
+                                        Stalking/Harassment - Phone
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2187,9 +2147,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalking" class="row">
                                     <div class="col-md-9 text-left">
-                                        Robbery
+                                        Stalking/Harassment - Stalking
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2199,9 +2159,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceStalkingTotal" class="row">
                                     <div class="col-md-9 text-left">
-                                        Mass Violence
+                                        Stalking/Harassment - Total
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2211,55 +2171,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Other Vehicular Vicimization
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Robbery
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Stalking/Harassment
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Survivors of Homicide Victims
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                <div ng-show="violenceTeenDating" class="row">
                                     <div class="col-md-9 text-left">
                                         Teen Dating Victimization
                                     </div>
@@ -2271,9 +2183,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceOther" class="row">
                                     <div class="col-md-9 text-left">
-                                        Terrorism
+                                        Other
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2283,9 +2195,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="violenceUnknown" class="row">
                                     <div class="col-md-9 text-left">
-                                        Other
+                                        Unknown/Pass/Doesn't Know
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
