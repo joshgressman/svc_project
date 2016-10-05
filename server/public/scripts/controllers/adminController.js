@@ -293,10 +293,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     $scope.countyInfo = {};
     var countyObjectArray = [{
-        table: undefined,
+        table: "total_overall",
         text: "TOTAL"
     }, {
-        table: undefined,
+        table: "total_new",
         text: "NEW"
     }, {
         table: "victim_zipcode",
@@ -521,46 +521,57 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_zipcode",
         text: "55455"
     }, {
-        table: "victim_zipcode",
+        table: "victim_zipcode_other",
         text: "Other"
     }, {
-        table: "victim_zipcode",
-        text: "Unknown"
-    }, {
-        table: "victim_zipcode",
-        text: "Total"
+        table: "victim_zipcode_unknown",
+        text: null
+
+    // }, {
+    //     table: "victim_zipcode",
+    //     text: "Total"
+    },  {
+        table: "victim_ethnicity",
+        text: "Native American",
+        textSpecial: "native_american"
     }, {
         table: "victim_ethnicity",
-        text: "Native American"
+        text: "Asian",
+        textSpecial: "asian"
     }, {
         table: "victim_ethnicity",
-        text: "Asian"
+        text: "African American/Black",
+        textSpecial: "african_american_black"
     }, {
         table: "victim_ethnicity",
-        text: "African American/Black"
+        text: "Chican@/Latin@",
+        textSpecial: "chicano_latino"
     }, {
         table: "victim_ethnicity",
-        text: "Chican@/Latin@"
+        text: "Native Hawaiian/Pacific Islander",
+        textSpecial: "hawaiian_pacific_islander"
     }, {
         table: "victim_ethnicity",
-        text: "Native Hawaiian/Pacific Islander"
+        text: "White Non-Latino or Caucasian",
+        textSpecial: "white"
     }, {
         table: "victim_ethnicity",
-        text: "White Non-Latino or Caucasian"
+        text: "Other",
+        textSpecial: "other"
     }, {
         table: "victim_ethnicity",
-        text: "Other"
+        text: "Multi-Racial",
+        textSpecial: "multi-racial"
     }, {
         table: "victim_ethnicity",
-        text: "Multi-Racial"
+        text: "unknown",
+        textSpecial: "unknown"        
     }, {
-        table: "victim_ethnicity",
-        text: "unknown"
-    }, {
-        table: "victim_ethnicity",
-        text: "Not Tracked"
-    }, {
+    //     table: "victim_ethnicity",
+    //     text: "Not Tracked"
+    // }, {
         table: "victim_ethnicity_total",
+        text: "total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
     }, {
         table: "victim_gender",
@@ -582,6 +593,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Not Tracked"
     }, {
         table: "victim_gender_total",
+        text: "total",
         textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender iLike 'unknown'"
     }, {
         table: "victim_trans",
@@ -612,27 +624,35 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "No"
     }, {
         table: "victim_immigrant_total",
+        text: "total",
         textSpecial: "victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other'"
     }, {
         table: "victim_age",
-        textSpecial: "(victim_age >= 0 AND victim_age <= 17)"
+        text: "018",
+        textSpecial: "(victim_age >= 0 AND victim_age <= 18)"
     }, {
         table: "victim_age",
-        textSpecial: "(victim_age >= 18 AND victim_age <= 29)"
+        text: "1950",
+        textSpecial: "(victim_age >= 19 AND victim_age <= 50)"
+    // }, {
+    //     table: "victim_age",
+    //     text: "3044",
+    //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
+    // }, {
+    //     table: "victim_age",
+    //     text: "4565",    
+        // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
     }, {
         table: "victim_age",
-        textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
+        text: "50",
+        textSpecial: "(victim_age >= 50)"
     }, {
         table: "victim_age",
-        textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
-    }, {
-        table: "victim_age",
-        textSpecial: "(victim_age >= 66)"
-    }, {
-        table: "victim_age",
+        text: "null",
         textSpecial: "victim_age is null"
     }, {
         table: "victim_age",
+        text: "total",
         textSpecial: "(victim_age >= 0 OR victim_age is null)"
     }, {
         table: "disability_blind",
@@ -713,14 +733,17 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_unknown",
         text: "true"
     }, {
-        table: "victim_victimization_count",
-        textSpecial: "victim_victimization_count >= 2"
+        table: "victim_multiple",
+        text: "true"
     }, {
-        table: "counseling_individual_totals",
+        table: "crisis_counseling_individual",
         text: "true"
     }, {
         table: "crisis_counseling_group",
-        textSpecial: "true"
+        text: "true"
+    // }, {
+    //     table: "locations",
+    //     text: "true"    
     }];
 
     $scope.getStuffCounty = function() {
@@ -728,69 +751,80 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         countyObjectArray.forEach(function(query, index) {
             var data = {};
 
-            //converts date to workable format
-            var start = $scope.dateStart;
-            var convertedStart = start.toISOString().slice(0, 10);
-            var end = $scope.dateEnd;
-            var convertedEnd = end.toISOString().slice(0, 10);
+            // //converts date to workable format
+            // var start = $scope.dateStart;
+            // var convertedStart = start.toISOString().slice(0, 10);
+            // var end = $scope.dateEnd;
+            // var convertedEnd = end.toISOString().slice(0, 10);
 
-            data.start = convertedStart;
-            data.end = convertedEnd;
+            data.start = $scope.dateStart;
+            data.end = $scope.dateEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
-            console.log('clientside data to query:', data);
+            // console.log('clientside data to query:', data);
 
-            if (query.table == "counseling_individual_totals") {
-                individualCounselingTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/county' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.countyInfo.individualTotal += parseInt(response.data[0]);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else {
-                $http({
-                    method: "POST",
-                    url: '/reportRoute/county/' + query.table,
-                    data: data
-                }).then(function(response) {
-                    console.log("Get Success");
-                    console.log(response);
-                    console.log(query.table);
-                    var objectParam = query.table;
+            $http({
+                method: "POST",
+                url: '/reportRoute/county/' + query.table,
+                data: data
+            }).then(function(response) {
+                console.log("Get Success");
+                console.log(response);
+                console.log(query.table);
+                var objectParam = query.table;
 
-                    switch(objectParam) {
-                        // case "victim_ethnicity":
-                        //     objectParam += '_' + query.text;
-                        //     console.log('new ethnicity OP:', objectParam);
-                        //     break;
-                        case "victim_gender":
-                            objectParam += '_' + query.text;
-                            console.log('new gender OP:', objectParam);
-                            break;
-                        case "victim_age":
-                            objectParam += '_' + query.text;
-                            console.log('new age OP:', objectParam);
-                            break; 
-                        case "victim_zipcode":
-                            objectParam += '_' + query.text;
-                            console.log('new zip OP:', objectParam);
-                            break;                                                                   
-                    };
+                switch(objectParam) {
+                    // case "victim_ethnicity":
+                    //     objectParam += '_' + query.text;
+                    //     console.log('new ethnicity OP:', objectParam);
+                    //     break;
+                    case "victim_gender":
+                        objectParam += '_' + query.text;
+                        // console.log('new gender OP:', objectParam);
+                        break;
+                    case "victim_age":
+                        objectParam += '_' + query.text;
+                        // console.log('new age OP:', objectParam);
+                        break; 
+                    case "victim_zipcode":
+                        objectParam += '_' + query.text;
+                        // console.log('new zip OP:', objectParam);
+                        break;
+                    case "victim_ethnicity":
+                        objectParam += '_' + query.textSpecial;
+                        // console.log('new ethnicity OP:', objectParam);
+                        break;                                                                       
+                };
 
-                    $scope.countyInfo.objectParam = response.data[0];
-                    console.log(response.data[0]);
-                }, function() {
-                    console.log("Get Error");
-                });
-            }
+                $scope.countyInfo[objectParam] = response.data[0];
+                console.log(response.data[0]);
+                console.log($scope.countyInfo);
+            }, function() {
+                console.log("Get Error");
+            });
         });
+
+        var location = {}
+        
+        location.table = "locations";
+        location.text = "true";
+        location.start = $scope.dateStart;
+        location.end = $scope.dateEnd;
+        console.log('location query:', location);
+
+        $http({
+            method: "POST",
+            url: '/reportRoute/county/locations',
+            data: location
+        }).then(function(response) {
+            console.log("Get Success");
+            // console.log(response);
+            $scope.locations = response;
+            console.log($scope.locations);
+            }, function() {
+                console.log("Get Error");
+            });
+
     };
 
     $scope.getStuffFederal = function() {
@@ -894,9 +928,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     url: '/reportRoute/federal/' + query.table,
                     data: data
                 }).then(function(response) {
-                    console.log("Get Success");
-                    console.log('response:', response);
-                    console.log('query table:', query.table);
+                    // console.log("Get Success");
+                    // console.log('response:', response);
+                    // console.log('query table:', query.table);
                     var objectParam = query.table;
 
                     switch(objectParam) {
@@ -919,8 +953,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     };
 
                     $scope.federalInfo[objectParam] = response.data[0];
-                    console.log(response.data[0]);
-                    console.log($scope.federalInfo);
+                    // console.log(response.data[0]);
+                    // console.log($scope.federalInfo);
                 }, function() {
                     console.log("Get Error");
                 });
