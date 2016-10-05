@@ -58,6 +58,10 @@ padding-left: 200px;
 margin-top: -40px;
 }
 
+.logout {
+  float: right;
+}
+
 #headText {
   margin: 20px 0 0 50px;
 }
@@ -65,7 +69,7 @@ margin-top: -40px;
 
 #dataside {
 
-  height:540px;     
+  height:540px;
   margin-right: 10px;
   border: solid gray;
   border-width: thin;

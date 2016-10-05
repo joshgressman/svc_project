@@ -46,6 +46,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/dataplayground.html',
             controller: "adminController"
         })
+        .when('/users', {
+            templateUrl: '/views/partials/user.html',
+            controller: 'userController'
+        })
         .otherwise({
             redirectTo: '/home'
         })

@@ -1,4 +1,18 @@
-myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
+
+  $scope.check = false;
+  $scope.loggedinFactory = loggedinFactory;
+
+  $scope.isLoggedIn = function() {
+    loggedinFactory.isLoggedIn().then(function(response) {
+      console.log('The person logged in:', response);
+      console.log('the type of the person logged in:', response.user_type)
+      $scope.user = response;
+      if (response.user_type == 'admin') {
+        $scope.check = true;
+      }
+    });
+  }
 
   $scope.myFunction = function() {
       window.print();
@@ -84,7 +98,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
 
       //formats input date into workable format;
       data.date_entered = new Date();
-     
+
       console.log('sending to server...', data);
       $http.post('/dataRoute/victim', data).then(function(response) {
         console.log('success');
