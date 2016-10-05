@@ -17,6 +17,10 @@
     <div class="col-md-9" id="dataview">
       <form name="victimForm" ng-submit="submitVictimForm()">
         <div id="svcAdvocacy">
+          <div class="advocayType">
+              <label for="advocayType">Type of Advocacy:</label>
+              <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocay" readonly/>
+          </div>
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
                 <input class="counselorInput" type="text" ng-model="form.counselor" />
@@ -273,6 +277,7 @@
                       <option ng-model="form.sexualOrientation" value="Lesbian">Lesbian</option>
                       <option ng-model="form.sexualOrientation" value="Gay">Gay</option>
                       <option ng-model="form.sexualOrientation" value="Bi-sexual">Bi-sexual</option>
+                      <option ng-model="form.sexualOrientation" value="Other">Other</option>
                       <option ng-model="form.sexualOrientation" value="Unknown/pass">Unknown/pass</option>
                   </select>
                 </div>
@@ -321,6 +326,7 @@
                 <option ng-model="form.ethnicBackground" value="Native American">Native American</option>
                 <option ng-model="form.ethnicBackground" value="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</option>
                 <option ng-model="form.ethnicBackground" value="White non-Latino/Caucasian">White non-Latino/Caucasian</option>
+                <option ng-model="form.ethnicBackground" value="Other">Other</option>
                 <option ng-model="form.ethnicBackground" value="unknown">Unknown/pass</option>
                 <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
               </select>
@@ -333,6 +339,7 @@
                 <option ng-model="form.immigrantStatus" value="Europe">Europe</option>
                 <option ng-model="form.immigrantStatus" value="Mex/Cen/So America">Mex/Cen/So America</option>
                 <option ng-model="form.immigrantStatus" value="Middle East">Middle East</option>
+                <option ng-model="form.immigrantStatus" value="Other">Other</option>
                 <option ng-model="form.immigrantStatus" value="Unknown">Unknown/pass/doesnt know</option>
                 <option ng-model="form.immigrantStatus" value="No">No</option>
                 <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
