@@ -76,12 +76,18 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     homeless: null,
     limitedEnglish: null,
     veteran: null,
-    supported: null
+    supported: null,
+    advocacyType: null,
+    multiple: null
   }
+
+  var victimizationCount = [];
+
 
   $scope.submitVictimForm = function() {
       var data = $scope.form;
-
+      var count = victimizationCount.length;
+      console.log(count);
       //formats input date into workable format;
       data.date_entered = new Date();
      
