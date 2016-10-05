@@ -35,18 +35,23 @@
                     <label for="pickAThing">Select a Category</label>
                     <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
                     <!-- If there are multiple selected, it will come across as an array -->
+                    <option value="typeOfVictim">Type of Victim/Survivor</option>
                     <option value="individualsServiced">Individuals Serviced</option>
                     <option value="ethnicity">Race/Ethnicity</option>
                     <option value="genderIdentity">Gender Identity</option>
                     <option value="age">Age</option>
+                    <option value="disability">Disabilities</option>
                     <option value="victimizationTypes">Types of Victimization: Totals</option>
-                    <option value="vicimizationTypesSpecial">Types of Victimization: Special</option>
-                    <option value="victimCompensation">Individuals assisted with a Victim Compensation Application</option>
-                    <option value="servicesReceived">Individuals who received Services</option>
-                    <option value="infoAndReferral">Information and Referral</option>
-                    <option value="personalAdvocacy">Personal Advocacy/Accompaniment</option>
-                    <option value="emotionalSupport">Emotional Support of Safety Services</option>
-                    <option value="justiceSystemAssistance">Criminal/Civil Justice System Assistance</option>
+                    <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
+                    <option value="showCounties">Zip Codes</option>
+                    <option value="immigrantStatus">Immigrant Status</option>
+                    <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
+                    <option value="inPersonCrisis">In Person Crisis Counseling</option>
+                    <option value="inPersonLegalCriminal">In Person Legal Advocacy: Criminal</option>
+                    <option value="inPersonLegalCivil">In Person Legal Advocacy: Civil</option>
+                    <option value="inPersonMedical">In Person Medical Advocacy</option>
+                    <option value="inPersonOther">Other In Person Advocacy</option>
+
                   </select>
                 </div>
 
@@ -60,7 +65,6 @@
                         <input type="checkbox" ng-model="playground.showNewIndividual" value="true">newIndividualsServiced
                     </div>
                 </div>
-
                 <div ng-show="ethnicity">
                     <h3>ethnicity</h3>
                     <div>
@@ -91,10 +95,22 @@
                         <input type="checkbox" ng-model="playground.showNotReportedRace" value="true">Not Reported
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.showNotTrackedRace" value="true">Not Tracked
+                        <input type="checkbox" ng-model="playground.showEthnicityTotal" value="true">Race/Ethnicity Total
+                    </div>
+                </div>
+                <div ng-show="typeOfVictim">
+                    <h3>typeOfVictim</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.adultPrimary" value="true">Adult Primary Victim/Survivor
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.showEthnicityTotal" value="true">Race/Ethnicity Total
+                        <input type="checkbox" ng-model="playground.adultSecondary" value="true">Adult Secondary Victim/Survivor
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.youthPrimary" value="true">Youth Primary Victim/Survivor
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.youthSecondary" value="true">Youth Secondary Victim/Survivor
                     </div>
                 </div>
                 <div ng-show="genderIdentity">
@@ -115,22 +131,16 @@
                         <input type="checkbox" ng-model="playground.showGenderNotReported" value="true">Not Reported
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.showGenderNotTracked" value="true">Not Tracked
-                    </div>
-                    <div>
                         <input type="checkbox" ng-model="playground.showGenderTotal" value="true">Total
                     </div>
                 </div>
                 <div ng-show="age">
                     <h3>age</h3>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
-                    </div>
-                    <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
-                    </div>
-                    <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                      <label for="startAgeRange">Starting Age:</label>
+                      <input type="number" ng-model="playground.age.start" />
+                      <label for="endAgeRange">Ending Age:</label>
+                      <input type="number" ng-model="playground.age.end" />
                     </div>
                 </div>
                 <div ng-show="victimizationTypes">
@@ -199,99 +209,392 @@
                         <input type="checkbox" ng-model="playground.violenceUnknown" value="true">Unknown/Pass/Doesn't Know
                     </div>
                 </div>
-                <div ng-show="vicimizationTypesSpecial">
-                    <h3>vicimizationTypesSpecial</h3>
+                <div ng-show="victimizationTypesSpecial">
+                    <h3>victimizationTypesSpecial</h3>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.victimSpecialHomeless" value="true">Homeless
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.victimSpecialImmigrants" value="true">Immigrants/Refugees/Asylum Seekers
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                    </div>
-                </div>
-                <div ng-show="victimCompensation">
-                    <h3>victimCompensation</h3>
-                    <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.victimSpecialLGBTQ" value="true">LGBTQ
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.victimSpecialVeterans" value="true">Veterans
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                        <input type="checkbox" ng-model="playground.victimSpecialLimitedEnglish" value="true">Victims with Limited English Proficiency
                     </div>
                 </div>
-                <div ng-show="servicesReceived">
-                    <h3>servicesReceived</h3>
+                <div ng-show="showCounties">
+                    <h3>showCounties</h3>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.county55111" value="true">55111
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.county55305" value="true">55305
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                        <input type="checkbox" ng-model="playground.county55311" value="true">55311
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55316" value="true">55316
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55317" value="true">55317
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55327" value="true">55327
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55328" value="true">55328
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55331" value="true">55331
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55340" value="true">55340
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55341" value="true">55341
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55343" value="true">55343
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55344" value="true">55344
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55345" value="true">55345
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55346" value="true">55346
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55347" value="true">55347
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55356" value="true">55356
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55357" value="true">55357
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55359" value="true">55359
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55361" value="true">55361
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55364" value="true">55364
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55369" value="true">55369
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55373" value="true">55373
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55374" value="true">55374
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55375" value="true">55375
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55384" value="true">55384
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55387" value="true">55387
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55388" value="true">55388
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55391" value="true">55391
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55392" value="true">55392
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55401" value="true">55401
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55402" value="true">55402
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55403" value="true">55403
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55404" value="true">55404
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55405" value="true">55405
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55406" value="true">55406
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55407" value="true">55407
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55408" value="true">55408
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55409" value="true">55409
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55410" value="true">55410
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55411" value="true">55411
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55412" value="true">55412
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55413" value="true">55413
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55414" value="true">55414
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55415" value="true">55415
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55416" value="true">55416
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55417" value="true">55417
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55418" value="true">55418
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55419" value="true">55419
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55420" value="true">55420
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55422" value="true">55422
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55423" value="true">55423
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55424" value="true">55424
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55425" value="true">55425
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55426" value="true">55426
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55427" value="true">55427
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55428" value="true">55428
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55429" value="true">55429
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55430" value="true">55430
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55431" value="true">55431
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55435" value="true">55435
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55436" value="true">55436
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55437" value="true">55437
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55438" value="true">55438
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55439" value="true">55439
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55441" value="true">55441
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55442" value="true">55442
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55443" value="true">55443
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55444" value="true">55444
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55445" value="true">55445
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55446" value="true">55446
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55447" value="true">55447
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55450" value="true">55450
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55454" value="true">55454
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.county55455" value="true">55455
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.countyOther" value="true">Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.countyUnknown" value="true">Unknown
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.countyTotal" value="true">Total
                     </div>
                 </div>
-                <div ng-show="infoAndReferral">
-                    <h3>infoAndReferral</h3>
+                <div ng-show="immigrantStatus">
+                    <h3>immigrantStatus</h3>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.immigrantAfrica" value="true">Africa
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.immigrantAsia" value="true">Asia
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                    </div>
-                </div>
-                <div ng-show="personalAdvocacy">
-                    <h3>personalAdvocacy</h3>
-                    <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.immigrantEurope" value="true">Europe
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.immigrantSAmerica" value="true">Mex/Cen/South America
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
-                    </div>
-                </div>
-                <div ng-show="emotionalSupport">
-                    <h3>emotionalSupport</h3>
-                    <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.immigrantMiddleEast" value="true">Middle East
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.immigrantOther" value="true">Other
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                        <input type="checkbox" ng-model="playground.immigrantUnknown" value="true">Unknown/Pass
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.immigrantNot" value="true">No
                     </div>
                 </div>
-                <div ng-show="justiceSystemAssistance">
-                    <h3>justiceSystemAssistance</h3>
+                <div ng-show="disability">
+                    <h3>disabilities</h3>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_blind" value="true">Blind/Visually Impaired
+                        <input type="checkbox" ng-model="playground.disabilityBlind" value="true">Blind/Visually Impaired
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_physical" value="true">Physical Disabilities
+                        <input type="checkbox" ng-model="playground.disabilityPhysical" value="true">Physical Disabilities
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="playground.disability_mental" value="true">Mental Illness
+                        <input type="checkbox" ng-model="playground.disabilityMental" value="true">Mental Illness
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disabilityDeaf" value="true">Deaf/Hard of Hearing
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disabilityIntellectual" value="true">Intellectual or Developmental Disabilities
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disabilityNone" value="true">None
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disabilityOther" value="true">Other
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.disabilityUnknown" value="true">Unknown/Pass/Doesn't Know
+                    </div>
+                </div>
+                <div ng-show="typeOfServiceNew">
+                    <h3>typeOfServiceNew</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.crisisCounseling" value="true">Crisis Counseling
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.criminalJustice" value="true">Legal Advocacy: Criminal Justice
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.civilLegal" value="true">Legal Advocacy: Civil Legal
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.medicalAdvocacy" value="true">Medical Advocacy
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.otherAdvocacy" value="true">Other In-Person Advocacy Services
+                    </div>
+                </div>
+                <div ng-show="inPersonCrisis">
+                    <h3>inPersonCrisis</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.individualCounseling" value="true">One-to-One Counseling
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.groupCounseling" value="true">Support Group
+                    </div>
+                </div>
+                <div ng-show="inPersonLegalCriminal">
+                    <h3>inPersonLegalCriminal</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.lawEnforcement" value="true">Law Enforcement Interview
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.prosecutionAdvocacy" value="true">Prosecution-Related Advocacy
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.courtAdvocacy" value="true">Court Advocacy (Criminal Case)
+                    </div>
+                </div>
+                <div ng-show="inPersonLegalCivil">
+                    <h3>inPersonLegalCivil</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.obtainingAssistance" value="true">Assistance Obtaining OFP or HRO
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.immigrationSupport" value="true">Immigration-Related Support
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.intervention" value="true">Intervention with Landlord, Academic Institution or Creditor
+                    </div>
+                </div>
+                <div ng-show="inPersonMedical">
+                    <h3>inPersonMedical</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.forensicExam" value="true">Forensic Exam Support
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.accompanimentMedical" value="true">Accompaniment to Medical Appointment
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.accompanimentDental" value="true">Accompaniment to Dental Appointment
+                    </div>
+                </div>
+                <div ng-show="inPersonOther">
+                    <h3>inPersonOther</h3>
+                    <div>
+                        <input type="checkbox" ng-model="playground.informationReferral" value="true">Information and Referral
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.safeAtHome" value="true">Safe at Home Registration
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.emergencyFinancial" value="true">Emergency Financial Assistance
+                    </div>
+                    <div>
+                        <input type="checkbox" ng-model="playground.reparationsClaims" value="true">Reparations Claims Assistance
                     </div>
                 </div>
 
-                <button ng-click="submiting()">Ju-lee, DO THE THING!</button>
-
-
-
-
-
-
-
+                <button ng-click="submitting()">Submit Request</button>
 
                 <div ng-controller="adminController">
                     <div ng-show="showFields">
@@ -312,19 +615,75 @@
                             </div>
                         </script>
 
-                        <!-- <p>
-                            <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button>
-                        </p> -->
-
                         <div class="checkbox">
-                            <label>
+                        <label>
                           <input type="checkbox" ng-model="oneAtATime">
                           Open only one at a time
                         </label>
                         </div>
                         <uib-accordion close-others="oneAtATime">
-
-
+                            <div ng-show="typeOfVictim" uib-accordion-group class="panel-default text-center" heading="Victim/Survivor Information">
+                              <div class="row">
+                                  <div class="col-md-9 text-left">
+                                      <strong>Type of Victim/Survivor</strong>
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              <strong>Number</strong>
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="adultPrimary" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Adult Primary Victim/Survivor
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{people}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="adultSecondary" class="row">
+                                  <div class="col-md-9 text-left">
+                                    Adult Secondary Victim/Survivor
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{people}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="youthPrimary" class="row">
+                                  <div class="col-md-9 text-left">
+                                    Youth Primary Victim/Survivor
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{people}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="youthSecondary" class="row">
+                                  <div class="col-md-9 text-left">
+                                    Youth Secondary Victim/Survivor
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{people}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
 
                             <div ng-show="showIndividual" uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period">
                                 <div class="row">
@@ -393,7 +752,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55111" class="row">
                                     <div class="col-md-9 text-left">
                                         55111
                                     </div>
@@ -405,7 +764,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55305" class="row">
                                     <div class="col-md-9 text-left">
                                         55305
                                     </div>
@@ -417,7 +776,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55311" class="row">
                                     <div class="col-md-9 text-left">
                                         55311
                                     </div>
@@ -429,7 +788,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55316" class="row">
                                     <div class="col-md-9 text-left">
                                         55316
                                     </div>
@@ -441,7 +800,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55317" class="row">
                                     <div class="col-md-9 text-left">
                                         55317
                                     </div>
@@ -453,7 +812,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55327" class="row">
                                     <div class="col-md-9 text-left">
                                         55327
                                     </div>
@@ -465,7 +824,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55328" class="row">
                                     <div class="col-md-9 text-left">
                                         55328
                                     </div>
@@ -477,7 +836,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55331" class="row">
                                     <div class="col-md-9 text-left">
                                         55331
                                     </div>
@@ -489,7 +848,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55340" class="row">
                                     <div class="col-md-9 text-left">
                                         55340
                                     </div>
@@ -501,7 +860,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55341" class="row">
                                     <div class="col-md-9 text-left">
                                         55341
                                     </div>
@@ -513,7 +872,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55343" class="row">
                                     <div class="col-md-9 text-left">
                                         55343
                                     </div>
@@ -525,7 +884,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55344" class="row">
                                     <div class="col-md-9 text-left">
                                         55344
                                     </div>
@@ -537,7 +896,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55345" class="row">
                                     <div class="col-md-9 text-left">
                                         55345
                                     </div>
@@ -549,7 +908,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55346" class="row">
                                     <div class="col-md-9 text-left">
                                         55346
                                     </div>
@@ -561,7 +920,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55347" class="row">
                                     <div class="col-md-9 text-left">
                                         55347
                                     </div>
@@ -573,7 +932,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55356" class="row">
                                     <div class="col-md-9 text-left">
                                         55356
                                     </div>
@@ -585,7 +944,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55357" class="row">
                                     <div class="col-md-9 text-left">
                                         55357
                                     </div>
@@ -597,7 +956,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55359" class="row">
                                     <div class="col-md-9 text-left">
                                         55359
                                     </div>
@@ -609,7 +968,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55361" class="row">
                                     <div class="col-md-9 text-left">
                                         55361
                                     </div>
@@ -621,7 +980,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55364" class="row">
                                     <div class="col-md-9 text-left">
                                         55364
                                     </div>
@@ -633,7 +992,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55369" class="row">
                                     <div class="col-md-9 text-left">
                                         55369
                                     </div>
@@ -645,7 +1004,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55373" class="row">
                                     <div class="col-md-9 text-left">
                                         55373
                                     </div>
@@ -657,7 +1016,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55374" class="row">
                                     <div class="col-md-9 text-left">
                                         55374
                                     </div>
@@ -669,7 +1028,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55375" class="row">
                                     <div class="col-md-9 text-left">
                                         55375
                                     </div>
@@ -681,7 +1040,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55384" class="row">
                                     <div class="col-md-9 text-left">
                                         55384
                                     </div>
@@ -693,7 +1052,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55387" class="row">
                                     <div class="col-md-9 text-left">
                                         55387
                                     </div>
@@ -705,7 +1064,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55388" class="row">
                                     <div class="col-md-9 text-left">
                                         55388
                                     </div>
@@ -717,7 +1076,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55391" class="row">
                                     <div class="col-md-9 text-left">
                                         55391
                                     </div>
@@ -729,7 +1088,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55392" class="row">
                                     <div class="col-md-9 text-left">
                                         55392
                                     </div>
@@ -741,7 +1100,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55401" class="row">
                                     <div class="col-md-9 text-left">
                                         55401
                                     </div>
@@ -753,7 +1112,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55402" class="row">
                                     <div class="col-md-9 text-left">
                                         55402
                                     </div>
@@ -765,7 +1124,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55403" class="row">
                                     <div class="col-md-9 text-left">
                                         55403
                                     </div>
@@ -777,7 +1136,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55404" class="row">
                                     <div class="col-md-9 text-left">
                                         55404
                                     </div>
@@ -789,7 +1148,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55405" class="row">
                                     <div class="col-md-9 text-left">
                                         55405
                                     </div>
@@ -801,7 +1160,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55406" class="row">
                                     <div class="col-md-9 text-left">
                                         55406
                                     </div>
@@ -813,7 +1172,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55407" class="row">
                                     <div class="col-md-9 text-left">
                                         55407
                                     </div>
@@ -825,7 +1184,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55408" class="row">
                                     <div class="col-md-9 text-left">
                                         55408
                                     </div>
@@ -837,7 +1196,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55409" class="row">
                                     <div class="col-md-9 text-left">
                                         55409
                                     </div>
@@ -849,7 +1208,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55410" class="row">
                                     <div class="col-md-9 text-left">
                                         55410
                                     </div>
@@ -861,7 +1220,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55411" class="row">
                                     <div class="col-md-9 text-left">
                                         55411
                                     </div>
@@ -873,7 +1232,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55412" class="row">
                                     <div class="col-md-9 text-left">
                                         55412
                                     </div>
@@ -885,7 +1244,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55413" class="row">
                                     <div class="col-md-9 text-left">
                                         55413
                                     </div>
@@ -897,7 +1256,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55414" class="row">
                                     <div class="col-md-9 text-left">
                                         55414
                                     </div>
@@ -909,7 +1268,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55415" class="row">
                                     <div class="col-md-9 text-left">
                                         55415
                                     </div>
@@ -921,7 +1280,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55416" class="row">
                                     <div class="col-md-9 text-left">
                                         55416
                                     </div>
@@ -933,7 +1292,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55417" class="row">
                                     <div class="col-md-9 text-left">
                                         55417
                                     </div>
@@ -945,7 +1304,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55418" class="row">
                                     <div class="col-md-9 text-left">
                                         55418
                                     </div>
@@ -957,7 +1316,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55419" class="row">
                                     <div class="col-md-9 text-left">
                                         55419
                                     </div>
@@ -969,7 +1328,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55420" class="row">
                                     <div class="col-md-9 text-left">
                                         55420
                                     </div>
@@ -981,7 +1340,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55422" class="row">
                                     <div class="col-md-9 text-left">
                                         55422
                                     </div>
@@ -993,7 +1352,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55423" class="row">
                                     <div class="col-md-9 text-left">
                                         55423
                                     </div>
@@ -1005,7 +1364,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55424" class="row">
                                     <div class="col-md-9 text-left">
                                         55424
                                     </div>
@@ -1017,7 +1376,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55425" class="row">
                                     <div class="col-md-9 text-left">
                                         55425
                                     </div>
@@ -1029,7 +1388,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55426" class="row">
                                     <div class="col-md-9 text-left">
                                         55426
                                     </div>
@@ -1041,7 +1400,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55427" class="row">
                                     <div class="col-md-9 text-left">
                                         55427
                                     </div>
@@ -1053,7 +1412,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55428" class="row">
                                     <div class="col-md-9 text-left">
                                         55428
                                     </div>
@@ -1065,7 +1424,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55429" class="row">
                                     <div class="col-md-9 text-left">
                                         55429
                                     </div>
@@ -1077,7 +1436,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55430" class="row">
                                     <div class="col-md-9 text-left">
                                         55430
                                     </div>
@@ -1089,7 +1448,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55431" class="row">
                                     <div class="col-md-9 text-left">
                                         55431
                                     </div>
@@ -1101,7 +1460,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55435" class="row">
                                     <div class="col-md-9 text-left">
                                         55435
                                     </div>
@@ -1113,7 +1472,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55436" class="row">
                                     <div class="col-md-9 text-left">
                                         55436
                                     </div>
@@ -1125,7 +1484,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55437" class="row">
                                     <div class="col-md-9 text-left">
                                         55437
                                     </div>
@@ -1137,7 +1496,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55438" class="row">
                                     <div class="col-md-9 text-left">
                                         55438
                                     </div>
@@ -1149,7 +1508,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55439" class="row">
                                     <div class="col-md-9 text-left">
                                         55439
                                     </div>
@@ -1161,7 +1520,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55441" class="row">
                                     <div class="col-md-9 text-left">
                                         55441
                                     </div>
@@ -1173,7 +1532,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55442" class="row">
                                     <div class="col-md-9 text-left">
                                         55442
                                     </div>
@@ -1185,7 +1544,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55443" class="row">
                                     <div class="col-md-9 text-left">
                                         55443
                                     </div>
@@ -1197,7 +1556,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55444" class="row">
                                     <div class="col-md-9 text-left">
                                         55444
                                     </div>
@@ -1209,7 +1568,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55445" class="row">
                                     <div class="col-md-9 text-left">
                                         55445
                                     </div>
@@ -1221,7 +1580,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55446" class="row">
                                     <div class="col-md-9 text-left">
                                         55446
                                     </div>
@@ -1233,7 +1592,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55447" class="row">
                                     <div class="col-md-9 text-left">
                                         55447
                                     </div>
@@ -1245,7 +1604,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55450" class="row">
                                     <div class="col-md-9 text-left">
                                         55450
                                     </div>
@@ -1257,7 +1616,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55454" class="row">
                                     <div class="col-md-9 text-left">
                                         55454
                                     </div>
@@ -1269,7 +1628,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="county55455" class="row">
                                     <div class="col-md-9 text-left">
                                         55455
                                     </div>
@@ -1281,7 +1640,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="countyOther" class="row">
                                     <div class="col-md-9 text-left">
                                         Other
                                     </div>
@@ -1293,7 +1652,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="countyUnknown" class="row">
                                     <div class="col-md-9 text-left">
                                         Unknown
                                     </div>
@@ -1305,7 +1664,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show="countyTotal" class="row">
                                     <div class="col-md-9 text-left">
                                         Total
                                     </div>
@@ -1472,21 +1831,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show="showNotTrackedRace" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Tracked
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                            <p class="col-md-6 text-center">
-                                                {{secondary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
                                 <div ng-show="showEthnicityTotal" class="row">
                                     <div class="col-md-9 text-left">
                                         Race/Ethnicity Total
@@ -1503,6 +1847,473 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div ng-show="immigrantStatus" uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
+                              <div class="row">
+                                  <div class="col-md-9 text-left">
+                                      <strong>Location</strong>
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              <strong>Number</strong>
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantAfrica" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Africa
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantAsia" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Asia
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantEurope" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Europe
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantSAmerica" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Mex/Cen/South America
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantMiddleEast" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Middle East
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantOther" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Other
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantUnknown" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Unknown/Pass
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="immigrantNot" class="row">
+                                  <div class="col-md-9 text-left">
+                                      No
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="disability" uib-accordion-group class="panel-default text-center" heading="Demographics: Disability">
+                              <div class="row">
+                                  <div class="col-md-9 text-left">
+                                      <strong>Status</strong>
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                    <p class="row">
+                                        <p class="col-md-6 text-center">
+                                            <strong>Number</strong>
+                                        </p>
+                                    </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityBlind" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Blind/Visually Impaired
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityPhysical" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Physical Disabilities
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityMental" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Mental Illness
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityDeaf" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Deaf/Hard of Hearing
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityIntellectual" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Intellectual of Developmental Disabilities
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityNone" class="row">
+                                  <div class="col-md-9 text-left">
+                                      None
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityOther" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Other
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="disabilityUnknown" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Unknown/Pass/Doesn't Know
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{newPeople}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="typeOfServiceNew" uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
+                              <div class="row">
+                                  <div class="col-md-9 text-left">
+                                      <strong>Service</strong>
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              <strong>Number</strong>
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="crisisCounseling" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Crisis Counseling
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{type}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="criminalJustice" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Legal Advocacy: Criminal Justice
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{type}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="civilLegal" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Legal Advocacy: Civil Legal
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{type}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="medicalAdvocacy" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Medical Advocacy
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{type}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div ng-show="otherAdvocacy" class="row">
+                                  <div class="col-md-9 text-left">
+                                      Other In-Person Advocacy Services
+                                  </div>
+                                  <div class="col-md-3 text-center">
+                                      <p class="row">
+                                          <p class="col-md-6 text-center">
+                                              {{type}}
+                                          </p>
+                                      </p>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <!-- Client Services Provided for NEW & REPEAT Clients -->
+
+                            <!-- <div ng-show="clientServicesNewAndRepeat" uib-accordion-group class="panel-default text-center" heading="Client Services Provided for NEW &amp; REPEAT Clients">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Service</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Primary</strong>
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                <strong>Secondary</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="firstContact" class="row">
+                                    <div class="col-md-9 text-left">
+                                        First Contact
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="followUp" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Follow-Up
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="referral" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Information or Referral
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="advocacyPersonal" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Personal Advocacy
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="evidentiaryExamSupport" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Support During Evidentiary Exam
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="criminalJusticeSupport" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Criminal Justice Support
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="legalAdvocacy" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Legal Advocacy
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="financialAssistance" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Financial Assistance
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="reparationsAssistance" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Reparations Filing Assistance
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="groupSupport" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Group Treatment/Support
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{primary}}
+                                            </p>
+                                            <p class="col-md-6 text-center">
+                                                {{secondary}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> -->
 
                             <div ng-show="genderIdentity" uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                                 <div class="row">
@@ -1577,18 +2388,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show="showGenderNotTracked" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Tracked
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
                                 <div ng-show="showGenderTotal" class="row">
                                     <div class="col-md-9 text-left">
                                         Total
@@ -1603,120 +2402,7 @@
                                 </div>
                             </div>
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Location</strong>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Africa
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Asia
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Europe
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Mex/Cen/South America
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Middle East
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Other
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Unknown/Pass
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        No
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
+                            <div ng-show="age" uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Age Range</strong>
@@ -1730,92 +2416,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        0 - 12
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        13 - 17
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        18 - 24
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        25 - 59
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        60 and Older
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Reported
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Tracked
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Total
+                                    <div class="col-md-9 text-left" ng-model="playground.age">
+                                        <span ng-model="begin">{{begin}}</span> - <span ng-model="end">{{end}}</span>
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -1827,122 +2429,7 @@
                                 </div>
                             </div>
 
-                            <!-- Demographics: Disability -->
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Disability">
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Status</strong>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Blind/Visually Impaired
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Physical Disabilities
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Mental Illness
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Deaf/Hard of Hearing
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Intellectual of Developmental Disabilities
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        None
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Other
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        Unknown/Pass/Doesn't Know
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization">
+                            <div ng-show="victimizationTypes" uib-accordion-group class="panel-default text-center" heading="Types of Victimization">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Victimization Types</strong>
@@ -2209,23 +2696,22 @@
                                 </div>
                             </div>
 
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Support on Phone Call">
+                            <div ng-show="victimizationTypesSpecial" uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
-                                        <strong>Supported</strong>
+                                        <strong>Victimization Types</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                <strong>Response</strong>
+                                                <strong>Number</strong>
                                             </p>
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show = "victimSpecialHomeless" class="row">
                                     <div class="col-md-9 text-left">
-                                        Yes
+                                        Homeless
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2235,9 +2721,45 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div ng-show = "victimSpecialImmigrants" class="row">
                                     <div class="col-md-9 text-left">
-                                        No
+                                        Immigrant/Refugees/Asylum Seekers
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "victimSpecialLGBTQ" class="row">
+                                    <div class="col-md-9 text-left">
+                                        LGBTQ
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "victimSpecialVeterans" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Veterans
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "victimSpecialLimitedEnglish" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Victims with Limited English Proficiency
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
@@ -2249,15 +2771,201 @@
                                 </div>
                             </div>
 
-
-
-
-                            <h3>Direct Services</h3>
-
-
-
-
-                            <div uib-accordion-group class="panel-default text-center" heading="Type of Service">
+                            <div ng-show="inPersonCrisis || inPersonLegalCriminal || inPersonLegalCivil || inPersonMedical || inPersonOther" uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Services</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonCrisis" class="row">
+                                    <div class="col-md-9 text-left">
+                                        One-to-One Counseling
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonCrisis" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Support Group
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Law Enforcement Interview
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Prosecution-Related Advocacy
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Court Advocacy (Criminal Case)
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCivil" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Assistance Obtaining OFP or HRO
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCivil" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Immigration-Related Support
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonLegalCivil" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Intervention with Landlord, Academic Institution or Creditor
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonMedical" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Forensic Exam Support
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonMedical" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Accompaniment to Medical Appointment
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonMedical" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Accompaniment to Dental Appointment
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonMedical" class="row">
+                                    <div class="col-md-9 text-left">
+                                      Information and Referral
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonOther" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Safe at Home Registration
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonOther" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Emergency Financial Assistance
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show = "inPersonOther" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Reparations Claims Assistance
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div uib-accordion-group class="panel-default text-center" heading="Type of Service">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Service</strong>
@@ -2404,7 +3112,7 @@
                                         {{newPeople}}
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </uib-accordion>
                     </div>
                 </div>
