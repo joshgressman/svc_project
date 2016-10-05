@@ -1,5 +1,11 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+$scope.formId = 12;
+
+$scope.formIdCount = function () {
+  $scope.formId++;
+}
+
   $scope.myFunction = function() {
       window.print();
   }
@@ -90,7 +96,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
       console.log(count);
       //formats input date into workable format;
       data.date_entered = new Date();
-     
+
       console.log('sending to server...', data);
       $http.post('/dataRoute/victim', data).then(function(response) {
         console.log('success');
