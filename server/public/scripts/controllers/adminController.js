@@ -700,7 +700,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }];
 
     $scope.getStuffCounty = function() {
-        console.log('getting stuff');
         countyObjectArray.forEach(function(query, index) {
             var data = {};
 
@@ -714,7 +713,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             data.end = convertedEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
-            console.log('clientside data to query:', data);
 
             if (query.table == "counseling_individual_totals") {
                 individualCounselingTotal.forEach(function(table) {
@@ -736,9 +734,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     url: '/reportRoute/county/' + query.table,
                     data: data
                 }).then(function(response) {
-                    console.log("Get Success");
+                    // console.log("Get Success");
                     // console.log(response);
-                    // console.log(query.table);
                     var objectParam = query.table;
                     $scope.countyInfo.objectParam = response.data[0];
                     // console.log(response.data[0]);
@@ -750,7 +747,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     };
 
     $scope.getStuffFederal = function() {
-        console.log('getting stuff');
         federalObjectArray.forEach(function(query, index) {
             var data = {};
 
@@ -764,7 +760,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             data.end = convertedEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
-            console.log('clientside data to query:', data);
 
             if (query.table == "exception_disability") {
                 disabilityStatusTotal.forEach(function(table) {
@@ -774,7 +769,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         data: data
                     }).then(function(response) {
                         // console.log("Get Success");
-                        // console.log(response);
                         $scope.federalInfo.disabilityTotal += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
@@ -788,7 +782,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         data: data
                     }).then(function(response) {
                         // console.log("Get Success");
-                        // console.log(response);
                         $scope.federalInfo.victimCompensation += parseInt(response.data[0]);
                     }, function() {
                         console.log("Get Error");
@@ -856,18 +849,13 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     url: '/reportRoute/federal/' + query.table,
                     data: data
                 }).then(function(response) {
-                    console.log("Get Success");
-                    console.log('response:', response);
-                    console.log('query table:', query.table);
+                    // console.log("Get Success");
                     var objectParam = query.table;
                     $scope.federalInfo[objectParam] = response.data[0];
-                    console.log(response.data[0]);
-                    console.log($scope.federalInfo);
                 }, function() {
                     console.log("Get Error");
                 });
             }
-            console.log($scope.federalInfo);
         });
     };
 
@@ -876,112 +864,100 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //Where the Playground dropdowns code starts
     // var counter = 0;
+    $scope.newSearch = true;
     $scope.playground = {};
     $scope.selectedCategories;
     $scope.checkSelection = function() {
-        console.log("$scope.selectedCategories", $scope.selectedCategories);
-        // var test = ["something", "something Else"];
-        // $scope.selectedCategories[test[counter]] = "penguin";
-        // counter++;
         makeFalse();
         $scope.selectedCategories.forEach(function(category) {
             switch (category) {
                 case "individualsServiced":
                     $scope.individualsServiced = true;
-                    console.log("$scope.individualsServiced", $scope.individualsServiced);
                     break;
                 case "ethnicity":
                     $scope.ethnicity = true;
-                    console.log("$scope.ethnicity", $scope.ethnicity);
                     break;
                 case "genderIdentity":
                     $scope.genderIdentity = true;
-                    console.log("$scope.genderIdentity", $scope.genderIdentity);
                     break;
                 case "age":
                     $scope.age = true;
-                    console.log("$scope.age", $scope.age);
                     break;
                 case "victimizationTypes":
                     $scope.victimizationTypes = true;
-                    console.log("$scope.victimizationTypes", $scope.victimizationTypes);
                     break;
                 case "victimizationTypesSpecial":
                     $scope.victimizationTypesSpecial = true;
-                    console.log("$scope.victimizationTypesSpecial", $scope.victimizationTypesSpecial);
                     break;
                 case "victimCompensation":
                     $scope.victimCompensation = true;
-                    console.log("$scope.victimCompensation", $scope.victimCompensation);
                     break;
                 case "servicesReceived":
                     $scope.servicesReceived = true;
-                    console.log("$scope.servicesReceived", $scope.servicesReceived);
                     break;
                 case "infoAndReferral":
                     $scope.infoAndReferral = true;
-                    console.log("$scope.infoAndReferral", $scope.infoAndReferral);
                     break;
                 case "personalAdvocacy":
                     $scope.personalAdvocacy = true;
-                    console.log("$scope.personalAdvocacy", $scope.personalAdvocacy);
                     break;
                 case "emotionalSupport":
                     $scope.emotionalSupport = true;
-                    console.log("$scope.emotionalSupport", $scope.emotionalSupport);
                     break;
                 case 'justiceSystemAssistance':
                     $scope.justiceSystemAssistance = true;
-                    console.log("$scope.justiceSystemAssistance", $scope.justiceSystemAssistance);
                     break;
                 case 'showCounties':
                     $scope.showCounties = true;
-                    console.log("$scope.showCounties", $scope.showCounties);
                     break;
                 case 'immigrantStatus':
                     $scope.immigrantStatus = true;
-                    console.log("$scope.immigrantStatus", $scope.immigrantStatus);
                     break;
                 case 'typeOfServiceNew':
                     $scope.typeOfServiceNew = true;
-                    console.log("$scope.typeOfServiceNew", $scope.typeOfServiceNew);
                     break;
                 case 'clientServicesNewAndRepeat':
                     $scope.clientServicesNewAndRepeat = true;
-                    console.log("$scope.clientServicesNewAndRepeat", $scope.clientServicesNewAndRepeat);
                     break;
                 case 'disability':
                     $scope.disability = true;
-                    console.log("$scope.disability", $scope.disability);
                     break;
                 case 'inPersonCrisis':
                     $scope.inPersonCrisis = true;
-                    console.log("$scope.inPersonCrisis", $scope.inPersonCrisis);
                     break;
                 case 'inPersonLegalCriminal':
                     $scope.inPersonLegalCriminal = true;
-                    console.log("$scope.inPersonLegalCriminal", $scope.inPersonLegalCriminal);
                     break;
                 case 'inPersonLegalCivil':
                     $scope.inPersonLegalCivil = true;
-                    console.log("$scope.inPersonLegalCivil", $scope.inPersonLegalCivil);
                     break;
                 case 'inPersonMedical':
                     $scope.inPersonMedical = true;
-                    console.log("$scope.inPersonMedical", $scope.inPersonMedical);
                     break;
                 case 'inPersonOther':
                     $scope.inPersonOther = true;
-                    console.log("$scope.inPersonOther", $scope.inPersonOther);
                     break;
                 case 'typeOfVictim':
                     $scope.typeOfVictim = true;
-                    console.log("$scope.typeOfVictim", $scope.typeOfVictim);
+                    break;
+                case 'transgender':
+                    $scope.transgender = true;
+                    break;
+                case 'phoneServicesProvided':
+                    $scope.phoneServicesProvided = true;
+                    break;
+                case 'supportedOnCall':
+                    $scope.supportedOnCall = true;
+                    break;
+                case 'contactType':
+                    $scope.contactType = true;
+                    break;
+                case 'nonVictimAdvocacy':
+                    $scope.nonVictimAdvocacy = true;
                     break;
             }
         });
     }
-
 
     function makeFalse() {
         $scope.individualsServiced = false;
@@ -1007,14 +983,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.inPersonLegalCivil = false;
         $scope.inPersonMedical = false;
         $scope.inPersonOther = false;
+        $scope.transgender = false;
+        $scope.typeOfVictim = false;
+        $scope.phoneServicesProvided = false;
+        $scope.supportedOnCall = false;
+        $scope.contactType = false;
+        $scope.nonVictimAdvocacy = false;
     };
     $scope.submitting = function() {
-        console.log("$scope.playground", $scope.playground);
         $scope.showFields = true;
+        $scope.newSearch = false;
         var parameterArray = Object.getOwnPropertyNames($scope.playground);
-        console.log(parameterArray);
         parameterArray.forEach(function(parameter) {
-            console.log("forEach running!", parameter);
             $scope[parameter] = true;
             playgroundObjectArray.forEach(function(object) {
                 if (object.bound !== parameter) {
@@ -1024,17 +1004,21 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     // data.start = convertedStart;
                     // data.end = convertedEnd;
                     data.text = object.text;
-                    data.tableInfo = object.tableInfo;
+                    data.tableInfo = object.infoTable;
                     data.textSpecial = object.textSpecial;
+                    data.table = object.table;
+                    data.startDate = $scope.playground.startDate;
+                    data.endDate = $scope.playground.endDate;
                     if (object.bound == 'age') {
                         data.start = $scope.playground.age.start;
                         data.end = $scope.playground.age.end;
                         $scope.begin = $scope.playground.age.start;
                         $scope.end = $scope.playground.age.end;
                     }
+                    // console.log(data);
                     $http({
                         method: "POST",
-                        url: '/reportRoute/playground' + object.table,
+                        url: '/reportRoute/playground/' + object.table,
                         data: data
                     }).then(function(response) {
                         console.log("Get Success");
@@ -1052,8 +1036,17 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         });
 
     }
-
-    //End code for Playground dropdowns
+    $scope.resetSearch = function() {
+            $scope.showFields = false;
+            $scope.newSearch = true;
+            makeFalse();
+            var objectParam = Object.getOwnPropertyNames($scope.playground);
+            objectParam.forEach(function(param) {
+                $scope[param] = false;
+            });
+            $scope.playground = {};
+        }
+        //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1
         bound: "showIndividual",
@@ -1791,7 +1784,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         bound: "informationReferral",
-        table: "information_referral", //Check for Correct-ness
+        table: "information_referral",
         infoTable: "victim",
         text: "true"
     }, {
@@ -1801,118 +1794,88 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         bound: "emergencyFinancial",
-        table: "emergency_financial", //Check for Correct-ness
+        table: "emergency_financial",
         infoTable: "victim",
         text: "true"
     }, {
         bound: "reparationsClaims",
-        table: "reparations_claims", //Check for Correct-ness
+        table: "reparations_claims",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "yesTrans",
+        table: "victim_trans",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "noTrans",
+        table: "victim_trans",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "unknownTrans",
+        table: "victim_trans",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneCrisis",
+        table: "crisis_counseling",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneInformation",
+        table: "information_referral",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneCriminalJustice",
+        table: "information_criminal_justice",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneJusticeRelated",
+        table: "other_emergency_justice",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneEmergencyFinancial",
+        table: "emergency_financial",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "phoneEmergencyClaims",
+        table: "reparations_claims",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "supported",
+        table: "supported_on_call",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
+        bound: "notSupported",
+        table: "supported_on_call",
         infoTable: "victim",
+        text: "false"
+    }, {
+        bound: "inPersonContact",
+        table: "contact_type",
+        infoTable: "victim",
+        text: "In Person"
+    }, {
+        bound: "phoneContact",
+        table: "contact_type",
+        infoTable: "victim",
+        text: "Phone"
+    }, {
+        bound: "nonVictimMedical",
+        table: "", //Columns being added for this. Check Later
+        infoTable: "nonvictim",
         text: "true"
     }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
+        bound: "nonVictimTotal",
+        table: "", //Columns being added for this. Check Later
+        infoTable: "nonvictim",
         text: "true"
     }];
     ///**********END OF CONTROLLER***************************************///////
