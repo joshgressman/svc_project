@@ -11,7 +11,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     eTime: null,
     location: null,
     county: null,
-    county_other_specify: null,
     clientNumber: null,
     zipCode: null,
     victimType: null,
@@ -33,6 +32,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     crisis_counseling: null,
     infoAndReferral: null,
     info_crimjustice: null,
+    other_emergency_justice: null,
     safeAtHome: null,
     emergencyFinancialAsst: null,
     reparationsClaimAsst: null,
@@ -78,16 +78,19 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
     veteran: null,
     supported: null,
     advocacyType: null,
-    multiple: null
+    multiple: null,
+    formId: null,
+    other_ethnicBackground: null,
+    other_immigrantStatus: null
   }
 
-  var victimizationCount = [];
+  // var victimizationCount = [];
 
 
   $scope.submitVictimForm = function() {
       var data = $scope.form;
-      var count = victimizationCount.length;
-      console.log(count);
+      // var count = victimizationCount.length;
+      // console.log(count);
       //formats input date into workable format;
       data.date_entered = new Date();
      

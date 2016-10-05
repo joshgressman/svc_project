@@ -38,11 +38,15 @@ $scope.nonVictimInfo = {};
         dispatched: null,
         responded: null,
         reason: null,
+        formId: null,
       };
 //POST non-victim infromation
       $scope.submitNonVictimForm = function () {
         var data = $scope.form;
         console.log(data);
+
+        data.date_entered = new Date();
+
         console.log('sending to server non vict data', data);
         $http.post('/dataRoute/nonvictim', data).then(function(response){
           console.log('success');
