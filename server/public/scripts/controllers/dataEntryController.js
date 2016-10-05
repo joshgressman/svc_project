@@ -1,6 +1,6 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-$scope.formId = 12;
+// $scope.formId = 12;
 
 $scope.formIdCount = function () {
   $scope.formId++;
@@ -107,6 +107,25 @@ $scope.formIdCount = function () {
           $scope.message = "Please try again."
         });
       }
+
+      $scope.table = {};
+
+      $scope.searchUpdate = function (){
+        var data = {};
+        var id = $scope.formId;
+        var info = Object.getOwnPropertyNames($scope.table);
+        $scope[info[0]]= true;
+        data.table = info[0];
+        data.number = $scope.formId;
+        $http({
+            method: "POST",
+            url: '/reportRoute/county/edit',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log(response);
+      });
+    }
 
     ///**********END OF CONTROLLER***************************************///////
 }]);
