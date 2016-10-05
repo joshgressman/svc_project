@@ -993,7 +993,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     $scope.submitting = function() {
         $scope.showFields = true;
         $scope.newSearch = false;
+        console.log(parameterArray);
+        console.log($scope.playground);
         var parameterArray = Object.getOwnPropertyNames($scope.playground);
+        console.log(parameterArray);
         parameterArray.forEach(function(parameter) {
             $scope[parameter] = true;
             playgroundObjectArray.forEach(function(object) {
@@ -1015,7 +1018,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         $scope.begin = $scope.playground.age.start;
                         $scope.end = $scope.playground.age.end;
                     }
-                    // console.log(data);
+                    console.log(data);
                     $http({
                         method: "POST",
                         url: '/reportRoute/playground/' + object.table,
@@ -1105,11 +1108,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "unknown"
-    }, {
-        bound: "showNotTrackedRace",
-        table: "victim_ethnicity",
-        infoTable: "victim",
-        text: "Not Tracked"
     }, {
         bound: "showEthnicityTotal",
         table: "victim_ethnicity_total",
@@ -1694,11 +1692,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         bound: "showGenderNotReported",
-        table: "victim_gender",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "showGenderNotTracked",
         table: "victim_gender",
         infoTable: "victim",
         text: "true"
