@@ -46,6 +46,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/dataplayground.html',
             controller: "adminController"
         })
+        .when('/federalPrint', {
+            templateUrl: '/views/federalRep.html',
+            controller: "adminController"
+        })
         .otherwise({
             redirectTo: '/home'
         })
