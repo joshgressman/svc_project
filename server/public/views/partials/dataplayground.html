@@ -10,10 +10,6 @@
                 </ul>
             </div>
 
-            <!-- I am unsure whether the above buttons are included in this partial. -->
-            <!-- Below is where the actual code start -->
-            <!-- ng-app="myApp" -->
-
             <div class="col-md-9" id="dataview">
                 <h3>Data Playground</h3>
                 <div class="dateRange">
@@ -25,12 +21,6 @@
                 </div>
 
                 <!-- start dynamic dropdowns -->
-                <!-- <label for="pickAThing">Select a Category</label>
-                <select ng-model="selected" ng-change="checkSelection()">
-                  <option value="undefined">-</option>
-                  <option value="violenceTypeSelected">Type of Sexual Violence</option>
-                  <option value="disabilityStatusSelected">Disability Status</option>
-                </select> -->
                 <div>
                     <label for="pickAThing">Select a Category</label>
                     <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
@@ -52,10 +42,18 @@
                     <option value="inPersonMedical">In Person Medical Advocacy</option>
                     <option value="inPersonOther">Other In Person Advocacy</option>
 
+                    <option value="transgender">Transgender</option>
+                    <option value="phoneServicesProvided">Phone Services Provided</option>
+                    <option value="supportedOnCall">Supported on Call</option>
+                    <option value="Location">Location</option>
+
+                    <option value="victimReferral">Referral Victim?</option>
+                    <option value="howDidYouHear">How Did You Hear About Us?</option>
+
+                    <option value="advocateName">Advocate Name?</option>
+
                   </select>
                 </div>
-
-
                 <div ng-show="individualsServiced">
                     <h3>individualsServiced</h3>
                     <div>
@@ -2771,7 +2769,7 @@
                                 </div>
                             </div>
 
-                            <div ng-show="inPersonCrisis || inPersonLegalCriminal || inPersonLegalCivil || inPersonMedical || inPersonOther" uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special">
+                            <div ng-show="inPersonCrisis || inPersonLegalCriminal || inPersonLegalCivil || inPersonMedical || inPersonOther" uib-accordion-group class="panel-default text-center" heading="In-Person Services Provided">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Services</strong>
@@ -2784,7 +2782,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonCrisis" class="row">
+                                <div ng-show = "individualCounseling" class="row">
                                     <div class="col-md-9 text-left">
                                         One-to-One Counseling
                                     </div>
@@ -2796,7 +2794,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonCrisis" class="row">
+                                <div ng-show = "groupCounseling" class="row">
                                     <div class="col-md-9 text-left">
                                         Support Group
                                     </div>
@@ -2808,7 +2806,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                <div ng-show = "lawEnforcement" class="row">
                                     <div class="col-md-9 text-left">
                                         Law Enforcement Interview
                                     </div>
@@ -2820,7 +2818,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                <div ng-show = "prosecutionAdvocacy" class="row">
                                     <div class="col-md-9 text-left">
                                         Prosecution-Related Advocacy
                                     </div>
@@ -2832,7 +2830,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCriminal" class="row">
+                                <div ng-show = "courtAdvocacy" class="row">
                                     <div class="col-md-9 text-left">
                                         Court Advocacy (Criminal Case)
                                     </div>
@@ -2844,7 +2842,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCivil" class="row">
+                                <div ng-show = "obtainingAssistance" class="row">
                                     <div class="col-md-9 text-left">
                                         Assistance Obtaining OFP or HRO
                                     </div>
@@ -2856,7 +2854,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCivil" class="row">
+                                <div ng-show = "immigrationSupport" class="row">
                                     <div class="col-md-9 text-left">
                                         Immigration-Related Support
                                     </div>
@@ -2868,7 +2866,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonLegalCivil" class="row">
+                                <div ng-show = "intervention" class="row">
                                     <div class="col-md-9 text-left">
                                         Intervention with Landlord, Academic Institution or Creditor
                                     </div>
@@ -2880,7 +2878,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonMedical" class="row">
+                                <div ng-show = "forensicExam" class="row">
                                     <div class="col-md-9 text-left">
                                         Forensic Exam Support
                                     </div>
@@ -2892,7 +2890,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonMedical" class="row">
+                                <div ng-show = "accompanimentMedical" class="row">
                                     <div class="col-md-9 text-left">
                                         Accompaniment to Medical Appointment
                                     </div>
@@ -2904,7 +2902,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonMedical" class="row">
+                                <div ng-show = "accompanimentDental" class="row">
                                     <div class="col-md-9 text-left">
                                         Accompaniment to Dental Appointment
                                     </div>
@@ -2916,7 +2914,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonMedical" class="row">
+                                <div ng-show = "informationReferral" class="row">
                                     <div class="col-md-9 text-left">
                                       Information and Referral
                                     </div>
@@ -2928,7 +2926,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonOther" class="row">
+                                <div ng-show = "safeAtHome" class="row">
                                     <div class="col-md-9 text-left">
                                         Safe at Home Registration
                                     </div>
@@ -2940,7 +2938,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonOther" class="row">
+                                <div ng-show = "emergencyFinancial" class="row">
                                     <div class="col-md-9 text-left">
                                         Emergency Financial Assistance
                                     </div>
@@ -2952,7 +2950,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div ng-show = "inPersonOther" class="row">
+                                <div ng-show = "reparationsClaims" class="row">
                                     <div class="col-md-9 text-left">
                                         Reparations Claims Assistance
                                     </div>
@@ -2965,6 +2963,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- <div uib-accordion-group class="panel-default text-center" heading="Type of Service">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
@@ -3113,6 +3112,7 @@
                                     </div>
                                 </div>
                             </div> -->
+
                         </uib-accordion>
                     </div>
                 </div>

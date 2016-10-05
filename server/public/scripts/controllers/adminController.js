@@ -166,9 +166,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "exception_disability",
         text: "true"
     }, {
-      table: "disability_deaf",
-      text: "true"
-  }, {
+        table: "disability_deaf",
+        text: "true"
+    }, {
         table: "victim_sexual_orientation_total",
         textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
     }, {
@@ -954,6 +954,30 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     $scope.disability = true;
                     console.log("$scope.disability", $scope.disability);
                     break;
+                case 'inPersonCrisis':
+                    $scope.inPersonCrisis = true;
+                    console.log("$scope.inPersonCrisis", $scope.inPersonCrisis);
+                    break;
+                case 'inPersonLegalCriminal':
+                    $scope.inPersonLegalCriminal = true;
+                    console.log("$scope.inPersonLegalCriminal", $scope.inPersonLegalCriminal);
+                    break;
+                case 'inPersonLegalCivil':
+                    $scope.inPersonLegalCivil = true;
+                    console.log("$scope.inPersonLegalCivil", $scope.inPersonLegalCivil);
+                    break;
+                case 'inPersonMedical':
+                    $scope.inPersonMedical = true;
+                    console.log("$scope.inPersonMedical", $scope.inPersonMedical);
+                    break;
+                case 'inPersonOther':
+                    $scope.inPersonOther = true;
+                    console.log("$scope.inPersonOther", $scope.inPersonOther);
+                    break;
+                case 'typeOfVictim':
+                    $scope.typeOfVictim = true;
+                    console.log("$scope.typeOfVictim", $scope.typeOfVictim);
+                    break;
             }
         });
     }
@@ -978,6 +1002,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.typeOfServiceNew = false;
         $scope.clientServicesNewAndRepeat = false;
         $scope.disability = false;
+        $scope.inPersonCrisis = false;
+        $scope.inPersonLegalCriminal = false;
+        $scope.inPersonLegalCivil = false;
+        $scope.inPersonMedical = false;
+        $scope.inPersonOther = false;
     };
     $scope.submitting = function() {
         console.log("$scope.playground", $scope.playground);
@@ -1706,32 +1735,117 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "evidentiaryExamSupport",
+        bound: "individualCounseling",
+        table: "crisis_counseling_individual",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "groupCounseling",
+        table: "crisis_counseling_group",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "lawEnforcement",
+        table: "legal_law_enforcement_interview",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "prosecutionAdvocacy",
+        table: "legal_prosecution_related",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "courtAdvocacy",
+        table: "legal_court_advocacy",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "obtainingAssistance",
+        table: "legal_oft_hro",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "immigrationSupport",
+        table: "legal_immigration",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "intervention",
+        table: "legal_intervention",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "forensicExam",
+        table: "medical_exam_support",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "accompanimentMedical",
+        table: "medical_accompaniment_medical",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "accompanimentDental",
+        table: "medical_accompaniment_dental",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "informationReferral",
+        table: "information_referral", //Check for Correct-ness
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "safeAtHome",
+        table: "safe_at_home",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "emergencyFinancial",
+        table: "emergency_financial", //Check for Correct-ness
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "reparationsClaims",
+        table: "reparations_claims", //Check for Correct-ness
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "criminalJusticeSupport",
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "legalAdvocacy",
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "financialAssistance",
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "reparationsAssistance",
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
     }, {
-        bound: "groupSupport",
+        bound: "violenceUnknown",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceUnknown",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
@@ -1800,37 +1914,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_zipcode",
         infoTable: "victim",
         text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "violenceUnknown",
-        table: "victim_zipcode",
-        infoTable: "victim",
-        text: "true"
-    } ];
-
-    adultPrimary
-    adultSecondary
-    youthPrimary
-    youthSecondary
-
+    }];
     ///**********END OF CONTROLLER***************************************///////
 }]);
