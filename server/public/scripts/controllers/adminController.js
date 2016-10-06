@@ -1040,15 +1040,51 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     }
     $scope.resetSearch = function() {
-            $scope.showFields = false;
-            $scope.newSearch = true;
-            makeFalse();
-            var objectParam = Object.getOwnPropertyNames($scope.playground);
-            objectParam.forEach(function(param) {
-                $scope[param] = false;
+        $scope.showFields = false;
+        $scope.newSearch = true;
+        makeFalse();
+        var objectParam = Object.getOwnPropertyNames($scope.playground);
+        objectParam.forEach(function(param) {
+            $scope[param] = false;
+        });
+        $scope.playground = {};
+    }
+    $scope.blackHole = function() {
+            $scope.showFields = true;
+            $scope.newSearch = false;
+            $scope.showTotalVictim = true;
+            var data = {};
+            data.start = $scope.playground.startDate;
+            data.end = $scope.playground.endDate;
+            $http({
+                method: "POST",
+                url: '/reportRoute/playground/victim',
+                data: data
+            }).then(function(response) {
+                console.log("Get Success");
+                console.log('response:', response);
+                var victimParameters = Object.getOwnPropertyNames(response.data[0]);
+                console.log(victimParameters);
+                getNonVictim(data);
+            }, function() {
+                console.log("Get Error");
             });
-            $scope.playground = {};
         }
+  function getNonVictim(data){
+    $scope.showTotalNonVictim = true;
+    $http({
+        method: "POST",
+        url: '/reportRoute/playground/nonVictim',
+        data: data
+    }).then(function(response) {
+        console.log("Get Success");
+        console.log('response:', response);
+        var nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
+        console.log(nonVictimParameters);
+    }, function() {
+        console.log("Get Error");
+    });
+  }
         //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1

@@ -20,6 +20,7 @@
                     <input class="endDate" type="date" ng-model="playground.endDate" />
                 </div>
 
+
                 <!-- start dynamic dropdowns -->
                 <div ng-show="newSearch">
                     <div>
@@ -651,6 +652,7 @@
                     </div>
                     </div>
                     <button ng-click="submitting()">Submit Request</button>
+                    <button ng-click="blackHole()">Get All</button>
                 </div>
                 <div ng-hide="newSearch">
                     <button ng-click="resetSearch()">Do Another Search</button>
@@ -661,7 +663,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                  <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                                  <a href class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
                                     <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
                                       {{heading}}
                                     </span>
@@ -3121,6 +3123,13 @@
                                 </div>
                             </div>
                         </uib-accordion>
+                        <div ng-show="showTotalVictim">
+                          <h1>Victim</h1>
+                          
+                        </div>
+                        <div ng-show="showTotalNonVictim">
+                          <h1>NonVictim</h1>
+                        </div>
                     </div>
                 </div>
             </div>

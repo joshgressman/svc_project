@@ -4,10 +4,10 @@ var pg = require('pg');
 var connectionString = '';
 
 if (process.env.DATABASE_URL != undefined) {
-  connectionString = process.env.DATABASE_URL + '?ssl=true';
+    connectionString = process.env.DATABASE_URL + '?ssl=true';
 } else {
-  // running locally, use our local database instead (local db create for development process);
-  connectionString = 'postgres://localhost:5432/svc';
+    // running locally, use our local database instead (local db create for development process);
+    connectionString = 'postgres://localhost:5432/svc';
 }
 
 
@@ -26,7 +26,7 @@ router.post('/federal/:id', function(req, res) {
     var textSpecial = req.body.textSpecial;
     // console.log(text);
     var table = req.params.id
-    // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
+        // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -42,22 +42,22 @@ router.post('/federal/:id', function(req, res) {
             checkFirstTimer = " (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
             query = stringQueryWhere + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('new:', query);
-        } else if (table ==  "victim_age") {
+        } else if (table == "victim_age") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victim age:', query);
-        } else if (table ==  "victim_sexual_orientation_total") {
+        } else if (table == "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-        } else if (table ==  "victim_victimization_count") {
+        } else if (table == "victim_victimization_count") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victimization count:', query);
-        } else if (table ==  "victim_ethnicity_total") {
+        } else if (table == "victim_ethnicity_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity:', query);
-        } else if (table ==  "victim_gender_total") {
+        } else if (table == "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
-        } else if (table ==  "victim_immigrant_total") {
+        } else if (table == "victim_immigrant_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);
         } else if (text == "hotline_crisis") {
@@ -65,7 +65,7 @@ router.post('/federal/:id', function(req, res) {
             greaterThanOrEqual = " contact_date >= "
             query = stringQueryWhere + "'" + text + "'" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('hotline:', query);
-        } else if (text == "true"){
+        } else if (text == "true") {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log(query);
         } else {
@@ -107,7 +107,7 @@ router.post('/county/:id', function(req, res) {
     var textSpecial = req.body.textSpecial;
     // console.log(text);
     var table = req.params.id
-    // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
+        // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -123,26 +123,26 @@ router.post('/county/:id', function(req, res) {
             checkFirstTimer = " (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
             query = stringQueryWhere + county + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('new:', query);
-        } else if (table ==  "victim_zipcode") {
+        } else if (table == "victim_zipcode") {
             query = stringQueryWhere + county + table + equals + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victim age:', query);
-        } else if (table ==  "victim_ethnicity_total") {
+        } else if (table == "victim_ethnicity_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity:', query);
-        } else if (table ==  "victim_age") {
+        } else if (table == "victim_age") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victim age:', query);
-        } else if (table ==  "victim_sexual_orientation_total") {
+        } else if (table == "victim_sexual_orientation_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-        } else if (table ==  "victim_victimization_count") {
+        } else if (table == "victim_victimization_count") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victimization count:', query);
 
-        } else if (table ==  "victim_gender_total") {
+        } else if (table == "victim_gender_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
-        } else if (table ==  "victim_immigrant_total") {
+        } else if (table == "victim_immigrant_total") {
             query = stringQueryWhere + county + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);
         } else if (text == "hotline_crisis") {
@@ -150,7 +150,7 @@ router.post('/county/:id', function(req, res) {
             greaterThanOrEqual = " contact_date >= "
             query = stringQueryWhere + "'" + text + "'" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('hotline:', query);
-        } else if (text == "true"){
+        } else if (text == "true") {
             query = stringQueryWhere + county + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log(query);
         } else {
@@ -172,27 +172,77 @@ router.post('/county/:id', function(req, res) {
             });
     });
 });
-
+// /playground/victim
 //GET for data playground report;
-router.get('/playground', function (req, res) {
-  pg.connect(connectionString, function (err, client, done) {
-    if (err) {
-      console.log('ERROR, connection to PG', err);
-      res.sendStatus(500);
-    }
 
-    client.query('SELECT * FROM victim ORDER BY contact_date ASC', function (err, result) {
-      done();
+router.post('/playground/nonVictim', function(req, res) {
+    var start = req.body.start;
+    var end = req.body.end;
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
+            console.log('ERROR, connection to PG', err);
+            res.sendStatus(500);
+        }
 
-      if (err) {
-        console.log('GET ERROR, playground:', err);
-        res.sendStatus(500);
-      }
+        client.query("SELECT * from victim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
+            function(err, result) {
+                done();
 
-      console.log('Playground Report:', result.rows);
-      res.send(result.rows);
+                if (err) {
+                    console.log('GET ERROR, playground:', err);
+                    res.sendStatus(500);
+                }
+
+                console.log('Playground Report:', result.rows);
+                res.send(result.rows);
+            });
     });
-  });
+});
+
+router.post('/playground/victim', function(req, res) {
+    var start = req.body.start;
+    var end = req.body.end;
+    console.log(start);
+    console.log(end);
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
+            console.log('ERROR, connection to PG', err);
+            res.sendStatus(500);
+        }
+        client.query("SELECT * from victim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
+            function(err, result) {
+                done();
+
+                if (err) {
+                    console.log('GET ERROR, playground:', err);
+                    res.sendStatus(500);
+                }
+
+                console.log('Playground Report:', result.rows);
+                res.send(result.rows);
+            });
+    });
+});
+
+router.get('/playground', function(req, res) {
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
+            console.log('ERROR, connection to PG', err);
+            res.sendStatus(500);
+        }
+
+        client.query('SELECT * FROM victim ORDER BY contact_date ASC', function(err, result) {
+            done();
+
+            if (err) {
+                console.log('GET ERROR, playground:', err);
+                res.sendStatus(500);
+            }
+
+            console.log('Playground Report:', result.rows);
+            res.send(result.rows);
+        });
+    });
 });
 
 module.exports = router;
