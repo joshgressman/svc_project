@@ -20,10 +20,7 @@
               <label for="advocayType">Type of Advocacy:</label>
               <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
           </div>
-          <div class="formId">
-              <label for="formId">Form ID:</label>{{formId}}
-              <!-- <input class="" type="text" ng-model="form.formId"  placeholder={{}} readonly/> -->
-          </div>
+        
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
                 <input class="counselorInput" type="text" ng-model="form.counselor" />
@@ -341,7 +338,7 @@
                 <option ng-model="form.ethnicBackground" value="unknown">Unknown/pass</option>
                 <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
               </select>
-                <input type="text" ng-model="form.ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <input type="text" ng-model="form.ethnicBackground" name="otherEthnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 <label for="immigrantStatus">Immigrant Status:</label>
                 <select>
                 <option  value="">Select One</option>
@@ -355,7 +352,7 @@
                 <option ng-model="form.immigrantStatus" value="No">No</option>
                 <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
               </select>
-              <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+              <input type="text" ng-model="form.immigrantStatus" name="other.immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
               <div>
                 <label for="otherStatus">Other (check all that apply):</label>
                 <div>

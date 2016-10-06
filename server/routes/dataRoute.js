@@ -22,11 +22,11 @@ router.post('/victim', function (req, res) {
     }
 
 
-        client.query('INSERT INTO victim (date_entered, advocate_name, contact_date, start_time, end_time, service_location, service_county, victim_number, victim_zipcode, victim_type, victim_referral_source, victim_prior_contact, victim_prior_oct, crisis_counseling_individual, crisis_counseling_group, legal_law_enforcement_interview, legal_prosecution_related, legal_court_advocacy, legal_oft_hro, legal_immigration, legal_intervention, medical_exam_support, medical_accompaniment_medical, medical_accompaniment_dental, transportation, crisis_counseling, information_referral, information_criminal_justice, other_emergency_justice, safe_at_home, emergency_financial, reparations_claims, referral_svc, referral_agency, referral_other, violence_adult_sexual, violence_adult_child_family, violence_adult_child_other, violence_bullying, violence_child_pornography, violence_domestic, violence_elder, violence_exposing, violence_internet, violence_minor_family, violence_minor_other, violence_phone, violence_exploitation, violence_harassment, violence_stalking, violence_teen_dating, violence_other, violence_other_specify, violence_unknown, victim_age, victim_gender, victim_trans, victim_sexual_orientation, disability_blind, disability_physical, disability_mental, disability_deaf, disability_developmental, disability_other, disability_other_specify, disability_unknown, disability_none, victim_ethnicity, victim_immigrant, homeless, limited_english, veteran, supported_on_call, contact_type, victim_multiple, form_number, victim_ethnicity_other_specify, victim_immigrant_other_specify) ' +
-        'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $70, $71, $72, $73, $74, $75, $76, $77, $78)',
-        [newVictim.date_entered, newVictim.counselor, newVictim.date, newVictim.sTime, newVictim.eTime, newVictim.location, newVictim.county, newVictim.clientNumber, newVictim.zipCode, newVictim.victimType, newVictim.svcPrompt, newVictim.previousContact, newVictim.previousVisit, newVictim.counseling, newVictim.supportGroup, newVictim.lawEnforcementInterview, newVictim.prosecutionRelatedAdvocacy, newVictim.courtAdvocacy, newVictim.assistOFP_HRO, newVictim.immigrationSupport, newVictim.interventionWithOthers, newVictim.forensicExamSupport, newVictim.accompanyMedicalAppt, newVictim.accompanyDentalAppt, newVictim.transportation, newVictim.crisis_counseling, newVictim.infoAndReferral,
+        client.query('INSERT INTO victim (date_entered, advocate_name, contact_date, start_time, end_time, service_location, service_county, victim_number, victim_zipcode, victim_type, victim_referral_source, victim_prior_contact, victim_prior_oct, crisis_counseling_individual, crisis_counseling_group, legal_law_enforcement_interview, legal_prosecution_related, legal_court_advocacy, legal_oft_hro, legal_immigration, legal_intervention, medical_exam_support, medical_accompaniment_medical, medical_accompaniment_dental, transportation, crisis_counseling, information_referral, information_criminal_justice, other_emergency_justice, safe_at_home, emergency_financial, reparations_claims, referral_svc, referral_agency, referral_other, violence_adult_sexual, violence_adult_child_family, violence_adult_child_other, violence_bullying, violence_child_pornography, violence_domestic, violence_elder, violence_exposing, violence_internet, violence_minor_family, violence_minor_other, violence_phone, violence_exploitation, violence_harassment, violence_stalking, violence_teen_dating, violence_other, violence_other_specify, violence_unknown, victim_age, victim_gender, victim_trans, victim_sexual_orientation, disability_blind, disability_physical, disability_mental, disability_deaf, disability_developmental, disability_other, disability_other_specify, disability_unknown, disability_none, victim_ethnicity, victim_immigrant, homeless, limited_english, veteran, supported_on_call, contact_type, victim_multiple) ' +
+        'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $70, $71, $72, $73, $74, $75, $76)',
+        [newVictim.date_entered, newVictim.counselor, newVictim.date, newVictim.sTime, newVictim.eTime, newVictim.location, newVictim.county, newVictim.county_other_specify, newVictim.clientNumber, newVictim.zipCode, newVictim.victimType, newVictim.svcPrompt, newVictim.previousContact, newVictim.previousVisit, newVictim.counseling, newVictim.supportGroup, newVictim.lawEnforcementInterview, newVictim.prosecutionRelatedAdvocacy, newVictim.courtAdvocacy, newVictim.assistOFP_HRO, newVictim.immigrationSupport, newVictim.interventionWithOthers, newVictim.forensicExamSupport, newVictim.accompanyMedicalAppt, newVictim.accompanyDentalAppt, newVictim.transportation, newVictim.crisis_counseling, newVictim.infoAndReferral,
         newVictim.info_crimjustice, newVictim.other_emergency_justice, newVictim.safeAtHome, newVictim.emergencyFinancialAsst, newVictim.reparationsClaimAsst, newVictim.svcServices, newVictim.otherAgencyReferral, newVictim.otherServicesReferral, newVictim.adultSexAssault, newVictim.adultAbusedAsChild_family, newVictim.adultAbusedAsChild_other, newVictim.bullying, newVictim.childPorn, newVictim.domesticViolence, newVictim.elderAbuse, newVictim.exposing, newVictim.internetRelated, newVictim.minorCSA_family, newVictim.minorCSA_other, newVictim.obscenePhoneCall, newVictim.exploitation_trafficking, newVictim.sexualHarassment, newVictim.stalking, newVictim.teenDating, newVictim.sexualViolenceOther, newVictim.sexualViolenceOther_specify, newVictim.unknownViolence, newVictim.age,
-        newVictim.gender, newVictim.trans, newVictim.orientation, newVictim.blind_visImpair, newVictim.physDisabled, newVictim.mentDisabled, newVictim.deafHardHearing, newVictim.devDisabled, newVictim.otherDisabled, newVictim.otherDisabled_specify, newVictim.unknownDisabled, newVictim.notDisabled, newVictim.ethnicBackground, newVictim.immigrantStatus, newVictim.homeless, newVictim.limitedEnglish, newVictim.veteran, newVictim.supported, newVictim.advocacyType, newVictim.multiple, newVictim.formId, newVictim.other_ethnicBackground, newVictim.other_immigrantStatus],
+        newVictim.gender, newVictim.trans, newVictim.orientation, newVictim.blind_visImpair, newVictim.physDisabled, newVictim.mentDisabled, newVictim.deafHardHearing, newVictim.devDisabled, newVictim.otherDisabled, newVictim.otherDisabled_specify, newVictim.unknownDisabled, newVictim.notDisabled, newVictim.ethnicBackground, newVictim.immigrantStatus, newVictim.homeless, newVictim.limitedEnglish, newVictim.veteran, newVictim.supported, newVictim.contact_type, newVictim.multiple],
 
         function(err, result) {
           done();
@@ -53,19 +53,11 @@ router.post('/nonvictim', function (req, res) {
       res.sendStatus(500);
     }
 
-<<<<<<< HEAD
         client.query('INSERT INTO nonvictim (date_entered, advocate_name, contact_date, start_time, end_time, caller_name, caller_phone, caller_zip, caller_county, call_type, svc_source, type_medical, type_school, type_govt_social, type_community_member, type_law_enforcer, type_legal_system, type_city_social, type_other_organization, referral_medical, referral_school, referral_govt_social, referral_community_member, referral_law_enforcer, referral_legal_system, referral_city_social, referral_other_organization, advocacy_location, advocacy_request, advocacy_dispatched, advocacy_med_responder, dispatched_notes ) ' +
         'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32)',
         [newNonVictim.date_entered, newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
          newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.request, newNonVictim.dispatched,
          newNonVictim.responded, newNonVictim.reason],
-=======
-        client.query('INSERT INTO nonvictim (date_entered, advocate_name, contact_date, start_time, end_time, caller_name, caller_phone, caller_zip, caller_county, call_type, svc_source, type_medical, type_school, type_govt_social, type_community_member, type_law_enforcer, type_legal_system, type_city_social, type_other_organization, referral_medical, referral_school, referral_govt_social, referral_community_member, referral_law_enforcer, referral_legal_system, referral_city_social, referral_other_organization, advocacy_location, advocacy_dispatched, advocacy_med_responder, dispatched_notes, form_number) ' +
-        'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32)',
-        [newNonVictim.date_entered, newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
-         newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.dispatched,
-         newNonVictim.responded, newNonVictim.reason, newNonVictim.formId],
->>>>>>> fb220efac95545ccb6075a278bd186404a6e4756
 
          function (err, result) {
            done();
@@ -101,7 +93,7 @@ router.put('/victim/:id', function (req, res) {
             'end_time = $5, ' +
             'service_location = $6, ' +
             'service_county = $7, ' +
-            'form_number = $8, ' +
+            'service_county_other_specify = $8, ' +
             'victim_number = $9, ' +
             'victim_zipcode = $10, ' +
             'victim_type = $11, ' +
@@ -168,13 +160,9 @@ router.put('/victim/:id', function (req, res) {
             'limited_english = $72, ' +
             'veteran = $73, ' +
             'supported_on_call = $74 ' +
-            'contact_type = $75 ' +
-            'victim_ethnicity_other_specify = $76 ' +
-            'victim_immigrant_other_specify = $77 ' +
-            'victim_multiple = $78 ' +
-            'WHERE id = $79',
-            [newVictim.date_entered, newVictim.counselor, newVictim.date, newVictim.sTime, newVictim.eTime, newVictim.location, newVictim.county, newVictim.formId, newVictim.clientNumber, newVictim.zipCode, newVictim.victimType, newVictim.svcPrompt, newVictim.previousContact, newVictim.previousVisit, newVictim.counseling, newVictim.supportGroup, newVictim.lawEnforcementInterview, newVictim.prosecutionRelatedAdvocacy, newVictim.courtAdvocacy, newVictim.assistOFP_HRO, newVictim.immigrationSupport, newVictim.interventionWithOthers, newVictim.forensicExamSupport, newVictim.accompanyMedicalAppt, newVictim.accompanyDentalAppt, newVictim.transportation, newVictim.crisis_counseling, newVictim.infoAndReferral, newVictim.info_crimjustice, newVictim.other_emergency_justice, newVictim.safeAtHome, newVictim.emergencyFinancialAsst, newVictim.reparationsClaimAsst, newVictim.svcServices, newVictim.otherAgencyReferral, newVictim.otherServicesReferral, newVictim.adultSexAssault, newVictim.adultAbusedAsChild_family, newVictim.adultAbusedAsChild_other, newVictim.bullying, newVictim.childPorn, newVictim.domesticViolence, newVictim.elderAbuse, newVictim.exposing, newVictim.internetRelated, newVictim.minorCSA_family, newVictim.minorCSA_other, newVictim.obscenePhoneCall, newVictim.exploitation_trafficking, newVictim.sexualHarassment, newVictim.stalking, newVictim.teenDating, newVictim.sexualViolenceOther, newVictim.sexualViolenceOther_specify, newVictim.unknownViolence, newVictim.age, newVictim.gender, newVictim.trans, newVictim.orientation, newVictim.blind_visImpair, newVictim.physDisabled, newVictim.mentDisabled, newVictim.deafHardHearing, newVictim.devDisabled, newVictim.otherDisabled, newVictim.otherDisabled_specify, newVictim.unknownDisabled, newVictim.notDisabled, newVictim.ethnicBackground, newVictim.immigrantStatus, newVictim.homeless, newVictim.limitedEnglish,
-            newVictim.veteran, newVictim.supported, newVictim.contact_type, newVictim.other.ethnicBackground, newVictim.other.immigrantStatus, newVictim.multiple, id],
+            'WHERE id = $75',
+            [newVictim.date_entered, newVictim.counselor, newVictim.date, newVictim.sTime, newVictim.eTime, newVictim.location, newVictim.county, newVictim.county_other_specify, newVictim.clientNumber, newVictim.zipCode, newVictim.victimType, newVictim.svcPrompt, newVictim.previousContact, newVictim.previousVisit, newVictim.counseling, newVictim.supportGroup, newVictim.lawEnforcementInterview, newVictim.prosecutionRelatedAdvocacy, newVictim.courtAdvocacy, newVictim.assistOFP_HRO, newVictim.immigrationSupport, newVictim.interventionWithOthers, newVictim.forensicExamSupport, newVictim.accompanyMedicalAppt, newVictim.accompanyDentalAppt, newVictim.transportation, newVictim.crisis_counseling, newVictim.infoAndReferral, newVictim.info_crimjustice, newVictim.other_emergency_justice, newVictim.safeAtHome, newVictim.emergencyFinancialAsst, newVictim.reparationsClaimAsst, newVictim.svcServices, newVictim.otherAgencyReferral, newVictim.otherServicesReferral, newVictim.adultSexAssault, newVictim.adultAbusedAsChild_family, newVictim.adultAbusedAsChild_other, newVictim.bullying, newVictim.childPorn, newVictim.domesticViolence, newVictim.elderAbuse, newVictim.exposing, newVictim.internetRelated, newVictim.minorCSA_family, newVictim.minorCSA_other, newVictim.obscenePhoneCall, newVictim.exploitation_trafficking, newVictim.sexualHarassment, newVictim.stalking, newVictim.teenDating, newVictim.sexualViolenceOther, newVictim.sexualViolenceOther_specify, newVictim.unknownViolence, newVictim.age, newVictim.gender, newVictim.trans, newVictim.orientation, newVictim.blind_visImpair, newVictim.physDisabled, newVictim.mentDisabled, newVictim.deafHardHearing, newVictim.devDisabled, newVictim.otherDisabled, newVictim.otherDisabled_specify, newVictim.unknownDisabled, newVictim.notDisabled, newVictim.ethnicBackground, newVictim.immigrantStatus, newVictim.homeless, newVictim.limitedEnglish,
+            newVictim.veteran, newVictim.supported, id],
                 function (err, result) {
                   done();
 
@@ -210,33 +198,20 @@ router.put('/nonvictim/:id', function (req, res) {
                 'caller_phone = $7, ' +
                 'caller_zip = $8, ' +
                 'caller_county = $9, ' +
-                'caller_type = $10, ' +
-                'svc_source = $11, ' +
-                'type_medical = $12, ' +
-                'type_school = $13, ' +
-                'type_govt_social = $14, ' +
-                'type_community_member = $15, ' +
-                'type_law_enforcer = $16, ' +
-                'type_legal_system = $17, ' +
-                'type_city_social = $18, ' +
-                'type_other_organization = $19, ' +
-                'referral_medical = $20, ' +
-                'referral_school = $21 ' +
-                'referral_govt_social = $22 ' +
-                'referral_community_member = $23 ' +
-                'referral_law_enforcer = $24 ' +
-                'referral_legal_system = $25 ' +
-                'referral_city_social = $26 ' +
-                'referral_other_organization = $27 ' +
-                'advocacy_location = $28 ' +
-                'advocacy_dispatched = $29 ' +
-                'advocacy_med_responder = $30 ' +
-                'dispatched_notes = $31 ' +
-                'form_number = $32 ' +
-                'WHERE id = $33',
-                [newNonVictim.date_entered, newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
-         newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.dispatched,
-         newNonVictim.responded, newNonVictim.reason, newNonVictim.formId],
+                'caller_org_type = $10, ' +
+                'caller_org_name = $11, ' +
+                'call_type = $12, ' +
+                'call_referral_type = $13, ' +
+                'call_referral_name = $14, ' +
+                'referral_source = $15, ' +
+                'advocacy_request = $16, ' +
+                'advocacy_location = $17, ' +
+                'advocacy_med = $18, ' +
+                'advocacy_med_responder = $19, ' +
+                'advocate_dispatched = $20, ' +
+                'dispatched_notes = $21 ' +
+                'WHERE id = $22',
+                [nonVictim.date_entered, nonVictim.advocate_name, nonVictim.contact_date, nonVictim.start_time, nonVictim.end_time, nonVictim.caller_name, nonVictim.caller_phone, nonVictim.caller_zip, nonVictim.caller_county, nonVictim.caller_org_type, nonVictim.caller_org_name, nonVictim.call_type, nonVictim.call_referral_type, nonVictim.call_referral_name, nonVictim.referral_source, nonVictim.advocacy_request, nonVictim.advocacy_location, nonVictim.advocacy_med, nonVictim.advocacy_med_responder, nonVictim.advocate_dispatched, nonVictim.dispatched_notes, id],
                 function (err, result) {
                   done();
 
@@ -262,7 +237,7 @@ router.delete('/victim/:id', function (req, res) {
     }
 
     client.query('DELETE FROM victim ' +
-                  'WHERE form_number = $1',
+                  'WHERE id = $1',
                   [id],
                   function (err, result) {
                     done();
@@ -289,7 +264,7 @@ router.delete('/nonvictim/:id', function (req, res) {
     }
 
     client.query('DELETE FROM nonvictim ' +
-                  'WHERE form_number = $1',
+                  'WHERE id = $1',
                   [id],
                   function (err, result) {
                     done();
