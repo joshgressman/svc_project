@@ -110,6 +110,31 @@ router.post('/federal/:id', function(req, res) {
             });
     });
 });
+//Search query for search / update function //
+router.post('/county/edit', function(req, res) {
+var table = req.body.table;
+var number = req.body.number;
+
+pg.connect(connectionString, function (err, client, done){
+  if(err){
+    res.sendStatus(500);
+
+    }
+    client.query('SELECT * FROM ' + table + ' WHERE column name ' + number),
+    function(err, results){
+      done();
+
+      if(err){
+        console.log('SEARCH QUERY', err);
+        res.sendStatus(500);
+      }
+      console.log('SEARCH QUERY RESULTS', result.rows);
+      res.send(result.rows);
+    }
+
+
+});
+});
 
 //POST-GET for hennepin reports;
 router.post('/county/:id', function(req, res) {
@@ -163,9 +188,12 @@ router.post('/county/:id', function(req, res) {
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
+
         // } else if (table ==  "victim_victimization_count") {
         //     query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         //     // console.log('victimization count:', query);
+
+
 
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";

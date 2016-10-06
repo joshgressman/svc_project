@@ -1,5 +1,10 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
+  $scope.formId =  5;
+
+  $scope.formIdCount = function () {
+    $scope.formId++;
+  }
 
   $scope.print = function() {
       window.print();

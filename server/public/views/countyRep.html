@@ -25,176 +25,145 @@
        <input class="endDate" type="date" ng-model="dateEnd" />
        <button class="button" name="queryButton" ng-click="getStuffCounty()">Go</button> <button onclick="print()">Print this page</button>
    </div>
- <div class ="reportContainer">s
+ <div class ="reportContainer">
 
- <strong>Individuals who recieved services during the reporting period</strong>
- <p class="reportsText">Total Individuals:{{}}</p>
- <strong>NEW individuals who recieved services during the reporting period</strong>
- <p class="reportsText">New Individuals:{{}}</p>
+ <strong>Hennepin County residents who recieved services during the reporting period</strong>
+ <p class="reportsText">Total Clients Served:{{countyInfo.total_overall.count}}</p>
+
+ <strong>NEW Hennepin County residents who recieved services during the reporting period</strong>
+ <p class="reportsText">Total Clients Served During the Reporting Period:{{countyInfo.total_new.count}}</p>
+ <p class="reportsText">Total Clients Served in Advocacy Program:{{countyInfo.total_new.count}}</p>
+ <p class="reportsText">Total Clients Served in Individual Counseling Program:{{countyInfo.crisis_counseling_individual.count}}</p>
+ <p class="reportsText">Total Clients Served in Group Counseling Program:{{countyInfo.crisis_counseling_group.count}}</p>
+ <p class="reportsText">Location of Support Groups:{{location.service_location}}</p>
+
  <strong>Hennepin County Zip Code Totals</strong>
-<p class="reportsText">55111:{{}}</p>
-<p class="reportsText">55305:{{}}</p>
-<p class="reportsText">55311:{{}}</p>
-<p class="reportsText">55316:{{}}</p>
-<p class="reportsText">55317:{{}}</p>
-<p class="reportsText">55327:{{}}</p>
-<p class="reportsText">55328:{{}}</p>
-<p class="reportsText">55331:{{}}</p>
-<p class="reportsText">55340:{{}}</p>
-<p class="reportsText">55341:{{}}</p>
-<p class="reportsText">55343:{{}}</p>
-<p class="reportsText">55344:{{}}</p>
-<p class="reportsText">55345:{{}}</p>
-<p class="reportsText">55346:{{}}</p>
-<p class="reportsText">55347:{{}}</p>
-<p class="reportsText">55356:{{}}</p>
-<p class="reportsText">55357:{{}}</p>
-<p class="reportsText">55359:{{}}</p>
-<p class="reportsText">55361:{{}}</p>
-<p class="reportsText">55364:{{}}</p>
-<p class="reportsText">55369:{{}}</p>
-<p class="reportsText">55373:{{}}</p>
-<p class="reportsText">55374:{{}}</p>
-<p class="reportsText">55375:{{}}</p>
-<p class="reportsText">55384:{{}}</p>
-<p class="reportsText">55387:{{}}</p>
-<p class="reportsText">55388:{{}}</p>
-<p class="reportsText">55391:{{}}</p>
-<p class="reportsText">55392:{{}}</p>
-<p class="reportsText">55401:{{}}</p>
-<p class="reportsText">55402:{{}}</p>
-<p class="reportsText">55403:{{}}</p>
-<p class="reportsText">55404:{{}}</p>
-<p class="reportsText">55405:{{}}</p>
-<p class="reportsText">55406:{{}}</p>
-<p class="reportsText">55407:{{}}</p>
-<p class="reportsText">55408:{{}}</p>
-<p class="reportsText">55409:{{}}</p>
-<p class="reportsText">55410:{{}}</p>
-<p class="reportsText">55411:{{}}</p>
-<p class="reportsText">55412:{{}}</p>
-<p class="reportsText">55413:{{}}</p>
-<p class="reportsText">55414:{{}}</p>
-<p class="reportsText">55415:{{}}</p>
-<p class="reportsText">55416:{{}}</p>
-<p class="reportsText">55417:{{}}</p>
-<p class="reportsText">55418:{{}}</p>
-<p class="reportsText">55419:{{}}</p>
-<p class="reportsText">55420:{{}}</p>
-<p class="reportsText">55422:{{}}</p>
-<p class="reportsText">55423:{{}}</p>
-<p class="reportsText">55424:{{}}</p>
-<p class="reportsText">55425:{{}}</p>
-<p class="reportsText">55426:{{}}</p>
-<p class="reportsText">55427:{{}}</p>
-<p class="reportsText">55428:{{}}</p>
-<p class="reportsText">55429:{{}}</p>
-<p class="reportsText">55430:{{}}</p>
-<p class="reportsText">55431:{{}}</p>
-<p class="reportsText">55435:{{}}</p>
-<p class="reportsText">55436:{{}}</p>
-<p class="reportsText">55437:{{}}</p>
-<p class="reportsText">55438:{{}}</p>
-<p class="reportsText">55439:{{}}</p>
-<p class="reportsText">55441:{{}}</p>
-<p class="reportsText">55442:{{}}</p>
-<p class="reportsText">55443:{{}}</p>
-<p class="reportsText">55444:{{}}</p>
-<p class="reportsText">55445:{{}}</p>
-<p class="reportsText">55446:{{}}</p>
-<p class="reportsText">55447:{{}}</p>
-<p class="reportsText">55450:{{}}</p>
-<p class="reportsText">55454:{{}}</p>
-<p class="reportsText">55455:{{}}</p>
-<p class="reportsText">Other:{{}}</p>
-<p class="reportsText">Unknown:{{}}</p>
-<p class="reportsText">Total:{{}}</p>
-<strong>Demographics: Race/Ethnicity</strong>
-<p class="reportsText">American Indian of Alaskan Native:{{}}</p>
-<p class="reportsText">Asian:{{}}</p>
-<p class="reportsText">Black or African American:{{}}</p>
-<p class="reportsText">Hispanic or Latino:{{}}</p>
-<p class="reportsText">Native Hawaiian or Other Pacific Islander:{{}}</p>
-<p class="reportsText">White Non-Latino or Caucasian:{{}}</p>
-<p class="reportsText">Some Other Race:{{}}</p>
-<p class="reportsText">Multiple Races:{{}}</p>
-<p class="reportsText">Not Reported:{{}}</p>
-<p class="reportsText">Not Tracked:{{}}</p>
-<p class="reportsText">Race/Ethnicity Total:{{}}</p>
-<strong>Demographics: Gender Identity</strong>
-<p class="reportsText">Male:{{}}</p>
-<p class="reportsText">Female:{{}}</p>
-<p class="reportsText">Transgender:{{}}</p>
-<p class="reportsText">Unknown:{{}}</p>
-<strong>Demographics: Immigrant Status</strong>
-<p class="reportsText">Africa:{{}}</p>
-<p class="reportsText">Asia:{{}}</p>
-<p class="reportsText">Europe:{{}}</p>
-<p class="reportsText">Mex/Cen/South America:{{}}</p>
-<p class="reportsText">Middle East:{{}}</p>
-<p class="reportsText">Other:{{}}</p>
-<p class="reportsText">Unknown/Pass:{{}}</p>
-<p class="reportsText">No:{{}}</p>
+<p class="reportsText">55111: {{countyInfo.victim_zipcode_55111.count}}</p>
+<p class="reportsText">55305: {{countyInfo.victim_zipcode_55305.count}}</p>
+<p class="reportsText">55311: {{countyInfo.victim_zipcode_55311.count}}</p>
+<p class="reportsText">55316: {{countyInfo.victim_zipcode_55316.count}}</p>
+<p class="reportsText">55317: {{countyInfo.victim_zipcode_55317.count}}</p>
+<p class="reportsText">55327: {{countyInfo.victim_zipcode_55327.count}}</p>
+<p class="reportsText">55328: {{countyInfo.victim_zipcode_55328.count}}</p>
+<p class="reportsText">55331: {{countyInfo.victim_zipcode_55331.count}}</p>
+<p class="reportsText">55340: {{countyInfo.victim_zipcode_55340.count}}</p>
+<p class="reportsText">55341: {{countyInfo.victim_zipcode_55341.count}}</p>
+<p class="reportsText">55343: {{countyInfo.victim_zipcode_55343.count}}</p>
+<p class="reportsText">55344: {{countyInfo.victim_zipcode_55344.count}}</p>
+<p class="reportsText">55345: {{countyInfo.victim_zipcode_55345.count}}</p>
+<p class="reportsText">55346: {{countyInfo.victim_zipcode_55346.count}}</p>
+<p class="reportsText">55347: {{countyInfo.victim_zipcode_55347.count}}</p>
+<p class="reportsText">55356: {{countyInfo.victim_zipcode_55356.count}}</p>
+<p class="reportsText">55357: {{countyInfo.victim_zipcode_55357.count}}</p>
+<p class="reportsText">55359: {{countyInfo.victim_zipcode_55359.count}}</p>
+<p class="reportsText">55361: {{countyInfo.victim_zipcode_55361.count}}</p>
+<p class="reportsText">55364: {{countyInfo.victim_zipcode_55364.count}}</p>
+<p class="reportsText">55369: {{countyInfo.victim_zipcode_55369.count}}</p>
+<p class="reportsText">55373: {{countyInfo.victim_zipcode_55373.count}}</p>
+<p class="reportsText">55374: {{countyInfo.victim_zipcode_55374.count}}</p>
+<p class="reportsText">55375: {{countyInfo.victim_zipcode_55375.count}}</p>
+<p class="reportsText">55384: {{countyInfo.victim_zipcode_55384.count}}</p>
+<p class="reportsText">55387: {{countyInfo.victim_zipcode_55387.count}}</p>
+<p class="reportsText">55388: {{countyInfo.victim_zipcode_55388.count}}</p>
+<p class="reportsText">55391: {{countyInfo.victim_zipcode_55391.count}}</p>
+<p class="reportsText">55392: {{countyInfo.victim_zipcode_55392.count}}</p>
+<p class="reportsText">55401: {{countyInfo.victim_zipcode_55401.count}}</p>
+<p class="reportsText">55402: {{countyInfo.victim_zipcode_55402.count}}</p>
+<p class="reportsText">55403: {{countyInfo.victim_zipcode_55403.count}}</p>
+<p class="reportsText">55404: {{countyInfo.victim_zipcode_55404.count}}</p>
+<p class="reportsText">55405: {{countyInfo.victim_zipcode_55405.count}}</p>
+<p class="reportsText">55406: {{countyInfo.victim_zipcode_55406.count}}</p>
+<p class="reportsText">55407: {{countyInfo.victim_zipcode_55407.count}}</p>
+<p class="reportsText">55408: {{countyInfo.victim_zipcode_55408.count}}</p>
+<p class="reportsText">55409: {{countyInfo.victim_zipcode_55409.count}}</p>
+<p class="reportsText">55410: {{countyInfo.victim_zipcode_55410.count}}</p>
+<p class="reportsText">55411: {{countyInfo.victim_zipcode_55411.count}}</p>
+<p class="reportsText">55412: {{countyInfo.victim_zipcode_55412.count}}</p>
+<p class="reportsText">55413: {{countyInfo.victim_zipcode_55413.count}}</p>
+<p class="reportsText">55414: {{countyInfo.victim_zipcode_55414.count}}</p>
+<p class="reportsText">55415: {{countyInfo.victim_zipcode_55415.count}}</p>
+<p class="reportsText">55416: {{countyInfo.victim_zipcode_55416.count}}</p>
+<p class="reportsText">55417: {{countyInfo.victim_zipcode_55417.count}}</p>
+<p class="reportsText">55418: {{countyInfo.victim_zipcode_55418.count}}</p>
+<p class="reportsText">55419: {{countyInfo.victim_zipcode_55419.count}}</p>
+<p class="reportsText">55420: {{countyInfo.victim_zipcode_55420.count}}</p>
+<p class="reportsText">55422: {{countyInfo.victim_zipcode_55422.count}}</p>
+<p class="reportsText">55423: {{countyInfo.victim_zipcode_55423.count}}</p>
+<p class="reportsText">55424: {{countyInfo.victim_zipcode_55424.count}}</p>
+<p class="reportsText">55425: {{countyInfo.victim_zipcode_55425.count}}</p>
+<p class="reportsText">55426: {{countyInfo.victim_zipcode_55426.count}}</p>
+<p class="reportsText">55427: {{countyInfo.victim_zipcode_55427.count}}</p>
+<p class="reportsText">55428: {{countyInfo.victim_zipcode_55428.count}}</p>
+<p class="reportsText">55429: {{countyInfo.victim_zipcode_55429.count}}</p>
+<p class="reportsText">55430: {{countyInfo.victim_zipcode_55430.count}}</p>
+<p class="reportsText">55431: {{countyInfo.victim_zipcode_55431.count}}</p>
+<p class="reportsText">55435: {{countyInfo.victim_zipcode_55435.count}}</p>
+<p class="reportsText">55436: {{countyInfo.victim_zipcode_55436.count}}</p>
+<p class="reportsText">55437: {{countyInfo.victim_zipcode_55437.count}}</p>
+<p class="reportsText">55438: {{countyInfo.victim_zipcode_55438.count}}</p>
+<p class="reportsText">55439: {{countyInfo.victim_zipcode_55439.count}}</p>
+<p class="reportsText">55441: {{countyInfo.victim_zipcode_55441.count}}</p>
+<p class="reportsText">55442: {{countyInfo.victim_zipcode_55442.count}}</p>
+<p class="reportsText">55443: {{countyInfo.victim_zipcode_55443.count}}</p>
+<p class="reportsText">55444: {{countyInfo.victim_zipcode_55444.count}}</p>
+<p class="reportsText">55445: {{countyInfo.victim_zipcode_55445.count}}</p>
+<p class="reportsText">55446: {{countyInfo.victim_zipcode_55446.count}}</p>
+<p class="reportsText">55447: {{countyInfo.victim_zipcode_55447.count}}</p>
+<p class="reportsText">55450: {{countyInfo.victim_zipcode_55450.count}}</p>
+<p class="reportsText">55454: {{countyInfo.victim_zipcode_55454.count}}</p>
+<p class="reportsText">55455: {{countyInfo.victim_zipcode_55455.count}}</p>
+<p class="reportsText">Other: {{countyInfo.victim_zipcode_other.count}}</p>
+<p class="reportsText">Unknown: {{countyInfo.victim_zipcode_unknown.count}}</p>
+<p class="reportsText">Total: {{FIX}}</p>
+
 <strong>Demographics: Age</strong>
-<p class="reportsText">0 - 18:{{}}</p>
-<p class="reportsText">19 - 50:{{}}</p>
-<p class="reportsText">50+ Years:{{}}</p>
-<p class="reportsText">Unknown:{{}}</p>
-<strong>Demographics: Disability</strong>
-<p class="reportsText">Blind/Visually Impaired:{{}}</p>
-<p class="reportsText">Physical Disabilities:{{}}</p>
-<p class="reportsText">Mental Illness:{{}}</p>
-<p class="reportsText">Deaf/Hard of Hearing:{{}}</p>
-<p class="reportsText">Intellectual of Developmental Disabilities:{{}}</p>
-<p class="reportsText">None:{{}}</p>
-<p class="reportsText">Other:{{}}</p>
-<p class="reportsText">Unknown/Pass/Doesn't Know:{{}}</p>
+<p class="reportsText">0 - 18: {{countyInfo.victim_age_018.count}}</p>
+<p class="reportsText">19 - 50:{{countyInfo.victim_age_1950.count}}</p>
+<p class="reportsText">50+ Years:{{countyInfo.victim_age_50.count}}</p>
+<p class="reportsText">Unknown:{{countyInfo.victim_age_null.count}}</p>
+
+<strong>Demographics: Gender Identity</strong>
+<p class="reportsText">Male:{{countyInfo.victim_gender_Male.count}}</p>
+<p class="reportsText">Female:{{countyInfo.victim_gender_Female.count}}</p>
+<p class="reportsText">Transgender:{{countyInfo.victim_trans.count}}</p>
+<p class="reportsText">Unknown:{{countyInfo.victim_gender_unknown.count}}</p>
+
+<strong>Demographics: Race/Ethnicity</strong>
+<p class="reportsText">American Indian of Alaskan Native:{{countyInfo.victim_ethnicity_native_american.count}}</p>
+<p class="reportsText">Asian:{{countyInfo.victim_ethnicity_asian.count}}</p>
+<p class="reportsText">Black or African American:{{countyInfo.victim_ethnicity_african_american_black.count}}</p>
+<p class="reportsText">Hispanic or Latino:{{countyInfo.victim_ethnicity_chicano_latino.count}}</p>
+<p class="reportsText">Native Hawaiian or Other Pacific Islander:{{countyInfo.victim_ethnicity_hawaiian_pacific_islander.count}}</p>
+<p class="reportsText">White Non-Latino or Caucasian:{{countyInfo.victim_ethnicity_white.count}}</p>
+<p class="reportsText">Some Other Race:{{countyInfo.victim_ethnicity_other.count}}</p>
+<p class="reportsText">Multiple Races:{{countyInfo.victim_ethnicity_multi-racial.count}}</p>
+<p class="reportsText">Not Reported:{{countyInfo.victim_ethnicity_unknown.count}}</p>
+<p class="reportsText">Race/Ethnicity Total:{{countyInfo.victim_ethnicity_total.count}}</p>
+
 <strong>Types of Victimization</strong>
-<p class="reportsText">Adult Physical Assaul:{{}}</p>
-<p class="reportsText">Adult Sexual Assault:{{}}</p>
-<p class="reportsText">Adults Sexual Abuse/Assault:{{}}</p>
-<p class="reportsText">Arson:{{}}</p>
-<p class="reportsText">Bullying:{{}}</p>
-<p class="reportsText">Burglary:{{}}</p>
-<p class="reportsText">Child Physical Abuse or Neglect:{{}}</p>
-<p class="reportsText">Child Pornography:{{}}</p>
-<p class="reportsText">Child Sexual Abuse or Neglect:{{}}</p>
-<p class="reportsText">Domestic And/Or Family Violence:{{}}</p>
-<p class="reportsText">DUI/DWI Incidents:{{}}</p>
-<p class="reportsText">Elder Abuse or Neglect:{{}}</p>
-<p class="reportsText">Hate Crime:{{}}</p>
-<p class="reportsText">Human Trafficking: Labor:{{}}</p>
-<p class="reportsText">Human Trafficking: Sex:{{}}</p>
-<p class="reportsText">Identity Theft:{{}}</p>
-<p class="reportsText">Kidnapping:{{}}</p>
-<p class="reportsText">Mass Violence:{{}}</p>
-<p class="reportsText">vOther Vehicular Victimization:{{}}</p>
-<p class="reportsText">Robbery:{{}}</p>
-<p class="reportsText">Mass Violence:{{}}</p>
-<p class="reportsText">Other Vehicular Vicimization:{{}}</p>
-<p class="reportsText">Robbery:{{}}</p>
-<p class="reportsText">Stalking/Harassment:{{}}</p>
-<p class="reportsText">Survivors of Homicide Victims:{{}}</p>
-<p class="reportsText">Teen Dating Victimization:{{}}</p>
-<p class="reportsText">Terrorism:{{}}</p>
-<p class="reportsText">Other:{{}}</p>
-<strong>Type of Service (NEW Clients)</strong>
-<p class="reportsText">Crisis Counseling:{{}}</p>
-<p class="reportsText">Legal Advocacy: Criminal Justice:{{}}</p>
-<p class="reportsText">Legal Advocacy: Civil Legal:{{}}</p>
-<p class="reportsText">Medical Advocacy:{{}}</p>
-<p class="reportsText">Other In-Person Advocacy Services:{{}}</p>
-<strong>Client Services Provided for NEW & REPEAT Clients</strong>
-<p class="reportsText">First Contact:{{}}</p>
-<p class="reportsText">Follow-Up:{{}}</p>
-<p class="reportsText">Information or Referral:{{}}</p>
-<p class="reportsText">Personal Advocacy:{{}}</p>
-<p class="reportsText">Support During Evidentiary Exam:{{}}</p>
-<p class="reportsText">Criminal Justice Support:{{}}</p>
-<p class="reportsText">Legal Advocacy:{{}}</p>
-<p class="reportsText">Financial Assistance:{{}}</p>
-<p class="reportsText">Reparations Filing Assistance:{{}}</p>
-<p class="reportsText">Group Treatment/Support:{{}}</p>
+<p class="reportsText">Adult Sexual Assaul:{{countyInfo.violence_adult_sexual.count}}</p>
+<p class="reportsText">Adult Sexually Abused/Assaulted as Children Total:{{NEW}}</p>
+<p class="reportsText">Adult Sexually Abused/Assaulted as Children by Family:{{countyInfo.violence_adult_child_family.count}}</p>
+<p class="reportsText">Adult Sexually Abused/Assaulted as Children by Other:{{countyInfo.violence_adult_child_other.count}}</p>
+<p class="reportsText">Bullying:{{countyInfo.violence_bullying.count}}</p>
+<p class="reportsText">Child Pornography:{{countyInfo.violence_child_pornography.count}}</p>
+<p class="reportsText">Child Sexual Abuse/Assault Total:{{NEW}}</p>
+<p class="reportsText">Child Sexual Abuse/Assault by Family:{{countyInfo.violence_minor_family.count}}</p>
+<p class="reportsText">Child Sexual Abuse/Assault by Other:{{countyInfo.violence_minor_other.count}}</p>
+<p class="reportsText">Domestic And/Or Family Violence:{{countyInfo.violence_domestic.count}}</p>
+<p class="reportsText">Elder Abuse or Neglect:{{countyInfo.violence_elder.count}}</p>
+<p class="reportsText">Human Trafficking: Sex:{{countyInfo.violence_exploitation.count}}</p>
+<p class="reportsText">Stalking/Harassment Total:{{}}</p>
+<p class="reportsText">Stalking/Harassment - Exposing:{{countyInfo.violence_exposing.count}}</p>
+<p class="reportsText">Stalking/Harassment - Harassment:{{countyInfo.violence_harassment.count}}</p>
+<p class="reportsText">Stalking/Harassment - Internet:{{countyInfo.violence_internet.count}}</p>
+<p class="reportsText">Stalking/Harassment - Phone:{{countyInfo.violence_phone.count}}</p>
+<p class="reportsText">Stalking/Harassment - Stalking:{{countyInfo.violence_stalking.count}}</p>
+<p class="reportsText">Teen Dating Victimization:{{countyInfo.violence_teen_dating.count}}</p>
+<p class="reportsText">Other:{{countyInfo.violence_other.count}}</p>
+<p class="reportsText">Unknown/Pass/Doesn't Know: {{countyInfo.violence_unknown.count}}</p>
+
+<button Onclick="window.location.href='#admin'">Back</button>
  </div>
 </div>
 

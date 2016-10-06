@@ -1,5 +1,11 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+// $scope.formId = 12;
+
+$scope.formIdCount = function () {
+  $scope.formId++;
+}
+
   $scope.myFunction = function() {
       window.print();
   }
@@ -93,7 +99,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
       // console.log(count);
       //formats input date into workable format;
       data.date_entered = new Date();
-     
+
       console.log('sending to server...', data);
       $http.post('/dataRoute/victim', data).then(function(response) {
         console.log('success');
@@ -104,6 +110,25 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
           $scope.message = "Please try again."
         });
       }
+
+      $scope.table = {};
+
+      $scope.searchUpdate = function (){
+        var data = {};
+        var id = $scope.formId;
+        var info = Object.getOwnPropertyNames($scope.table);
+        $scope[info[0]]= true;
+        data.table = info[0];
+        data.number = $scope.formId;
+        $http({
+            method: "POST",
+            url: '/reportRoute/county/edit',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log(response);
+      });
+    }
 
     ///**********END OF CONTROLLER***************************************///////
 }]);
