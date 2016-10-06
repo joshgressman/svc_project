@@ -116,7 +116,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', functio
         $scope[info[0]]= true;
         if(info[0] == "phone"){
           info[0] = "victim";
-        }
+        } 
         data.table = info[0];
         data.number = parseInt($scope.formId);
         console.log(data.number);

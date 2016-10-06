@@ -39,7 +39,7 @@ $scope.nonVictimInfo = {};
         dispatched: null,
         responded: null,
         reason: null,
-        formId: null,
+        medicalAdvocacyRequest: null,
       };
 //POST non-victim infromation
       $scope.submitNonVictimForm = function () {

@@ -21,7 +21,7 @@
                  <label for="counselorName">Advocate/Counselor Name:</label>
                  <input class="counselorInput" type="text" ng-model="form.counselor" />
              </div>
-            
+
              <div class="date">
                  <label for="date">Date:</label>
                  <input class="dateInput" type="date" ng-model="form.date" />
@@ -155,7 +155,11 @@
                <label for="advacacyLocation">If yes where to?:</label>
                <input class="advacacyLocation" type="text" ng-model="form.advacacyLocation" />
            </div>
-
+           <div>
+           <label>Is this an medical advocacy request?</label>
+                 <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="true"> Yes
+                 <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="false"> No
+               </div>
            <div class="dispatched">
                <label for="dispatched">If yes was an advocate dispatched?:</label>
                <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
