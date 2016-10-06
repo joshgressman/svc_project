@@ -94,7 +94,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         // text: "Not Tracked"
     // }, {
         table: "victim_gender_total",
-        textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null"
+        textSpecial: "(victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null)"
     }, {
         //Question 5C
         table: "victim_age",
@@ -191,6 +191,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "exception_disability",
         text: "true"
     }, {
+        table: "disability_total_unique",
+        text: "(disability_physical is true OR disability_mental is true OR disability_developmental is true OR disability_other is true OR disability_blind is true)"    
+        
+    }, {
         table: "victim_sexual_orientation_total",
         textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
     }, {
@@ -198,7 +202,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         table: "victim_immigrant_total",
-        textSpecial: "victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other'"
+        textSpecial: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other')"
     }, {
         table: "veteran",
         text: "true"
@@ -210,12 +214,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "exception_compensation",
         text: "true"
     }, {
+        table: "exception_compensation_unique",
+        text: "(emergency_financial is true OR reparations_claims is true)"
+    }, {    
         //Question 8/9A0=9A4
         table: "information_referral",
         text: "true"
     }, {
         table: "criminal_justice",
         text: "true"
+    }, {
+        table: "criminal_justice_unique",
+        text: "(information_criminal_justice is true OR legal_law_enforcement_interview is true OR legal_prosecution_related is true OR legal_court_advocacy is true)"
     }, {
         table: "contact_type",
         text: "in-person"
@@ -230,8 +240,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "personal_advocacy",
         text: "true"
     }, {
+        table: "personal_advocacy_unique",
+        text: "(medical_accompaniment_medical is true OR medical_accompaniment_dental is true OR medical_exam_support is true or legal_law_enforcement_interview is true OR legal_immigration is true OR legal_intervention is true OR transportation is true)"
+    }, {
         table: "medical_advocacy",
         text: "true"
+    }, {
+        table: "medical_advocacy_unique",
+        text: "(medical_accompaniment_medical is true OR medical_accompaniment_dental is true)"
     }, {
         table: "medical_exam_support",
         text: "true"
@@ -264,6 +280,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         //Question 9E0-9E10
         table: "criminal_civic",
         text: "true"
+    }, {
+        table: "criminal_civic_unique",
+        text: "(legal_law_enforcement_interview is true OR legal_prosecution_related is true OR legal_court_advocacy is true OR legal_oft_hro is true OR legal_immigration is true OR legal_intervention is true)"
     }, {
         table: "legal_oft_hro",
         text: "true"
@@ -851,6 +870,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             data.end = $scope.dateEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
+            $scope.federalInfo.criminalCivic = 0;
+            $scope.federalInfo.disabilityTotal = 0;
+            $scope.federalInfo.victimCompensation = 0;
+            $scope.federalInfo.criminalJusticeProcess = 0;
+            $scope.federalInfo.personalAdvocacy = 0;
+            $scope.federalInfo.medicalAdvocacy = 0;
             // console.log('clientside data to query:', data);
 
             if (query.table == "exception_disability") {
@@ -862,7 +887,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         // console.log("Get Success");
                         // console.log(response);
-                        $scope.federalInfo.disabilityTotal += parseInt(response.data[0]);
+                        $scope.federalInfo.disabilityTotal += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -876,7 +901,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         // console.log("Get Success");
                         // console.log(response);
-                        $scope.federalInfo.victimCompensation += parseInt(response.data[0]);
+                        $scope.federalInfo.victimCompensation += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -890,7 +915,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         // console.log("Get Success");
                         // console.log(response);
-                        $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0]);
+                        $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -904,7 +929,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         // console.log("Get Success");
                         // console.log(response);
-                        $scope.federalInfo.personalAdvocacy += parseInt(response.data[0]);
+                        $scope.federalInfo.personalAdvocacy += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -918,7 +943,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         // console.log("Get Success");
                         // console.log(response);
-                        $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0]);
+                        $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -931,8 +956,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         data: data
                     }).then(function(response) {
                         // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.criminalCivic += parseInt(response.data[0]);
+                        $scope.federalInfo.criminalCivic += parseInt(response.data[0].count);
                     }, function() {
                         console.log("Get Error");
                     });
@@ -951,7 +975,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     switch(objectParam) {
                         case "victim_ethnicity":
                             objectParam += '_' + query.textSpecial;
-                            console.log('new ethnicity OP:', objectParam);
+                            // console.log('new ethnicity OP:', objectParam);
                             break;
                         case "victim_gender":
                             objectParam += '_' + query.text;
@@ -967,15 +991,16 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             break;
                     };
 
-                    $scope.federalInfo[objectParam] = response.data[0];
+                    $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
                     // console.log(response.data[0]);
                     // console.log($scope.federalInfo);
                 }, function() {
                     console.log("Get Error");
                 });
             }
-            console.log($scope.federalInfo);
+            
         });
+        console.log($scope.federalInfo);
     };
 
 

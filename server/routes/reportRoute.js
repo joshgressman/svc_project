@@ -56,7 +56,27 @@ router.post('/federal/:id', function(req, res) {
             // console.log('ethnicity:', query);
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('gender:', query);
+            console.log('gender:', query);
+
+        } else if (table ==  "disability_total_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('disability_total_unique:', query);
+        } else if (table ==  "criminal_civic_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('criminal_civic_unique:', query);
+        } else if (table ==  "medical_advocacy_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('medical_advocacy_unique:', query);
+        } else if (table ==  "personal_advocacy_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('personal_advocacy_unique:', query);
+        } else if (table ==  "criminal_justice_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('criminal_justice_unique:', query);
+        } else if (table ==  "exception_compensation_unique") {
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('exception_compensation_unique:', query);
+                      
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);
@@ -73,7 +93,7 @@ router.post('/federal/:id', function(req, res) {
             // console.log(query);            
         } else {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log(query);
+            // console.log(query);
         }
         client.query(query,
             function(err, result) {
