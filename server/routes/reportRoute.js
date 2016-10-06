@@ -252,7 +252,7 @@ router.post('/playground/nonVictim', function(req, res) {
             res.sendStatus(500);
         }
 
-        client.query("SELECT * from victim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
+        client.query("SELECT * from nonvictim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
             function(err, result) {
                 done();
 
