@@ -21,10 +21,7 @@
                 <label for="advocayType">Type of Advocacy:</label>
                 <input class="" type="text" ng-model="form.advocacyType" value="phone" placeholder="Phone Advocacy" readonly/>
             </div>
-            <div class="formId">
-                <label for="formId">Form ID:</label>{{formId}}
-                <!-- <input class="" type="text" ng-model="form.formId"  placeholder={{}} readonly/> -->
-            </div>
+          
               <div class="counselor">
                   <label for="counselorName">Advocate/Counselor Name:</label>
                   <input class="counselorInput" type="text" ng-model="form.counselor" />
@@ -74,7 +71,7 @@
                   <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="newFiscalYear = true" ng-value = "false">No
               </div>
               <div ng-show="previousVisit" class="dateCheck">
-                  <label for="dateCheck">If YES, was contact made before October 1st, 2015</label>
+                  <label for="dateCheck">If YES, was contact made before October 1st?</label>
                   <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" ng-value="true">Yes
                   <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" ng-value="false">No
               </div>

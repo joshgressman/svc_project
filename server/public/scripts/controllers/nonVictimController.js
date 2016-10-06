@@ -1,10 +1,5 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
-  $scope.formId =  5;
-
-  $scope.formIdCount = function () {
-    $scope.formId++;
-  }
 
   $scope.print = function() {
       window.print();
@@ -39,7 +34,8 @@ $scope.nonVictimInfo = {};
         legalSystemReferral: null,
         citySocialReferral: null,
         otherOraganizationReferral: null,
-        advacacyLocation: null,
+        advocacyLocation: null,
+        request: null,
         dispatched: null,
         responded: null,
         reason: null,
@@ -51,6 +47,7 @@ $scope.nonVictimInfo = {};
         console.log('sending to server non vict data', data);
         $http.post('/dataRoute/nonvictim', data).then(function(response){
           console.log('success');
+          // $scope.formId ++;
         },
         function(response){
           console.log('error');
@@ -59,6 +56,8 @@ $scope.nonVictimInfo = {};
       });
 
       }
+
+
 
 
 

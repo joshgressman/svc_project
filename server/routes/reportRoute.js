@@ -91,14 +91,15 @@ router.post('/federal/:id', function(req, res) {
 router.post('/county/edit', function(req, res) {
 var table = req.body.table;
 var number = req.body.number;
-
+console.log(table);
+console.log(number);
 pg.connect(connectionString, function (err, client, done){
   if(err){
     res.sendStatus(500);
 
     }
-    client.query('SELECT * FROM ' + table + ' WHERE column name ' + number),
-    function(err, results){
+    client.query('SELECT * FROM ' + table + ' WHERE id = ' + number,
+    function(err, result){
       done();
 
       if(err){
@@ -107,8 +108,8 @@ pg.connect(connectionString, function (err, client, done){
       }
       console.log('SEARCH QUERY RESULTS', result.rows);
       res.send(result.rows);
-    }
-  
+    });
+
 
 });
 });

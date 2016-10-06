@@ -1,10 +1,5 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-// $scope.formId = 12;
-
-$scope.formIdCount = function () {
-  $scope.formId++;
-}
 
   $scope.myFunction = function() {
       window.print();
@@ -17,7 +12,6 @@ $scope.formIdCount = function () {
     eTime: null,
     location: null,
     county: null,
-    county_other_specify: null,
     clientNumber: null,
     zipCode: null,
     victimType: null,
@@ -107,16 +101,21 @@ $scope.formIdCount = function () {
           $scope.message = "Please try again."
         });
       }
-
+///Search & update victim and non victim form
       $scope.table = {};
+      $scope.update = {}
 
       $scope.searchUpdate = function (){
         var data = {};
         var id = $scope.formId;
         var info = Object.getOwnPropertyNames($scope.table);
         $scope[info[0]]= true;
+        if(info[0] == "phone"){
+          info[0] = "victim";
+        }
         data.table = info[0];
-        data.number = $scope.formId;
+        data.number = parseInt($scope.formId);
+        console.log(data.number);
         $http({
             method: "POST",
             url: '/reportRoute/county/edit',
@@ -124,6 +123,8 @@ $scope.formIdCount = function () {
         }).then(function(response) {
             console.log("Get Success");
             console.log(response);
+              $scope.update = response.data[0];
+              console.log($scope.update);
       });
     }
 
