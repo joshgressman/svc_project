@@ -1321,20 +1321,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         text: "true"
     }, {
-
-
-
-
-
         bound: "violenceAdultAbuseTotal",
         table: "violence_adult_sexual", //Check Table name
         infoTable: "victim",
         text: ""
-
-
-
-
-
     }, {
         bound: "violenceAdultAbuseFamily",
         table: "violence_adult_child_family",
