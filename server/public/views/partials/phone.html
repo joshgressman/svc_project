@@ -1,6 +1,8 @@
+
 <div>
+
 <div class="alert alert-danger" id="alert">
-  <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the pink form on this page.
+  <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
 </div>
 <div class="container">
 
@@ -20,6 +22,12 @@
             <div class="advocayType">
                 <label for="advocayType">Type of Advocacy:</label>
                 <input class="" type="text" ng-model="form.advocacyType" value="phone" placeholder="Phone Advocacy" readonly/>
+
+            </div>
+            <div class="formId">
+                <label for="formId">Form ID:</label>{{formId}}
+                <!-- <input class="" type="text" ng-model="form.formId"  placeholder={{}} readonly/> -->
+
             </div>
               <div class="counselor">
                   <label for="counselorName">Advocate/Counselor Name:</label>
@@ -43,25 +51,7 @@
                   <label for="endTime">End Time:</label>
                   <input class="eTimeInput" type="time" ng-model="form.eTime" />
               </div>
-              <!-- <div class="location">
-                  <label for="location">Location (Where services are being provided):</label>
-                  <input class="locationInput" type="text" ng-model="form.location" />
-              </div> -->
-              <div class="county">
-                <label for="county">County:</label>
-                <select>
-                <option  value="">Select One</option>
-                <option ng-model="form.county" value="Anoka">Anoka</option>
-                <option ng-model="form.county" value="Carver">Carver</option>
-                <option ng-model="form.county" value="Dakota">Dakota</option>
-                <option ng-model="form.county" value="Hennepin">Hennepin</option>
-                <option ng-model="form.county" value="Ramsey">Ramsey</option>
-                <option ng-model="form.county" value="Scott">Scott</option>
-                <option ng-model="form.county" value="Washington">Washington</option>
-                <option ng-model="form.county" value="unKnown/pass">Unknown</option>
-              </select>
-                <input type="text" ng-model="form.county" name="otherCounty" placeholder="Other County"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-              </div>
+
           </div>
           <div id="victimInfo">
               <div class="zipCode">
@@ -226,15 +216,21 @@
                         </td>
                     </tr>
                   </table>
+                  <label for="multiple">Was there MORE than one type of sexual violence?:</label>
+                  <input type="radio" name="multiple" ng-model="form.multiple" value="true"> Yes
+                  <input type="radio" name="multiple" ng-model="form.multiple" value="false"> No
               </div>
               <label for="victimDemoSurvey">Victim/Survivor Demographic Survey</label>
               <div class="victimDemoSurvey">
                   <label for="age">Age:</label>
                   <input class="ageInput" type="number" ng-model="form.age" />
+                </br>
                   <label for="gender">Gender:</label>
                   <input type="radio" name="gender" value="Male"> Male
                   <input type="radio" name="gender" value="Female"> Female
                   <input type="radio" name="gender" value="Non-binary">Non-binary
+                  <input type="radio" name="gender" ng-model="form.gender" value="other"> Other
+                </br>
                   <label for="transgender">Transgender:</label>
                   <input type="radio" name="transgender" ng-value="true"> Yes
                   <input type="radio" name="transgender" ng-value="false"> No
@@ -306,7 +302,7 @@
                   <option ng-model="form.ethnicBackground" value="unKnown/pass">Unknown/pass</option>
                   <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
                 </select>
-                  <input type="text" ng-model="form.ethnicBackground" name="otherEthnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                  <input type="text" ng-model="form.ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                   <label for="immigrantStatus">Immigrant Status:</label>
                   <select>
                   <option  value="">Select One</option>
@@ -320,7 +316,7 @@
                   <option ng-model="form.immigrantStatus" value="No">No</option>
                   <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                 </select>
-                <input type="text" ng-model="form.immigrantStatus" name="other.immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 <div>
                   <label for="otherStatus">Other (check all that apply):</label>
                   <div>

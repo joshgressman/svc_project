@@ -3,29 +3,44 @@
     <div class="row">
         <div class="col-md-2" id="dataside">
             <ul class="nav">
-              <li><button class="adminBtn" Onclick="window.location.href='#reports'">Reports</button></li>
-              <li><button class="adminBtn" Onclick="window.location.href='#data'">Data Entry</button></li>
-              <li><button id="back" Onclick="window.location.href='#admin'">&#8678 Back</button></li>
+                <li>
+                    <button class="adminBtn" Onclick="window.location.href='#reports'">Reports</button>
+                </li>
+                <li>
+                    <button class="adminBtn" Onclick="window.location.href='#data'">Data Entry</button>
+                </li>
+                <li>
+                    <button id="back" Onclick="window.location.href='#admin'">&#8678 Back</button>
+                </li>
             </ul>
         </div>
         <div class="col-md-9" id="dataview">
 
-         <div id="searchBox">
-           <h3 id="searchText">Edit Form</h3>
-           <form ng-submit="searchUpdate()">
-             <div class="searchEntry">
-                 <label for="searchEntry">Enter Confirmation #:</label>
-                 <input class="search" type="number" ng-model="searchForm.confirmationNumber" /> <input  type="submit" name="search" value="Search" ng-click="results = true" />
-             </div>
-           </form>
-         </div>
-         <div ng-show="results" id="resultsForm">
+            <div id="searchBox">
+                <h3 id="searchText">Edit Form</h3>
+                <form >
+                    <div class="searchType">
+                        <label for="searchType">Type of Search</label>
+                        <input type="radio" name="searchType" ng-model="table.victim" ng-value="true">Victim/Survivor
+                        <input type="radio" name="searchType" ng-model="table.nonvictim" ng-value="true">Non-Victim
+                    </div>
+                    <div class="searchEntry">
+                        <label for="searchEntry">Enter Confirmation #:</label>
+                        <input class="search" type="number" ng-model="formId" />
+                        <input type="submit" name="search" value="Search" ng-click="searchUpdate()" />
+                    </div>
+                </form>
+            </div>
+            <div ng-show="victim" id="resultsForm">
+                <h2>Victim Div</h2>
 
-             <h3>This is where some information goes from the form</h3>
-           insert inputs with the value of the retunred object. value="person.info"
-           will work like a placeholder. Could also copy the previouse forms and switch the ng-model to value.
 
+            </div>
+            <div ng-show="nonvictim" id="resultsForm">
+                <h2>nonVic Div</h2>
+
+
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </div>
