@@ -547,11 +547,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Other"
     }, {
         table: "victim_zipcode_unknown",
-        text: null
-
-    // }, {
-    //     table: "victim_zipcode",
-    //     text: "Total"
+        text: ""
+    }, {
+        table: "victim_zipcode_total",
+        text: ""
     },  {
         table: "victim_ethnicity",
         text: "Native American",
@@ -585,7 +584,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "Multi-Racial",
         textSpecial: "multi-racial"
     }, {
-        table: "victim_ethnicity_unknown",
+        table: "victim_ethnicity",
         text: null,
         textSpecial: "unknown"
     }, {
@@ -670,7 +669,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         textSpecial: "(victim_age >= 50)"
     }, {
         table: "victim_age_unknown",
-        text: null,
+        text: "",
         textSpecial: "victim_age is null"
     }, {
         table: "victim_age",
@@ -789,9 +788,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 url: '/reportRoute/county/' + query.table,
                 data: data
             }).then(function(response) {
-                console.log("Get Success");
-                console.log(response);
-                console.log(query.table);
+                // console.log("Get Success");
+                // console.log(response);
+                // console.log(query.table);
                 var objectParam = query.table;
 
 
@@ -819,7 +818,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 };
 
 
-                $scope.countyInfo[objectParam] = response.data[0];
+                $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
                 // console.log(response.data[0]);
                 // console.log($scope.countyInfo);
             }, function() {
@@ -834,7 +833,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         location.text = "true";
         location.start = $scope.dateStart;
         location.end = $scope.dateEnd;
-        console.log('location query:', location);
+        // console.log('location query:', location);
 
         $http({
             method: "POST",
@@ -848,16 +847,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             }, function() {
                 console.log("Get Error");
             });
-
+    console.log($scope.countyInfo);
+    
     };
-
-    // var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other", "disability_blind"];
-    // var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
-    // var criminalJusticProcessTotal = ["information_criminal_justice", "legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy"];
-    // var personalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental", "medical_exam_support", "legal_law_enforcement_interview", "legal_immigration", "legal_intervention", "transportation"];
-    // var medicalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental"];
-    // var criminalCivicTotal = ["legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy", "legal_oft_hro", "legal_immigration", "legal_intervention"];
-
 
     $scope.getStuffFederal = function() {
         federalObjectArray.forEach(function(query, index) {
@@ -867,6 +859,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             data.end = $scope.dateEnd;
             data.text = query.text;
             data.textSpecial = query.textSpecial;
+
             $scope.federalInfo.criminalCivic = 0;
             $scope.federalInfo.disabilityTotal = 0;
             $scope.federalInfo.victimCompensation = 0;

@@ -173,18 +173,24 @@ router.post('/county/:id', function(req, res) {
         } else if (table ==  "victim_zipcode") {
             query = stringQueryWhere + table + " = '" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victim age:', query);
-        // } else if (table ==  "victim_zipcode_unknown") {
-        //     query = stringQueryWhere + " victim_zipcode is " + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+        } else if (table ==  "victim_zipcode_unknown") {
+            query = stringQueryWhere + " victim_zipcode is null" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         //     // console.log('victim age unknown:', query);
         } else if (table ==  "victim_zipcode_other") {
             query = stringQueryWhere + notHennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('victim age unknown:', query);
+            // console.log('victim age other:', query);
+        } else if (table ==  "victim_zipcode_total") {
+            query = stringQueryWhere + hennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('victim age other:', query);
         } else if (table ==  "victim_ethnicity_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity total:', query);
         } else if (table ==  "victim_age") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('victim age:', query);
+        } else if (table ==  "victim_age_unknown") {
+            query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('victim age:', query);    
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
@@ -280,7 +286,7 @@ router.post('/playground/nonVictim', function(req, res) {
             res.sendStatus(500);
         }
 
-        client.query("SELECT * from victim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
+        client.query("SELECT * from nonvictim where contact_date >= '" + start + "' AND contact_date <= '" + end + "'",
             function(err, result) {
                 done();
 
