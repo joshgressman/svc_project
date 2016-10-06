@@ -49,6 +49,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         .when('/users', {
             templateUrl: '/views/partials/user.html',
             controller: 'userController'
+        })    
         .when('/federalPrint', {
             templateUrl: '/views/federalRep.html',
             controller: "adminController"
