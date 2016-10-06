@@ -94,7 +94,7 @@ var number = req.body.number;
 
 pg.connect(connectionString, function (err, client, done){
   if(err){
-    res.sendStatus(500){
+    res.sendStatus(500);
 
     }
     client.query('SELECT * FROM ' + table + ' WHERE column name ' + number),
@@ -108,7 +108,7 @@ pg.connect(connectionString, function (err, client, done){
       console.log('SEARCH QUERY RESULTS', result.rows);
       res.send(result.rows);
     }
-  }
+  
 
 });
 });
