@@ -152,28 +152,66 @@
            <div class="advacacyLocation">
 
                <label>Is this an advocacy request?</label>
-               <input type="radio" name="request" ng-model="form.request" ng-value="true"> Yes
-               <input type="radio" name="request" ng-model="form.request" ng-value="false"> No
+               <input type="radio" name="request" ng-model="form.advocacyRequest" ng-value="true"> Yes
+               <input type="radio" name="request" ng-model="form.advocacyRequest" ng-value="false"> No
              </br>
                <label for="advacacyLocation">If yes where to?:</label>
                <input class="advacacyLocation" type="text" ng-model="form.advacacyLocation" />
            </div>
 
+               <label>Is this an medical advocacy request?</label>
+               <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="true"> Yes
+               <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="false"> No
+               
            <div class="dispatched">
                <label for="dispatched">If yes was an advocate dispatched?:</label>
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
+               <input type="radio" name="dispatched" ng-model="form.advocateDispatched" ng-value="true">YES
+               <input type="radio" name="dispatched" ng-model="form.advocateDispatched" ng-value="false">NO
            </div>
-           <div class="responded">
+<!--            <div class="responded">
              <label for="responded">If yes, who responded?:</label>
-             <input class="responded" type="text" ng-model="form.responded" />
+             <input class="responded" type="text" ng-model="form.advocateResponded" />
            </div>
            <div class="reason">
              <label for="reason">If no, why not?:</label>
-             <input class="reason" type="text" ng-model="form.reason" />
+             <input class="reason" type="text" ng-model="form.advocateReason" />
+           </div> -->
+           <div class="responded">
+             <label for="responded">If yes, who responded?:</label>
+             <input class="responded" type="text" ng-model="form.medicalAdvocateResponded" />
+           </div>
+           <div class="reason">
+             <label for="reason">If no, why not?:</label>
+             <input class="reason" type="text" ng-model="form.medicalAdvocateReason" />
+           </div>
+         </div>
+
+         <!-- <div class="medicalAdvocacyRequest">
+           <div class="medicalAdvacacyLocation">
+
+               <label>Is this an medical advocacy request?</label>
+               <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="true"> Yes
+               <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="false"> No
+             </br>
+               <label for="advacacyLocation">If yes where to?:</label>
+               <input class="AdvacacyLocation" type="text" ng-model="form.medicalAdvacacyLocation" />
            </div>
 
-         </div>
+           <div class="dispatched">
+               <label for="dispatched">If yes was an advocate dispatched?:</label>
+               <input type="radio" name="dispatched" ng-model="form.medicalAdvocateDispatched" ng-value="true">YES
+               <input type="radio" name="dispatched" ng-model="form.medicalAdvocateDispatched" ng-value="false">NO
+           </div>
+           <div class="responded">
+             <label for="responded">If yes, who responded?:</label>
+             <input class="responded" type="text" ng-model="form.medicalAdvocateResponded" />
+           </div>
+           <div class="reason">
+             <label for="reason">If no, why not?:</label>
+             <input class="reason" type="text" ng-model="form.medicalAdvocateReason" />
+           </div>
+
+         </div> -->
          <input id="subBtn" type="submit" name="submit" value="Submit" ng-click="formIdCount()"/>
      </form>
   </div>
