@@ -199,8 +199,6 @@ router.post('/county/:id', function(req, res) {
         //     query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         //     // console.log('victimization count:', query);
 
-
-
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
@@ -279,7 +277,7 @@ router.post('/reportRoute/county/locations', function (req, res) {
 
 router.post('/playground/victim/:id', function(req, res) {
 
-    var stringQueryFrom = "SELECT COUNT (*) FROM victim WHERE ";
+    var stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE ";
     var table
     var selectDistinct = "SELECT DISTINCT service_location FROM victim WHERE "
     var iLike = " iLIKE ";
@@ -308,13 +306,15 @@ pg.connect(connectionString, function(err, client, done) {
             res.sendStatus(500);
         }
         if (text == "TOTAL") {
-            stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
-            greaterThanOrEqual = " contact_date >= "
-            query = stringQueryWhere + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('playground total:', query);
+            primary = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'youthPrimaryVictim') ";
+
+            query = stringQueryWhere + primary + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('playground total, primary:', query);
         } else if (text == "NEW") {
-            // query = ;
-            // console.log('new:', query);
+            primary = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'youthPrimaryVictim') ";
+
+            query = stringQueryWhere + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('playground new, primary:', query);
         } else if (text == "") {
             // query = ;
             // console.log('new:', query);    

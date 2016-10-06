@@ -1125,6 +1125,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.nonVictimAdvocacy = false;
     };
     $scope.submitting = function() {
+        $scope.playgroundInfo = {};
         $scope.showFields = true;
         $scope.newSearch = false;
         console.log(parameterArray);
@@ -1160,6 +1161,30 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }).then(function(response) {
                         console.log("Get Success");
                         console.log('response:', response);
+
+                        var objectParam = object.table;
+
+                        switch(objectParam) {
+                        case "victim_ethnicity":
+                            objectParam += '_' + object.textSpecial;
+                            // console.log('new ethnicity OP:', objectParam);
+                            break;
+                        case "victim_gender":
+                            objectParam += '_' + object.text;
+                            // console.log('new gender OP:', objectParam);
+                            break;
+                        case "victim_age":
+                            objectParam += '_' + object.text;
+                            // console.log('new age OP:', objectParam);
+                            break;
+                        case "contact_type":
+                            objectParam += '_' + object.text;
+                            // console.log('new age OP:', objectParam);
+                            break;
+                    };
+
+                    $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
+
                         // console.log('query table:', query.table);
                         // var objectParam = query.table;
                         // $scope.federalInfo[objectParam] = response.data[0];
@@ -1442,10 +1467,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         //Question 6B
-        bound: "showNewIndividual",
-        table: "victim_victimization_count",
+        bound: "victimSpecialMultiple",
+        table: "victim_multiple ",
         infoTable: "victim",
-        textSpecial: "victim_victimization_count >= 2"
+        text: "true"
     }, {
         bound: "age",
         table: "victim_age",

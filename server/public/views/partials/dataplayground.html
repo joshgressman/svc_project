@@ -220,6 +220,9 @@
                             <div>
                                 <input type="checkbox" ng-model="playground.victimSpecialLimitedEnglish" value="true">Victims with Limited English Proficiency
                             </div>
+                             <div>
+                                <input type="checkbox" ng-model="playground.victimSpecialMultiple" value="true">Victims with 2 or More Types of Victimization
+                            </div>
                         </div>
                         <div ng-show="showCounties">
                             <h3>showCounties</h3>
@@ -2650,6 +2653,18 @@
                                 <div ng-show="victimSpecialLimitedEnglish" class="row">
                                     <div class="col-md-9 text-left">
                                         Victims with Limited English Proficiency
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-show="victimSpecialMultiple" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Victims with Two or More Types of Victimization
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
