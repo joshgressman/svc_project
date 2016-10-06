@@ -1155,7 +1155,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     console.log(data);
                     $http({
                         method: "POST",
-                        url: '/reportRoute/playground/' + object.table,
+                        url: '/reportRoute/playground/victim/' + object.table,
                         data: data
                     }).then(function(response) {
                         console.log("Get Success");

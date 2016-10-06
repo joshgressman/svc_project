@@ -13,6 +13,12 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
       }
     });
   }
+      $scope.oneAtATime = true;
+    $scope.status = {
+        isCustomHeaderOpen: false,
+        isFirstOpen: true,
+        isFirstDisabled: false
+    };
 
 // $scope.formId = 12;
 
