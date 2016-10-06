@@ -184,16 +184,15 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_multiple",
         text: "true"
     }, {
-        //Question 6C
-        table: "disability_deaf",
-        text: "true"
-    }, {
         table: "exception_disability",
         text: "true"
     }, {
+        table: "disability_deaf",
+        text: "true"
+    }, {
         table: "disability_total_unique",
-        text: "(disability_physical is true OR disability_mental is true OR disability_developmental is true OR disability_other is true OR disability_blind is true)"    
-        
+        text: "(disability_physical is true OR disability_mental is true OR disability_developmental is true OR disability_other is true OR disability_blind is true)"
+
     }, {
         table: "victim_sexual_orientation_total",
         textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
@@ -216,7 +215,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "exception_compensation_unique",
         text: "(emergency_financial is true OR reparations_claims is true)"
-    }, {    
+    }, {
         //Question 8/9A0=9A4
         table: "information_referral",
         text: "true"
@@ -770,7 +769,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }];
 
     $scope.getStuffCounty = function() {
-        console.log('getting stuff');
         countyObjectArray.forEach(function(query, index) {
             var data = {};
 
@@ -862,7 +860,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
 
     $scope.getStuffFederal = function() {
-        console.log('getting stuff');
         federalObjectArray.forEach(function(query, index) {
             var data = {};
 
@@ -998,7 +995,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     console.log("Get Error");
                 });
             }
-            
         });
         console.log($scope.federalInfo);
     };
@@ -1008,63 +1004,96 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //Where the Playground dropdowns code starts
     // var counter = 0;
+    $scope.newSearch = true;
     $scope.playground = {};
     $scope.selectedCategories;
     $scope.checkSelection = function() {
-        console.log("$scope.selectedCategories", $scope.selectedCategories);
-        // var test = ["something", "something Else"];
-        // $scope.selectedCategories[test[counter]] = "penguin";
-        // counter++;
         makeFalse();
         $scope.selectedCategories.forEach(function(category) {
             switch (category) {
                 case "individualsServiced":
                     $scope.individualsServiced = true;
-                    console.log("$scope.individualsServiced", $scope.individualsServiced);
                     break;
                 case "ethnicity":
                     $scope.ethnicity = true;
-                    console.log("$scope.ethnicity", $scope.ethnicity);
                     break;
                 case "genderIdentity":
                     $scope.genderIdentity = true;
-                    console.log("$scope.genderIdentity", $scope.genderIdentity);
                     break;
                 case "age":
                     $scope.age = true;
-                    console.log("$scope.age", $scope.age);
                     break;
                 case "victimizationTypes":
                     $scope.victimizationTypes = true;
-                    console.log("$scope.victimizationTypes", $scope.victimizationTypes);
                     break;
-                case "vicimizationTypesSpecial":
-                    $scope.vicimizationTypesSpecial = true;
-                    console.log("$scope.vicimizationTypesSpecial", $scope.vicimizationTypesSpecial);
+                case "victimizationTypesSpecial":
+                    $scope.victimizationTypesSpecial = true;
                     break;
                 case "victimCompensation":
                     $scope.victimCompensation = true;
-                    console.log("$scope.victimCompensation", $scope.victimCompensation);
                     break;
                 case "servicesReceived":
                     $scope.servicesReceived = true;
-                    console.log("$scope.servicesReceived", $scope.servicesReceived);
                     break;
                 case "infoAndReferral":
                     $scope.infoAndReferral = true;
-                    console.log("$scope.infoAndReferral", $scope.infoAndReferral);
                     break;
                 case "personalAdvocacy":
                     $scope.personalAdvocacy = true;
-                    console.log("$scope.personalAdvocacy", $scope.personalAdvocacy);
                     break;
                 case "emotionalSupport":
                     $scope.emotionalSupport = true;
-                    console.log("$scope.emotionalSupport", $scope.emotionalSupport);
                     break;
                 case 'justiceSystemAssistance':
                     $scope.justiceSystemAssistance = true;
-                    console.log("$scope.justiceSystemAssistance", $scope.justiceSystemAssistance);
+                    break;
+                case 'showCounties':
+                    $scope.showCounties = true;
+                    break;
+                case 'immigrantStatus':
+                    $scope.immigrantStatus = true;
+                    break;
+                case 'typeOfServiceNew':
+                    $scope.typeOfServiceNew = true;
+                    break;
+                case 'clientServicesNewAndRepeat':
+                    $scope.clientServicesNewAndRepeat = true;
+                    break;
+                case 'disability':
+                    $scope.disability = true;
+                    break;
+                case 'inPersonCrisis':
+                    $scope.inPersonCrisis = true;
+                    break;
+                case 'inPersonLegalCriminal':
+                    $scope.inPersonLegalCriminal = true;
+                    break;
+                case 'inPersonLegalCivil':
+                    $scope.inPersonLegalCivil = true;
+                    break;
+                case 'inPersonMedical':
+                    $scope.inPersonMedical = true;
+                    break;
+                case 'inPersonOther':
+                    $scope.inPersonOther = true;
+                    break;
+                case 'typeOfVictim':
+                    $scope.typeOfVictim = true;
+                    break;
+                case 'transgender':
+                    $scope.transgender = true;
+                    break;
+                case 'phoneServicesProvided':
+                    $scope.phoneServicesProvided = true;
+                    break;
+                case 'supportedOnCall':
+                    $scope.supportedOnCall = true;
+                    break;
+                case 'contactType':
+                    $scope.contactType = true;
+                    break;
+                case 'nonVictimAdvocacy':
+                    $scope.nonVictimAdvocacy = true;
                     break;
             }
         });
@@ -1077,57 +1106,127 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.genderIdentity = false;
         $scope.age = false;
         $scope.victimizationTypes = false;
-        $scope.vicimizationTypesSpecial = false;
+        $scope.victimizationTypesSpecial = false;
         $scope.victimCompensation = false;
         $scope.servicesReceived = false;
         $scope.infoAndReferral = false;
         $scope.personalAdvocacy = false;
         $scope.emotionalSupport = false;
         $scope.justiceSystemAssistance = false;
+        $scope.showCounties = false;
+        $scope.immigrantStatus = false;
+        $scope.typeOfServiceNew = false;
+        $scope.clientServicesNewAndRepeat = false;
+        $scope.disability = false;
+        $scope.inPersonCrisis = false;
+        $scope.inPersonLegalCriminal = false;
+        $scope.inPersonLegalCivil = false;
+        $scope.inPersonMedical = false;
+        $scope.inPersonOther = false;
+        $scope.transgender = false;
+        $scope.typeOfVictim = false;
+        $scope.phoneServicesProvided = false;
+        $scope.supportedOnCall = false;
+        $scope.contactType = false;
+        $scope.nonVictimAdvocacy = false;
     };
-    $scope.submiting = function() {
-        console.log("$scope.playground", $scope.playground);
+    $scope.submitting = function() {
         $scope.showFields = true;
+        $scope.newSearch = false;
+        console.log(parameterArray);
+        console.log($scope.playground);
         var parameterArray = Object.getOwnPropertyNames($scope.playground);
         console.log(parameterArray);
         parameterArray.forEach(function(parameter) {
-            console.log("forEach running!");
             $scope[parameter] = true;
-            federalObjectArray.forEach(function(object){
-              if(object.bound !== parameter){
-                return;
-              }else{
-                var data = {};
-                // data.start = convertedStart;
-                // data.end = convertedEnd;
-                data.text = object.text;
-                data.tableInfo = object.tableInfo;
-                data.textSpecial = query.textSpecial;
-                $http({
-                    method: "POST",
-                    url: '/reportRoute/playground' + object.table,
-                    data: data
-                }).then(function(response) {
-                    console.log("Get Success");
-                    console.log('response:', response);
-                    // console.log('query table:', query.table);
-                    // var objectParam = query.table;
-                    // $scope.federalInfo[objectParam] = response.data[0];
-                    // console.log(response.data[0]);
-                    // console.log($scope.federalInfo);
-                }, function() {
-                    console.log("Get Error");
-                });
-              }
+            playgroundObjectArray.forEach(function(object) {
+                if (object.bound !== parameter) {
+                    return;
+                } else {
+                    var data = {};
+                    // data.start = convertedStart;
+                    // data.end = convertedEnd;
+                    data.text = object.text;
+                    data.tableInfo = object.infoTable;
+                    data.textSpecial = object.textSpecial;
+                    data.table = object.table;
+                    data.startDate = $scope.playground.startDate;
+                    data.endDate = $scope.playground.endDate;
+                    if (object.bound == 'age') {
+                        data.start = $scope.playground.age.start;
+                        data.end = $scope.playground.age.end;
+                        $scope.begin = $scope.playground.age.start;
+                        $scope.end = $scope.playground.age.end;
+                    }
+                    console.log(data);
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/playground/' + object.table,
+                        data: data
+                    }).then(function(response) {
+                        console.log("Get Success");
+                        console.log('response:', response);
+                        // console.log('query table:', query.table);
+                        // var objectParam = query.table;
+                        // $scope.federalInfo[objectParam] = response.data[0];
+                        // console.log(response.data[0]);
+                        // console.log($scope.federalInfo);
+                    }, function() {
+                        console.log("Get Error");
+                    });
+                }
             });
         });
 
     }
-
-    //End code for Playground dropdowns
-
-
-    var plygroundObjectArray = [{
+    $scope.resetSearch = function() {
+        $scope.showFields = false;
+        $scope.newSearch = true;
+        makeFalse();
+        var objectParam = Object.getOwnPropertyNames($scope.playground);
+        objectParam.forEach(function(param) {
+            $scope[param] = false;
+        });
+        $scope.playground = {};
+    }
+    $scope.blackHole = function() {
+            $scope.showFields = true;
+            $scope.newSearch = false;
+            $scope.showTotalVictim = true;
+            var data = {};
+            data.start = $scope.playground.startDate;
+            data.end = $scope.playground.endDate;
+            $http({
+                method: "POST",
+                url: '/reportRoute/playground/victim',
+                data: data
+            }).then(function(response) {
+                console.log("Get Success");
+                console.log('response:', response);
+                var victimParameters = Object.getOwnPropertyNames(response.data[0]);
+                console.log(victimParameters);
+                getNonVictim(data);
+            }, function() {
+                console.log("Get Error");
+            });
+        }
+  function getNonVictim(data){
+    $scope.showTotalNonVictim = true;
+    $http({
+        method: "POST",
+        url: '/reportRoute/playground/nonVictim',
+        data: data
+    }).then(function(response) {
+        console.log("Get Success");
+        console.log('response:', response);
+        var nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
+        console.log(nonVictimParameters);
+    }, function() {
+        console.log("Get Error");
+    });
+  }
+        //End code for Playground dropdowns
+    var playgroundObjectArray = [{
         //Question 1
         bound: "showIndividual",
         table: "total_overall",
@@ -1185,11 +1284,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "unknown"
-    }, {
-        bound: "showNotTrackedRace",
-        table: "victim_ethnicity",
-        infoTable: "victim",
-        text: "Not Tracked"
     }, {
         bound: "showEthnicityTotal",
         table: "victim_ethnicity_total",
@@ -1358,8 +1452,600 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_victimization_count",
         infoTable: "victim",
         textSpecial: "victim_victimization_count >= 2"
+    }, {
+        bound: "age",
+        table: "victim_age",
+        infoTable: "victim"
+    }, {
+        bound: "county55111",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55111"
+    }, {
+        bound: "county55305",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55305"
+    }, {
+        bound: "county55311",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55311"
+    }, {
+        bound: "county55316",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55316"
+    }, {
+        bound: "county55317",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55317"
+    }, {
+        bound: "county55327",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55327"
+    }, {
+        bound: "county55328",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55328"
+    }, {
+        bound: "county55331",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55331"
+    }, {
+        bound: "county55340",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55340"
+    }, {
+        bound: "county55341",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55341"
+    }, {
+        bound: "county55343",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55343"
+    }, {
+        bound: "county55344",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55344"
+    }, {
+        bound: "county55345",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55345"
+    }, {
+        bound: "county55346",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55346"
+    }, {
+        bound: "county55347",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55347"
+    }, {
+        bound: "county55356",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55356"
+    }, {
+        bound: "county55357",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55357"
+    }, {
+        bound: "county55359",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55359"
+    }, {
+        bound: "county55361",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55361"
+    }, {
+        bound: "county55364",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55364"
+    }, {
+        bound: "county55369",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55369"
+    }, {
+        bound: "county55373",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55373"
+    }, {
+        bound: "county55374",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55374"
+    }, {
+        bound: "county55375",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55375"
+    }, {
+        bound: "county55384",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55384"
+    }, {
+        bound: "county55387",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55387"
+    }, {
+        bound: "county55388",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55388"
+    }, {
+        bound: "county55391",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55391"
+    }, {
+        bound: "county55392",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55392"
+    }, {
+        bound: "county55401",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55401"
+    }, {
+        bound: "county55402",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55402"
+    }, {
+        bound: "county55403",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55403"
+    }, {
+        bound: "county55404",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55404"
+    }, {
+        bound: "county55405",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55405"
+    }, {
+        bound: "county55406",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55406"
+    }, {
+        bound: "county55407",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55407"
+    }, {
+        bound: "county55408",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55408"
+    }, {
+        bound: "county55409",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55409"
+    }, {
+        bound: "county55410",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55410"
+    }, {
+        bound: "county55411",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55411"
+    }, {
+        bound: "county55412",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55412"
+    }, {
+        bound: "county55413",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55413"
+    }, {
+        bound: "county55414",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55414"
+    }, {
+        bound: "county55415",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55415"
+    }, {
+        bound: "county55416",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55416"
+    }, {
+        bound: "violenceUnknown",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "county55417",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55417"
+    }, {
+        bound: "county55418",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55418"
+    }, {
+        bound: "county55419",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55419"
+    }, {
+        bound: "county55420",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55420"
+    }, {
+        bound: "county55422",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55422"
+    }, {
+        bound: "county55423",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55423"
+    }, {
+        bound: "county55424",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55424"
+    }, {
+        bound: "county55425",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55425"
+    }, {
+        bound: "county55426",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55426"
+    }, {
+        bound: "county55427",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55427"
+    }, {
+        bound: "county55428",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55428"
+    }, {
+        bound: "county55429",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55429"
+    }, {
+        bound: "county55430",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55430"
+    }, {
+        bound: "county55431",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55431"
+    }, {
+        bound: "county55435",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55435"
+    }, {
+        bound: "county55436",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55436"
+    }, {
+        bound: "county55437",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55437"
+    }, {
+        bound: "county55438",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55438"
+    }, {
+        bound: "county55439",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55439"
+    }, {
+        bound: "county55441",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55441"
+    }, {
+        bound: "county55442",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55442"
+    }, {
+        bound: "county55443",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55443"
+    }, {
+        bound: "county55444",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55444"
+    }, {
+        bound: "county55445",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55445"
+    }, {
+        bound: "county55446",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55446"
+    }, {
+        bound: "county55447",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55447"
+    }, {
+        bound: "county55450",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55450"
+    }, {
+        bound: "county55454",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55454"
+    }, {
+        bound: "county55455",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "55455"
+    }, {
+        bound: "countyOther",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "Other"
+    }, {
+        bound: "countyUnknown",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "Unknown"
+    }, {
+        bound: "countyTotal",
+        table: "victim_zipcode",
+        infoTable: "victim",
+        text: "Total"
+    }, {
+        bound: "showMale",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "showFemale",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "showNonBinary",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "showOtherGender",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "showGenderNotReported",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "showGenderTotal",
+        table: "victim_gender",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "adultPrimary",
+        table: "victim_type",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "adultSecondary",
+        table: "victim_type",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "youthPrimary",
+        table: "victim_type",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "youthSecondary",
+        table: "victim_type",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "individualCounseling",
+        table: "crisis_counseling_individual",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "groupCounseling",
+        table: "crisis_counseling_group",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "lawEnforcement",
+        table: "legal_law_enforcement_interview",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "prosecutionAdvocacy",
+        table: "legal_prosecution_related",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "courtAdvocacy",
+        table: "legal_court_advocacy",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "obtainingAssistance",
+        table: "legal_oft_hro",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "immigrationSupport",
+        table: "legal_immigration",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "intervention",
+        table: "legal_intervention",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "forensicExam",
+        table: "medical_exam_support",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "accompanimentMedical",
+        table: "medical_accompaniment_medical",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "accompanimentDental",
+        table: "medical_accompaniment_dental",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "informationReferral",
+        table: "information_referral",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "safeAtHome",
+        table: "safe_at_home",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "emergencyFinancial",
+        table: "emergency_financial",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "reparationsClaims",
+        table: "reparations_claims",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "yesTrans",
+        table: "victim_trans",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "noTrans",
+        table: "victim_trans",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "unknownTrans",
+        table: "victim_trans",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneCrisis",
+        table: "crisis_counseling",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneInformation",
+        table: "information_referral",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneCriminalJustice",
+        table: "information_criminal_justice",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneJusticeRelated",
+        table: "other_emergency_justice",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneEmergencyFinancial",
+        table: "emergency_financial",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "phoneEmergencyClaims",
+        table: "reparations_claims",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "supported",
+        table: "supported_on_call",
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "notSupported",
+        table: "supported_on_call",
+        infoTable: "victim",
+        text: "false"
+    }, {
+        bound: "inPersonContact",
+        table: "contact_type",
+        infoTable: "victim",
+        text: "In Person"
+    }, {
+        bound: "phoneContact",
+        table: "contact_type",
+        infoTable: "victim",
+        text: "Phone"
+    }, {
+        bound: "nonVictimMedical",
+        table: "", //Columns being added for this. Check Later
+        infoTable: "nonvictim",
+        text: "true"
+    }, {
+        bound: "nonVictimTotal",
+        table: "", //Columns being added for this. Check Later
+        infoTable: "nonvictim",
+        text: "true"
     }];
-
-
     ///**********END OF CONTROLLER***************************************///////
 }]);
