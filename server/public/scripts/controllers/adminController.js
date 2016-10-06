@@ -851,14 +851,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     
     };
 
-    // var disabilityStatusTotal = ["disability_physical", "disability_mental", "disability_developmental", "disability_other", "disability_blind"];
-    // var victimCompensationTotal = ["emergency_financial", "reparations_claims"];
-    // var criminalJusticProcessTotal = ["information_criminal_justice", "legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy"];
-    // var personalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental", "medical_exam_support", "legal_law_enforcement_interview", "legal_immigration", "legal_intervention", "transportation"];
-    // var medicalAdvocacyTotal = ["medical_accompaniment_medical", "medical_accompaniment_dental"];
-    // var criminalCivicTotal = ["legal_law_enforcement_interview", "legal_prosecution_related", "legal_court_advocacy", "legal_oft_hro", "legal_immigration", "legal_intervention"];
-
-
     $scope.getStuffFederal = function() {
         federalObjectArray.forEach(function(query, index) {
             var data = {};
