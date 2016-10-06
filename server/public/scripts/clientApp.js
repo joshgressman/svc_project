@@ -46,6 +46,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/dataplayground.html',
             controller: "adminController"
         })
+        .when('/users', {
+            templateUrl: '/views/partials/user.html',
+            controller: 'userController'
         .when('/federalPrint', {
             templateUrl: '/views/federalRep.html',
             controller: "adminController"

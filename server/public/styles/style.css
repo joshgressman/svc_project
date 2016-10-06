@@ -58,6 +58,10 @@ padding-left: 200px;
 margin-top: -40px;
 }
 
+.logout {
+  float: right;
+}
+
 #headText {
   margin: 20px 0 0 50px;
 }

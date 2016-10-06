@@ -14,6 +14,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //End accordion code
 
+
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
@@ -848,7 +849,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 console.log("Get Error");
             });
     console.log($scope.countyInfo);
-    
+
     };
 
     $scope.getStuffFederal = function() {
