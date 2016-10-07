@@ -1473,8 +1473,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_adult_sexual", //Check Table name
         infoTable: "victim",
         text: "",
-             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
-
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
 
 
 
@@ -1513,7 +1512,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_child_sexual", //Check Table name
         infoTable: "victim",
         text: "",
-             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
 
 
 
