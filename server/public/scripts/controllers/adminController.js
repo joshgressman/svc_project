@@ -1,9 +1,9 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-  $scope.myFunction = function() {
-      window.print();
-  }
-    //Assuming this is the controller for the data viewing, below is the code needed for the accordions
+    $scope.myFunction = function() {
+            window.print();
+        }
+        //Assuming this is the controller for the data viewing, below is the code needed for the accordions
 
     $scope.oneAtATime = true;
     $scope.status = {
@@ -67,10 +67,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: null,
         textSpecial: "unknown"
     }, {
-    //     table: "victim_ethnicity",
-    //     text: "Not Tracked",
-    //     text: "not_tracked"
-    // }, {
+        //     table: "victim_ethnicity",
+        //     text: "Not Tracked",
+        //     text: "not_tracked"
+        // }, {
         table: "victim_ethnicity_total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity is null)"
     }, {
@@ -92,7 +92,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         // table: "victim_gender",
         // text: "Not Tracked"
-    // }, {
+        // }, {
         table: "victim_gender_total",
         textSpecial: "(victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null)"
     }, {
@@ -549,10 +549,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_zipcode_unknown",
         text: null
 
-    // }, {
-    //     table: "victim_zipcode",
-    //     text: "Total"
-    },  {
+        // }, {
+        //     table: "victim_zipcode",
+        //     text: "Total"
+    }, {
         table: "victim_ethnicity",
         text: "Native American",
         textSpecial: "native_american"
@@ -589,9 +589,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: null,
         textSpecial: "unknown"
     }, {
-    //     table: "victim_ethnicity",
-    //     text: "Not Tracked"
-    // }, {
+        //     table: "victim_ethnicity",
+        //     text: "Not Tracked"
+        // }, {
         table: "victim_ethnicity_total",
         text: "total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity is null)"
@@ -610,9 +610,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "victim_gender",
         text: null
-    // }, {
-    //     table: "victim_gender",
-    //     text: "Not Tracked"
+            // }, {
+            //     table: "victim_gender",
+            //     text: "Not Tracked"
     }, {
         table: "victim_gender_total",
         text: "total",
@@ -656,14 +656,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_age",
         text: "1950",
         textSpecial: "(victim_age >= 19 AND victim_age <= 50)"
-    // }, {
-    //     table: "victim_age",
-    //     text: "3044",
-    //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
-    // }, {
-    //     table: "victim_age",
-    //     text: "4565",
-        // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
+            // }, {
+            //     table: "victim_age",
+            //     text: "3044",
+            //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
+            // }, {
+            //     table: "victim_age",
+            //     text: "4565",
+            // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
     }, {
         table: "victim_age",
         text: "50",
@@ -763,9 +763,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "crisis_counseling_group",
         text: "true"
-    // }, {
-    //     table: "locations",
-    //     text: "true"
+            // }, {
+            //     table: "locations",
+            //     text: "true"
     }];
 
     $scope.getStuffCounty = function() {
@@ -795,7 +795,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 var objectParam = query.table;
 
 
-                switch(objectParam) {
+                switch (objectParam) {
                     // case "victim_ethnicity":
                     //     objectParam += '_' + query.text;
                     //     console.log('new ethnicity OP:', objectParam);
@@ -845,9 +845,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             // console.log(response);
             $scope.locations = response;
             console.log($scope.locations);
-            }, function() {
-                console.log("Get Error");
-            });
+        }, function() {
+            console.log("Get Error");
+        });
 
     };
 
@@ -969,7 +969,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     // console.log('query table:', query.table);
                     var objectParam = query.table;
 
-                    switch(objectParam) {
+                    switch (objectParam) {
                         case "victim_ethnicity":
                             objectParam += '_' + query.textSpecial;
                             // console.log('new ethnicity OP:', objectParam);
@@ -1190,41 +1190,98 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.playground = {};
     }
     $scope.blackHole = function() {
-            $scope.showFields = true;
-            $scope.newSearch = false;
-            $scope.showTotalVictim = true;
-            var data = {};
-            data.start = $scope.playground.startDate;
-            data.end = $scope.playground.endDate;
-            $http({
-                method: "POST",
-                url: '/reportRoute/playground/victim',
-                data: data
-            }).then(function(response) {
-                console.log("Get Success");
-                console.log('response:', response);
-                var victimParameters = Object.getOwnPropertyNames(response.data[0]);
-                console.log(victimParameters);
-                getNonVictim(data);
-            }, function() {
-                console.log("Get Error");
+        $scope.showFields = true;
+        $scope.newSearch = false;
+        $scope.showTotalVictim = true;
+        var data = {};
+        data.start = $scope.playground.startDate;
+        data.end = $scope.playground.endDate;
+        $http({
+            method: "POST",
+            url: '/reportRoute/playground/victim',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log('response:', response);
+            $scope.victimObject = response.data;
+            console.log($scope.victimObject);
+            $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
+            console.log($scope.victimParameters);
+            getNonVictim(data);
+        }, function() {
+            console.log("Get Error");
+        });
+    }
+
+    function getNonVictim(data) {
+        $scope.showTotalNonVictim = true;
+        $http({
+            method: "POST",
+            url: '/reportRoute/playground/nonVictim',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log('response:', response);
+            $scope.nonVictimObject = response.data;
+            console.log($scope.nonVictimObject);
+            $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
+            console.log($scope.nonVictimParameters);
+        }, function() {
+            console.log("Get Error");
+        });
+    }
+    var bullshit = [];
+
+    function populatePDFArrays() {
+        column = [];
+        textValue = [];
+        $scope.victimObject.forEach(function(object, index) {
+          $scope[index] = {};
+          var standin = $scope[index];
+          console.log(index);
+            $scope.victimParameters.forEach(function(parameter, index) {
+              standin.column = [];
+              standin.column[index] = [];
+                standin.column[index].push({
+                    text: parameter,
+                });
+                console.log($scope[index]);
+                if ($scope.victimObject[index][parameter] == null) {
+                    $scope.victimObject[index][parameter] = "null";
+                }
+                standin.textValue = {};
+                standin.textValue[index] = [];
+                standin.textValue[index].push({
+                    text: $scope.victimObject[index][parameter],
+                });
             });
+        });
+        var i = 0;
+        while($scope[i] !== undefined){
+          console.log("I am defined!");
+          bullshit.push($scope[i]);
+          i++;
         }
-  function getNonVictim(data){
-    $scope.showTotalNonVictim = true;
-    $http({
-        method: "POST",
-        url: '/reportRoute/playground/nonVictim',
-        data: data
-    }).then(function(response) {
-        console.log("Get Success");
-        console.log('response:', response);
-        var nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
-        console.log(nonVictimParameters);
-    }, function() {
-        console.log("Get Error");
-    });
-  }
+        console.log(bullshit);
+
+        var docDefinition = {
+            pageSize: {
+                width: 9000,
+                height: 9000
+            },
+            content: [{
+                table: {
+                    width: "auto",
+                    headerRows: 1,
+                    body: [bullshit]
+                }
+            }]
+        };
+        pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+    }
+    $scope.makePDF = function() {
+            populatePDFArrays();
+        }
         //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1
@@ -1448,7 +1505,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true"
     }, {
         //Question 6B
-        bound: "showNewIndividual",
+        bound: "victimSpecialMultiple",
         table: "victim_victimization_count",
         infoTable: "victim",
         textSpecial: "victim_victimization_count >= 2"

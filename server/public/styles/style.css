@@ -13,7 +13,12 @@
   background-color: lightgray;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
+.newRow{
+  border: 2px solid black;
+}
+.tableCenter{
+  text-align: center;
+}
 header{
   height: 110px;
   /*background-color: black*/

@@ -220,6 +220,9 @@
                             <div>
                                 <input type="checkbox" ng-model="playground.victimSpecialLimitedEnglish" value="true">Victims with Limited English Proficiency
                             </div>
+                            <div>
+                                <input type="checkbox" ng-model="playground.victimSpecialMultiple" value="true">Victims with Two or More Types of Victimization
+                            </div>
                         </div>
                         <div ng-show="showCounties">
                             <h3>showCounties</h3>
@@ -642,14 +645,14 @@
                             </div>
                         </div>
                         <div ng-show="nonVictimAdvocacy">
-                        <h3>nonVictimAdvocacy</h3>
-                        <div>
-                            <input type="checkbox" ng-model="playground.nonVictimMedical" value="true">Non-Victim Medical Advocacy Requests
+                            <h3>nonVictimAdvocacy</h3>
+                            <div>
+                                <input type="checkbox" ng-model="playground.nonVictimMedical" value="true">Non-Victim Medical Advocacy Requests
+                            </div>
+                            <div>
+                                <input type="checkbox" ng-model="playground.nonVictimTotal" value="true">Total Non-Victim Advocacy Requests
+                            </div>
                         </div>
-                        <div>
-                            <input type="checkbox" ng-model="playground.nonVictimTotal" value="true">Total Non-Victim Advocacy Requests
-                        </div>
-                    </div>
                     </div>
                     <button ng-click="submitting()">Submit Request</button>
                     <button ng-click="blackHole()">Get All</button>
@@ -676,7 +679,7 @@
                             </div>
                         </script>
                         <div class="checkbox">
-                          <label>
+                            <label>
                             <input type="checkbox" ng-model="oneAtATime">
                             Open only one at a time
                           </label>
@@ -2659,6 +2662,18 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div ng-show="victimSpecialMultiple" class="row">
+                                    <div class="col-md-9 text-left">
+                                        Victims with Two or More Types of Victimization
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{number}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div ng-show="inPersonCrisis || inPersonLegalCriminal || inPersonLegalCivil || inPersonMedical || inPersonOther" uib-accordion-group class="panel-default text-center" heading="In-Person Services Provided">
@@ -3123,12 +3138,33 @@
                                 </div>
                             </div>
                         </uib-accordion>
-                        <div ng-show="showTotalVictim">
-                          <h1>Victim</h1>
-                          
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9">
+                                <div ng-show="showTotalVictim">
+                                    <h1>Victim</h1>
+                                    <!-- <table ng-model="victimObject" ng-repeat="thing in victimObject">
+                                        <tr>
+                                            <th colspan="2" class="tableCenter">Table Start</th>
+                                        </tr>
+                                        <tr>
+                                            <div ng-model="victimParameters" ng-repeat="parameter in victimParameters">
+                                                <th class="newRow tableCenter">
+                                                    <strong>{{parameter}}</strong>
+                                                </th>
+                                                <td class="newRow tableCenter">
+                                                    {{thing[parameter]}}
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table> -->
+                                    <button ng-click="makePDF()">Make the damn thing</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
                         </div>
                         <div ng-show="showTotalNonVictim">
-                          <h1>NonVictim</h1>
+                            <h1>NonVictim</h1>
                         </div>
                     </div>
                 </div>
