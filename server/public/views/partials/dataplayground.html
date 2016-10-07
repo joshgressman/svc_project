@@ -220,7 +220,7 @@
                             <div>
                                 <input type="checkbox" ng-model="playground.victimSpecialLimitedEnglish" value="true">Victims with Limited English Proficiency
                             </div>
-                             <div>
+                            <div>
                                 <input type="checkbox" ng-model="playground.victimSpecialMultiple" value="true">Victims with 2 or More Types of Victimization
                             </div>
                         </div>
@@ -679,14 +679,6 @@
                             </div>
                         </script>
                         <div class="checkbox">
-<<<<<<< HEAD
-                            <label>
-=======
-<!--                           <label>
->>>>>>> 9aea55225029a77a750c48edbcb87dc637b9de29
-                            <input type="checkbox" ng-model="oneAtATime">
-                            Open only one at a time
-                          </label> -->
                         </div>
                         <uib-accordion close-others="oneAtATime">
                             <div ng-show="typeOfVictim" uib-accordion-group class="panel-default text-center" heading="Victim/Survivor Information">
@@ -3236,7 +3228,6 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-9">
                                 <div ng-show="showTotalVictim">
-                                    <h1>Victim</h1>
                                     <!-- <table ng-model="victimObject" ng-repeat="thing in victimObject">
                                         <tr>
                                             <th colspan="2" class="tableCenter">Table Start</th>
@@ -3252,13 +3243,12 @@
                                             </div>
                                         </tr>
                                     </table> -->
-                                    <button ng-click="makePDF()">Make the damn thing</button>
+                                    <button ng-click="makePDF()">Download PDF</button>
                                 </div>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
                         <div ng-show="showTotalNonVictim">
-                            <h1>NonVictim</h1>
                         </div>
                     </div>
                 </div>
