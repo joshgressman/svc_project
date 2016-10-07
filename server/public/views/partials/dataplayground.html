@@ -26,7 +26,7 @@
                     <div>
                         <label for="pickAThing">Select a Category</label>
                         <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
-                          <option value="typeOfVictim">Type of Victim/Survivor</option>
+                          <!-- <option value="typeOfVictim">Type of Victim/Survivor</option> -->
                           <option value="individualsServiced">Individuals Serviced</option>
                           <option value="ethnicity">Race/Ethnicity</option>
                           <option value="genderIdentity">Gender Identity</option>
@@ -92,7 +92,7 @@
                                 <input type="checkbox" ng-model="playground.showEthnicityTotal" value="true">Race/Ethnicity Total
                             </div>
                         </div>
-                        <div ng-show="typeOfVictim">
+                        <!-- <div ng-show="typeOfVictim">
                             <h3>typeOfVictim</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.adultPrimary" value="true">Adult Primary Victim/Survivor
@@ -106,7 +106,7 @@
                             <div>
                                 <input type="checkbox" ng-model="playground.youthSecondary" value="true">Youth Secondary Victim/Survivor
                             </div>
-                        </div>
+                        </div> -->
                         <div ng-show="genderIdentity">
                             <h3>genderIdentity</h3>
                             <div>
@@ -679,10 +679,10 @@
                             </div>
                         </script>
                         <div class="checkbox">
-                          <label>
+<!--                           <label>
                             <input type="checkbox" ng-model="oneAtATime">
                             Open only one at a time
-                          </label>
+                          </label> -->
                         </div>
                         <uib-accordion close-others="oneAtATime">
                             <div ng-show="typeOfVictim" uib-accordion-group class="panel-default text-center" heading="Victim/Survivor Information">
@@ -753,31 +753,66 @@
                                     <div class="col-md-4 text-left">
                                         <strong>Type of Survivor/Victim</strong>
                                     </div>
-                                    <div class="col-md-2 text-center">
-                                        <strong>Primary</strong>
+                                    <div class="col-md-6 text-center">
+                                        <!-- <strong>Primary</strong> -->
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Secondary</strong>
-                                    </div>
-                                    <div class="col-md-2 text-center">
-                                        <strong>Adult</strong>
-                                    </div>
-                                    <div class="col-md-2 text-center">
-                                        <strong>Youth</strong>   
+                                        <strong>Number</strong>   
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 text-left">
-                                        Total Number Served
+                                        Total Primary
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
                                     </div>
                                     <div class="col-md-2 text-center">
                                         {{playgroundInfo.total_overall_primary}}
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Secondary
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
                                     <div class="col-md-2 text-center">
                                         {{playgroundInfo.total_overall_secondary}}
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <p class="row"></p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        <strong>Type of Survivor/Victim</strong>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <strong>Number</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Adult
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
                                     <div class="col-md-2 text-center">
                                         {{playgroundInfo.total_overall_adult}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Youth
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
                                     </div>
                                     <div class="col-md-2 text-center">
                                         {{playgroundInfo.total_overall_youth}}
@@ -787,27 +822,72 @@
 
                             <div ng-show="showNewIndividual" uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
                                 <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Type of Individual</strong>
+                                    <div class="col-md-4 text-left">
+                                        <strong>Type of Survivor/Victim</strong>
                                     </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+                                    <div class="col-md-6 text-center">
+                                        <!-- <strong>Primary</strong> -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <strong>Number</strong>   
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        New Individuals
+                                    <div class="col-md-4 text-left">
+                                        Total Primary
                                     </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{newPeople}}
-                                            </p>
-                                        </p>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        {{playgroundInfo.total_overall_primary}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Secondary
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        {{playgroundInfo.total_overall_secondary}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="row"></p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        <strong>Type of Survivor/Victim</strong>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <strong>Number</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Adult
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        {{playgroundInfo.total_overall_adult}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        Total Youth
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <!-- {{playgroundInfo.total_overall_primary}} -->
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        {{playgroundInfo.total_overall_youth}}
                                     </div>
                                 </div>
                             </div>

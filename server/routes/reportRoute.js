@@ -325,7 +325,7 @@ router.post('/playground/victim/:id', function(req, res) {
         youthSecondary = true;
     }
         // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
-        // console.log(adultPrimary, adultSecondary, youthPrimary, youthSecondary);
+        console.log(adultPrimary, adultSecondary, youthPrimary, youthSecondary);
 
 pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -336,11 +336,11 @@ pg.connect(connectionString, function(err, client, done) {
         if (text == "TOTAL" && adultPrimary && youthPrimary) {
             primary = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'youthPrimaryVictim') ";
             query = stringQueryWhere + primary + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('prim total, primary:', query);
-        } else if (text == "NEW" && adultPrimary && youthPrimary) {
+            console.log('prim total:', query);
+        } else if (text == "NEW" && (adultPrimary || youthPrimary)) {
             primary = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'youthPrimaryVictim') ";
             query = stringQueryWhere + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('playground new, primary:', query);
+            console.log('playground new, primary:', query);
         } else if (table == "victim_ethnicity_total" && adultPrimary && youthPrimary) {
             query = stringQueryWhere + textSpecial + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity total:', query);
@@ -359,7 +359,7 @@ pg.connect(connectionString, function(err, client, done) {
         } else if (text == null && adultPrimary && youthPrimary) {
             query = stringQueryWhere + table + is + text + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('null:', query);
-        } else if (text == "true" && adultPrimary && youthPrimary){
+        } else if (text == "true" && (adultPrimary && youthPrimary)){
             query = stringQueryWhere + table + is + text + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('all boolean:', query);                
         } else if (adultPrimary && youthPrimary){
@@ -371,8 +371,8 @@ pg.connect(connectionString, function(err, client, done) {
         if (text == "TOTAL" && adultSecondary && youthSecondary) {
             secondary = " (victim_type iLIKE 'adultSecondaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
             query = stringQueryWhere + secondary + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('sec total, primary:', query);
-        } else if (text == "NEW" && adultSecondary && youthSecondary) {
+            console.log('sec total:', query);
+        } else if (text == "NEW" && (adultSecondary || youthSecondary)) {
             secondary = " (victim_type iLIKE 'adultSecondaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
             query = stringQueryWhere + secondary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground new, primary:', query);
@@ -401,13 +401,15 @@ pg.connect(connectionString, function(err, client, done) {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('other queries:', query);
         };
-        //for adult victims;    
+        //for adult victims; 
+
+        console.log(text);   
 
         if (text == "TOTAL" && adultPrimary && adultSecondary) {
             adult = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'adultSecondaryVictim') ";
             query = stringQueryWhere + adult + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('adult total, primary:', query);
-        } else if (text == "NEW" && adultPrimary && adultSecondary) {
+            console.log('adult total:', query);
+        } else if (text == "NEW" && (adultPrimary || adultSecondary)) {
             adult = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'adultSecondaryVictim') ";
             query = stringQueryWhere + adult + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground new, primary:', query);
@@ -437,41 +439,43 @@ pg.connect(connectionString, function(err, client, done) {
             // console.log('other queries:', query);
         };
         //for youth victims;    
-
+        console.log(youthPrimary);
+        console.log(youthSecondary);
+        console.log(text);
         if (text == "TOTAL" && youthPrimary && youthSecondary) {
             youth = " (victim_type iLIKE 'youthPrimaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
             query = stringQueryWhere + youth + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('youth total, primary:', query);
-        } else if (text == "NEW" && youthPrimary || youthSecondary) {
+            console.log('youth total:', query);
+        } else if (text == "NEW" && (youthPrimary || youthSecondary)) {
             youth = " (victim_type iLIKE 'youthPrimaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
             query = stringQueryWhere + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('playground new, primary:', query);
+            console.log('playground new, primary:', query);
         } else if (table == "victim_ethnicity_total" && youthPrimary && youthSecondary) {
             query = stringQueryWhere + textSpecial + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('ethnicity total:', query);
+            console.log('ethnicity total:', query);
         } else if (table == "victim_zipcode" && youthPrimary && youthSecondary) {
             query = stringQueryWhere + table + "= '" + text + "'" + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('ethnicity total:', query);
+            console.log('ethnicity total:', query);
         } else if (table == "victim_zipcode_total" && youthPrimary && youthSecondary) {
             query = stringQueryWhere + hennepin + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('ethnicity total:', query);
+            console.log('ethnicity total:', query);
         } else if (table == "victim_gender_total" && youthPrimary && youthSecondary) {
             query = stringQueryWhere + textSpecial + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('ethnicity total:', query);
+            console.log('ethnicity total:', query);
         // } else if (table == "victim_type" && youthPrimary && youthSecondary) {
         //     query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         //     console.log('victim type:', query);     
         } else if (text == null && youthPrimary && youthSecondary) {
             query = stringQueryWhere + table + is + text + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('null:', query);    
+            console.log('null:', query);    
         } else if (text == "true" && youthPrimary && youthSecondary){
             query = stringQueryWhere + table + is + text + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('all boolean:', query);
+            console.log('all boolean:', query);
         } else if (youthPrimary && youthSecondary){
             query = stringQueryWhere + table + iLike + "'" + text + "'" + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('other queries:', query);
+            console.log('other queries:', query);
         }
-        // console.log("query", query);
+        console.log("query", query);
         client.query(query,
             function(err, result) {
                 done();

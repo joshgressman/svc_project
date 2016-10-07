@@ -763,6 +763,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "crisis_counseling_group",
         text: "true"
+    }, {
+        table: "victim_type",
+        text: "adultPrimaryVictim"
+    }, {
+        table: "victim_type",
+        text: "adultSecondaryVictim"
+    }, {
+        table: "victim_type",
+        text: "youthPrimaryVictim"
+    }, {
+        table: "victim_type",
+        text: "youthSecondaryVictim"        
     // }, {
     //     table: "locations",
     //     text: "true"
@@ -816,6 +828,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         objectParam += '_' + query.textSpecial;
                         // console.log('new ethnicity OP:', objectParam);
                         break;
+                    case "victim_type":
+                        objectParam += '_' + query.text;
+                        // console.log('new ethnicity OP:', objectParam);
+                        break;    
                 };
 
 
@@ -826,6 +842,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 console.log("Get Error");
             });
         });
+        console.log($scope.countyInfo);    
 
         //displays actual locations, unduplicated that services are provided (text)
         var location = {}
@@ -848,7 +865,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             }, function() {
                 console.log("Get Error");
             });
-    console.log($scope.countyInfo);
 
     };
 
