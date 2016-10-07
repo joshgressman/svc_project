@@ -119,8 +119,8 @@
             </div>
             <div class="counseling">
               <label for="counseling"> Crisis Counseling:</label>
-              <input type="radio" name="counseling" ng-model="form.counseling" ng-value="true"> One-to-One Counseling
-              <input type="radio" name="counseling" ng-model="form.supportGroup" ng-value="true"> Support Group
+              <input type="radio" name="counseling" ng-model="form.counseling" ng-value="true" > One-to-One Counseling
+              <input type="radio" name="counseling" ng-model="form.supportGroup" ng-value="true" > Support Group
             </div>
             <div class="legalAdvocacyCriminal">
               <label for="legalAdvocacy">Legal Advocacy Criminal Justice Process:</label>
@@ -130,7 +130,7 @@
             </div>
             <div class="legalAdvocacyCivil">
               <label for="legalAdvocacy">Legal Advocacy Civil Justice Process:</label>
-              <input type="radio" name="legalAdvocacyCivil" ng-model="form.assistOFP_HRO" ng-value="true"> Assisitng obtaining OFP or HRO
+              <input type="radio" name="legalAdvocacyCivil" ng-model="form.assistOFP_HRO" ng-value="true"> Assistance obtaining OFP or HRO
               <input type="radio" name="legalAdvocacyCivil" ng-model="form.immigrationSupport" ng-value="true"> Immigration related support (U Visa, ect.)
               <input type="radio" name="legalAdvocacyCivil" ng-model="form.interventionWithOthers" ng-value="true"> Intervention with landloard, acedemic institution or creditor
             </div>
@@ -328,7 +328,7 @@
                 <select ng-model="form.ethnicBackground">
                   <option value="">Select One</option>
                   <option value="Asian">Asian</option>
-                  <option value="African American/Black">African American/Balck</option>
+                  <option value="African American/Black">African American/Black</option>
                   <option value="Chican@Latina@">Chican@Latin@</option>
                   <option value="Multi-racial">Multi-Racial</option>
                   <option value="Native American">Native American</option>
@@ -339,20 +339,22 @@
                   <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
                 </select>
                 <input type="text" ng-model="form.ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+              <div>
                 <label for="immigrantStatus">Immigrant Status:</label>
-              <select ng-model="form.immigrantStatus">
-                <option value="">Select One</option>
-                <option value="Africa">Africa</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="Mex/Cen/So America">Mex/Cen/So America</option>
-                <option value="Middle East">Middle East</option>
-                <option value="Other">Other</option>
-                <option value="Unknown">Unknown/pass/doesnt know</option>
-                <option value="No">No</option>
-                <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
-              </select>
-              <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <select ng-model="form.immigrantStatus">
+                  <option value="">Select One</option>
+                  <option value="Africa">Africa</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Mex/Cen/So America">Mex/Cen/So America</option>
+                  <option value="Middle East">Middle East</option>
+                  <option value="Other">Other</option>
+                  <option value="Unknown">Unknown/pass/doesn't know</option>
+                  <option value="No">No</option>
+                  <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
+                </select>
+                <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+              </div>
               <div>
                 <label for="otherStatus">Other (check all that apply):</label>
                 <div>
