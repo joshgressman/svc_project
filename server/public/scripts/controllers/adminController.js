@@ -1125,6 +1125,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.nonVictimAdvocacy = false;
     };
     $scope.submitting = function() {
+        $scope.playgroundInfo = {};
         $scope.showFields = true;
         $scope.newSearch = false;
         console.log(parameterArray);
@@ -1355,11 +1356,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "violence_child_sexual", //Check Table name
         infoTable: "victim",
         text: ""
-
-
-
-
-
     }, {
         bound: "violenceDomestic",
         table: "violence_domestic",

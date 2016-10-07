@@ -14,6 +14,10 @@
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
+body {
+  font: "Roboto", "Helvetica Neue", Helvetica, Ariel, sans-sesrif
+}
+
 header{
   height: 110px;
   /*background-color: black*/
@@ -60,6 +64,13 @@ margin-top: -40px;
 
 .logout {
   float: right;
+  margin-right: 15px;
+}
+
+.login_page {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 250px;
 }
 
 #headText {
