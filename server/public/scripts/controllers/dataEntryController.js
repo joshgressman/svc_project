@@ -20,11 +20,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         isFirstDisabled: false
     };
 
-// $scope.formId = 12;
-
-$scope.formIdCount = function () {
-  $scope.formId++;
-}
 
   $scope.myFunction = function() {
       window.print();
@@ -130,25 +125,61 @@ $scope.formIdCount = function () {
           $scope.message = "Please try again."
         });
       }
-
+///Search & update victim and non victim form
       $scope.table = {};
+      $scope.update = {}
 
       $scope.searchUpdate = function (){
         var data = {};
         var id = $scope.formId;
         var info = Object.getOwnPropertyNames($scope.table);
         $scope[info[0]]= true;
+        if(info[0] == "phone"){
+          info[0] = "victim";
+        }
         data.table = info[0];
-        data.number = $scope.formId;
+        data.number = parseInt($scope.formId);
+        // console.log(data.number);
         $http({
             method: "POST",
             url: '/reportRoute/county/edit',
             data: data
         }).then(function(response) {
-            console.log("Get Success");
-            console.log(response);
+            // console.log("Get Success");
+            // console.log(response);
+              $scope.update = response.data[0];
+              // console.log($scope.update);
       });
     }
+
+    ////////////UPDATE FORM /////////////////////////
+
+$scope.updateForm = function () {
+  var data = {}
+  // var info = Object.getOwnPropertyNames($scope.table);
+  var id = parseInt($scope.update.id);
+   data = $scope.update;
+  console.log("update id", id);
+  console.log("update data", data);
+  $http({
+      method: "PUT",
+      url: '/dataRoute/victim/' + id,
+      data: data
+  }).then(function(response) {
+      console.log("Get Success");
+      console.log(response);
+        // $scope.update = response.data[0];
+        console.log($scope.update);
+});
+}
+
+
+ ///////////////////////////////////////////////////
+
+ ///////////DELETE FORM////////////////////////////
+
+
+ ////////////////////////////////////////////////
 
     ///**********END OF CONTROLLER***************************************///////
 }]);

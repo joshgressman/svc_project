@@ -59,8 +59,7 @@ router.post('/nonvictim', function (req, res) {
         'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33)',
         [newNonVictim.date_entered, newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
          newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.request, newNonVictim.dispatched,
-         newNonVictim.responded, newNonVictim.reason, newNonVictim.medicalRequest],
-
+         newNonVictim.responded, newNonVictim.reason, newNonVictim.medicalAdvocacyRequest ],
          function (err, result) {
            done();
 
@@ -95,7 +94,6 @@ router.put('/victim/:id', function (req, res) {
             'end_time = $5, ' +
             'service_location = $6, ' +
             'service_county = $7, ' +
-            'form_number = $8, ' +
             'victim_number = $9, ' +
             'victim_zipcode = $10, ' +
             'victim_type = $11, ' +
@@ -157,7 +155,7 @@ router.put('/victim/:id', function (req, res) {
             'disability_unknown = $67, ' +
             'disability_none = $68, ' +
             'victim_ethnicity = $69, ' +
-            'victim_immigrant = $70' +
+            'victim_immigrant = $70, ' +
             'homeless = $71, ' +
             'limited_english = $72, ' +
             'veteran = $73, ' +
@@ -167,8 +165,8 @@ router.put('/victim/:id', function (req, res) {
             'victim_immigrant_other_specify = $77 ' +
             'victim_multiple = $78 ' +
             'WHERE id = $79',
-            [newVictim.date_entered, newVictim.counselor, newVictim.date, newVictim.sTime, newVictim.eTime, newVictim.location, newVictim.county, newVictim.formId, newVictim.clientNumber, newVictim.zipCode, newVictim.victimType, newVictim.svcPrompt, newVictim.previousContact, newVictim.previousVisit, newVictim.counseling, newVictim.supportGroup, newVictim.lawEnforcementInterview, newVictim.prosecutionRelatedAdvocacy, newVictim.courtAdvocacy, newVictim.assistOFP_HRO, newVictim.immigrationSupport, newVictim.interventionWithOthers, newVictim.forensicExamSupport, newVictim.accompanyMedicalAppt, newVictim.accompanyDentalAppt, newVictim.transportation, newVictim.crisis_counseling, newVictim.infoAndReferral, newVictim.info_crimjustice, newVictim.other_emergency_justice, newVictim.safeAtHome, newVictim.emergencyFinancialAsst, newVictim.reparationsClaimAsst, newVictim.svcServices, newVictim.otherAgencyReferral, newVictim.otherServicesReferral, newVictim.adultSexAssault, newVictim.adultAbusedAsChild_family, newVictim.adultAbusedAsChild_other, newVictim.bullying, newVictim.childPorn, newVictim.domesticViolence, newVictim.elderAbuse, newVictim.exposing, newVictim.internetRelated, newVictim.minorCSA_family, newVictim.minorCSA_other, newVictim.obscenePhoneCall, newVictim.exploitation_trafficking, newVictim.sexualHarassment, newVictim.stalking, newVictim.teenDating, newVictim.sexualViolenceOther, newVictim.sexualViolenceOther_specify, newVictim.unknownViolence, newVictim.age, newVictim.gender, newVictim.trans, newVictim.orientation, newVictim.blind_visImpair, newVictim.physDisabled, newVictim.mentDisabled, newVictim.deafHardHearing, newVictim.devDisabled, newVictim.otherDisabled, newVictim.otherDisabled_specify, newVictim.unknownDisabled, newVictim.notDisabled, newVictim.ethnicBackground, newVictim.immigrantStatus, newVictim.homeless, newVictim.limitedEnglish,
-            newVictim.veteran, newVictim.supported, newVictim.contact_type, newVictim.other.ethnicBackground, newVictim.other.immigrantStatus, newVictim.multiple, id],
+            [victim.date_entered, victim.counselor, victim.date, victim.sTime, victim.eTime, victim.location, victim.county, victim.clientNumber, victim.zipCode, victim.victimType, victim.svcPrompt, victim.previousContact, victim.previousVisit, victim.counseling, victim.supportGroup, victim.lawEnforcementInterview, victim.prosecutionRelatedAdvocacy, victim.courtAdvocacy, victim.assistOFP_HRO, victim.immigrationSupport, victim.interventionWithOthers, victim.forensicExamSupport, victim.accompanyMedicalAppt, victim.accompanyDentalAppt, victim.transportation, victim.crisis_counseling, victim.infoAndReferral, victim.info_crimjustice, victim.other_emergency_justice, victim.safeAtHome, victim.emergencyFinancialAsst, victim.reparationsClaimAsst, victim.svcServices, victim.otherAgencyReferral, victim.otherServicesReferral, victim.adultSexAssault, victim.adultAbusedAsChild_family, victim.adultAbusedAsChild_other, victim.bullying, victim.childPorn, victim.domesticViolence, victim.elderAbuse, victim.exposing, victim.internetRelated, victim.minorCSA_family, victim.minorCSA_other, victim.obscenePhoneCall, victim.exploitation_trafficking, victim.sexualHarassment, victim.stalking, victim.teenDating, victim.sexualViolenceOther, victim.sexualViolenceOther_specify, victim.unknownViolence, victim.age, victim.gender, victim.trans, victim.orientation, victim.blind_visImpair, victim.physDisabled, victim.mentDisabled, victim.deafHardHearing, victim.devDisabled, victim.otherDisabled, victim.otherDisabled_specify, victim.unknownDisabled, victim.notDisabled, victim.ethnicBackground, victim.immigrantStatus, victim.homeless, victim.limitedEnglish,
+            victim.veteran, victim.supported, victim.contact_type, victim.other_ethnicBackground, victim.other_immigrantStatus, victim.multiple, id],
                 function (err, result) {
                   done();
 
