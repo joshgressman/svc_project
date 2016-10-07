@@ -39,11 +39,12 @@ $scope.nonVictimInfo = {};
         legalSystemReferral: null,
         citySocialReferral: null,
         otherOraganizationReferral: null,
+        request: null,
         advacacyLocation: null,
         dispatched: null,
         responded: null,
         reason: null,
-        formId: null,
+        medicalRequest: null
       };
 //POST non-victim infromation
       $scope.submitNonVictimForm = function () {

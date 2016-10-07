@@ -39,7 +39,7 @@ $scope.formIdCount = function () {
     county: null,
     clientNumber: null,
     zipCode: null,
-    victimType: null,
+    victimType: '',
     svcPrompt: null,
     previousContact: null,
     previousVisit: null,

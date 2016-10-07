@@ -60,12 +60,12 @@
               </div>
               <div class="victimType">
                   <label for="victimType">Type of Victim/Survivor:</label>
-                  <select>
-                      <option ng-model="form.victimType" value="null">Select One</option>
-                      <option ng-model="form.victimType" value="adultPrimaryVictim">Adult Primary Victim/Survivor</option>
-                      <option ng-model="form.victimType" value="adultSecondaryVictim">Adult Secondary Victim/Survivor</option>
-                      <option ng-model="form.victimType" value="youthPrimaryVictim">Youth Primary Victim/Survivor</option>
-                      <option ng-model="form.victimType" value="youthSecondaryVictim">Youth Secondary Victim/Survivor</option>
+                  <select ng-model="form.victimType">
+                      <option value="null">Select One</option>
+                      <option value="adultPrimaryVictim">Adult Primary Victim/Survivor</option>
+                      <option value="adultSecondaryVictim">Adult Secondary Victim/Survivor</option>
+                      <option value="youthPrimaryVictim">Youth Primary Victim/Survivor</option>
+                      <option value="youthSecondaryVictim">Youth Secondary Victim/Survivor</option>
                   </select>
               </div>
               <div class="svcPrompt">
@@ -289,13 +289,13 @@
               </div>
               <div class="ethnicDetails">
                   <label for="ethnicBackground">Ethnic Background:</label>
-                  <select>
-                  <option  value="">Select One</option>
-                  <option ng-model="form.ethnicBackground" value="Asian">Asian</option>
-                  <option ng-model="form.ethnicBackground" value="African American/Black">African American/Balck</option>
-                  <option ng-model="form.ethnicBackground" value="Chican@Latina@">Chican@Latin@</option>
-                  <option ng-model="form.ethnicBackground" value="Multi-racial">Multi-Racial</option>
-                  <option ng-model="form.ethnicBackground" value="Native American">Native American</option>
+                  <select ng-model="form.ethnicBackground">
+                  <option value="">Select One</option>
+                  <option value="Asian">Asian</option>
+                  <option value="African American/Black">African American/Balck</option>
+                  <option value="Chican@Latina@">Chican@Latin@</option>
+                  <option value="Multi-racial">Multi-Racial</option>
+                  <option value="Native American">Native American</option>
                   <option ng-model="form.ethnicBackground" value="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</option>
                   <option ng-model="form.ethnicBackground" value="White non-Latino/Caucasian">White non-Latino/Caucasian</option>
                   <option ng-model="form.ethnicBackground" value="Other">Other</option>
