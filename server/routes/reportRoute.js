@@ -114,14 +114,15 @@ router.post('/federal/:id', function(req, res) {
 router.post('/county/edit', function(req, res) {
 var table = req.body.table;
 var number = req.body.number;
-
+console.log(table);
+console.log(number);
 pg.connect(connectionString, function (err, client, done){
   if(err){
     res.sendStatus(500);
 
     }
-    client.query('SELECT * FROM ' + table + ' WHERE column name ' + number),
-    function(err, results){
+    client.query('SELECT * FROM ' + table + ' WHERE id = ' + number,
+    function(err, result){
       done();
 
       if(err){
@@ -130,7 +131,11 @@ pg.connect(connectionString, function (err, client, done){
       }
       console.log('SEARCH QUERY RESULTS', result.rows);
       res.send(result.rows);
-    }
+
+    });
+
+  
+
 
 
 });
@@ -190,7 +195,7 @@ router.post('/county/:id', function(req, res) {
             // console.log('victim age:', query);
         } else if (table ==  "victim_age_unknown") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('victim age:', query);    
+            // console.log('victim age:', query);
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
