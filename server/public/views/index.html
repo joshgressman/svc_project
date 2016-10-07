@@ -14,10 +14,15 @@
   <script type="text/javascript" src="../scripts/controllers/homeController.js"></script>
   <script type="text/javascript" src="../scripts/controllers/nonVictimController.js"></script>
   <script type="text/javascript" src="../scripts/controllers/adminController.js"></script>
+  <script type="text/javascript" src="../scripts/controllers/userController.js"></script>
+  <script type="text/javascript" src="../scripts/factories/loggedinFactory.js"></script>
 </head>
 <body ng-app="myApp">
   <header>
    <div class ="header_image"></div><h2 id="headText">Data Management System</h2>
+   <div ng-controller="homeController" data-ng-init="isLoggedIn()">
+     <button class="btn btn-default logout" ng-click="logout()">Log out</button>
+   </div>
   </header>
   <main ng-view>
 

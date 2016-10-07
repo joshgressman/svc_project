@@ -1,22 +1,20 @@
 
-<div ng-controller="homeController">
 <div class="container">
   <h1 class="lead">Login</h1>
-    <p>
-      Sample log in page
-    </p>
-    <form id="loginform" ng-submit="login()">
-
-
-          <label id="userlog" for="username">Username:</label>
-          <input id="inputuser" type="text" ng-model="user.username"/>
-
-          <label id="passinput" for="password">Password:</label>
-          <input id="passinput" type="password" ng-model="user.password" />
-
-          <input class="btn btn-primary" type="submit" name="submit" value="Log In" />
-          
-
+    <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+    <form ng-submit="login()">
+      <div>
+          <label for="username">Username:</label>
+          <input type="text" ng-model="user.username" />
+      </div>
+      <div>
+          <label for="password">Password:</label>
+          <input type="password" ng-model="user.password" />
+      </div>
+      <div>
+          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
+      </div>
     </form>
-</div>
+
+
 </div>

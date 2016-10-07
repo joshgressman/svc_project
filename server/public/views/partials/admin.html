@@ -4,10 +4,11 @@
  <div class="col-md-2" id="dataside">
    <ul class = "nav">
      <li><button class="adminBtn" Onclick="window.location.href='#reports'">Federal</button></li>
-    <li><button class="adminBtn" Onclick="window.location.href='#countyReport'">County</button></li>
+     <li><button class="adminBtn" Onclick="window.location.href='#countyReport'">County</button></li>
      <li><button class="adminBtn" Onclick="window.location.href='#data'">Data Entry</button></li>
      <li><button class="adminBtn" Onclick="window.location.href='#search'">Search/Update</button></li>
      <li><button class="adminBtn" Onclick="window.location.href='#playground'">Playground</button></li>
+     <li><button class="adminBtn" Onclick="window.location.href='#users'">Users</button></li>
    </ul>
  </div>
  <div class="col-md-9" id="insDiv">
@@ -35,7 +36,7 @@
 
              <!-- //Individuals who recieved services during the reporting period -->
 
-             <div uib-accordion-group class="panel-default text-center" heading="Administration Instructions"  is-disabled="status.isFirstDisabled">
+             <div uib-accordion-group class="panel-default text-center" heading="Administration Instructions" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                  <div class="row">
                          <strong><center>Welcome to the Administration Panel!</center></strong>
                          <br />

@@ -1,12 +1,13 @@
 
 <h2>Data Entry Launch Page</h2>
-<div class="container" ng-controller="dataEntryController">
+<div class="container">
     <div class="row">
-        <div class="col-md-2" id="dataside">
+        <div class="col-md-2" id="dataside" data-ng-init="isLoggedIn()">
             <ul class="nav">
-                <li><button id="telephone" Onclick="window.location.href='#phone'">Telephone</button></li>
+                <li><button id="telephone" Onclick="window.location.href='#phone'" >Telephone</button></li>
                 <li><button id="inperson" Onclick="window.location.href='#inperson'">In-Person</button></li>
                 <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
+                <li><button id="admin" ng-show="check" Onclick="location.href='#admin'">Back to Admin</button></li>
             </ul>
         </div>
         <div class="col-md-9" id="insDiv">

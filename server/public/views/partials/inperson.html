@@ -1,8 +1,7 @@
-<div ng-controller="dataEntryController">
-<div class="alert alert-warning" id="alert">
-  <h2>SVC In-Person Counseling Form</h2>
-  <strong>SVC In-Person Form:</strong> Please ensure you are using the yellow form on this page.
-</div>
+<div>
+  <div class="alert alert-warning" id="alert">
+    <Strong class="grayAlert">SVC In-Person Contact Form: </Strong> Please ensure you are using the YELLOW form on this page.
+  </div>
 <div class="container">
 
   <div class="row">
@@ -19,7 +18,13 @@
         <div id="svcAdvocacy">
           <div class="advocayType">
               <label for="advocayType">Type of Advocacy:</label>
-              <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocay" readonly/>
+              <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
+
+          </div>
+          <div class="formId">
+              <label for="formId">Form ID:</label>{{formId}}
+              <!-- <input class="" type="text" ng-model="form.formId"  placeholder={{}} readonly/> -->
+
           </div>
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -61,14 +66,14 @@
               <option ng-model="form.county" value="Washington">Washington</option>
               <option ng-model="form.county" value="other">Other</option>
             </select>
-              <input type="text" ng-model="form.county_other_specify" name="otherCounty" placeholder="Other County"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+
 
             </div>
         </div>
         <div id="victimInfo">
             <div class="clientNumber">
                 <label for="clientNumber">Client Number:</label>
-                <input class="clientNumberInput" type="number" ng-model="form.clientNumber" />
+                <input class="clientNumberInput" type="text" ng-model="form.clientNumber" />
             </div>
             <div class="zipCode">
                 <label for="zipCode">Zip Code:</label>
@@ -264,10 +269,13 @@
             <div class="victimDemoSurvey">
                 <label for="age">Age:</label>
                 <input class="ageInput" type="number" ng-model="form.age" />
+              </br>
                 <label for="gender">Gender:</label>
                 <input type="radio" name="gender" ng-model="form.gender" value="Male"> Male
                 <input type="radio" name="gender" ng-model="form.gender" value="Female"> Female
                 <input type="radio" name="gender" ng-model="form.gender" value="Non-binary"> Non-binary
+                <input type="radio" name="gender" ng-model="form.gender" value="other"> Other
+              </br>
                 <label for="transgender">Transgender:</label>
                 <input type="radio" name="transgender" ng-model="form.trans" ng-value="true"> Yes
                 <input type="radio" name="transgender" ng-model="form.trans" ng-value="false"> No
