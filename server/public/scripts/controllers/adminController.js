@@ -1182,6 +1182,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     $scope.resetSearch = function() {
         $scope.showFields = false;
         $scope.newSearch = true;
+        feebleAttempt = [];
         makeFalse();
         var objectParam = Object.getOwnPropertyNames($scope.playground);
         objectParam.forEach(function(param) {
@@ -1230,54 +1231,47 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             console.log("Get Error");
         });
     }
-    var bullshit = [];
+    var feebleAttempt = [];
 
     function populatePDFArrays() {
-        column = [];
-        textValue = [];
-        $scope.victimObject.forEach(function(object, index) {
-          $scope[index] = {};
-          var standin = $scope[index];
-          console.log(index);
-            $scope.victimParameters.forEach(function(parameter, index) {
-              standin.column = [];
-              standin.column[index] = [];
-                standin.column[index].push({
-                    text: parameter,
-                });
-                console.log($scope[index]);
-                if ($scope.victimObject[index][parameter] == null) {
-                    $scope.victimObject[index][parameter] = "null";
+      var victimHeader = $scope.victimParameters;
+      console.log(victimHeader);
+      feebleAttempt.push(victimHeader);
+        $scope.victimObject.forEach(function(arrayObject, index) {
+          var objectNumber = index;
+          var standin = [];
+            $scope.victimParameters.forEach(function(parameter) {
+              console.log("2nd for loop running");
+                if ($scope.victimObject[objectNumber][parameter] == null) {
+                    $scope.victimObject[objectNumber][parameter] = "null";
                 }
-                standin.textValue = {};
-                standin.textValue[index] = [];
-                standin.textValue[index].push({
-                    text: $scope.victimObject[index][parameter],
-                });
+                console.log(arrayObject[parameter].toString());
+                if(arrayObject[parameter].toString() == ""){
+                  arrayObject[parameter] = "null";
+                }
+                standin.push(arrayObject[parameter].toString());
             });
+            feebleAttempt.push(standin);
         });
-        var i = 0;
-        while($scope[i] !== undefined){
-          console.log("I am defined!");
-          bullshit.push($scope[i]);
-          i++;
-        }
-        console.log(bullshit);
+        console.log(feebleAttempt.length);
+        var widthTotal = (feebleAttempt.length * 190);
+        console.log(widthTotal);
 
         var docDefinition = {
             pageSize: {
-                width: 9000,
-                height: 9000
+                width: widthTotal,
+                height: 1200
             },
             content: [{
                 table: {
                     width: "auto",
                     headerRows: 1,
-                    body: [bullshit]
+                    body: [feebleAttempt]
                 }
             }]
         };
-        pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+        pdfMake.createPdf(docDefinition).download('getAllReports.pdf');
+        $scope.resetSearch();
     }
     $scope.makePDF = function() {
             populatePDFArrays();

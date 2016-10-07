@@ -1,6 +1,6 @@
 <div ng-app="myApp">
     <h2>Administrative Tools</h2>
-    <div class="container">
+    <div ng-controller="adminController" class="container">
         <div class="row">
             <div class="col-md-2" id="dataside">
                 <ul class="nav">
@@ -660,7 +660,7 @@
                 <div ng-hide="newSearch">
                     <button ng-click="resetSearch()">Do Another Search</button>
                 </div>
-                <div ng-controller="adminController">
+                <div>
                     <div ng-show="showFields">
                         <script type="text/ng-template" id="group-template.html">
                             <div class="panel panel-default">
