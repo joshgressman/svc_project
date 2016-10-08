@@ -34,6 +34,9 @@
             </div>
             <div ng-show="phone" id="resultsForm">
                 <form>
+                  <p>
+                    form Id: {{update.id}}
+                  </p>
                     <div id="svcAdvocacy">
                         <div class="advocayType">
                             <label for="advocayType">Type of Advocacy:</label>
@@ -340,10 +343,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <button id="updateBtn">Update</button>
+                                <button id="updateBtn" ng-click="updateForm()">Update</button>
                             </div>
                             <div class="col-md-2">
-                                <button id="deleteBtn">Delete</button>
+                                <button id="deleteBtn" ng-click="DELETEForm()">Delete</button>
                             </div>
                         </div>
                 </form>
@@ -351,6 +354,9 @@
                 </div>
                 <div ng-show="victim" id="resultsForm">
                     <form>
+                      <p>
+                        form Id: {{update.id}}
+                      </p>
                         <div id="svcAdvocacy">
                             <div class="advocayType">
                                 <label for="advocayType">Type of Advocacy:</label>
@@ -708,10 +714,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button id="updateBtn">Update</button>
+                                    <button id="updateBtn" ng-click="updateForm()">Update</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button id="deleteBtn">Delete</button>
+                                    <button id="deleteBtn" ng-click="DELETEForm()">Delete</button>
                                 </div>
                             </div>
                     </form>
@@ -720,6 +726,9 @@
 
                     <div ng-show="nonvictim" id="resultsForm">
                         <form>
+                          <p>
+                            form Id: {{update.id}}
+                          </p>
                             <div id="svcAdvocacy">
                                 <div class="counselor">
                                     <label for="counselorName">Advocate/Counselor Name:</label>
@@ -879,10 +888,10 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button id="updateBtn">Update</button>
+                                    <button id="updateBtn" ng-click="updateForm()">Update</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button id="deleteBtn">Delete</button>
+                                    <button id="deleteBtn" ng-click="DELETEForm()">Delete</button>
                                 </div>
                             </div>
                         </form>

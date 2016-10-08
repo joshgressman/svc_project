@@ -13,11 +13,15 @@
   background-color: lightgray;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
+.newRow{
+  border: 2px solid black;
+}
+.tableCenter{
+  text-align: center;
+}
 body {
   font: "Roboto", "Helvetica Neue", Helvetica, Ariel, sans-sesrif
 }
-
 header{
   height: 110px;
   /*background-color: black*/

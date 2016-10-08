@@ -34,7 +34,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
     county: null,
     clientNumber: null,
     zipCode: null,
-    victimType: null,
+    victimType: '',
     svcPrompt: null,
     previousContact: null,
     previousVisit: null,
@@ -136,21 +136,50 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         $scope[info[0]]= true;
         if(info[0] == "phone"){
           info[0] = "victim";
-        } 
+        }
         data.table = info[0];
         data.number = parseInt($scope.formId);
-        console.log(data.number);
+        // console.log(data.number);
         $http({
             method: "POST",
             url: '/reportRoute/county/edit',
             data: data
         }).then(function(response) {
-            console.log("Get Success");
-            console.log(response);
+            // console.log("Get Success");
+            // console.log(response);
               $scope.update = response.data[0];
-              console.log($scope.update);
+              // console.log($scope.update);
       });
     }
+
+    ////////////UPDATE FORM /////////////////////////
+
+$scope.updateForm = function () {
+  var data = {}
+  // var info = Object.getOwnPropertyNames($scope.table);
+  var id = parseInt($scope.update.id);
+   data = $scope.update;
+  console.log("update id", id);
+  console.log("update data", data);
+  $http({
+      method: "PUT",
+      url: '/dataRoute/victim/' + id,
+      data: data
+  }).then(function(response) {
+      console.log("Get Success");
+      console.log(response);
+        // $scope.update = response.data[0];
+        console.log($scope.update);
+});
+}
+
+
+ ///////////////////////////////////////////////////
+
+ ///////////DELETE FORM////////////////////////////
+
+
+ ////////////////////////////////////////////////
 
     ///**********END OF CONTROLLER***************************************///////
 }]);

@@ -1,9 +1,9 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-  $scope.myFunction = function() {
-      window.print();
-  }
-    //Assuming this is the controller for the data viewing, below is the code needed for the accordions
+    $scope.myFunction = function() {
+            window.print();
+        }
+        //Assuming this is the controller for the data viewing, below is the code needed for the accordions
 
     $scope.oneAtATime = true;
     $scope.status = {
@@ -68,10 +68,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: null,
         textSpecial: "unknown"
     }, {
-    //     table: "victim_ethnicity",
-    //     text: "Not Tracked",
-    //     text: "not_tracked"
-    // }, {
+        //     table: "victim_ethnicity",
+        //     text: "Not Tracked",
+        //     text: "not_tracked"
+        // }, {
         table: "victim_ethnicity_total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity is null)"
     }, {
@@ -93,7 +93,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         // table: "victim_gender",
         // text: "Not Tracked"
-    // }, {
+        // }, {
         table: "victim_gender_total",
         textSpecial: "(victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null)"
     }, {
@@ -589,9 +589,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: null,
         textSpecial: "unknown"
     }, {
-    //     table: "victim_ethnicity",
-    //     text: "Not Tracked"
-    // }, {
+        //     table: "victim_ethnicity",
+        //     text: "Not Tracked"
+        // }, {
         table: "victim_ethnicity_total",
         text: "total",
         textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity is null)"
@@ -610,9 +610,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "victim_gender",
         text: null
-    // }, {
-    //     table: "victim_gender",
-    //     text: "Not Tracked"
+            // }, {
+            //     table: "victim_gender",
+            //     text: "Not Tracked"
     }, {
         table: "victim_gender_total",
         text: "total",
@@ -656,14 +656,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_age",
         text: "1950",
         textSpecial: "(victim_age >= 19 AND victim_age <= 50)"
-    // }, {
-    //     table: "victim_age",
-    //     text: "3044",
-    //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
-    // }, {
-    //     table: "victim_age",
-    //     text: "4565",
-        // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
+            // }, {
+            //     table: "victim_age",
+            //     text: "3044",
+            //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
+            // }, {
+            //     table: "victim_age",
+            //     text: "4565",
+            // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
     }, {
         table: "victim_age",
         text: "50",
@@ -763,6 +763,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "crisis_counseling_group",
         text: "true"
+    }, {
+        table: "victim_type",
+        text: "adultPrimaryVictim"
+    }, {
+        table: "victim_type",
+        text: "adultSecondaryVictim"
+    }, {
+        table: "victim_type",
+        text: "youthPrimaryVictim"
+    }, {
+        table: "victim_type",
+        text: "youthSecondaryVictim"
     // }, {
     //     table: "locations",
     //     text: "true"
@@ -795,7 +807,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 var objectParam = query.table;
 
 
-                switch(objectParam) {
+                switch (objectParam) {
                     // case "victim_ethnicity":
                     //     objectParam += '_' + query.text;
                     //     console.log('new ethnicity OP:', objectParam);
@@ -816,6 +828,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         objectParam += '_' + query.textSpecial;
                         // console.log('new ethnicity OP:', objectParam);
                         break;
+                    case "victim_type":
+                        objectParam += '_' + query.text;
+                        // console.log('new ethnicity OP:', objectParam);
+                        break;
                 };
 
 
@@ -826,6 +842,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 console.log("Get Error");
             });
         });
+        console.log($scope.countyInfo);
 
         //displays actual locations, unduplicated that services are provided (text)
         var location = {}
@@ -848,8 +865,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             }, function() {
                 console.log("Get Error");
             });
-    console.log($scope.countyInfo);
-
     };
 
     $scope.getStuffFederal = function() {
@@ -963,7 +978,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     // console.log('query table:', query.table);
                     var objectParam = query.table;
 
-                    switch(objectParam) {
+                    switch (objectParam) {
                         case "victim_ethnicity":
                             objectParam += '_' + query.textSpecial;
                             // console.log('new ethnicity OP:', objectParam);
@@ -1128,39 +1143,85 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.playgroundInfo = {};
         $scope.showFields = true;
         $scope.newSearch = false;
-        console.log(parameterArray);
-        console.log($scope.playground);
+        // console.log(parameterArray);
+        // console.log($scope.playground);
         var parameterArray = Object.getOwnPropertyNames($scope.playground);
-        console.log(parameterArray);
+        // console.log(parameterArray);
         parameterArray.forEach(function(parameter) {
             $scope[parameter] = true;
             playgroundObjectArray.forEach(function(object) {
                 if (object.bound !== parameter) {
                     return;
                 } else {
-                    var data = {};
-                    // data.start = convertedStart;
-                    // data.end = convertedEnd;
-                    data.text = object.text;
-                    data.tableInfo = object.infoTable;
-                    data.textSpecial = object.textSpecial;
-                    data.table = object.table;
-                    data.startDate = $scope.playground.startDate;
-                    data.endDate = $scope.playground.endDate;
+                    object.victimType.forEach(function(victimType, index){
+                        var data = {};
+                     // data.start = convertedStart;
+                       // data.end = convertedEnd;
+                       data.text = object.text;
+                       data.tableInfo = object.infoTable;
+                       data.textSpecial = object.textSpecial;
+                       data.table = object.table;
+                       data.startDate = $scope.playground.startDate;
+                       data.endDate = $scope.playground.endDate;
                     if (object.bound == 'age') {
                         data.start = $scope.playground.age.start;
                         data.end = $scope.playground.age.end;
                         $scope.begin = $scope.playground.age.start;
                         $scope.end = $scope.playground.age.end;
                     }
-                    console.log(data);
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/playground/victim/' + object.table,
-                        data: data
-                    }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
+                        // console.log(object);
+                        // console.log(index);
+                        data.victimType = victimType;
+                        console.log(data);
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/playground/victim/' + object.table,
+                            data: data
+                        }).then(function(response) {
+                           console.log("Get Success");
+                            console.log('response:', response);
+                            // if(object.table == "total_overall"){
+                                switch(index){
+                                    case 0:
+                                    var objectParam = (object.table + "_primary");
+                                    console.log(objectParam);
+                                    break;
+                                    case 1:
+                                    var objectParam = (object.table + "_secondary");
+                                    console.log(objectParam);
+                                    break;
+                                    case 2:
+                                    var objectParam = (object.table + "_adult");
+                                    console.log(objectParam);
+                                    break;
+                                    case 3:
+                                    var objectParam = (object.table + "_youth");
+                                    console.log(objectParam);
+                                    break;
+                                }
+
+                            // }
+                        switch(object.table) {
+                        case "victim_ethnicity":
+                            objectParam += '_' + object.textSpecial;
+                            // console.log('new ethnicity OP:', objectParam);
+                            break;
+                        case "victim_gender":
+                            objectParam += '_' + object.text;
+                            // console.log('new gender OP:', objectParam);
+                            break;
+                        case "victim_age":
+                            objectParam += '_' + object.text;
+                            // console.log('new age OP:', objectParam);
+                            break;
+                        case "contact_type":
+                            objectParam += '_' + object.text;
+                            // console.log('new age OP:', objectParam);
+                            break;
+                    };
+
+                    $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
+                    console.log($scope.playgroundInfo);
                         // console.log('query table:', query.table);
                         // var objectParam = query.table;
                         // $scope.federalInfo[objectParam] = response.data[0];
@@ -1169,14 +1230,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }, function() {
                         console.log("Get Error");
                     });
+                 });
                 }
             });
         });
 
-    }
+    };
+
+
     $scope.resetSearch = function() {
         $scope.showFields = false;
         $scope.newSearch = true;
+        feebleAttempt = [];
         makeFalse();
         var objectParam = Object.getOwnPropertyNames($scope.playground);
         objectParam.forEach(function(param) {
@@ -1185,837 +1250,1080 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.playground = {};
     }
     $scope.blackHole = function() {
-            $scope.showFields = true;
-            $scope.newSearch = false;
-            $scope.showTotalVictim = true;
-            var data = {};
-            data.start = $scope.playground.startDate;
-            data.end = $scope.playground.endDate;
-            $http({
-                method: "POST",
-                url: '/reportRoute/playground/victim',
-                data: data
-            }).then(function(response) {
-                console.log("Get Success");
-                console.log('response:', response);
-                var victimParameters = Object.getOwnPropertyNames(response.data[0]);
-                console.log(victimParameters);
-                getNonVictim(data);
-            }, function() {
-                console.log("Get Error");
+        $scope.showFields = true;
+        $scope.newSearch = false;
+        $scope.showTotalVictim = true;
+        var data = {};
+        data.start = $scope.playground.startDate;
+        data.end = $scope.playground.endDate;
+        $http({
+            method: "POST",
+            url: '/reportRoute/playground/victim',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log('response:', response);
+            $scope.victimObject = response.data;
+            console.log($scope.victimObject);
+            $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
+            console.log($scope.victimParameters);
+            getNonVictim(data);
+        }, function() {
+            console.log("Get Error");
+        });
+    }
+
+    function getNonVictim(data) {
+        $scope.showTotalNonVictim = true;
+        $http({
+            method: "POST",
+            url: '/reportRoute/playground/nonVictim',
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log('response:', response);
+            $scope.nonVictimObject = response.data;
+            console.log($scope.nonVictimObject);
+            $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
+            console.log($scope.nonVictimParameters);
+        }, function() {
+            console.log("Get Error");
+        });
+    }
+    var feebleAttempt = [];
+
+    function populatePDFArrays() {
+      var victimHeader = $scope.victimParameters;
+      console.log(victimHeader);
+      feebleAttempt.push(victimHeader);
+        $scope.victimObject.forEach(function(arrayObject, index) {
+          var objectNumber = index;
+          var standin = [];
+            $scope.victimParameters.forEach(function(parameter) {
+              console.log("2nd for loop running");
+                if ($scope.victimObject[objectNumber][parameter] == null) {
+                    $scope.victimObject[objectNumber][parameter] = "null";
+                }
+                console.log(arrayObject[parameter].toString());
+                if(arrayObject[parameter].toString() == ""){
+                  arrayObject[parameter] = "null";
+                }
+                standin.push(arrayObject[parameter].toString());
             });
+            feebleAttempt.push(standin);
+        });
+        console.log(feebleAttempt.length);
+        var widthTotal = (feebleAttempt.length * 190);
+        console.log(widthTotal);
+
+        var docDefinition = {
+            pageSize: {
+                width: widthTotal,
+                height: 1200
+            },
+            content: [{
+                table: {
+                    width: "auto",
+                    headerRows: 1,
+                    body: [feebleAttempt]
+                }
+            }]
+        };
+        pdfMake.createPdf(docDefinition).download('getAllReports.pdf');
+        $scope.resetSearch();
+    }
+    $scope.makePDF = function() {
+            populatePDFArrays();
         }
-  function getNonVictim(data){
-    $scope.showTotalNonVictim = true;
-    $http({
-        method: "POST",
-        url: '/reportRoute/playground/nonVictim',
-        data: data
-    }).then(function(response) {
-        console.log("Get Success");
-        console.log('response:', response);
-        var nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
-        console.log(nonVictimParameters);
-    }, function() {
-        console.log("Get Error");
-    });
-  }
         //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1
         bound: "showIndividual",
         table: "total_overall",
         infoTable: "victim",
-        text: "TOTAL"
+        text: "TOTAL",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         //Question 4
         bound: "showNewIndividual",
         table: "total_new",
         infoTable: "victim",
-        text: "NEW"
+        text: "NEW",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         //Question 5A
         bound: "showAIndian",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Native American"
+        text: "Native American",
+        textSpecial: "native_american",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showAsian",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Asian"
+        text: "Asian",
+        textSpecial: "asian",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showBlack",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "African American/Black"
+        text: "African American/Black",
+        textSpecial: "african_american_black",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showLatino",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Chican@/Latin@"
+        text: "Chican@/Latin@",
+        textSpecial: "chicano_latino",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showPacificIslander",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Native Hawaiian/Pacific Islander"
+        text: "Native Hawaiian/Pacific Islander",
+        textSpecial: "hawaiian_pacific_islander",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showCaucassian",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "White Non-Latino or Caucasian"
+        text: "White Non-Latino or Caucasian",
+        textSpecial: "white",
+                     victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showOtherRace",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Other"
+        text: "Other",
+        textSpecial: "other",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showMultipleRaces",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "Multi-Racial"
+        text: "Multi-Racial",
+        textSpecial: "multi-racial",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showNotReportedRace",
         table: "victim_ethnicity",
         infoTable: "victim",
-        text: "unknown"
+        text: null,
+        textSpecial: "unknown",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showEthnicityTotal",
         table: "victim_ethnicity_total",
         infoTable: "victim",
-        textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity iLike 'unknown')"
+        textSpecial: "(victim_ethnicity iLike 'Native American' OR victim_ethnicity iLike 'Asian' OR victim_ethnicity iLike 'African American/Black' OR victim_ethnicity iLike 'Chican@/Latin@' OR victim_ethnicity iLike 'Native Hawaiian/Pacific Islander' OR victim_ethnicity iLike 'White Non-Latino or Caucasian' OR victim_ethnicity iLike 'Other' OR victim_ethnicity iLike 'Multi-Racial' OR victim_ethnicity is null)",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         //Question 5B
         bound: "showMale",
         table: "victim_gender",
         infoTable: "victim",
-        text: "Male"
+        text: "Male",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showFemale",
         table: "victim_gender",
         infoTable: "victim",
-        text: "Female"
+        text: "Female",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showNonBinary",
         table: "victim_gender",
         infoTable: "victim",
-        text: "Non-Binary"
+        text: "Non-Binary",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showOtherGender",
         table: "victim_gender",
         infoTable: "victim",
-        text: "Other"
+        text: "Other",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showGenderNotReported",
         table: "victim_gender",
         infoTable: "victim",
-        text: "unknown"
+        text: null,
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
-        bound: "showGenderNotTracked",
-        table: "victim_gender",
-        infoTable: "victim",
-        text: "Not Tracked"
-    }, {
+    //     bound: "showGenderNotTracked",
+    //     table: "victim_gender",
+    //     infoTable: "victim",
+    //     text: "Not Tracked"
+    // }, {
         //Question 6A
         bound: "violenceAdultAssault",
         table: "violence_adult_sexual",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
+
+
+
+
+        //fix this;
         bound: "violenceAdultAbuseTotal",
         table: "violence_adult_sexual", //Check Table name
         infoTable: "victim",
-        text: ""
+        text: "",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
+
+
+
     }, {
         bound: "violenceAdultAbuseFamily",
         table: "violence_adult_child_family",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceAdultAbuseOther",
         table: "violence_adult_child_other",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceBurglary",
         table: "violence_bullying",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceChildPornography",
         table: "violence_child_pornography",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
 
 
 
 
-
+        //fix this;
         bound: "violenceChildAbuseTotal",
         table: "violence_child_sexual", //Check Table name
         infoTable: "victim",
-        text: ""
+        text: "",
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
+
+
+
+
+
     }, {
         bound: "violenceDomestic",
         table: "violence_domestic",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceElderAbuse",
         table: "violence_elder",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceStalkingExposing",
         table: "violence_exposing",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
+
+
+
+        //fix this
         bound: "violenceStalkingTotal",
         table: "violence_exposing",
         infoTable: "victim",
-        text: "true"
+        text: "",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceStalkingInternet",
         table: "violence_internet",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceChildAbuseFamily",
         table: "violence_minor_family",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceChildAbuseOther",
         table: "violence_minor_other",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceStalkingPhone",
         table: "violence_phone",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceSex",
         table: "violence_exploitation",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceStalkingHarassment",
         table: "violence_harassment",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceStalking",
         table: "violence_stalking",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceTeenDating",
         table: "violence_teen_dating",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceOther",
         table: "violence_other",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceUnknown",
         table: "violence_unknown",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         //Question 6B
-        bound: "showNewIndividual",
-        table: "victim_victimization_count",
+        bound: "victimSpecialMultiple",
+        table: "victim_multiple ",
         infoTable: "victim",
-        textSpecial: "victim_victimization_count >= 2"
+        text: "true",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
+        //
         bound: "age",
         table: "victim_age",
-        infoTable: "victim"
+        infoTable: "victim",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55111",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55111"
+        text: "55111",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55305",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55305"
+        text: "55305",
+              victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55311",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55311"
+        text: "55311",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55316",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55316"
+        text: "55316",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55317",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55317"
+        text: "55317",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55327",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55327"
+        text: "55327",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55328",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55328"
+        text: "55328",
+             victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55331",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55331"
+        text: "55331",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55340",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55340"
+        text: "55340",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55341",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55341"
+        text: "55341",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55343",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55343"
+        text: "55343",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55344",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55344"
+        text: "55344",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55345",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55345"
+        text: "55345",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55346",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55346"
+        text: "55346",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55347",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55347"
+        text: "55347",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55356",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55356"
+        text: "55356",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55357",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55357"
+        text: "55357",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55359",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55359"
+        text: "55359",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55361",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55361"
+        text: "55361",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55364",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55364"
+        text: "55364",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55369",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55369"
+        text: "55369",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55373",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55373"
+        text: "55373",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55374",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55374"
+        text: "55374",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55375",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55375"
+        text: "55375",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55384",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55384"
+        text: "55384",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55387",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55387"
+        text: "55387",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55388",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55388"
+        text: "55388",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55391",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55391"
+        text: "55391",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55392",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55392"
+        text: "55392",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55401",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55401"
+        text: "55401",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55402",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55402"
+        text: "55402",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55403",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55403"
+        text: "55403",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55404",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55404"
+        text: "55404",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55405",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55405"
+        text: "55405",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55406",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55406"
+        text: "55406",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55407",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55407"
+        text: "55407",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55408",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55408"
+        text: "55408",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55409",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55409"
+        text: "55409",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55410",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55410"
+        text: "55410",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55411",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55411"
+        text: "55411",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55412",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55412"
+        text: "55412",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55413",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55413"
+        text: "55413",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55414",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55414"
+        text: "55414",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55415",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55415"
+        text: "55415",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55416",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55416"
+        text: "55416",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "violenceUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55417",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55417"
+        text: "55417",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55418",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55418"
+        text: "55418",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55419",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55419"
+        text: "55419",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55420",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55420"
+        text: "55420",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55422",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55422"
+        text: "55422",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55423",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55423"
+        text: "55423",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55424",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55424"
+        text: "55424",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55425",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55425"
+        text: "55425",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55426",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55426"
+        text: "55426",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55427",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55427"
+        text: "55427",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55428",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55428"
+        text: "55428",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55429",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55429"
+        text: "55429",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55430",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55430"
+        text: "55430",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55431",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55431"
+        text: "55431",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55435",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55435"
+        text: "55435",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55436",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55436"
+        text: "55436",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55437",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55437"
+        text: "55437",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55438",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55438"
+        text: "55438",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55439",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55439"
+        text: "55439",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55441",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55441"
+        text: "55441",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55442",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55442"
+        text: "55442",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55443",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55443"
+        text: "55443",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55444",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55444"
+        text: "55444",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55445",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55445"
+        text: "55445",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55446",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55446"
+        text: "55446",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55447",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55447"
+        text: "55447",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55450",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55450"
+        text: "55450",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55454",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55454"
+        text: "55454",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "county55455",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "55455"
+        text: "55455",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "countyOther",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "Other"
+        text: "Other",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "countyUnknown",
         table: "victim_zipcode",
         infoTable: "victim",
-        text: "Unknown"
+        text: "Unknown",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "countyTotal",
-        table: "victim_zipcode",
+        table: "victim_zipcode_total",
         infoTable: "victim",
-        text: "Total"
+        text: "Total",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showMale",
         table: "victim_gender",
         infoTable: "victim",
-        text: "true"
+        text: "Male",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showFemale",
         table: "victim_gender",
         infoTable: "victim",
-        text: "true"
+        text: "Female",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showNonBinary",
         table: "victim_gender",
         infoTable: "victim",
-        text: "true"
+        text: "Non-Binary",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showOtherGender",
         table: "victim_gender",
         infoTable: "victim",
-        text: "true"
+        text: "Other",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showGenderNotReported",
         table: "victim_gender",
         infoTable: "victim",
-        text: "true"
+        text: null,
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "showGenderTotal",
-        table: "victim_gender",
+        table: "victim_gender_total",
         infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "adultPrimary",
-        table: "victim_type",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "adultSecondary",
-        table: "victim_type",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "youthPrimary",
-        table: "victim_type",
-        infoTable: "victim",
-        text: "true"
-    }, {
-        bound: "youthSecondary",
-        table: "victim_type",
-        infoTable: "victim",
-        text: "true"
+        text: "true",
+        textSpecial: "victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
+    // }, {
+    //     bound: "adultPrimary",
+    //     table: "victim_type",
+    //     infoTable: "victim",
+    //     text: "true",
+    //     textSpecial: "adultPrimaryVictim",
+    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+    // }, {
+    //     bound: "adultSecondary",
+    //     table: "victim_type",
+    //     infoTable: "victim",
+    //     text: "true",
+    //     textSpecial: "adultSecondaryVictim",
+    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
+    // }, {
+    //     bound: "youthPrimary",
+    //     table: "victim_type",
+    //     infoTable: "victim",
+    //     text: "true",
+    //     textSpecial: "youthPrimaryVictim",
+    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
+    // }, {
+    //     bound: "youthSecondary",
+    //     table: "victim_type",
+    //     infoTable: "victim",
+    //     text: "true",
+    //     textSpecial: "youthSecondaryVictim",
+    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+
     }, {
         bound: "individualCounseling",
         table: "crisis_counseling_individual",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "groupCounseling",
         table: "crisis_counseling_group",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "lawEnforcement",
         table: "legal_law_enforcement_interview",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "prosecutionAdvocacy",
         table: "legal_prosecution_related",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "courtAdvocacy",
         table: "legal_court_advocacy",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "obtainingAssistance",
         table: "legal_oft_hro",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "immigrationSupport",
         table: "legal_immigration",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "intervention",
         table: "legal_intervention",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "forensicExam",
         table: "medical_exam_support",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "accompanimentMedical",
         table: "medical_accompaniment_medical",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "accompanimentDental",
         table: "medical_accompaniment_dental",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "informationReferral",
         table: "information_referral",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "safeAtHome",
         table: "safe_at_home",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "emergencyFinancial",
         table: "emergency_financial",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "reparationsClaims",
         table: "reparations_claims",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "yesTrans",
         table: "victim_trans",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "noTrans",
         table: "victim_trans",
         infoTable: "victim",
-        text: "true"
+        text: "false",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "unknownTrans",
         table: "victim_trans",
         infoTable: "victim",
-        text: "true"
+        text: null,
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneCrisis",
         table: "crisis_counseling",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneInformation",
         table: "information_referral",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneCriminalJustice",
         table: "information_criminal_justice",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneJusticeRelated",
         table: "other_emergency_justice",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneEmergencyFinancial",
         table: "emergency_financial",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "phoneEmergencyClaims",
         table: "reparations_claims",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "supported",
         table: "supported_on_call",
         infoTable: "victim",
-        text: "true"
+        text: "true",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "notSupported",
         table: "supported_on_call",
         infoTable: "victim",
-        text: "false"
+        text: "false",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "inPersonContact",
         table: "contact_type",
         infoTable: "victim",
-        text: "In Person"
+        text: "in-person"
     }, {
         bound: "phoneContact",
         table: "contact_type",
         infoTable: "victim",
-        text: "Phone"
+        text: "Phone",
+          victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
     }, {
         bound: "nonVictimMedical",
         table: "", //Columns being added for this. Check Later
