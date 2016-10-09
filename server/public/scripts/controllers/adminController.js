@@ -1140,118 +1140,119 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.nonVictimAdvocacy = false;
     };
     $scope.submitting = function() {
-      if($scope.playground.startDate == undefined || $scope.playground.endDate == undefined){
-        alert("Please enter in a Date before Proceeding");
-      }else{
-        $scope.playgroundInfo = {};
-        $scope.showFields = true;
-        $scope.newSearch = false;
-        // console.log(parameterArray);
-        // console.log($scope.playground);
-        var parameterArray = Object.getOwnPropertyNames($scope.playground);
-        // console.log(parameterArray);
-        parameterArray.forEach(function(parameter) {
-            $scope[parameter] = true;
-            playgroundObjectArray.forEach(function(object) {
-                if (object.bound !== parameter) {
-                    return;
-                } else {
-                    // object.victimType.forEach(function(victimType, index){
-                    var data = {};
-                    // data.start = convertedStart;
-                    // data.end = convertedEnd;
-                    data.text = object.text;
-                    data.tableInfo = object.infoTable;
-                    data.textSpecial = object.textSpecial;
-                    data.table = object.table;
-                    data.startDate = $scope.playground.startDate;
-                    data.endDate = $scope.playground.endDate;
-                    if (object.bound == 'age') {
-                        data.start = $scope.playground.age.start;
-                        data.end = $scope.playground.age.end;
-                        $scope.begin = $scope.playground.age.start;
-                        $scope.end = $scope.playground.age.end;
-                    }
-                    console.log('data to send to server:', data);
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/playground/victim/' + object.table,
-                        data: data
-                    }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
-                        var standin = {};
-                        var aPrime = 0;
-                        var aSecond = 0;
-                        var yPrime = 0;
-                        var ySecond = 0;
-                        response.data.forEach(function(spot) {
-                            switch (spot.victim_type) {
-                                case 'youthPrimaryVictim':
-                                    yPrime++;
+        if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
+            alert("Please enter in a Date before Proceeding");
+        } else {
+            $scope.playgroundInfo = {};
+            $scope.showFields = true;
+            $scope.newSearch = false;
+            // console.log(parameterArray);
+            // console.log($scope.playground);
+            var parameterArray = Object.getOwnPropertyNames($scope.playground);
+            // console.log(parameterArray);
+            parameterArray.forEach(function(parameter) {
+                $scope[parameter] = true;
+                playgroundObjectArray.forEach(function(object) {
+                    if (object.bound !== parameter) {
+                        return;
+                    } else {
+                        // object.victimType.forEach(function(victimType, index){
+                        var data = {};
+                        // data.start = convertedStart;
+                        // data.end = convertedEnd;
+                        data.text = object.text;
+                        data.tableInfo = object.infoTable;
+                        data.textSpecial = object.textSpecial;
+                        data.table = object.table;
+                        data.startDate = $scope.playground.startDate;
+                        data.endDate = $scope.playground.endDate;
+                        if (object.bound == 'age') {
+                            data.start = $scope.playground.age.start;
+                            data.end = $scope.playground.age.end;
+                            $scope.begin = $scope.playground.age.start;
+                            $scope.end = $scope.playground.age.end;
+                        }
+                        console.log('data to send to server:', data);
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/playground/victim/' + object.table,
+                            data: data
+                        }).then(function(response) {
+                            console.log("Get Success");
+                            console.log('response:', response);
+                            var standin = {};
+                            var aPrime = 0;
+                            var aSecond = 0;
+                            var yPrime = 0;
+                            var ySecond = 0;
+                            response.data.forEach(function(spot) {
+                                switch (spot.victim_type) {
+                                    case 'youthPrimaryVictim':
+                                        yPrime++;
+                                        break;
+                                    case 'youthSecondaryVictim':
+                                        ySecond++;
+                                        break;
+                                    case 'adultPrimaryVictim':
+                                        aPrime++;
+                                        break;
+                                    case 'adultSecondaryVictim':
+                                        aSecond++;
+                                        break;
+                                }
+                            });
+                            var objectParam = object.table;
+                            switch (object.table) {
+                                case "victim_ethnicity":
+                                    objectParam += '_' + object.textSpecial;
+                                    standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
                                     break;
-                                case 'youthSecondaryVictim':
-                                    ySecond++;
+                                case "victim_gender":
+                                    objectParam += '_' + object.text;
+                                    standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
                                     break;
-                                case 'adultPrimaryVictim':
-                                    aPrime++;
+                                case "victim_age":
+                                    objectParam += '_' + object.text;
+                                    standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
                                     break;
-                                case 'adultSecondaryVictim':
-                                    aSecond++;
+                                case "contact_type":
+                                    objectParam += '_' + object.text;
+                                    standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
                                     break;
-                            }
+                                default:
+                                    standin[object.table] = {};
+                                    standin[object.table].yPrime = yPrime;
+                                    standin[object.table].ySecond = ySecond;
+                                    standin[object.table].aPrime = aPrime;
+                                    standin[object.table].aSecond = aSecond;
+                                    console.log(standin);
+                            };
+
+
+                            // $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
+                            // console.log($scope.playgroundInfo);
+                            // console.log('query table:', query.table);
+                            // var objectParam = query.table;
+                            // $scope.federalInfo[objectParam] = response.data[0];
+                            // console.log(response.data[0]);
+                            // console.log($scope.federalInfo);
+                        }, function() {
+                            console.log("Get Error");
                         });
-                        var objectParam = object.table;
-                        switch (object.table) {
-                            case "victim_ethnicity":
-                                objectParam += '_' + object.textSpecial;
-                                standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
-                                break;
-                            case "victim_gender":
-                                objectParam += '_' + object.text;
-                                standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
-                                break;
-                            case "victim_age":
-                                objectParam += '_' + object.text;
-                                standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
-                                break;
-                            case "contact_type":
-                                objectParam += '_' + object.text;
-                                standin = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, standin);
-                                break;
-                            default:
-                                standin[object.table] = {};
-                                standin[object.table].yPrime = yPrime;
-                                standin[object.table].ySecond = ySecond;
-                                standin[object.table].aPrime = aPrime;
-                                standin[object.table].aSecond = aSecond;
-                                console.log(standin);
-                        };
-
-
-                        // $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
-                        // console.log($scope.playgroundInfo);
-                        // console.log('query table:', query.table);
-                        // var objectParam = query.table;
-                        // $scope.federalInfo[objectParam] = response.data[0];
-                        // console.log(response.data[0]);
-                        // console.log($scope.federalInfo);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                    // });
-                }
+                        // });
+                    }
+                });
             });
-        });
-      }
+        }
     };
-    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, standin){
-      standin[tableAddition] = {};
-      standin[tableAddition].yPrime = yPrime;
-      standin[tableAddition].ySecond = ySecond;
-      standin[tableAddition].aPrime = aPrime;
-      standin[tableAddition].aSecond = aSecond;
-      return standin;
+
+    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, standin) {
+        standin[tableAddition] = {};
+        standin[tableAddition].yPrime = yPrime;
+        standin[tableAddition].ySecond = ySecond;
+        standin[tableAddition].aPrime = aPrime;
+        standin[tableAddition].aSecond = aSecond;
+        return standin;
     }
 
 

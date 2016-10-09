@@ -1,5 +1,4 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
-    console.log("Data Entry Running FOOL");
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
@@ -109,39 +108,43 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
     // var victimizationCount = [];
 
     $scope.submitVictimForm = function() {
-          var standinObject = $scope.thing;
-          console.log(standinObject);
-            var thingArray = Object.getOwnPropertyNames(standinObject);
-            console.log(thingArray);
-            var potato = {};
-            thingArray.forEach(function(propertyName) {
-                potato[propertyName] = standinObject[propertyName];
+            if ($scope.form.date == null) {
+                $scope.message = "Please enter a date before submitting your request.";
+            } else {
+                var standinObject = $scope.thing;
                 console.log(standinObject);
-                console.log(potato);
-            });
-            var formArray = Object.getOwnPropertyNames(potato);
-            formArray.forEach(function(parameter) {
-                var parameterName = potato[parameter];
-                console.log(potato[parameter]);
-                console.log(parameterName);
-                $scope.form[parameterName] = true;
-            });
-            console.log($scope.form);
-            var data = $scope.form;
-            // var count = victimizationCount.length;
-            // console.log(count);
-            //formats input date into workable format;
-            data.date_entered = new Date();
-
-            console.log('sending to server...', data);
-            $http.post('/dataRoute/victim', data).then(function(response) {
-                    console.log('success');
-
-                },
-                function(response) {
-                    console.log('error');
-                    $scope.message = "Please try again."
+                var thingArray = Object.getOwnPropertyNames(standinObject);
+                console.log(thingArray);
+                var potato = {};
+                thingArray.forEach(function(propertyName) {
+                    potato[propertyName] = standinObject[propertyName];
+                    console.log(standinObject);
+                    console.log(potato);
                 });
+                var formArray = Object.getOwnPropertyNames(potato);
+                formArray.forEach(function(parameter) {
+                    var parameterName = potato[parameter];
+                    console.log(potato[parameter]);
+                    console.log(parameterName);
+                    $scope.form[parameterName] = true;
+                });
+                console.log($scope.form);
+                var data = $scope.form;
+                // var count = victimizationCount.length;
+                // console.log(count);
+                //formats input date into workable format;
+                data.date_entered = new Date();
+
+                console.log('sending to server...', data);
+                $http.post('/dataRoute/victim', data).then(function(response) {
+                        console.log('success');
+
+                    },
+                    function(response) {
+                        console.log('error');
+                        $scope.message = "Please try again."
+                    });
+            }
         }
         ///Search & update victim and non victim form
     $scope.table = {};

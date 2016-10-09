@@ -1,14 +1,14 @@
-myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
+myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-  console.log("nonVictimController Running FOOL");
+    console.log("nonVictimController Running FOOL");
 
-  $scope.print = function() {
-      window.print();
-  }
+    $scope.print = function() {
+        window.print();
+    }
 
-$scope.nonVictimInfo = {};
+    $scope.nonVictimInfo = {};
 
-  $scope.form = {
+    $scope.form = {
         counselor: null,
         date: null,
         sTime: null,
@@ -17,7 +17,7 @@ $scope.nonVictimInfo = {};
         callerPhone: null,
         callerZip: null,
         county: null,
-        callerType:null,
+        callerType: null,
         svcSource: null,
         medical: null,
         school: null,
@@ -41,32 +41,34 @@ $scope.nonVictimInfo = {};
         responded: null,
         reason: null,
         medicalAdvocacyRequest: null,
-      };
-//POST non-victim infromation
-      $scope.submitNonVictimForm = function () {
-        var data = $scope.form;
-        console.log(data);
+    };
+    //POST non-victim infromation
+    $scope.submitNonVictimForm = function() {
+        if ($scope.form.date == null) {
+            $scope.message = "Please enter a Date before submitting the form";
+        } else {
+            var data = $scope.form;
+            console.log(data);
 
-        data.date_entered = new Date();
+            data.date_entered = new Date();
 
-        console.log('sending to server non vict data', data);
-        $http.post('/dataRoute/nonvictim', data).then(function(response){
-          console.log('success');
-          // $scope.formId ++;
-        },
-        function(response){
-          console.log('error');
-          $scope.message = "Please try again.";
-
-      });
-
-      }
-
-
-
-
+            console.log('sending to server non vict data', data);
+            $http.post('/dataRoute/nonvictim', data).then(function(response) {
+                    console.log('success');
+                    // $scope.formId ++;
+                },
+                function(response) {
+                    console.log('error');
+                    $scope.message = "Please try again.";
+                });
+        }
+    }
 
 
 
-///**********END OF CONTROLLER***************************************///////
+
+
+
+
+    ///**********END OF CONTROLLER***************************************///////
 }]);
