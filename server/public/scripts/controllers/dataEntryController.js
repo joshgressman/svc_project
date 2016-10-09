@@ -217,6 +217,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         if (info[0] == "phone") {
             info[0] = "victim";
         }
+
         data.table = info[0];
         data.number = parseInt($scope.formId);
         // console.log(data.number);
@@ -232,9 +233,8 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         });
             console.log(response);
               $scope.update = response.data[0];
-              // console.log($scope.update);
-      });
-    }
+              // console.log($scope.update);;
+    };
     ////////////UPDATE FORM /////////////////////////
 
     $scope.updateForm = function() {
