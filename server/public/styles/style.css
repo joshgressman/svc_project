@@ -20,15 +20,24 @@
   text-align: center;
 }
 body {
-  font: "Roboto", "Helvetica Neue", Helvetica, Ariel, sans-sesrif
+  font: "Roboto", "Helvetica Neue", Helvetica, Ariel, sans-sesrif;
+  background-color: rgb(241,241,241);
 }
+
+
 header{
   height: 110px;
-  /*background-color: black*/
+  background-color: white;
   border-bottom: solid thin gray;
 
 }
-
+main {
+  background-color: rgb(241,241,241);
+  border-top: solid thin grey;
+}
+footer {
+  background-color: rgb(241,241,241);
+}
 h2{
 
   color: gray;
@@ -62,9 +71,9 @@ padding-left: 200px;
 }
 
 
-.container {
+/*.container {
 margin-top: -40px;
-}
+}*/
 
 .logout {
   float: right;
@@ -84,11 +93,12 @@ margin-top: -40px;
 
 #dataside {
 
-  height:540px;
+  /*height: 100%;*/
   margin-right: 10px;
-  border: solid gray;
+  /*border: solid gray;*/
+  /*border-right: solid gray;*/
   border-width: thin;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   margin-top: 30px;
   padding-top:20px;
   background-color: white;
@@ -97,14 +107,17 @@ margin-top: -40px;
 
 #dataview {
 
-  height:540px;
-  border: solid gray;
-  border-width: thin;
-  border-radius: 4px;
+  /*height:540px;*/
+  /*border: solid gray;*/
+  /*border-width: thin;
+  border-radius: 4px;*/
     margin-top: 30px;
-    background-color: white;
-    overflow: scroll;
+    background-color: rgb(241,241,241);
+    /*overflow: scroll;*/
     padding-top: 10px;
+}
+.formSubmit {
+  margin-bottom: 30px;
 }
 
 .nav li {
@@ -244,15 +257,82 @@ margin-top: 10px;
   #insDiv {
     height:540px;
     margin-right: 10px;
-    border: solid gray;
-    border-width: thin;
-    border-radius: 4px;
-    margin-top: 30px;
+    /*border: solid gray;*/
+    /*border-width: thin;
+    border-radius: 4px;*/
+    /*margin-top: 30px;*/
     padding-top:40px;
-    background-color: white;
-
+    background-color: rgb(241, 241, 241);
+    /*border-top: solid thin grey;*/
   }
 /*accordian*/
 
+/* Keri css fixes*/
+.userEntry {
+  padding-top: 20px;
+}
+.adminInstructions {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.panel-default >.panel-heading {
+    background-color: rgb(32, 106, 145);
+    color: #fff
+}
+
+
+.sidebar1 {
+    background: #085078;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#085078, #85D8CE);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#085078, #85D8CE);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#085078, #85D8CE));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#085078, #85D8CE);
+    /* Standard syntax */
+    padding: 0px;
+    min-height: 100%;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+.logo {
+    max-height: 130px;
+}
+.logo>img {
+    margin-top: 30px;
+    padding: 3px;
+    border: 3px solid white;
+    border-radius: 100%;
+}
+.list {
+    color: #fff;
+    list-style: none;
+    padding-left: 0px;
+}
+.list::first-line {
+    color: rgba(255, 255, 255, 0.5);
+}
+.menuList {
+    color: #fff;
+}
+.sidebarTitle {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+.list> li, h5 {
+    padding: 5px 0px 5px 40px;
+}
+.list>li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid white;
+    color: white;
+    font-weight: bolder;
+    padding-left: 35px;
+}.main-content{
+text-align:center;
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
