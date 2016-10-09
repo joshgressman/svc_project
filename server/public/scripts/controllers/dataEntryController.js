@@ -166,10 +166,10 @@ $scope.updateForm = function () {
       url: '/dataRoute/victim/' + id,
       data: data
   }).then(function(response) {
-      console.log("Get Success");
+      console.log("PUT Success");
       console.log(response);
         // $scope.update = response.data[0];
-        console.log($scope.update);
+        // console.log($scope.update);
 });
 }
 
