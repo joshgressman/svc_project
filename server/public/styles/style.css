@@ -267,6 +267,7 @@ margin-top: 10px;
   }
 /*accordian*/
 
+
 /* Keri css fixes*/
 .userEntry {
   padding-top: 20px;
@@ -333,6 +334,10 @@ margin-top: 10px;
     padding-left: 35px;
 }.main-content{
 text-align:center;
+}
+#success{
+  color: lightgreen;
+  font-size: 2.0em;
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

@@ -38,7 +38,13 @@
     </div>
     <div class="col-md-9" id="dataview">
       <!-- <button onclick="print()">Print this page</button> -->
-      <form>
+
+      <form ng-submit="submitNonVictimForm()">
+        <div class="advocacyType">
+            <label for="advocacyType">Type of Advocacy:</label>
+            <input class="" type="text" ng-model="form.advocacyType" value="NonVictim" placeholder="NonVictim" readonly/>
+
+        </div>
          <div id="svcAdvocacy">
              <div class="counselor">
                  <label for="counselorName">Advocate/Counselor Name:</label>
