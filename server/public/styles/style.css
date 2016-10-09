@@ -266,7 +266,10 @@ margin-top: 10px;
     /*border-top: solid thin grey;*/
   }
 /*accordian*/
+<<<<<<< HEAD
 
+=======
+>>>>>>> fce659ea27db326d7c6a907124b7ed9a436368bf
 
 /* Keri css fixes*/
 .userEntry {
@@ -276,7 +279,10 @@ margin-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
-
+.updateButton {
+  margin-top: 10px;
+  margin-botton: 30px;
+}
 .panel-default >.panel-heading {
     background-color: rgb(32, 106, 145);
     color: #fff
@@ -335,6 +341,7 @@ margin-top: 10px;
 }.main-content{
 text-align:center;
 }
+
 #success{
   color: lightgreen;
   font-size: 2.0em;
