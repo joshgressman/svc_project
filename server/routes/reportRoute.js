@@ -134,7 +134,7 @@ pg.connect(connectionString, function (err, client, done){
 
     });
 
-  
+
 
 
 
@@ -244,7 +244,7 @@ router.post('/county/:id', function(req, res) {
     });
 });
 
-router.post('/reportRoute/county/locations', function (req, res) {
+router.post('/county/locations', function (req, res) {
     var selectDistinct = "SELECT DISTINCT service_location FROM victim WHERE "
     var hennepin = "(victim_zipcode = 55111 OR victim_zipcode = 55305 OR victim_zipcode = 55311 OR victim_zipcode = 55316 OR victim_zipcode = 55317 OR victim_zipcode = 55327 OR victim_zipcode = 55328 OR victim_zipcode = 55331 OR victim_zipcode = 55340 OR victim_zipcode = 55341 OR victim_zipcode = 55343 OR victim_zipcode = 55344 OR victim_zipcode = 55345 OR victim_zipcode = 55346 OR victim_zipcode = 55347 OR victim_zipcode = 55356 OR victim_zipcode = 55357 OR victim_zipcode = 55359 OR victim_zipcode = 55361 OR victim_zipcode = 55364 OR victim_zipcode = 55369 OR victim_zipcode = 55373 OR victim_zipcode = 55374 OR victim_zipcode = 55375 OR victim_zipcode = 55384 OR victim_zipcode = 55387 OR victim_zipcode = 55388 OR victim_zipcode = 55391 OR victim_zipcode = 55392 OR victim_zipcode = 55401 OR victim_zipcode = 55402 OR victim_zipcode = 55403 OR victim_zipcode = 55404 OR victim_zipcode = 55405 OR victim_zipcode = 55406 OR victim_zipcode = 55407 OR victim_zipcode = 55408 OR victim_zipcode = 55409 OR victim_zipcode = 55410 OR victim_zipcode = 55411 OR victim_zipcode = 55412 OR victim_zipcode = 55413 OR victim_zipcode = 55414 OR victim_zipcode = 55415 OR victim_zipcode = 55416 OR victim_zipcode = 55417 OR victim_zipcode = 55418 OR victim_zipcode = 55419 OR victim_zipcode = 55420 OR victim_zipcode = 55422 OR victim_zipcode = 55423 OR victim_zipcode = 55424 OR victim_zipcode = 55425 OR victim_zipcode = 55426 OR victim_zipcode = 55427 OR victim_zipcode = 55428 OR victim_zipcode = 55429 OR victim_zipcode = 55230 OR victim_zipcode = 55431 OR victim_zipcode = 55435 OR victim_zipcode = 55436 OR victim_zipcode = 55437 OR victim_zipcode = 55438 OR victim_zipcode = 55439 OR victim_zipcode = 55441 OR victim_zipcode = 55442 OR victim_zipcode = 55443 OR victim_zipcode = 55444 OR victim_zipcode = 55445 OR victim_zipcode = 55446 OR victim_zipcode = 55447 OR victim_zipcode = 55450 OR victim_zipcode = 55454 OR victim_zipcode = 55455)";
     var checkFirstTimer = " AND ((victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true)) ";
@@ -292,7 +292,7 @@ router.post('/playground/victim/:id', function(req, res) {
     var query = "";
     var hennepin = "(victim_zipcode = 55111 OR victim_zipcode = 55305 OR victim_zipcode = 55311 OR victim_zipcode = 55316 OR victim_zipcode = 55317 OR victim_zipcode = 55327 OR victim_zipcode = 55328 OR victim_zipcode = 55331 OR victim_zipcode = 55340 OR victim_zipcode = 55341 OR victim_zipcode = 55343 OR victim_zipcode = 55344 OR victim_zipcode = 55345 OR victim_zipcode = 55346 OR victim_zipcode = 55347 OR victim_zipcode = 55356 OR victim_zipcode = 55357 OR victim_zipcode = 55359 OR victim_zipcode = 55361 OR victim_zipcode = 55364 OR victim_zipcode = 55369 OR victim_zipcode = 55373 OR victim_zipcode = 55374 OR victim_zipcode = 55375 OR victim_zipcode = 55384 OR victim_zipcode = 55387 OR victim_zipcode = 55388 OR victim_zipcode = 55391 OR victim_zipcode = 55392 OR victim_zipcode = 55401 OR victim_zipcode = 55402 OR victim_zipcode = 55403 OR victim_zipcode = 55404 OR victim_zipcode = 55405 OR victim_zipcode = 55406 OR victim_zipcode = 55407 OR victim_zipcode = 55408 OR victim_zipcode = 55409 OR victim_zipcode = 55410 OR victim_zipcode = 55411 OR victim_zipcode = 55412 OR victim_zipcode = 55413 OR victim_zipcode = 55414 OR victim_zipcode = 55415 OR victim_zipcode = 55416 OR victim_zipcode = 55417 OR victim_zipcode = 55418 OR victim_zipcode = 55419 OR victim_zipcode = 55420 OR victim_zipcode = 55422 OR victim_zipcode = 55423 OR victim_zipcode = 55424 OR victim_zipcode = 55425 OR victim_zipcode = 55426 OR victim_zipcode = 55427 OR victim_zipcode = 55428 OR victim_zipcode = 55429 OR victim_zipcode = 55230 OR victim_zipcode = 55431 OR victim_zipcode = 55435 OR victim_zipcode = 55436 OR victim_zipcode = 55437 OR victim_zipcode = 55438 OR victim_zipcode = 55439 OR victim_zipcode = 55441 OR victim_zipcode = 55442 OR victim_zipcode = 55443 OR victim_zipcode = 55444 OR victim_zipcode = 55445 OR victim_zipcode = 55446 OR victim_zipcode = 55447 OR victim_zipcode = 55450 OR victim_zipcode = 55454 OR victim_zipcode = 55455)";
     var notHennepin = "(victim_zipcode != 55111 AND victim_zipcode != 55305 AND victim_zipcode != 55311 AND victim_zipcode != 55316 AND victim_zipcode != 55317 AND victim_zipcode != 55327 AND victim_zipcode != 55328 AND victim_zipcode != 55331 AND victim_zipcode != 55340 AND victim_zipcode != 55341 AND victim_zipcode != 55343 AND victim_zipcode != 55344 AND victim_zipcode != 55345 AND victim_zipcode != 55346 AND victim_zipcode != 55347 AND victim_zipcode != 55356 AND victim_zipcode != 55357 AND victim_zipcode != 55359 AND victim_zipcode != 55361 AND victim_zipcode != 55364 AND victim_zipcode != 55369 AND victim_zipcode != 55373 AND victim_zipcode != 55374 AND victim_zipcode != 55375 AND victim_zipcode != 55384 AND victim_zipcode != 55387 AND victim_zipcode != 55388 AND victim_zipcode != 55391 AND victim_zipcode != 55392 AND victim_zipcode != 55401 AND victim_zipcode != 55402 AND victim_zipcode != 55403 AND victim_zipcode != 55404 AND victim_zipcode != 55405 AND victim_zipcode != 55406 AND victim_zipcode != 55407 AND victim_zipcode != 55408 AND victim_zipcode != 55409 AND victim_zipcode != 55410 AND victim_zipcode != 55411 AND victim_zipcode != 55412 AND victim_zipcode != 55413 AND victim_zipcode != 55414 AND victim_zipcode != 55415 AND victim_zipcode != 55416 AND victim_zipcode != 55417 AND victim_zipcode != 55418 AND victim_zipcode != 55419 AND victim_zipcode != 55420 AND victim_zipcode != 55422 AND victim_zipcode != 55423 AND victim_zipcode != 55424 AND victim_zipcode != 55425 AND victim_zipcode != 55426 AND victim_zipcode != 55427 AND victim_zipcode != 55428 AND victim_zipcode != 55429 AND victim_zipcode != 55230 AND victim_zipcode != 55431 AND victim_zipcode != 55435 AND victim_zipcode != 55436 AND victim_zipcode != 55437 AND victim_zipcode != 55438 AND victim_zipcode != 55439 AND victim_zipcode != 55441 AND victim_zipcode != 55442 AND victim_zipcode != 55443 AND victim_zipcode != 55444 AND victim_zipcode != 55445 AND victim_zipcode != 55446 AND victim_zipcode != 55447 AND victim_zipcode != 55450 AND victim_zipcode != 55454 AND victim_zipcode != 55455)";
-    
+
     var dateStart = req.body.startDate;
     var dateEnd = req.body.endDate;
 
@@ -312,7 +312,7 @@ router.post('/playground/victim/:id', function(req, res) {
             console.log('playground new:', query);
         } else if (text == null) {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('playground nulls:', query);        
+            console.log('playground nulls:', query);
         } else {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             console.log('other queries:', query);
@@ -342,7 +342,7 @@ router.post('/playground/victim/:id', function(req, res) {
     // var query = "";
     // var hennepin = "(victim_zipcode = 55111 OR victim_zipcode = 55305 OR victim_zipcode = 55311 OR victim_zipcode = 55316 OR victim_zipcode = 55317 OR victim_zipcode = 55327 OR victim_zipcode = 55328 OR victim_zipcode = 55331 OR victim_zipcode = 55340 OR victim_zipcode = 55341 OR victim_zipcode = 55343 OR victim_zipcode = 55344 OR victim_zipcode = 55345 OR victim_zipcode = 55346 OR victim_zipcode = 55347 OR victim_zipcode = 55356 OR victim_zipcode = 55357 OR victim_zipcode = 55359 OR victim_zipcode = 55361 OR victim_zipcode = 55364 OR victim_zipcode = 55369 OR victim_zipcode = 55373 OR victim_zipcode = 55374 OR victim_zipcode = 55375 OR victim_zipcode = 55384 OR victim_zipcode = 55387 OR victim_zipcode = 55388 OR victim_zipcode = 55391 OR victim_zipcode = 55392 OR victim_zipcode = 55401 OR victim_zipcode = 55402 OR victim_zipcode = 55403 OR victim_zipcode = 55404 OR victim_zipcode = 55405 OR victim_zipcode = 55406 OR victim_zipcode = 55407 OR victim_zipcode = 55408 OR victim_zipcode = 55409 OR victim_zipcode = 55410 OR victim_zipcode = 55411 OR victim_zipcode = 55412 OR victim_zipcode = 55413 OR victim_zipcode = 55414 OR victim_zipcode = 55415 OR victim_zipcode = 55416 OR victim_zipcode = 55417 OR victim_zipcode = 55418 OR victim_zipcode = 55419 OR victim_zipcode = 55420 OR victim_zipcode = 55422 OR victim_zipcode = 55423 OR victim_zipcode = 55424 OR victim_zipcode = 55425 OR victim_zipcode = 55426 OR victim_zipcode = 55427 OR victim_zipcode = 55428 OR victim_zipcode = 55429 OR victim_zipcode = 55230 OR victim_zipcode = 55431 OR victim_zipcode = 55435 OR victim_zipcode = 55436 OR victim_zipcode = 55437 OR victim_zipcode = 55438 OR victim_zipcode = 55439 OR victim_zipcode = 55441 OR victim_zipcode = 55442 OR victim_zipcode = 55443 OR victim_zipcode = 55444 OR victim_zipcode = 55445 OR victim_zipcode = 55446 OR victim_zipcode = 55447 OR victim_zipcode = 55450 OR victim_zipcode = 55454 OR victim_zipcode = 55455)";
     // var notHennepin = "(victim_zipcode != 55111 AND victim_zipcode != 55305 AND victim_zipcode != 55311 AND victim_zipcode != 55316 AND victim_zipcode != 55317 AND victim_zipcode != 55327 AND victim_zipcode != 55328 AND victim_zipcode != 55331 AND victim_zipcode != 55340 AND victim_zipcode != 55341 AND victim_zipcode != 55343 AND victim_zipcode != 55344 AND victim_zipcode != 55345 AND victim_zipcode != 55346 AND victim_zipcode != 55347 AND victim_zipcode != 55356 AND victim_zipcode != 55357 AND victim_zipcode != 55359 AND victim_zipcode != 55361 AND victim_zipcode != 55364 AND victim_zipcode != 55369 AND victim_zipcode != 55373 AND victim_zipcode != 55374 AND victim_zipcode != 55375 AND victim_zipcode != 55384 AND victim_zipcode != 55387 AND victim_zipcode != 55388 AND victim_zipcode != 55391 AND victim_zipcode != 55392 AND victim_zipcode != 55401 AND victim_zipcode != 55402 AND victim_zipcode != 55403 AND victim_zipcode != 55404 AND victim_zipcode != 55405 AND victim_zipcode != 55406 AND victim_zipcode != 55407 AND victim_zipcode != 55408 AND victim_zipcode != 55409 AND victim_zipcode != 55410 AND victim_zipcode != 55411 AND victim_zipcode != 55412 AND victim_zipcode != 55413 AND victim_zipcode != 55414 AND victim_zipcode != 55415 AND victim_zipcode != 55416 AND victim_zipcode != 55417 AND victim_zipcode != 55418 AND victim_zipcode != 55419 AND victim_zipcode != 55420 AND victim_zipcode != 55422 AND victim_zipcode != 55423 AND victim_zipcode != 55424 AND victim_zipcode != 55425 AND victim_zipcode != 55426 AND victim_zipcode != 55427 AND victim_zipcode != 55428 AND victim_zipcode != 55429 AND victim_zipcode != 55230 AND victim_zipcode != 55431 AND victim_zipcode != 55435 AND victim_zipcode != 55436 AND victim_zipcode != 55437 AND victim_zipcode != 55438 AND victim_zipcode != 55439 AND victim_zipcode != 55441 AND victim_zipcode != 55442 AND victim_zipcode != 55443 AND victim_zipcode != 55444 AND victim_zipcode != 55445 AND victim_zipcode != 55446 AND victim_zipcode != 55447 AND victim_zipcode != 55450 AND victim_zipcode != 55454 AND victim_zipcode != 55455)";
-    
+
     // var primary = " AND (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'youthPrimaryVictim') ";
     // var secondary = " AND (victim_type iLIKE 'adultSecondaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
     // var adult = " AND (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'adultSecondaryVictim') ";
@@ -412,18 +412,18 @@ router.post('/playground/victim/:id', function(req, res) {
 //             // console.log('ethnicity total:', query);
 //         // } else if (table == "victim_type" && adultPrimary && youthPrimary) {
 //         //     query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//         //     console.log('victim type:', query);    
+//         //     console.log('victim type:', query);
 //         } else if (text == null && adultPrimary && youthPrimary) {
 //             query = stringQueryWhere + table + is + text + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('null:', query);
 //         } else if (text == "true" && (adultPrimary && youthPrimary)){
 //             query = stringQueryWhere + table + is + text + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//             // console.log('all boolean:', query);                
+//             // console.log('all boolean:', query);
 //         } else if (adultPrimary && youthPrimary){
 //             query = stringQueryWhere + table + iLike + "'" + text + "'" + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('other queries:', query);
 //         };
-//         //for secondary victims    
+//         //for secondary victims
 //         console.log(youthPrimary);
 //         console.log(youthSecondary);
 //         console.log(text);
@@ -449,18 +449,18 @@ router.post('/playground/victim/:id', function(req, res) {
 //             // console.log('ethnicity total:', query);
 //         // } else if (table == "victim_type" && adultSecondary && youthSecondary) {
 //         //     query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//         //     console.log('victim type:', query);         
+//         //     console.log('victim type:', query);
 //         } else if (text == null && adultSecondary && youthSecondary) {
 //             query = stringQueryWhere + table + is + text + secondary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('null:', query);
 //         } else if (text == "true" && adultSecondary && youthSecondary){
 //             query = stringQueryWhere + table + is + text + secondary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//             // console.log('all boolean:', query);        
+//             // console.log('all boolean:', query);
 //         } else if (adultSecondary && youthSecondary){
 //             query = stringQueryWhere + table + iLike + "'" + text + "'" + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('other queries:', query);
 //         };
-//         //for adult victims;   
+//         //for adult victims;
 
 //         if (text == "TOTAL" && adultPrimary && adultSecondary) {
 //             adult = " (victim_type iLIKE 'adultPrimaryVictim' OR victim_type iLIKE 'adultSecondaryVictim') ";
@@ -484,18 +484,18 @@ router.post('/playground/victim/:id', function(req, res) {
 //             // console.log('ethnicity total:', query);
 //         // } else if (table == "victim_type" && adultPrimary && adultSecondary) {
 //         //     query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//         //     console.log('victim type:', query);     
+//         //     console.log('victim type:', query);
 //         } else if (text == null && adultPrimary && adultSecondary) {
 //             query = stringQueryWhere + table + is + text + adult + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('null:', query);
 //         } else if (text == "true" && adultPrimary && adultSecondary){
 //             query = stringQueryWhere + table + is + text + adult + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//             // console.log('all boolean:', query);        
+//             // console.log('all boolean:', query);
 //         } else if (adultPrimary && adultSecondary){
 //             query = stringQueryWhere + table + iLike + "'" + text + "'" + primary + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             // console.log('other queries:', query);
 //         };
-//         //for youth victims;    
+//         //for youth victims;
 
 //         if (text == "TOTAL" && youthPrimary && youthSecondary) {
 //             youth = " (victim_type iLIKE 'youthPrimaryVictim' OR victim_type iLIKE 'youthSecondaryVictim') ";
@@ -519,10 +519,10 @@ router.post('/playground/victim/:id', function(req, res) {
 //             console.log('ethnicity total:', query);
 //         // } else if (table == "victim_type" && youthPrimary && youthSecondary) {
 //         //     query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//         //     console.log('victim type:', query);     
+//         //     console.log('victim type:', query);
 //         } else if (text == null && youthPrimary && youthSecondary) {
 //             query = stringQueryWhere + table + is + text + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-//             console.log('null:', query);    
+//             console.log('null:', query);
 //         } else if (text == "true" && youthPrimary && youthSecondary){
 //             query = stringQueryWhere + table + is + text + youth + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
 //             console.log('all boolean:', query);

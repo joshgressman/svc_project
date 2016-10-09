@@ -25,32 +25,32 @@
                 <div ng-show="newSearch">
                     <div>
                         <label for="pickAThing">Select a Category</label>
-                        <select multiple ng-model="selectedCategories" ng-change="checkSelection()">
+                        <select class="dropDownPlayground" multiple ng-model="selectedCategories" ng-change="checkSelection()">
                           <!-- <option value="typeOfVictim">Type of Victim/Survivor</option> -->
-                          <option value="individualsServiced">Individuals Serviced</option>
-                          <option value="ethnicity">Race/Ethnicity</option>
-                          <option value="genderIdentity">Gender Identity</option>
-                          <option value="age">Age</option>
-                          <option value="disability">Disabilities</option>
-                          <option value="victimizationTypes">Types of Victimization: Totals</option>
-                          <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
-                          <option value="showCounties">Zip Codes</option>
-                          <option value="immigrantStatus">Immigrant Status</option>
-                          <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
-                          <option value="contactType">Contact Type</option>
-                          <option value="inPersonCrisis">In Person Crisis Counseling</option>
-                          <option value="inPersonLegalCriminal">In Person Legal Advocacy: Criminal</option>
-                          <option value="inPersonLegalCivil">In Person Legal Advocacy: Civil</option>
-                          <option value="inPersonMedical">In Person Medical Advocacy</option>
-                          <option value="inPersonOther">Other In Person Advocacy</option>
-                          <option value="transgender">Transgender</option>
-                          <option value="phoneServicesProvided">Phone Services Provided</option>
-                          <option value="supportedOnCall">Supported on Call</option>
-                          <option value="nonVictimAdvocacy">Non-Victim Advocacy</option>
+                            <option value="age">Age</option>
+                            <option value="contactType">Contact Type</option>
+                            <option value="disability">Disabilities</option>
+                            <option value="genderIdentity">Gender Identity</option>
+                            <option value="immigrantStatus">Immigrant Status</option>
+                            <option value="individualsServiced">Individuals Serviced</option>
+                            <option value="inPersonCrisis">In Person Crisis Counseling</option>
+                            <option value="inPersonLegalCivil">In Person Legal Advocacy: Civil</option>
+                            <option value="inPersonLegalCriminal">In Person Legal Advocacy: Criminal</option>
+                            <option value="inPersonMedical">In Person Medical Advocacy</option>
+                            <option value="nonVictimAdvocacy">Non-Victim Advocacy</option>
+                            <option value="inPersonOther">Other In Person Advocacy</option>
+                            <option value="phoneServicesProvided">Phone Services Provided</option>
+                            <option value="ethnicity">Race/Ethnicity</option>
+                            <option value="supportedOnCall">Supported on Call</option>
+                            <option value="transgender">Transgender</option>
+                            <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
+                            <option value="victimizationTypes">Types of Victimization: Totals</option>
+                            <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
+                            <option value="showCounties">Zip Codes</option>
                         </select>
                     </div>
                     <div>
-                        <div ng-show="individualsServiced">
+                        <div class="checkBoxList" ng-show="individualsServiced">
                             <h3>individualsServiced</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.showIndividual" value="true">individualsServiced
@@ -59,7 +59,7 @@
                                 <input type="checkbox" ng-model="playground.showNewIndividual" value="true">newIndividualsServiced
                             </div>
                         </div>
-                        <div ng-show="ethnicity">
+                        <div class="checkBoxList" ng-show="ethnicity">
                             <h3>ethnicity</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.showAIndian" value="true">American Indian of Alaskan Native
@@ -107,7 +107,7 @@
                                 <input type="checkbox" ng-model="playground.youthSecondary" value="true">Youth Secondary Victim/Survivor
                             </div>
                         </div> -->
-                        <div ng-show="genderIdentity">
+                        <div class="checkBoxList" ng-show="genderIdentity">
                             <h3>genderIdentity</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.showMale" value="true">Male
@@ -128,7 +128,7 @@
                                 <input type="checkbox" ng-model="playground.showGenderTotal" value="true">Total
                             </div>
                         </div>
-                        <div ng-show="age">
+                        <div class="checkBoxList" ng-show="age">
                             <h3>age</h3>
                             <div>
                                 <label for="startAgeRange">Starting Age:</label>
@@ -137,7 +137,7 @@
                                 <input type="number" ng-model="playground.age.end" />
                             </div>
                         </div>
-                        <div ng-show="victimizationTypes">
+                        <div class="checkBoxList" ng-show="victimizationTypes">
                             <h3>victimizationTypes</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.violenceAdultSexual" value="true">Adult Sexual Assault
@@ -203,7 +203,7 @@
                                 <input type="checkbox" ng-model="playground.violenceUnknown" value="true">Unknown/Pass/Doesn't Know
                             </div>
                         </div>
-                        <div ng-show="victimizationTypesSpecial">
+                        <div class="checkBoxList" ng-show="victimizationTypesSpecial">
                             <h3>victimizationTypesSpecial</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.victimSpecialHomeless" value="true">Homeless
@@ -224,7 +224,7 @@
                                 <input type="checkbox" ng-model="playground.victimSpecialMultiple" value="true">Victims with 2 or More Types of Victimization
                             </div>
                         </div>
-                        <div ng-show="showCounties">
+                        <div class="checkBoxList" ng-show="showCounties">
                             <h3>showCounties</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.county55111" value="true">55111
@@ -458,7 +458,7 @@
                                 <input type="checkbox" ng-model="playground.countyTotal" value="true">Total
                             </div>
                         </div>
-                        <div ng-show="immigrantStatus">
+                        <div class="checkBoxList" ng-show="immigrantStatus">
                             <h3>immigrantStatus</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.immigrantAfrica" value="true">Africa
@@ -485,7 +485,7 @@
                                 <input type="checkbox" ng-model="playground.immigrantNot" value="true">No
                             </div>
                         </div>
-                        <div ng-show="disability">
+                        <div class="checkBoxList" ng-show="disability">
                             <h3>disabilities</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.disabilityBlind" value="true">Blind/Visually Impaired
@@ -512,7 +512,7 @@
                                 <input type="checkbox" ng-model="playground.disabilityUnknown" value="true">Unknown/Pass/Doesn't Know
                             </div>
                         </div>
-                        <div ng-show="typeOfServiceNew">
+                        <div class="checkBoxList" ng-show="typeOfServiceNew">
                             <h3>typeOfServiceNew</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.crisisCounseling" value="true">Crisis Counseling
@@ -530,7 +530,7 @@
                                 <input type="checkbox" ng-model="playground.otherAdvocacy" value="true">Other In-Person Advocacy Services
                             </div>
                         </div>
-                        <div ng-show="inPersonCrisis">
+                        <div class="checkBoxList" ng-show="inPersonCrisis">
                             <h3>inPersonCrisis</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.individualCounseling" value="true">One-to-One Counseling
@@ -539,7 +539,7 @@
                                 <input type="checkbox" ng-model="playground.groupCounseling" value="true">Support Group
                             </div>
                         </div>
-                        <div ng-show="inPersonLegalCriminal">
+                        <div class="checkBoxList" ng-show="inPersonLegalCriminal">
                             <h3>inPersonLegalCriminal</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.lawEnforcement" value="true">Law Enforcement Interview
@@ -551,7 +551,7 @@
                                 <input type="checkbox" ng-model="playground.courtAdvocacy" value="true">Court Advocacy (Criminal Case)
                             </div>
                         </div>
-                        <div ng-show="inPersonLegalCivil">
+                        <div class="checkBoxList" ng-show="inPersonLegalCivil">
                             <h3>inPersonLegalCivil</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.obtainingAssistance" value="true">Assistance Obtaining OFP or HRO
@@ -563,7 +563,7 @@
                                 <input type="checkbox" ng-model="playground.intervention" value="true">Intervention with Landlord, Academic Institution or Creditor
                             </div>
                         </div>
-                        <div ng-show="inPersonMedical">
+                        <div class="checkBoxList" ng-show="inPersonMedical">
                             <h3>inPersonMedical</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.forensicExam" value="true">Forensic Exam Support
@@ -575,7 +575,7 @@
                                 <input type="checkbox" ng-model="playground.accompanimentDental" value="true">Accompaniment to Dental Appointment
                             </div>
                         </div>
-                        <div ng-show="inPersonOther">
+                        <div class="checkBoxList" ng-show="inPersonOther">
                             <h3>inPersonOther</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.informationReferral" value="true">Information and Referral
@@ -590,7 +590,7 @@
                                 <input type="checkbox" ng-model="playground.reparationsClaims" value="true">Reparations Claims Assistance
                             </div>
                         </div>
-                        <div ng-show="transgender">
+                        <div class="checkBoxList" ng-show="transgender">
                             <h3>transgender</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.yesTrans" value="true">Yes
@@ -602,7 +602,7 @@
                                 <input type="checkbox" ng-model="playground.unknownTrans" value="true">Unknown
                             </div>
                         </div>
-                        <div ng-show="phoneServicesProvided">
+                        <div class="checkBoxList" ng-show="phoneServicesProvided">
                             <h3>phoneServicesProvided</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.phoneCrisis" value="true">Crisis Counseling
@@ -623,7 +623,7 @@
                                 <input type="checkbox" ng-model="playground.phoneEmergencyClaims" value="true">Emergency Claims Assistance
                             </div>
                         </div>
-                        <div ng-show="supportedOnCall">
+                        <div class="checkBoxList" ng-show="supportedOnCall">
                             <h3>supportedOnCall</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.supported" value="true">Yes
@@ -632,7 +632,7 @@
                                 <input type="checkbox" ng-model="playground.notSupported" value="true">No
                             </div>
                         </div>
-                        <div ng-show="contactType">
+                        <div class="checkBoxList" ng-show="contactType">
                             <h3>contactType/location</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.inPersonContact" value="true">In Person Contact
@@ -644,7 +644,7 @@
                                 <input type="checkbox" ng-model="playground.location" value="true">Location Totals
                             </div>
                         </div>
-                        <div ng-show="nonVictimAdvocacy">
+                        <div class="checkBoxList" ng-show="nonVictimAdvocacy">
                             <h3>nonVictimAdvocacy</h3>
                             <div>
                                 <input type="checkbox" ng-model="playground.nonVictimMedical" value="true">Non-Victim Medical Advocacy Requests
