@@ -359,7 +359,7 @@
                                 <button id="updateBtn" ng-click="updateForm()">Update</button>
                             </div>
                             <div class="col-md-2">
-                                <button id="deleteBtn" ng-click="DELETEForm()">Delete</button>
+                                <button id="deleteBtn" ng-click="deleteForm()">Delete</button>
                             </div>
                         </div>
                 </form>
@@ -730,7 +730,7 @@
                                     <button id="updateBtn" ng-click="updateForm()">Update</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button id="deleteBtn" ng-click="DELETEForm()">Delete</button>
+                                    <button id="deleteBtn" ng-click="deleteForm()">Delete</button>
                                 </div>
                             </div>
                     </form>
@@ -738,6 +738,10 @@
                     </div>
 
                     <div ng-show="nonvictim" id="resultsForm">
+                      <div class="advocayType">
+                          <label for="advocayType">Type of Advocacy:</label>
+                          <input class="" type="text" ng-model="update.advocacyType" value="nonvictim" placeholder="nonvictim" readonly/>
+                      </div>
                         <form>
                           <p>
                             form Id: {{update.id}}
@@ -904,7 +908,7 @@
                                     <button class="updateButton btn btn-default" ng-click="updateForm()">Update</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="updateButton btn-default" ng-click="DELETEForm()">Delete</button>
+                                    <button id="deleteBtn btn btn-default" ng-click="deleteForm()" >Delete</button>
                                 </div>
                             </div>
                         </form>

@@ -336,6 +336,10 @@ margin-top: 10px;
     padding-left: 35px;
 }.main-content{
 text-align:center;
+
+#success{
+  color: lightgreen;
+  font-size: 2.0em;
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
