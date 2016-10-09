@@ -21,7 +21,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         isFirstDisabled: false
     };
 
-
   $scope.myFunction = function() {
       window.print();
   }
@@ -231,9 +230,31 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
             $scope.update = response.data[0];
             // console.log($scope.update);
         });
+            console.log(response);
+              $scope.update = response.data[0];
+              // console.log($scope.update);
+      });
     }
-
     ////////////UPDATE FORM /////////////////////////
+
+    $scope.updateForm = function() {
+        var data = {}
+            // var info = Object.getOwnPropertyNames($scope.table);
+        var id = parseInt($scope.update.id);
+        data = $scope.update;
+        console.log("update id", id);
+        console.log("update data", data);
+        $http({
+            method: "PUT",
+            url: '/dataRoute/victim/' + id,
+            data: data
+        }).then(function(response) {
+            console.log("Get Success");
+            console.log(response);
+            // $scope.update = response.data[0];
+            console.log($scope.update);
+        });
+    }
 
 $scope.updateForm = function () {
   var data = {}

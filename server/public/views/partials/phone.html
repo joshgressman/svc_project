@@ -7,14 +7,38 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-2" id="dataside">
-      <ul class = "nav">
+    <!-- <div class="col-md-2" id="dataside">
+      <ul class = "nav"> -->
         <!-- <li><button id="telephone" Onclick="window.location.href='#phone'">Telephone</button></li> -->
+        <!-- <li><button id="telephone" Onclick="window.location.href='#phone'" >Telephone</button></li>
         <li><button id="inperson" Onclick="window.location.href='#inperson'">In-Person</button></li>
         <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
         <li><button id="back" Onclick="window.location.href='#data'">&#8678 Back</button></li>
       </ul>
+    </div> -->
+    <div class="col-md-2 col-sm-4 sidebar1">
+        <div class="logo">
+           <h4 class="sidebarTitle">Data Entry Page</h4>
+            <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+        </div>
+        <br>
+        <div class="left-navigation">
+            <ul class="list">
+                <h5><strong>FORMS</strong></h5>
+                <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+            </ul>
+
+            <br>
+
+            <ul  class="list">
+                <h5><strong>ACTIONS</strong></h5>
+                <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
+            </ul>
+        </div>
     </div>
+
     <div class="col-md-9" id="dataview">
 
       <form>
@@ -57,7 +81,7 @@
               <div class="victimType">
                   <label for="victimType">Type of Victim/Survivor:</label>
                   <select ng-model="form.victimType">
-                      <option value="null">Select One</option>
+                      <option value="">Select One</option>
                       <option value="adultPrimaryVictim">Adult Primary Victim/Survivor</option>
                       <option value="adultSecondaryVictim">Adult Secondary Victim/Survivor</option>
                       <option value="youthPrimaryVictim">Youth Primary Victim/Survivor</option>
@@ -237,13 +261,13 @@
                     <label for="sexualOrientation">Sexual Orientation:</label>
                     <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->
                     <select ng-model="form.orientation">
-                          <option  value="null">Select One</option>
-                          <option  value="Hetrosexual">Hetrosexual</option>
-                          <option  value="Lesbian">Lesbian</option>
-                          <option  value="Gay">Gay</option>
-                          <option  value="Bi-sexual">Bi-sexual</option>
-                          <option  value="other">Other</option>
-                          <option  value="Unknown/pass">Unknown/pass</option>
+                          <option value="">Select One</option>
+                          <option value="Hetrosexual">Hetrosexual</option>
+                          <option value="Lesbian">Lesbian</option>
+                          <option value="Gay">Gay</option>
+                          <option value="Bi-sexual">Bi-sexual</option>
+                          <option value="other">Other</option>
+                          <option value="Unknown/pass">Unknown/pass</option>
                     </select>
                   </div>
               </div>
@@ -286,7 +310,7 @@
                 <select ng-model="form.ethnicBackground">
                   <option  value="">Select One</option>
                   <option  value="Asian">Asian</option>
-                  <option  value="African American/Black">African American/Balck</option>
+                  <option  value="African American/Black">African American/Black</option>
                   <option  value="Chican@Latina@">Chican@Latin@</option>
                   <option  value="Multi-racial">Multi-Racial</option>
                   <option  value="Native American">Native American</option>
@@ -296,9 +320,10 @@
                   <option  value="unKnown/pass">Unknown/pass</option>
                   <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
                 </select>
-                  <input type="text" ng-model="form.ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                  <input type="text" ng-model="form.other_ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                </div>
+              <div>
                   <label for="immigrantStatus">Immigrant Status:</label>
-
                 <select ng-model="form.immigrantStatus">
                   <option value="">Select One</option>
                   <option value="Africa">Africa</option>
@@ -307,11 +332,12 @@
                   <option value="Mex/Cen/So America">Mex/Cen/So America</option>
                   <option value="Middle East">Middle East</option>
                   <option value="Other">Other</option>
-                  <option value="Unknown">Unknown/pass/doesnt know</option>
+                  <option value="Unknown">Unknown/pass/doesn't know</option>
                   <option value="No">No</option>
                   <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                 </select>
-                <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+              </div>
                 <div>
                   <label for="otherStatus">Other (check all that apply):</label>
                   <div>
@@ -325,14 +351,15 @@
                   </div>
                 </div>
           </div>
-
+          <input  type="submit" class="formSubmit btn btn-default" name="submit" value="Submit" ng-click="submitVictimForm()"  />
       </form>
   </div>
 
+
     <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
 
+
   </div>
 
   </div>
-</div>
 </div>

@@ -1,15 +1,34 @@
 <div  ng-app="myApp">
   <!-- Federal Data -->
-    <h2>Administrative Tools / Federal Reporting</h2>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2" id="dataside">
+            <!-- <div class="col-md-2" id="dataside">
                 <ul class="nav">
                     <li><button class="adminBtn" Onclick="window.location.href='#countyReport'">County</button></li>
-                    <li><button class="button" Onclick="window.location.href='#summaryReport'">Summary</button></li>
                     <li><button class="button" Onclick="window.location.href='#admin'">Home</button></li>
                 </ul>
+            </div> -->
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <div class="logo">
+                   <h4 class="sidebarTitle">Federal Report Page</h4>
+                    <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+                </div>
+                <br>
+                <div class="left-navigation">
+                    <ul class="list">
+                        <h5><strong>OTHER REPORTS</strong></h5>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#playground'">Custom</a></li>
+                    </ul>
+
+                    <br>
+
+                    <ul  class="list">
+                        <h5><strong>ACTIONS</strong></h5>
+                        <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                    </ul>
+                </div>
             </div>
 
             <!-- I am unsure whether the above buttons are included in this partial. -->
@@ -18,12 +37,12 @@
 
             <div class="col-md-9" id="dataview" ng-controller="adminController">
               <div class="dateRange">
-                <P>Select a date ranges for reporting</P>
+                <h4><strong>Select a date ranges for reporting</strong></h4>
                   <label for="startDate">Start Date:</label>
                   <input class="startDate" type="date" ng-model="dateStart" />
                   <label for="endDate">End Date:</label>
                   <input class="endDate" type="date" ng-model="dateEnd" />
-                  <button class="button" name="queryButton" ng-click="getStuffFederal()">Go</button>
+                  <button class="btn btn-default" name="queryButton" ng-click="getStuffFederal()">Go</button>
               </div>
                 <div>
                     <script type="text/ng-template" id="group-template.html">
@@ -43,11 +62,10 @@
                         </div>
                     </script>
 
-                    <p>
-
-                      <button><a href="/views/federalRep.html">Go To Print Page</a></button>
+                    <div>
+                      <button class="btn btn-default"><a href="/views/federalRep.html">Go To Print Page</a></button>
                         <!-- <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button> -->
-                    </p>
+                    </div>
 
                     <div class="checkbox">
                         <label>

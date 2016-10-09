@@ -5,15 +5,40 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-2" id="dataside">
-      <ul class = "nav">
+    <!-- <div class="col-md-2" id="dataside">
+      <ul class = "nav"> -->
         <!-- <li><button id="telephone" Onclick="window.location.href='#phone'">Telephone</button></li> -->
-        <li><button id="telephone" Onclick="window.location.href='#phone'">Telephone</button></li>
+        <!-- <li><button id="telephone" Onclick="window.location.href='#phone'" >Telephone</button></li>
+        <li><button id="inperson" Onclick="window.location.href='#inperson'">In-Person</button></li>
         <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
         <li><button id="back" Onclick="window.location.href='#data'">&#8678 Back</button></li>
       </ul>
+    </div> -->
+    <div class="col-md-2 col-sm-4 sidebar1">
+        <div class="logo">
+           <h4 class="sidebarTitle">Data Entry Page</h4>
+            <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+        </div>
+        <br>
+        <div class="left-navigation">
+            <ul class="list">
+                <h5><strong>FORMS</strong></h5>
+                <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+            </ul>
+
+            <br>
+
+            <ul  class="list">
+                <h5><strong>ACTIONS</strong></h5>
+                <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
+            </ul>
+        </div>
     </div>
+
     <div class="col-md-9" id="dataview">
+
       <form name="victimForm">
         <div id="svcAdvocacy">
           <div class="advocacyType">
@@ -77,7 +102,7 @@
             <div class="victimType">
                 <label for="victimType">Type of Victim/Survivor:</label>
                 <select ng-model="form.victimType">
-                    <option value="null">Select One</option>
+                    <option value="">Select One</option>
                     <option value="adultPrimaryVictim">Adult Primary Victim/Survivor</option>
                     <option value="adultSecondaryVictim">Adult Secondary Victim/Survivor</option>
                     <option value="youthPrimaryVictim">Youth Primary Victim/Survivor</option>
@@ -275,11 +300,11 @@
                 <input type="radio" name="transgender" ng-model="form.trans" ng-value="true"> Yes
                 <input type="radio" name="transgender" ng-model="form.trans" ng-value="false"> No
                 <input type="radio" name="transgender" ng-model="form.trans" ng-value="null"> Unknown/Pass
-                <div>
+                <div class="sexualOrientation">
                   <label for="sexualOrientation">Sexual Orientation:</label>
                   <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->
                   <select ng-model="form.orientation">
-                      <option value="null">Select One</option>
+                      <option value="">Select One</option>
                       <option value="Hetrosexual">Hetrosexual</option>
                       <option value="Lesbian">Lesbian</option>
                       <option value="Gay">Gay</option>
@@ -338,7 +363,7 @@
                   <option value="unknown">Unknown/pass</option>
                   <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
                 </select>
-                <input type="text" ng-model="form.ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <input type="text" ng-model="form.other_ethnicBackground" name="other_ethnicBackground" placeholder="Other Ethnicity"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
               <div>
                 <label for="immigrantStatus">Immigrant Status:</label>
                 <select ng-model="form.immigrantStatus">
@@ -353,7 +378,7 @@
                   <option value="No">No</option>
                   <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                 </select>
-                <input type="text" ng-model="form.immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
               </div>
               <div>
                 <label for="otherStatus">Other (check all that apply):</label>
@@ -372,7 +397,7 @@
 
     </form>
   </div>
-  <input  type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
+  <input class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="submitVictimForm()"  />
   </div>
 </div>
 </div>
