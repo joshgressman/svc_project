@@ -254,6 +254,9 @@ margin-top: 10px;
   }
 
 /*accordian*/
-
+#success{
+  color: lightgreen;
+  font-size: 2.0em;
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
