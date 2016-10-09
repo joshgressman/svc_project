@@ -725,6 +725,10 @@
                     </div>
 
                     <div ng-show="nonvictim" id="resultsForm">
+                      <div class="advocayType">
+                          <label for="advocayType">Type of Advocacy:</label>
+                          <input class="" type="text" ng-model="update.advocacyType" value="nonvictim" placeholder="nonvictim" readonly/>
+                      </div>
                         <form>
                           <p>
                             form Id: {{update.id}}

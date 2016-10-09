@@ -186,15 +186,13 @@ router.put('/nonvictim/:id', function (req, res) {
   var nonVictim = req.body;
   console.log('NonVictim ID to change:', id);
   console.log('Modified info:', nonVictim);
-
   pg.connect(connectionString, function (err, client, done) {
     if (err) {
       console.log('ERROR, connection to PG', err);
       res.sendStatus(500);
     }
-
-    client.query('UPDATE nonvictim SET ' +
-                'date_entered = $1, ' +
+    client.query('UPDATE nonvictim ' +
+                'SET date_entered = $1, ' +
                 'advocate_name = $2, ' +
                 'contact_date = $3, ' +
                 'start_time = $4, ' +
@@ -203,7 +201,7 @@ router.put('/nonvictim/:id', function (req, res) {
                 'caller_phone = $7, ' +
                 'caller_zip = $8, ' +
                 'caller_county = $9, ' +
-                'caller_type = $10, ' +
+                'call_type = $10, ' +
                 'svc_source = $11, ' +
                 'type_medical = $12, ' +
                 'type_school = $13, ' +
@@ -214,26 +212,24 @@ router.put('/nonvictim/:id', function (req, res) {
                 'type_city_social = $18, ' +
                 'type_other_organization = $19, ' +
                 'referral_medical = $20, ' +
-                'referral_school = $21 ' +
-                'referral_govt_social = $22 ' +
-                'referral_community_member = $23 ' +
-                'referral_law_enforcer = $24 ' +
-                'referral_legal_system = $25 ' +
-                'referral_city_social = $26 ' +
-                'referral_other_organization = $27 ' +
-                'advocacy_location = $28 ' +
-                'advocacy_dispatched = $29 ' +
-                'advocacy_med_responder = $30 ' +
-                'dispatched_notes = $31 ' +
-                'advocacy_request = $32 ' +
+                'referral_school = $21, ' +
+                'referral_govt_social = $22, ' +
+                'referral_community_member = $23, ' +
+                'referral_law_enforcer = $24, ' +
+                'referral_legal_system = $25, ' +
+                'referral_city_social = $26, ' +
+                'referral_other_organization = $27, ' +
+                'advocacy_location = $28, ' +
+                'advocacy_dispatched = $29, ' +
+                'advocacy_med_responder = $30, ' +
+                'dispatched_notes = $31, ' +
+                'advocacy_request = $32, ' +
                 'medical_request = $33 ' +
                 'WHERE id = $34',
-                [newNonVictim.date_entered, newNonVictim.counselor, newNonVictim.date, newNonVictim.sTime, newNonVictim.eTime, newNonVictim.callerName, newNonVictim.callerPhone, newNonVictim.callerZip, newNonVictim.county, newNonVictim.callerType, newNonVictim.svcSource, newNonVictim.medical, newNonVictim.school, newNonVictim.govtSocial, newNonVictim.communityMember, newNonVictim.lawEnforcer, newNonVictim.legalSystem,
-         newNonVictim.citySocial, newNonVictim.otherOraganization, newNonVictim.medicalReferral, newNonVictim.schoolReferral, newNonVictim.govtSocialReferral, newNonVictim.communityMemberReferral, newNonVictim.lawEnforcerReferral, newNonVictim.legalSystemReferral, newNonVictim.citySocialReferral, newNonVictim.otherOraganizationReferral, newNonVictim.advacacyLocation, newNonVictim.dispatched,
-         newNonVictim.responded, newNonVictim.reason, newNonVictim.request, newNonVictim.medicalRequest],
+                [nonVictim.date_entered, nonVictim.advocate_name, nonVictim.contact_date, nonVictim.start_time, nonVictim.end_time, nonVictim.caller_name, nonVictim.caller_phone, nonVictim.caller_zip, nonVictim.caller_county, nonVictim.call_type, nonVictim.svc_source, nonVictim.type_medical, nonVictim.type_school, nonVictim.type_govt_social, nonVictim.type_community_member, nonVictim.type_law_enforcer, nonVictim.type_legal_system,
+         nonVictim.type_city_social, nonVictim.type_other_organization, nonVictim.referral_medical, nonVictim.referral_school, nonVictim.referral_govt_social, nonVictim.referral_community_member, nonVictim.referral_law_enforcer, nonVictim.referral_legal_system, nonVictim.referral_city_social, nonVictim.referral_other_organization, nonVictim.advocacy_location, nonVictim.advocacy_dispatched, nonVictim.advocacy_med_responder, nonVictim.dispatched_notes, nonVictim.advocacy_request, nonVictim.medical_request, id],
                 function (err, result) {
                   done();
-
                   if (err) {
                     console.log('PUT ERROR, nonvictim:', err);
                     res.sendStatus(500);
@@ -283,7 +279,7 @@ router.delete('/nonvictim/:id', function (req, res) {
     }
 
     client.query('DELETE FROM nonvictim ' +
-                  'WHERE form_number = $1',
+                  'WHERE id = $1',
                   [id],
                   function (err, result) {
                     done();

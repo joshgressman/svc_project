@@ -146,7 +146,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
             data: data
         }).then(function(response) {
             // console.log("Get Success");
-            // console.log(response);
+            console.log(response);
               $scope.update = response.data[0];
               // console.log($scope.update);
       });
@@ -156,6 +156,12 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
 $scope.updateForm = function () {
   var data = {}
+  var route = '/dataRoute/victim/';
+  console.log('type', $scope.table);
+  if($scope.table.nonvictim == true){
+    route = '/dataRoute/nonvictim/';
+  }
+  console.log('route', route);
   // var info = Object.getOwnPropertyNames($scope.table);
   var id = parseInt($scope.update.id);
    data = $scope.update;
@@ -163,7 +169,7 @@ $scope.updateForm = function () {
   console.log("update data", data);
   $http({
       method: "PUT",
-      url: '/dataRoute/victim/' + id,
+      url: route + id,
       data: data
   }).then(function(response) {
       console.log("PUT Success");
@@ -180,10 +186,14 @@ $scope.updateForm = function () {
 $scope.deleteForm = function () {
   var data = {}
   var id = parseInt($scope.update.id);
+  var route = '/dataRoute/victim/';
+  if($scope.table.nonvictim == true){
+    route = '/dataRoute/nonvictim/';
+  }
   console.log('id', id);
   $http({
       method: "DELETE",
-      url: '/dataRoute/victim/' + id,
+      url: route + id,
   }).then(function(response) {
       console.log("DELETE Success");
       console.log(response);
