@@ -275,7 +275,10 @@ margin-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
-
+.updateButton {
+  margin-top: 10px;
+  margin-botton: 30px;
+}
 .panel-default >.panel-heading {
     background-color: rgb(32, 106, 145);
     color: #fff
