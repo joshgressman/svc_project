@@ -256,7 +256,7 @@ router.delete('/victim/:id', function (req, res) {
     }
 
     client.query('DELETE FROM victim ' +
-                  'WHERE form_number = $1',
+                  'WHERE id = $1',
                   [id],
                   function (err, result) {
                     done();

@@ -177,7 +177,20 @@ $scope.updateForm = function () {
  ///////////////////////////////////////////////////
 
  ///////////DELETE FORM////////////////////////////
-
+$scope.deleteForm = function () {
+  var data = {}
+  var id = parseInt($scope.update.id);
+  console.log('id', id);
+  $http({
+      method: "DELETE",
+      url: '/dataRoute/victim/' + id,
+  }).then(function(response) {
+      console.log("DELETE Success");
+      console.log(response);
+        // $scope.update = response.data[0];
+        // console.log($scope.update);
+});
+}
 
  ////////////////////////////////////////////////
 
