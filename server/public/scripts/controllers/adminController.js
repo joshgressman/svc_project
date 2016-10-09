@@ -1153,7 +1153,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 if (object.bound !== parameter) {
                     return;
                 } else {
-                    object.victimType.forEach(function(victimType, index){
+                    // object.victimType.forEach(function(victimType, index){
                         var data = {};
                      // data.start = convertedStart;
                        // data.end = convertedEnd;
@@ -1171,8 +1171,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }
                         // console.log(object);
                         // console.log(index);
-                        data.victimType = victimType;
-                        console.log(data);
+                        // data.victimType = victimType;
+                        console.log('data to send to server:', data);
                         $http({
                             method: "POST",
                             url: '/reportRoute/playground/victim/' + object.table,
@@ -1180,27 +1180,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                         }).then(function(response) {
                            console.log("Get Success");
                             console.log('response:', response);
-                            // if(object.table == "total_overall"){
-                                switch(index){
-                                    case 0:
-                                    var objectParam = (object.table + "_primary");
-                                    console.log(objectParam);
-                                    break;
-                                    case 1:
-                                    var objectParam = (object.table + "_secondary");
-                                    console.log(objectParam);
-                                    break;
-                                    case 2:
-                                    var objectParam = (object.table + "_adult");
-                                    console.log(objectParam);
-                                    break;
-                                    case 3:
-                                    var objectParam = (object.table + "_youth");
-                                    console.log(objectParam);
-                                    break;
-                                }
+                        
+                        var objectParam = object.table;
 
-                            // }
                         switch(object.table) {
                         case "victim_ethnicity":
                             objectParam += '_' + object.textSpecial;
@@ -1220,8 +1202,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             break;
                     };
 
-                    $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
-                    console.log($scope.playgroundInfo);
+                    // $scope.playgroundInfo[objectParam] = parseInt(response.data[0].count);
+                    // console.log($scope.playgroundInfo);
                         // console.log('query table:', query.table);
                         // var objectParam = query.table;
                         // $scope.federalInfo[objectParam] = response.data[0];
@@ -1230,7 +1212,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                     }, function() {
                         console.log("Get Error");
                     });
-                 });
+                 // });
                 }
             });
         });
@@ -1342,7 +1324,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "total_overall",
         infoTable: "victim",
         text: "TOTAL",
-        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
+        victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}
+        ]
     }, {
         //Question 4
         bound: "showNewIndividual",
