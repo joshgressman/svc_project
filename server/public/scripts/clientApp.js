@@ -34,10 +34,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/formData/countyData.html',
             controller: "adminController"
         })
-        .when('/summaryReport', {
-            templateUrl: '/views/partials/formData/summaryData.html',
-            controller: "adminController"
-        })
+        // .when('/summaryReport', {
+        //     templateUrl: '/views/partials/formData/summaryData.html',
+        //     controller: "adminController"
+        // })
         .when('/search', {
             templateUrl: '/views/partials/search.html',
             controller: "dataEntryController"
@@ -49,7 +49,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         .when('/users', {
             templateUrl: '/views/partials/user.html',
             controller: 'userController'
-        })    
+        })
         .when('/federalPrint', {
             templateUrl: '/views/federalRep.html',
             controller: "adminController"
