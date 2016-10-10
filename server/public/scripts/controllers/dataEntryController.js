@@ -205,10 +205,12 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
+                        alert("Submissions successful of Form #20");
+                        
                         $http.get('/dataRoute/presentation_victim').then(function(response) {
                                 var formSubmittedId = response.data.length - 1;
-                                $scope.showMessage = true;
-                                $scope.message = "Form " + response.data[formSubmittedId].id + " Submitted.";
+                                // $scope.showMessage = true;
+                                // $scope.message = "Form " + response.data[formSubmittedId].id + " Submitted.";
                             },
                             function(response) {
                                 $scope.showMessage = true;
