@@ -25,6 +25,10 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
       window.print();
   }
 
+  function myFunction() {
+    location.reload();
+}
+
   $scope.form = {
     counselor: null,
     date: null,
@@ -294,6 +298,8 @@ $scope.deleteForm = function () {
       method: "DELETE",
       url: route + id,
   }).then(function(response) {
+    confirm('Are you sure you want to delete this entry?');
+     myFunction()
       console.log("DELETE Success");
       console.log(response);
         // $scope.update = response.data[0];
