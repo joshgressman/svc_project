@@ -15,6 +15,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     //End accordion code
 
     $scope.showFedData = false;
+    $scope.showCountyData = false;
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
@@ -770,97 +771,103 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }];
 
     $scope.getStuffCounty = function() {
-        countyObjectArray.forEach(function(query, index) {
-            var data = {};
+        if ($scope.dateStart == "" || $scope.dateEnd == "") {
+          $scope.message = "Please enter a start and end date before proceeding";
+        }
+        else {
+            $scope.showCountyData = true;
+            countyObjectArray.forEach(function(query, index) {
+                var data = {};
 
-            // //converts date to workable format
-            // var start = $scope.dateStart;
-            // var convertedStart = start.toISOString().slice(0, 10);
-            // var end = $scope.dateEnd;
-            // var convertedEnd = end.toISOString().slice(0, 10);
+                // //converts date to workable format
+                // var start = $scope.dateStart;
+                // var convertedStart = start.toISOString().slice(0, 10);
+                // var end = $scope.dateEnd;
+                // var convertedEnd = end.toISOString().slice(0, 10);
 
-            data.start = $scope.dateStart;
-            data.end = $scope.dateEnd;
-            data.text = query.text;
-            data.textSpecial = query.textSpecial;
-            // console.log('clientside data to query:', data);
+                data.start = $scope.dateStart;
+                data.end = $scope.dateEnd;
+                data.text = query.text;
+                data.textSpecial = query.textSpecial;
+                // console.log('clientside data to query:', data);
+
+                $http({
+                    method: "POST",
+                    url: '/reportRoute/county/' + query.table,
+                    data: data
+                }).then(function(response) {
+                    // console.log("Get Success");
+                    // console.log(response);
+                    // console.log(query.table);
+                    var objectParam = query.table;
+
+
+                    switch (objectParam) {
+                        // case "victim_ethnicity":
+                        //     objectParam += '_' + query.text;
+                        //     console.log('new ethnicity OP:', objectParam);
+                        //     break;
+                        case "victim_gender":
+                            objectParam += '_' + query.text;
+                            // console.log('new gender OP:', objectParam);
+                            break;
+                        case "victim_age":
+                            objectParam += '_' + query.text;
+                            // console.log('new age OP:', objectParam);
+                            break;
+                        case "victim_zipcode":
+                            objectParam += '_' + query.text;
+                            // console.log('new zip OP:', objectParam);
+                            break;
+                        case "victim_ethnicity":
+                            objectParam += '_' + query.textSpecial;
+                            // console.log('new ethnicity OP:', objectParam);
+                            break;
+                        case "victim_type":
+                            objectParam += '_' + query.text;
+                            // console.log('new ethnicity OP:', objectParam);
+                            break;
+                    };
+
+
+                    $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
+                    // console.log(response.data[0]);
+                    // console.log($scope.countyInfo);
+                }, function() {
+                    // console.log("Get Error");
+                });
+            });
+            // console.log($scope.countyInfo);
+
+            //displays actual locations, unduplicated that services are provided (text)
+            var location = {}
+
+            location.table = "locations";
+            location.text = "true";
+            location.start = $scope.dateStart;
+            location.end = $scope.dateEnd;
+            // console.log('location query:', location);
 
             $http({
                 method: "POST",
-                url: '/reportRoute/county/' + query.table,
-                data: data
+                url: '/reportRoute/county/locations',
+                data: location
             }).then(function(response) {
                 // console.log("Get Success");
                 // console.log(response);
-                // console.log(query.table);
-                var objectParam = query.table;
-
-
-                switch (objectParam) {
-                    // case "victim_ethnicity":
-                    //     objectParam += '_' + query.text;
-                    //     console.log('new ethnicity OP:', objectParam);
-                    //     break;
-                    case "victim_gender":
-                        objectParam += '_' + query.text;
-                        // console.log('new gender OP:', objectParam);
-                        break;
-                    case "victim_age":
-                        objectParam += '_' + query.text;
-                        // console.log('new age OP:', objectParam);
-                        break;
-                    case "victim_zipcode":
-                        objectParam += '_' + query.text;
-                        // console.log('new zip OP:', objectParam);
-                        break;
-                    case "victim_ethnicity":
-                        objectParam += '_' + query.textSpecial;
-                        // console.log('new ethnicity OP:', objectParam);
-                        break;
-                    case "victim_type":
-                        objectParam += '_' + query.text;
-                        // console.log('new ethnicity OP:', objectParam);
-                        break;
-                };
-
-
-                $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
-                // console.log(response.data[0]);
-                // console.log($scope.countyInfo);
+                $scope.locations = response;
+                // console.log($scope.locations);
             }, function() {
-                console.log("Get Error");
+                // console.log("Get Error");
             });
-        });
-        console.log($scope.countyInfo);
-
-        //displays actual locations, unduplicated that services are provided (text)
-        var location = {}
-
-        location.table = "locations";
-        location.text = "true";
-        location.start = $scope.dateStart;
-        location.end = $scope.dateEnd;
-        // console.log('location query:', location);
-
-        $http({
-            method: "POST",
-            url: '/reportRoute/county/locations',
-            data: location
-        }).then(function(response) {
-            console.log("Get Success");
-            // console.log(response);
-            $scope.locations = response;
-            console.log($scope.locations);
-        }, function() {
-            console.log("Get Error");
-        });
+        }
     };
 
     $scope.getStuffFederal = function() {
         if ($scope.dateStart == "" || $scope.dateEnd == "") {
             $scope.message = "Please enter a date range before proceeding";
         } else {
-          console.log($scope.endDate);
+            // console.log($scope.endDate);
             $scope.showFedData = true;
             federalObjectArray.forEach(function(query, index) {
                 var data = {};
@@ -889,7 +896,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log(response);
                             $scope.federalInfo.disabilityTotal += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else if (query.table == "exception_compensation") {
@@ -903,7 +910,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log(response);
                             $scope.federalInfo.victimCompensation += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else if (query.table == "criminal_justice") {
@@ -917,7 +924,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log(response);
                             $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else if (query.table == "personal_advocacy") {
@@ -931,7 +938,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log(response);
                             $scope.federalInfo.personalAdvocacy += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else if (query.table == "medical_advocacy") {
@@ -945,7 +952,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log(response);
                             $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else if (query.table == "criminal_civic") {
@@ -958,7 +965,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             // console.log("Get Success");
                             $scope.federalInfo.criminalCivic += parseInt(response.data[0].count);
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                     });
                 } else {
@@ -993,11 +1000,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
                         $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
                     }, function() {
-                        console.log("Get Error");
+                        // console.log("Get Error");
                     });
                 }
             });
-            console.log($scope.federalInfo);
+            // console.log($scope.federalInfo);
         }
     };
 
@@ -1161,14 +1168,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             $scope.begin = $scope.playground.age.start;
                             $scope.end = $scope.playground.age.end;
                         }
-                        console.log('data to send to server:', data);
+                        // console.log('data to send to server:', data);
                         $http({
                             method: "POST",
                             url: '/reportRoute/playground/victim/' + object.table,
                             data: data
                         }).then(function(response) {
-                            console.log("Get Success");
-                            console.log('response:', response);
+                            // console.log("Get Success");
+                            // console.log('response:', response);
                             var standin = {};
                             var aPrime = 0;
                             var aSecond = 0;
@@ -1214,10 +1221,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                                     standin[object.table].ySecond = ySecond;
                                     standin[object.table].aPrime = aPrime;
                                     standin[object.table].aSecond = aSecond;
-                                    console.log(standin);
+                                    // console.log(standin);
                             };
                         }, function() {
-                            console.log("Get Error");
+                            // console.log("Get Error");
                         });
                         // });
                     }
@@ -1258,15 +1265,15 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             url: '/reportRoute/playground/victim',
             data: data
         }).then(function(response) {
-            console.log("Get Success");
-            console.log('response:', response);
+            // console.log("Get Success");
+            // console.log('response:', response);
             $scope.victimObject = response.data;
-            console.log($scope.victimObject);
+            // console.log($scope.victimObject);
             $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
-            console.log($scope.victimParameters);
+            // console.log($scope.victimParameters);
             getNonVictim(data);
         }, function() {
-            console.log("Get Error");
+            // console.log("Get Error");
         });
     }
 
@@ -1277,31 +1284,31 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             url: '/reportRoute/playground/nonVictim',
             data: data
         }).then(function(response) {
-            console.log("Get Success");
-            console.log('response:', response);
+            // console.log("Get Success");
+            // console.log('response:', response);
             $scope.nonVictimObject = response.data;
-            console.log($scope.nonVictimObject);
+            // console.log($scope.nonVictimObject);
             $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
-            console.log($scope.nonVictimParameters);
+            // console.log($scope.nonVictimParameters);
         }, function() {
-            console.log("Get Error");
+            // console.log("Get Error");
         });
     }
     var feebleAttempt = [];
 
     function populatePDFArrays() {
         var victimHeader = $scope.victimParameters;
-        console.log(victimHeader);
+        // console.log(victimHeader);
         feebleAttempt.push(victimHeader);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
             $scope.victimParameters.forEach(function(parameter) {
-                console.log("2nd for loop running");
+                // console.log("2nd for loop running");
                 if ($scope.victimObject[objectNumber][parameter] == null) {
                     $scope.victimObject[objectNumber][parameter] = "null";
                 }
-                console.log(arrayObject[parameter].toString());
+                // console.log(arrayObject[parameter].toString());
                 if (arrayObject[parameter].toString() == "") {
                     arrayObject[parameter] = "null";
                 }
@@ -1309,9 +1316,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             });
             feebleAttempt.push(standin);
         });
-        console.log(feebleAttempt.length);
+        // console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 190);
-        console.log(widthTotal);
+        // console.log(widthTotal);
 
         var docDefinition = {
             pageSize: {

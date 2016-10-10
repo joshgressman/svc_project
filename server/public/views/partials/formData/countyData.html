@@ -34,15 +34,16 @@
             <!-- Below is where the actual code start -->
             <div class="col-md-9" id="dataview" ng-controller="adminController">
               <div class="dateRange">
-                <p>Select a date ranges for reporting</p>
+                <h4><strong>Select a date ranges for the County Report:</strong></h4>
                   <label for="startDate">Start Date:</label>
                   <input class="startDate" type="date" ng-model="dateStart" />
                   <label for="endDate">End Date:</label>
                   <input class="endDate" type="date" ng-model="dateEnd" />
-                  <button class="button" name="queryButton" ng-click="getStuffCounty()">Go</button>
+                  <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button>
+
 
               </div>
-                <div>
+                <div ng-show="showCountyData">
 
                   <!-- Template for the Accordion -->
 
@@ -174,19 +175,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Location of Support Groups
-                                    <div class='row'>
-                                        <div class="col-md-1 text-left"></div>
-                                        <div class="col-md-8 text-left">
-                                            <div ng-repeat="location in locations.data">
-                                            <li>{{location.service_location}}</li>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
 
                         <!-- By victim type -->
@@ -1278,18 +1266,6 @@
                                     </p>
                                 </div>
                             </div>
-  <!--                           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Not Tracked
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Race/Ethnicity Total
@@ -1303,232 +1279,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Demographics: Immigrant Status -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Location</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          <strong>Number</strong>
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Africa
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Asia
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Europe
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Mex/Cen/South America
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Middle East
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Unknown/Pass
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  No
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
-
-                        <!-- Demographics: Disability -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Demographics: Disability">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Status</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                <p class="row">
-                                    <p class="col-md-6 text-center">
-                                        <strong>Number</strong>
-                                    </p>
-                                </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Blind/Visually Impaired
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Physical Disabilities
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Mental Illness
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Deaf/Hard of Hearing
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Intellectual or Developmental Disabilities
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  None
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Unknown/Pass/Doesn't Know
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
 
                         <!-- Types of Victimization -->
 
@@ -1545,18 +1295,6 @@
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Adult Physical Assault
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Adult Sexual Assault
@@ -1607,18 +1345,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Arson
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Bullying
@@ -1631,30 +1357,6 @@
                                     </p>
                                 </div>
                             </div>
-           <!--                  <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Burglary
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <!-- <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Child Physical Abuse or Neglect
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Child Pornography
@@ -1717,162 +1419,6 @@
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    DUI/DWI Incidents
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Elder Abuse or Neglect
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            0
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Hate Crime
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Human Trafficking: Labor
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Human Trafficking: Sex
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                          0
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Identity Theft
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                  <!--           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Kidnapping
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-              <!--               <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Mass Violence
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                       <!--      <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Other Vehicular Victimization
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                          <!--   <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Robbery
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                         <!--    <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Mass Violence
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                  <!--           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Other Vehicular Victimization
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                      <!--       <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Robbery
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Stalking/Harassment Total
@@ -1950,18 +1496,6 @@
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Survivors of Homicide Victims
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Teen Dating Victimization
@@ -1974,18 +1508,6 @@
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Terrorism
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Other
@@ -2011,266 +1533,8 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <!-- <h3>Direct Services</h3> -->
-
-
-
-                        <!-- Type of Service (NEW Clients) -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Service</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          <strong>Number</strong>
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Crisis Counseling
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Legal Advocacy: Criminal Justice
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Legal Advocacy: Civil Legal
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Medical Advocacy
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other In-Person Advocacy Services
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
-
-                        <!-- Client Services Provided for NEW & REPEAT Clients -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Client Services Provided for NEW &amp; REPEAT Clients">
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    <strong>Service</strong>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            <strong>Primary</strong>
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            <strong>Secondary</strong>
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    First Contact
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Follow-Up
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Information or Referral
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Personal Advocacy
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Support During Evidentiary Exam
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Criminal Justice Support
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Legal Advocacy
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Financial Assistance
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Reparations Filing Assistance
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Group Treatment/Support
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </uib-accordion> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- </body>
-
-</html> -->
