@@ -290,7 +290,9 @@ margin-top: 10px;
     background-color: rgb(241, 241, 241);
     /*border-top: solid thin grey;*/
   }
+
 /*accordian*/
+
 
 /* Keri css fixes*/
 .userEntry {
@@ -361,6 +363,7 @@ margin-top: 10px;
     padding-left: 35px;
 }.main-content{
 text-align:center;
+}
 
 #success{
   color: lightgreen;
