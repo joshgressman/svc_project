@@ -42,7 +42,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/partials/search.html',
             controller: "dataEntryController"
         })
-        .when('/playground', {
+        .when('/custom', {
             templateUrl: '/views/partials/dataplayground.html',
             controller: "adminController"
         })
