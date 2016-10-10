@@ -1,19 +1,39 @@
 <div ng-app="myApp">
-    <h2>Administrative Tools</h2>
     <div ng-controller="adminController" class="container">
         <div class="row">
-            <div class="col-md-2" id="dataside">
+            <!-- <div class="col-md-2" id="dataside">
                 <ul class="nav">
                     <li><button class="button" Onclick="window.location.href='#reports'">Federal</button></li>
                     <li><button class="button" Onclick="window.location.href='#countyReport'">County</button></li>
                     <li><button class="button" Onclick="window.location.href='#admin'">Home</button></li>
                 </ul>
+            </div> -->
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <div class="logo">
+                   <h4 class="sidebarTitle">Custom Report Page</h4>
+                    <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+                </div>
+                <br>
+                <div class="left-navigation">
+                    <ul class="list">
+                        <h5><strong>OTHER REPORTS</strong></h5>
+                        <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                    </ul>
+
+                    <br>
+
+                    <ul  class="list">
+                        <h5><strong>ACTIONS</strong></h5>
+                        <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="col-md-9" id="dataview">
-                <h3>Data Playground</h3>
+                <h3>Custom Report</h3>
                 <div class="dateRange">
-                    <p>Select a date ranges for reporting</p>
+                    <h4><strong>Select a date ranges for reporting</strong></h4>
                     <label for="startDate">Start Date:</label>
                     <input class="startDate" type="date" ng-model="playground.startDate" />
                     <label for="endDate">End Date:</label>
@@ -657,8 +677,8 @@
                             </div>
                         </div>
                     </div>
-                    <button ng-click="submitting()">Submit Request</button>
-                    <button ng-click="blackHole()">Get All</button>
+                    <button class="btn btn-default" ng-click="submitting()">Submit Request</button>
+                    <button class="btn btn-default" ng-click="blackHole()">Get All</button>
                 </div>
                 <div ng-hide="newSearch">
                     <button ng-click="resetSearch()">Do Another Search</button>

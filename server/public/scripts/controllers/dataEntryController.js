@@ -21,7 +21,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         isFirstDisabled: false
     };
 
-
   $scope.myFunction = function() {
       window.print();
   }
