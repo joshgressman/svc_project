@@ -6,6 +6,10 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', functio
       window.print();
   }
 
+  function myFunction() {
+    location.reload();
+}
+
 $scope.nonVictimInfo = {};
 
   $scope.form = {
@@ -93,7 +97,8 @@ $scope.nonVictimInfo = {};
           $scope.message = "Please try again.";
 
       });
-
+      confirm("please write down # on sheet");
+     myFunction();
       }
 
 

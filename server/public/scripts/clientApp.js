@@ -49,9 +49,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
         .when('/users', {
             templateUrl: '/views/partials/user.html',
             controller: 'userController'
-        })    
+        })
         .when('/federalPrint', {
             templateUrl: '/views/federalRep.html',
+            controller: "adminController"
+        })
+        .when('/countyPrint', {
+            templateUrl: '/views/countyRep.html',
             controller: "adminController"
         })
         .otherwise({
