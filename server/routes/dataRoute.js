@@ -27,7 +27,6 @@ router.get("/presentation_victim", function(req, res) {
                 }
                 res.send(result.rows);
             });
-
     });
 });
 router.get("/presentation_nonvictim", function(req, res) {
