@@ -71,9 +71,9 @@ padding-left: 200px;
 }
 
 
-/*.container {
-margin-top: -40px;
-}*/
+.container {
+  overflow: hidden;
+}
 
 .logout {
   float: right;
@@ -303,8 +303,11 @@ margin-top: 10px;
     /* Standard syntax */
     padding: 0px;
     min-height: 100%;
+    height: 750px;
     margin-top: 40px;
     border-radius: 4px;
+    /*margin-bottom: -1500px;
+    padding-bottom: 1500px;*/
 }
 .logo {
     max-height: 130px;
