@@ -1,4 +1,4 @@
-myApp.controller('userController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
   $scope.user = {
     username: '',

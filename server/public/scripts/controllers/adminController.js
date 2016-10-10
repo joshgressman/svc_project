@@ -1,4 +1,4 @@
-myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('adminController', ['$scope', '$http', '$location', "$uibModal", function($scope, $http, $location, $uibModal) {
 
     $scope.myFunction = function() {
             window.print();
@@ -1178,86 +1178,87 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             url: '/reportRoute/playground/victim/' + object.table,
                             data: data
                         }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
-                        var playgroundInfo = {};
-                        var aPrime = 0;
-                        var aSecond = 0;
-                        var yPrime = 0;
-                        var ySecond = 0;
-                        response.data.forEach(function(spot) {
-                            switch (spot.victim_type) {
-                                case 'youthPrimaryVictim':
-                                    yPrime++;
+                            console.log("Get Success");
+                            console.log('response:', response);
+                            var playgroundInfo = {};
+                            var aPrime = 0;
+                            var aSecond = 0;
+                            var yPrime = 0;
+                            var ySecond = 0;
+                            response.data.forEach(function(spot) {
+                                switch (spot.victim_type) {
+                                    case 'youthPrimaryVictim':
+                                        yPrime++;
+                                        break;
+                                    case 'youthSecondaryVictim':
+                                        ySecond++;
+                                        break;
+                                    case 'adultPrimaryVictim':
+                                        aPrime++;
+                                        break;
+                                    case 'adultSecondaryVictim':
+                                        aSecond++;
+                                        break;
+                                }
+                            });
+                            var objectParam = object.table;
+                            switch (object.table) {
+                                case "victim_ethnicity":
+                                    objectParam += '_' + object.textSpecial;
+                                    playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                     break;
-                                case 'youthSecondaryVictim':
-                                    ySecond++;
+                                case "victim_gender":
+                                    objectParam += '_' + object.text;
+                                    playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                     break;
-                                case 'adultPrimaryVictim':
-                                    aPrime++;
+                                    // case "victim_age":
+                                    //     objectParam += '_' + object.text;
+                                    //     playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                    //     break;
+                                case "victim_zipcode":
+                                    console.log("victim zipcode Running");
+                                    objectParam += '_' + object.text;
+                                    playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                     break;
-                                case 'adultSecondaryVictim':
-                                    aSecond++;
+                                case "victim_immigrant":
+                                    objectParam += '_' + object.textSpecial;
+                                    playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                     break;
+                                case "contact_type":
+                                    objectParam += '_' + object.text;
+                                    playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                    break;
+                                default:
+                                    playgroundInfo[object.table] = {};
+                                    playgroundInfo[object.table].yPrime = yPrime;
+                                    playgroundInfo[object.table].ySecond = ySecond;
+                                    playgroundInfo[object.table].aPrime = aPrime;
+                                    playgroundInfo[object.table].aSecond = aSecond;
                             }
+                            // $scope.playgroundInfo[objectParam].total = parseInt(playgroundInfo[objectParam].yPrime + playgroundInfo[objectParam].ySecond);
+                            $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
+                            console.log('hello', $scope.playgroundInfo);
+                            $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
+                            console.log('hello again', $scope.total);
+
+
+                        }, function() {
+                            console.log("Get Error");
                         });
-                        var objectParam = object.table;
-                        switch (object.table) {
-                            case "victim_ethnicity":
-                                objectParam += '_' + object.textSpecial;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;
-                            case "victim_gender":
-                                objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;
-                            // case "victim_age":
-                            //     objectParam += '_' + object.text;
-                            //     playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                            //     break;
-                            case "victim_zipcode":
-                            console.log("victim zipcode Running");
-                                objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;
-                            case "victim_immigrant":
-                                objectParam += '_' + object.textSpecial;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;
-                            case "contact_type":
-                                objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;
-                            default:
-                                playgroundInfo[object.table] = {};
-                                playgroundInfo[object.table].yPrime = yPrime;
-                                playgroundInfo[object.table].ySecond = ySecond;
-                                playgroundInfo[object.table].aPrime = aPrime;
-                                playgroundInfo[object.table].aSecond = aSecond;
-                        }
-                        // $scope.playgroundInfo[objectParam].total = parseInt(playgroundInfo[objectParam].yPrime + playgroundInfo[objectParam].ySecond);
-                        $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
-                        $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('hello again', $scope.total);
-
-
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                    // });
-                }
+                        // });
+                    }
+                });
             });
-        });
-    };
+        };
+    }
 
-    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, playgroundInfo){
-      playgroundInfo[tableAddition] = {};
-      playgroundInfo[tableAddition].yPrime = yPrime;
-      playgroundInfo[tableAddition].ySecond = ySecond;
-      playgroundInfo[tableAddition].aPrime = aPrime;
-      playgroundInfo[tableAddition].aSecond = aSecond;
-      return playgroundInfo;
+    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, playgroundInfo) {
+        playgroundInfo[tableAddition] = {};
+        playgroundInfo[tableAddition].yPrime = yPrime;
+        playgroundInfo[tableAddition].ySecond = ySecond;
+        playgroundInfo[tableAddition].aPrime = aPrime;
+        playgroundInfo[tableAddition].aSecond = aSecond;
+        return playgroundInfo;
     };
     $scope.resetSearch = function() {
         $scope.showFields = false;
@@ -1275,8 +1276,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
         } else {
-          // $scope.showMessage = true;
-          //   $scope.message = "Your PDF Download will begin shortly";
+            // $scope.showMessage = true;
+            //   $scope.message = "Your PDF Download will begin shortly";
             $scope.showFields = true;
             // $scope.newSearch = false;
             $scope.showTotalVictim = true;
@@ -1366,12 +1367,10 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.resetSearch();
         $scope.open($scope.confirmation);
     }
-
     $scope.makePDF = function() {
         populatePDFArrays();
     }
     $scope.open = function(_confirmation) {
-
         var modalInstance = $uibModal.open({
             controller: "ModalInstanceCtrl",
             templateUrl: 'myModalContent.html',
@@ -1381,7 +1380,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 }
             }
         });
-
     };
     //End code for Playground dropdowns
     var playgroundObjectArray = [{

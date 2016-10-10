@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
-                   <h4 class="sidebarTitle">Custom Report Page</h4>
+                    <h4 class="sidebarTitle">Custom Report Page</h4>
                     <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
                 </div>
                 <br>
@@ -17,7 +17,7 @@
 
                     <br>
 
-                    <ul  class="list">
+                    <ul class="list">
                         <h5><strong>ACTIONS</strong></h5>
                         <li><a id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
                     </ul>
@@ -25,8 +25,22 @@
             </div>
 
             <div class="col-md-9" id="dataview">
+              <div>
+                  <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+                  <script type="text/ng-template" id="myModalContent.html">
+                      <div class="modal-header">
+                          <h3>Submit Success!</h3>
+                      </div>
+                      <div class="modal-body">
+                          Form Confirmation #: {{confirmation}}
+                      </div>
+                      <div class="modal-footer">
+
+                      </div>
+                  </script>
+              </div>
                 <div class="error" ng-show="showMessage">
-                  <strong>{{message}}</strong>
+                    <strong>{{message}}</strong>
                 </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Custom Report</strong></h4>
@@ -60,8 +74,7 @@
                             <option value="ethnicity">Race/Ethnicity</option>
                             <option value="supportedOnCall">Supported on Call</option>
                             <option value="transgender">Transgender</option>
-<!--                             <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
- -->                            <option value="victimizationTypes">Types of Victimization: Totals</option>
+                            <option value="victimizationTypes">Types of Victimization: Totals</option>
                             <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
                             <option value="showCounties">Zip Codes</option>
                         </select>
@@ -865,35 +878,35 @@
                         <div class="checkBoxList" ng-show="typeOfServiceNew">
                             <h4>Type of Service (NEW Clients):</h4>
                             <table>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.crisisCounseling" value="true">Crisis Counseling
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.criminalJustice" value="true">Legal Advocacy: Criminal Justice
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.civilLegal" value="true">Legal Advocacy: Civil Legal
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.medicalAdvocacy" value="true">Medical Advocacy
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.otherAdvocacy" value="true">Other In-Person Advocacy Services
-                                  </div>
-                                </td>
-                              </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.crisisCounseling" value="true">Crisis Counseling
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.criminalJustice" value="true">Legal Advocacy: Criminal Justice
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.civilLegal" value="true">Legal Advocacy: Civil Legal
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.medicalAdvocacy" value="true">Medical Advocacy
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.otherAdvocacy" value="true">Other In-Person Advocacy Services
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonCrisis">
@@ -920,25 +933,25 @@
                         <div class="checkBoxList" ng-show="inPersonLegalCivil">
                             <h4>In Person Legal Advocacy (Civil):</h4>
                             <table>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.obtainingAssistance" value="true">Assistance Obtaining OFP or HRO
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.immigrationSupport" value="true">Immigration-Related Support
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.intervention" value="true">Intervention with Landlord, Academic Institution or Creditor
-                                  </div>
-                                </td>
-                              </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.obtainingAssistance" value="true">Assistance Obtaining OFP or HRO
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.immigrationSupport" value="true">Immigration-Related Support
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.intervention" value="true">Intervention with Landlord, Academic Institution or Creditor
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonMedical">
@@ -983,40 +996,40 @@
                         <div class="checkBoxList" ng-show="phoneServicesProvided">
                             <h4>Phone Services Provided:</h4>
                             <table>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneCrisis" value="true">Crisis Counseling
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneInformation" value="true">Information and/or Referral
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneCriminalJustice" value="true"><span class="makeFit">Information about the Criminal Justice Process</span>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneJusticeRelated" value="true"><span class="makeFit">Other Emergency Justice-Related Assistance</span>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneEmergencyFinancial" value="true"><span class="makeFit">Emergency Financial Assistance</span>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div>
-                                      <input type="checkbox" ng-model="playground.phoneEmergencyClaims" value="true">Emergency Claims Assistance
-                                  </div>
-                                </td>
-                              </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneCrisis" value="true">Crisis Counseling
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneInformation" value="true">Information and/or Referral
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneCriminalJustice" value="true"><span class="makeFit">Information about the Criminal Justice Process</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneJusticeRelated" value="true"><span class="makeFit">Other Emergency Justice-Related Assistance</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneEmergencyFinancial" value="true"><span class="makeFit">Emergency Financial Assistance</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" ng-model="playground.phoneEmergencyClaims" value="true">Emergency Claims Assistance
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div class="checkBoxList" ng-show="supportedOnCall">
@@ -1552,7 +1565,7 @@
                                 </div>
 
                                 <div ng-show="county55340" class="row">
-                                   <div class="row">
+                                    <div class="row">
                                         <div class="col-md-4 text-left">55340</div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
@@ -2110,7 +2123,7 @@
                                 </div>
 
                                 <div ng-show="county55373" class="row">
-                                        <div class="row">
+                                    <div class="row">
                                         <div class="col-md-4 text-left">55373</div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
@@ -3572,7 +3585,7 @@
                                 </div>
 
                                 <div ng-show="county55428" class="row">
-                                     <div class="row">
+                                    <div class="row">
                                         <div class="col-md-4 text-left">55428</div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
@@ -5697,7 +5710,7 @@
                                 </div>
                             </div>
 
-<!-- FIX THIS -->
+                            <!-- FIX THIS -->
 
                             <div ng-show="typeOfServiceNew" uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
                                 <div class="row">
@@ -5774,7 +5787,7 @@
                                 </div>
                             </div>
 
-<!-- FIX THIS  -->
+                            <!-- FIX THIS  -->
 
                             <div ng-show="genderIdentity" uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                                 <div class="row">
@@ -5806,16 +5819,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Male.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5824,16 +5837,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Male.aPrime}}
+                                            {{playgroundInfo.victim_gender_Male.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Male.aSecond}}
+                                            {{playgroundInfo.victim_gender_Male.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Male.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Male.ySecond}}
+                                            {{playgroundInfo.victim_gender_Male.ySecond}}
                                         </div>
                                     </div>
                                 </div>
@@ -5848,16 +5861,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Female.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Female.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Female.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Female.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Female.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5866,16 +5879,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Female.aPrime}}
+                                            {{playgroundInfo.victim_gender_Female.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Female.aSecond}}
+                                            {{playgroundInfo.victim_gender_Female.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Female.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_Female.ySecond}}
+                                            {{playgroundInfo.victim_gender_Female.ySecond}}
                                         </div>
                                     </div>
                                 </div>
@@ -6277,16 +6290,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_total.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_total.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_total.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_total.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_total.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -6295,16 +6308,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_total.aPrime}}
+                                            {{playgroundInfo.victim_gender_total.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_total.aSecond}}
+                                            {{playgroundInfo.victim_gender_total.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_total.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                          {{playgroundInfo.victim_gender_total.ySecond}}
+                                            {{playgroundInfo.victim_gender_total.ySecond}}
                                         </div>
                                     </div>
                                 </div>

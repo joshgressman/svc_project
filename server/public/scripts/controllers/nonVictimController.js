@@ -1,4 +1,4 @@
-myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
     $scope.print = function() {
         window.print();

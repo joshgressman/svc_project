@@ -410,6 +410,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
             // console.log($scope.update);
         });
     }
-}
-///**********END OF CONTROLLER***************************************///////
+
+    ///**********END OF CONTROLLER***************************************///////
 }]);

@@ -36,9 +36,9 @@
             <!-- ng-app="myApp" -->
 
             <div class="col-md-9" id="dataview" ng-controller="adminController">
-              <div class="error" ng-show="showMessage">
-                <strong>{{message}}</strong>
-              </div>
+                <div class="error" ng-show="showMessage">
+                    <strong>{{message}}</strong>
+                </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Federal Report:</strong></h4>
                     <label for="startDate">Start Date:</label>
@@ -75,22 +75,22 @@
                       <input type="checkbox" ng-model="oneAtATime">
                       Open only one at a time
                     </label>
-                    </div>
-                    <div>
-                        <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
-                        <script type="text/ng-template" id="myModalContent.html">
-                            <div class="modal-header">
-                                <h3>Submit Success!</h3>
-                            </div>
-                            <div class="modal-body">
-                                Form Confirmation #: {{confirmation}}
-                            </div>
-                            <div class="modal-footer">
+                        </div>
+                        <div>
+                            <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+                            <script type="text/ng-template" id="myModalContent.html">
+                                <div class="modal-header">
+                                    <h3>Submit Success!</h3>
+                                </div>
+                                <div class="modal-body">
+                                    Form Confirmation #: {{confirmation}}
+                                </div>
+                                <div class="modal-footer">
 
-                            </div>
-                        </script>
-                    </div>
-                    <uib-accordion close-others="oneAtATime">
+                                </div>
+                            </script>
+                        </div>
+                        <uib-accordion close-others="oneAtATime">
 
                             <!-- //Individuals who received services during the reporting period -->
 
@@ -114,7 +114,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                1,017
+                                                {{federalInfo.total_overall}}
                                             </p>
                                         </p>
                                     </div>
@@ -143,7 +143,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                299
+                                                {{federalInfo.total_new}}
                                             </p>
                                         </p>
                                     </div>
@@ -160,7 +160,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
+                                                <strong>Primary</strong>
                                             </p>
                                         </p>
                                     </div>
@@ -172,7 +172,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                16
+                                                {{federalInfo.victim_ethnicity_native_american}}
                                             </p>
                                         </p>
                                     </div>
@@ -184,7 +184,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                4
+                                                {{federalInfo.victim_ethnicity_asian}}
                                             </p>
                                         </p>
                                     </div>
@@ -196,7 +196,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                22
+                                                {{federalInfo.victim_ethnicity_african_american_black}}
                                             </p>
                                         </p>
                                     </div>
@@ -208,19 +208,19 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                12
+                                                {{federalInfo.victim_ethnicity_chicano_latino}}
                                             </p>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-9 text-left">
-                                        Native Hawaiian or Other Pacific Islander
+                                        Natice Hawaiian or Other Pacific Islander
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.victim_ethnicity_hawaiian_pacific_islander}}
                                             </p>
                                         </p>
                                     </div>
@@ -232,7 +232,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                139
+                                                {{federalInfo.victim_ethnicity_white}}
                                             </p>
                                         </p>
                                     </div>
@@ -244,7 +244,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                6
+                                                {{federalInfo.victim_ethnicity_other}}
                                             </p>
                                         </p>
                                     </div>
@@ -256,7 +256,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                25
+                                                {{federalInfo.victim_ethnicity_multi-racial}}
                                             </p>
                                         </p>
                                     </div>
@@ -268,7 +268,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                75
+                                                {{federalInfo.victim_ethnicity_unknown}}
                                             </p>
                                         </p>
                                     </div>
@@ -280,7 +280,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                299
+                                                {{federalInfo.victim_ethnicity_total}}
                                             </p>
                                         </p>
                                     </div>
@@ -309,7 +309,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                33
+                                                {{federalInfo.victim_gender_Male}}
                                             </p>
                                         </p>
                                     </div>
@@ -321,7 +321,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                218
+                                                {{federalInfo.victim_gender_Female}}
                                             </p>
                                         </p>
                                     </div>
@@ -333,7 +333,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                5
+                                                {{federalInfo.victim_gender_Non-binary}}
                                             </p>
                                         </p>
                                     </div>
@@ -345,7 +345,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                3
+                                                {{federalInfo.victim_gender_Other}}
                                             </p>
                                         </p>
                                     </div>
@@ -357,7 +357,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                40
+                                                {{federalInfo.victim_gender_unknown}}
                                             </p>
                                         </p>
                                     </div>
@@ -369,7 +369,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                299
+                                                {{federalInfo.victim_gender_total}}
                                             </p>
                                         </p>
                                     </div>
@@ -398,7 +398,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.victim_age_012}}
                                             </p>
                                         </p>
                                     </div>
@@ -410,7 +410,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                19
+                                                {{federalInfo.victim_age_1317}}
                                             </p>
                                         </p>
                                     </div>
@@ -422,7 +422,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                95
+                                                {{federalInfo.victim_age_1824}}
                                             </p>
                                         </p>
                                     </div>
@@ -434,7 +434,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                121
+                                                {{federalInfo.victim_age_2559}}
                                             </p>
                                         </p>
                                     </div>
@@ -446,7 +446,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                4
+                                                {{federalInfo.victim_age_60}}
                                             </p>
                                         </p>
                                     </div>
@@ -458,7 +458,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                60
+                                                {{federalInfo.victim_age_null}}
                                             </p>
                                         </p>
                                     </div>
@@ -470,7 +470,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                299
+                                                {{federalInfo.victim_age_total}}
                                             </p>
                                         </p>
                                     </div>
@@ -499,7 +499,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                144
+                                                {{federalInfo.violence_adult_sexual}}
                                             </p>
                                         </p>
                                     </div>
@@ -511,7 +511,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                30
+                                                {{federalInfo.violence_adult_child_other + federalInfo.violence_adult_child_family}}
                                             </p>
                                         </p>
                                     </div>
@@ -524,7 +524,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                14
+                                                {{federalInfo.violence_adult_child_family}}
                                             </p>
                                         </p>
                                     </div>
@@ -537,7 +537,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                16
+                                                {{federalInfo.violence_adult_child_other}}
                                             </p>
                                         </p>
                                     </div>
@@ -549,7 +549,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                1
+                                                {{federalInfo.violence_bullying}}
                                             </p>
                                         </p>
                                     </div>
@@ -561,7 +561,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.violence_child_pornography}}
                                             </p>
                                         </p>
                                     </div>
@@ -573,7 +573,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                27
+                                                {{federalInfo.violence_minor_other + federalInfo.violence_minor_family}}
                                             </p>
                                         </p>
                                     </div>
@@ -586,7 +586,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                20
+                                                {{federalInfo.violence_minor_family}}
                                             </p>
                                         </p>
                                     </div>
@@ -599,7 +599,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                7
+                                                {{federalInfo.violence_minor_other}}
                                             </p>
                                         </p>
                                     </div>
@@ -611,7 +611,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.violence_domestic}}
                                             </p>
                                         </p>
                                     </div>
@@ -623,7 +623,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.violence_elder}}
                                             </p>
                                         </p>
                                     </div>
@@ -635,7 +635,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                5
+                                                {{federalInfo.violence_exploitation}}
                                             </p>
                                         </p>
                                     </div>
@@ -647,7 +647,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                12
+                                                {{federalInfo.violence_exposing + federalInfo.violence_harassment + federalInfo.violence_internet + federalInfo.violence_phone + federalInfo.violence_stalking}}
                                             </p>
                                         </p>
                                     </div>
@@ -660,7 +660,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                1
+                                                {{federalInfo.violence_exposing}}
                                             </p>
                                         </p>
                                     </div>
@@ -673,7 +673,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                4
+                                                {{federalInfo.violence_harassment}}
                                             </p>
                                         </p>
                                     </div>
@@ -686,7 +686,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                4
+                                                {{federalInfo.violence_internet}}
                                             </p>
                                         </p>
                                     </div>
@@ -699,7 +699,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.violence_phone}}
                                             </p>
                                         </p>
                                     </div>
@@ -712,7 +712,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                3
+                                                {{federalInfo.violence_stalking}}
                                             </p>
                                         </p>
                                     </div>
@@ -724,7 +724,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.violence_teen_dating}}
                                             </p>
                                         </p>
                                     </div>
@@ -736,7 +736,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                4
+                                                {{federalInfo.violence_other}}
                                             </p>
                                         </p>
                                     </div>
@@ -748,7 +748,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                76
+                                                {{federalInfo.violence_unknown}}
                                             </p>
                                         </p>
                                     </div>
@@ -777,7 +777,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                1
+                                                {{federalInfo.disability_deaf}}
                                             </p>
                                         </p>
                                     </div>
@@ -789,7 +789,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.homeless}}
                                             </p>
                                         </p>
                                     </div>
@@ -801,7 +801,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                11
+                                                {{federalInfo.victim_immigrant_total}}
                                             </p>
                                         </p>
                                     </div>
@@ -813,7 +813,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                34
+                                                {{federalInfo.victim_sexual_orientation_total}}
                                             </p>
                                         </p>
                                     </div>
@@ -825,7 +825,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.veteran}}
                                             </p>
                                         </p>
                                     </div>
@@ -837,7 +837,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                89
+                                                {{federalInfo.disability_total_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -849,13 +849,12 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.limited_english}}
                                             </p>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
                             <h3>Direct Services</h3>
 
                             <!-- Individuals assisted with a victim compensation application during the reporting period -->
@@ -880,7 +879,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                30
+                                                {{federalInfo.exception_compensation_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -909,7 +908,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                64
+                                                {{federalInfo.information_referral}}
                                             </p>
                                         </p>
                                     </div>
@@ -921,7 +920,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                142
+                                                {{federalInfo.personal_advocacy_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -933,7 +932,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                631
+                                                {{federalInfo.total_new}}
                                             </p>
                                         </p>
                                     </div>
@@ -945,7 +944,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.criminal_civic_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -974,7 +973,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                36
+                                                {{federalInfo.criminal_justice_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -986,7 +985,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                145
+                                                {{federalInfo.contact_type_in-person}}
                                             </p>
                                         </p>
                                     </div>
@@ -998,7 +997,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.referral_agency}}
                                             </p>
                                         </p>
                                     </div>
@@ -1010,7 +1009,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                801
+                                                {{federalInfo.referral_other}}
                                             </p>
                                         </p>
                                     </div>
@@ -1039,7 +1038,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.medical_advocacy_unique}}
                                             </p>
                                         </p>
                                     </div>
@@ -1051,7 +1050,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                64
+                                                {{federalInfo.medical_exam_support}}
                                             </p>
                                         </p>
                                     </div>
@@ -1063,7 +1062,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_law_enforcement_interview}}
                                             </p>
                                         </p>
                                     </div>
@@ -1075,7 +1074,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_immigration}}
                                             </p>
                                         </p>
                                     </div>
@@ -1087,7 +1086,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_intervention}}
                                             </p>
                                         </p>
                                     </div>
@@ -1099,7 +1098,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                8
+                                                {{federalInfo.transportation}}
                                             </p>
                                         </p>
                                     </div>
@@ -1128,7 +1127,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                209
+                                                {{federalInfo.total_overall}}
                                             </p>
                                         </p>
                                     </div>
@@ -1140,7 +1139,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                631
+                                                {{federalInfo.contact_type_phone}}
                                             </p>
                                         </p>
                                     </div>
@@ -1152,7 +1151,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                142
+                                                {{federalInfo.crisis_counseling_individual}}
                                             </p>
                                         </p>
                                     </div>
@@ -1164,7 +1163,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                173
+                                                {{federalInfo.crisis_counseling_group}}
                                             </p>
                                         </p>
                                     </div>
@@ -1176,7 +1175,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                24
+                                                {{federalInfo.emergency_financial}}
                                             </p>
                                         </p>
                                     </div>
@@ -1198,6 +1197,42 @@
                                         </p>
                                     </div>
                                 </div>
+                                <!-- <div class="row">
+                                                            <div class="col-md-9 text-left">
+                                                                Notification of Criminal Justice Events
+                                                            </div>
+                                                            <div class="col-md-3 text-center">
+                                                                <p class="row">
+                                                                    <p class="col-md-6 text-center">
+                                                                        {{number}}
+                                                                    </p>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-9 text-left">
+                                                                Victim Impact Statement Assistance
+                                                            </div>
+                                                            <div class="col-md-3 text-center">
+                                                                <p class="row">
+                                                                    <p class="col-md-6 text-center">
+                                                                        {{number}}
+                                                                    </p>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-9 text-left">
+                                                                Assistance with Restitution
+                                                            </div>
+                                                            <div class="col-md-3 text-center">
+                                                                <p class="row">
+                                                                    <p class="col-md-6 text-center">
+                                                                        {{number}}
+                                                                    </p>
+                                                                </p>
+                                                            </div>
+                                                        </div> -->
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         (E4) Civil Legal Assistance in Obtaining Protection or Restraining Order
@@ -1205,7 +1240,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                37
+                                                {{federalInfo.legal_oft_hro}}
                                             </p>
                                         </p>
                                     </div>
@@ -1217,7 +1252,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                7
+                                                {{federalInfo.other_emergency_justice}}
                                             </p>
                                         </p>
                                     </div>
@@ -1229,7 +1264,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_immigrantion}}
                                             </p>
                                         </p>
                                     </div>
@@ -1241,7 +1276,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_prosecution_related}}
                                             </p>
                                         </p>
                                     </div>
@@ -1253,7 +1288,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                0
+                                                {{federalInfo.legal_law_enforcement_interview}}
                                             </p>
                                         </p>
                                     </div>
@@ -1265,7 +1300,7 @@
                                     <div class="col-md-3 text-center">
                                         <p class="row">
                                             <p class="col-md-6 text-center">
-                                                29
+                                                {{federalInfo.legal_court_advocacy}}
                                             </p>
                                         </p>
                                     </div>
