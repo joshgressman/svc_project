@@ -1,5 +1,6 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
+  console.log("nonVictimController Running FOOL");
 
   $scope.print = function() {
       window.print();

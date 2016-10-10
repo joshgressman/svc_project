@@ -5,7 +5,7 @@ var encryptLib = require('../modules/encryption');
 var pg = require('pg');
 
 var config = {
-  user: 'joshgressman', //env var: PGUSER
+  user: 'kimmai', //env var: PGUSER
   database: 'svc', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT

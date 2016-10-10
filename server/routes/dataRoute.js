@@ -85,11 +85,10 @@ router.put('/victim/:id', function (req, res) {
       console.log('ERROR, connection to PG', err);
       res.sendStatus(500);
     }
-
-        client.query('UPDATE victim SET ' +
-            'date_entered = ($1), ' +
-            'advocate_name = ($2), ' +
-            'contact_date = ($3), ' +
+        client.query('UPDATE victim ' +
+            'SET date_entered = $1, ' +
+            'advocate_name = $2, ' +
+            'contact_date = $3, ' +
             'start_time = $4, ' +
             'end_time = $5, ' +
             'service_location = $6, ' +
