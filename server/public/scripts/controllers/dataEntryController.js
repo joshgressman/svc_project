@@ -114,7 +114,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         formId: null,
         other_ethnicBackground: null,
         other_immigrantStatus: null
-    }
+    };
 
     // MODAL WINDOW
     $scope.open = function(_confirmation) {
@@ -312,11 +312,15 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
-                        alert("Submissions successful of Form #20");
+                        // alert("Submissions successful of Form #20");
 
                         $http.get('/dataRoute/presentation_victim').then(function(response) {
-                                var formSubmittedId = response.data.length - 1;
-                                $scope.confirmation = formSubmittedId;
+                                var formSubmittedId = response.data.length -1;
+                                var number = response.data[formSubmittedId].id;
+
+                                console.log(response.data);
+                                console.log(number);
+                                $scope.confirmation = number;
                                 $scope.open($scope.confirmation);
                                 $scope.message = "Form Submited."
                                     // $scope.showMessage = true;
@@ -331,8 +335,8 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                         $scope.showMessage = true;
                         $scope.message = "Please try again.";
                     });
-            }
-        }
+                    }
+                }
         ///Search & update victim and non victim form
     $scope.table = {};
     $scope.update = {}
@@ -342,7 +346,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
             $scope.showMessage = true
             $scope.message = "Please enter a date before submitting your request.";
         } else {
-            // console.log($scope.formId);
             $scope.showMessage = false
             var data = {};
             var id = $scope.formId;
@@ -410,6 +413,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
             // console.log($scope.update);
         });
     }
-}
+
 ///**********END OF CONTROLLER***************************************///////
 }]);

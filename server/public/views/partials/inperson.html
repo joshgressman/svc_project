@@ -26,7 +26,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
         <div class="col-md-9" id="dataview">
             <div>
                 <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
@@ -92,8 +91,6 @@
                 <option value="Washington">Washington</option>
                 <option value="other">Other</option>
               </select>
-
-                            <<<<<<< HEAD=======>>>>>>> 510bb0eea9342619903064076338bdaa32462f14
                         </div>
                     </div>
                     <div id="victimInfo">
@@ -223,13 +220,13 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultSexAssault" ng-value="true">Adult sexual assault
+                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultSexAssault" ng-value="true"><span class="makeFit">Adult sexual assault</span>
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultAbusedAsChild_family" ng-value="true">Adult abused as a child - Family
+                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultAbusedAsChild_family" ng-value="true"><span class="makeFit">Adult abused as a child - Family</span>
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultAbusedAsChild_other" ng-value="true">Adult abused as a child - Other
+                                            <input type="checkbox" name="sexualViolence" ng-model="form.adultAbusedAsChild_other" ng-value="true"><span class="makeFit">Adult abused as a child - Other</span>
                                         </td>
                                         <td>
                                             <input type="checkbox" name="sexualViolence" ng-model="form.exposing" ng-value="true">Exposing
@@ -237,7 +234,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="sexualViolence" ng-model="form.minorCSA_family" ng-value="true">Minor/CSA - Family
+                                            <input type="checkbox" name="sexualViolence" ng-model="form.minorCSA_family" ng-value="true"><span class="makeFit">Minor/CSA - Family</span>
                                         </td>
                                         <td>
                                             <input type="checkbox" name="sexualViolence" ng-model="form.minorCSA_other" ng-value="true">Minor/CSA - Other
@@ -246,7 +243,7 @@
                                             <input type="checkbox" name="sexualViolence" ng-model="form.obscenePhoneCall" ng-value="true">Obscene Phone Call
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="sexualViolence" ng-model="form.exploitation_trafficking" ng-value="true">Sexual exploitation/Sex trafficking
+                                            <input type="checkbox" name="sexualViolence" ng-model="form.exploitation_trafficking" ng-value="true"><span class="makeFit">Sexual exploitation/Sex trafficking</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -405,6 +402,8 @@
             </div>
             <input class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="submitVictimForm()" />
             </div>
+        </div>
+
         </div>
     </div>
   </div>

@@ -1381,7 +1381,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 }
             }
         });
-
+    }
     };
     //End code for Playground dropdowns
     var playgroundObjectArray = [{
