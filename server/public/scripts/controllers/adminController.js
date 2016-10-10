@@ -14,7 +14,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     //End accordion code
 
-
+    $scope.showFedData = false;
+    $scope.showCountyData = false;
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
@@ -610,9 +611,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }, {
         table: "victim_gender",
         text: null
-            // }, {
-            //     table: "victim_gender",
-            //     text: "Not Tracked"
     }, {
         table: "victim_gender_total",
         text: "total",
@@ -656,14 +654,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_age",
         text: "1950",
         textSpecial: "(victim_age >= 19 AND victim_age <= 50)"
-            // }, {
-            //     table: "victim_age",
-            //     text: "3044",
-            //     textSpecial: "(victim_age >= 30 AND victim_age <= 44)"
-            // }, {
-            //     table: "victim_age",
-            //     text: "4565",
-            // textSpecial: "(victim_age >= 45 AND victim_age <= 65)"
     }, {
         table: "victim_age",
         text: "50",
@@ -781,208 +771,42 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     }];
 
     $scope.getStuffCounty = function() {
-        countyObjectArray.forEach(function(query, index) {
-            var data = {};
+        if ($scope.dateStart == "" || $scope.dateEnd == "") {
+            $scope.showMessage = true;
+            $scope.message = "Please enter a start and end date before proceeding";
+        } else {
+            $scope.showCountyData = true;
+            countyObjectArray.forEach(function(query, index) {
+                var data = {};
 
-            // //converts date to workable format
-            // var start = $scope.dateStart;
-            // var convertedStart = start.toISOString().slice(0, 10);
-            // var end = $scope.dateEnd;
-            // var convertedEnd = end.toISOString().slice(0, 10);
+                // //converts date to workable format
+                // var start = $scope.dateStart;
+                // var convertedStart = start.toISOString().slice(0, 10);
+                // var end = $scope.dateEnd;
+                // var convertedEnd = end.toISOString().slice(0, 10);
 
-            data.start = $scope.dateStart;
-            data.end = $scope.dateEnd;
-            data.text = query.text;
-            data.textSpecial = query.textSpecial;
-            // console.log('clientside data to query:', data);
+                data.start = $scope.dateStart;
+                data.end = $scope.dateEnd;
+                data.text = query.text;
+                data.textSpecial = query.textSpecial;
+                // console.log('clientside data to query:', data);
 
-            $http({
-                method: "POST",
-                url: '/reportRoute/county/' + query.table,
-                data: data
-            }).then(function(response) {
-                // console.log("Get Success");
-                // console.log(response);
-                // console.log(query.table);
-                var objectParam = query.table;
-
-
-                switch (objectParam) {
-                    // case "victim_ethnicity":
-                    //     objectParam += '_' + query.text;
-                    //     console.log('new ethnicity OP:', objectParam);
-                    //     break;
-                    case "victim_gender":
-                        objectParam += '_' + query.text;
-                        // console.log('new gender OP:', objectParam);
-                        break;
-                    case "victim_age":
-                        objectParam += '_' + query.text;
-                        // console.log('new age OP:', objectParam);
-                        break;
-                    case "victim_zipcode":
-                        objectParam += '_' + query.text;
-                        // console.log('new zip OP:', objectParam);
-                        break;
-                    case "victim_ethnicity":
-                        objectParam += '_' + query.textSpecial;
-                        // console.log('new ethnicity OP:', objectParam);
-                        break;
-                    case "victim_type":
-                        objectParam += '_' + query.text;
-                        // console.log('new ethnicity OP:', objectParam);
-                        break;
-                };
-
-
-                $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
-                // console.log(response.data[0]);
-                // console.log($scope.countyInfo);
-            }, function() {
-                console.log("Get Error");
-            });
-        });
-        console.log($scope.countyInfo);
-
-        //displays actual locations, unduplicated that services are provided (text)
-        var location = {}
-
-        location.table = "locations";
-        location.text = "true";
-        location.start = $scope.dateStart;
-        location.end = $scope.dateEnd;
-        // console.log('location query:', location);
-
-        $http({
-            method: "POST",
-            url: '/reportRoute/county/locations',
-            data: location
-        }).then(function(response) {
-            console.log("Get Success");
-            // console.log(response);
-            $scope.locations = response;
-            console.log($scope.locations);
-        }, function() {
-            console.log("Get Error");
-        });
-    };
-
-    $scope.getStuffFederal = function() {
-        federalObjectArray.forEach(function(query, index) {
-            var data = {};
-
-            data.start = $scope.dateStart;
-            data.end = $scope.dateEnd;
-            data.text = query.text;
-            data.textSpecial = query.textSpecial;
-
-            $scope.federalInfo.criminalCivic = 0;
-            $scope.federalInfo.disabilityTotal = 0;
-            $scope.federalInfo.victimCompensation = 0;
-            $scope.federalInfo.criminalJusticeProcess = 0;
-            $scope.federalInfo.personalAdvocacy = 0;
-            $scope.federalInfo.medicalAdvocacy = 0;
-            // console.log('clientside data to query:', data);
-
-            if (query.table == "exception_disability") {
-                disabilityStatusTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.disabilityTotal += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else if (query.table == "exception_compensation") {
-                victimCompensationTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.victimCompensation += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else if (query.table == "criminal_justice") {
-                criminalJusticProcessTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else if (query.table == "personal_advocacy") {
-                personalAdvocacyTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.personalAdvocacy += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else if (query.table == "medical_advocacy") {
-                medicalAdvocacyTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        // console.log(response);
-                        $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else if (query.table == "criminal_civic") {
-                criminalCivicTotal.forEach(function(table) {
-                    $http({
-                        method: "POST",
-                        url: '/reportRoute/federal/' + table,
-                        data: data
-                    }).then(function(response) {
-                        // console.log("Get Success");
-                        $scope.federalInfo.criminalCivic += parseInt(response.data[0].count);
-                    }, function() {
-                        console.log("Get Error");
-                    });
-                });
-            } else {
                 $http({
                     method: "POST",
-                    url: '/reportRoute/federal/' + query.table,
+                    url: '/reportRoute/county/' + query.table,
                     data: data
                 }).then(function(response) {
                     // console.log("Get Success");
-                    // console.log('response:', response);
-                    // console.log('query table:', query.table);
+                    // console.log(response);
+                    // console.log(query.table);
                     var objectParam = query.table;
 
+
                     switch (objectParam) {
-                        case "victim_ethnicity":
-                            objectParam += '_' + query.textSpecial;
-                            // console.log('new ethnicity OP:', objectParam);
-                            break;
+                        // case "victim_ethnicity":
+                        //     objectParam += '_' + query.text;
+                        //     console.log('new ethnicity OP:', objectParam);
+                        //     break;
                         case "victim_gender":
                             objectParam += '_' + query.text;
                             // console.log('new gender OP:', objectParam);
@@ -991,28 +815,201 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                             objectParam += '_' + query.text;
                             // console.log('new age OP:', objectParam);
                             break;
-                        case "contact_type":
+                        case "victim_zipcode":
                             objectParam += '_' + query.text;
-                            // console.log('new age OP:', objectParam);
+                            // console.log('new zip OP:', objectParam);
+                            break;
+                        case "victim_ethnicity":
+                            objectParam += '_' + query.textSpecial;
+                            // console.log('new ethnicity OP:', objectParam);
+                            break;
+                        case "victim_type":
+                            objectParam += '_' + query.text;
+                            // console.log('new ethnicity OP:', objectParam);
                             break;
                     };
 
-                    $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
+
+                    $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
                     // console.log(response.data[0]);
-                    // console.log($scope.federalInfo);
+                    // console.log($scope.countyInfo);
                 }, function() {
-                    console.log("Get Error");
+                    // console.log("Get Error");
                 });
-            }
-        });
-        console.log($scope.federalInfo);
+            });
+            // console.log($scope.countyInfo);
+
+            //displays actual locations, unduplicated that services are provided (text)
+            var location = {}
+
+            location.table = "locations";
+            location.text = "true";
+            location.start = $scope.dateStart;
+            location.end = $scope.dateEnd;
+            // console.log('location query:', location);
+
+            $http({
+                method: "POST",
+                url: '/reportRoute/county/locations',
+                data: location
+            }).then(function(response) {
+                // console.log("Get Success");
+                // console.log(response);
+                $scope.locations = response;
+                // console.log($scope.locations);
+            }, function() {
+                // console.log("Get Error");
+            });
+        }
     };
 
+    $scope.getStuffFederal = function() {
+        if ($scope.dateStart == "" || $scope.dateEnd == "") {
+            $scope.showMessage = true;
+            $scope.message = "Please enter a date range before proceeding";
+        } else {
+            // console.log($scope.endDate);
+            $scope.showFedData = true;
+            federalObjectArray.forEach(function(query, index) {
+                var data = {};
 
+                data.start = $scope.dateStart;
+                data.end = $scope.dateEnd;
+                data.text = query.text;
+                data.textSpecial = query.textSpecial;
 
+                $scope.federalInfo.criminalCivic = 0;
+                $scope.federalInfo.disabilityTotal = 0;
+                $scope.federalInfo.victimCompensation = 0;
+                $scope.federalInfo.criminalJusticeProcess = 0;
+                $scope.federalInfo.personalAdvocacy = 0;
+                $scope.federalInfo.medicalAdvocacy = 0;
+                // console.log('clientside data to query:', data);
+
+                if (query.table == "exception_disability") {
+                    disabilityStatusTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            // console.log(response);
+                            $scope.federalInfo.disabilityTotal += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else if (query.table == "exception_compensation") {
+                    victimCompensationTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            // console.log(response);
+                            $scope.federalInfo.victimCompensation += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else if (query.table == "criminal_justice") {
+                    criminalJusticProcessTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            // console.log(response);
+                            $scope.federalInfo.criminalJusticeProcess += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else if (query.table == "personal_advocacy") {
+                    personalAdvocacyTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            // console.log(response);
+                            $scope.federalInfo.personalAdvocacy += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else if (query.table == "medical_advocacy") {
+                    medicalAdvocacyTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            // console.log(response);
+                            $scope.federalInfo.medicalAdvocacy += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else if (query.table == "criminal_civic") {
+                    criminalCivicTotal.forEach(function(table) {
+                        $http({
+                            method: "POST",
+                            url: '/reportRoute/federal/' + table,
+                            data: data
+                        }).then(function(response) {
+                            // console.log("Get Success");
+                            $scope.federalInfo.criminalCivic += parseInt(response.data[0].count);
+                        }, function() {
+                            // console.log("Get Error");
+                        });
+                    });
+                } else {
+                    $http({
+                        method: "POST",
+                        url: '/reportRoute/federal/' + query.table,
+                        data: data
+                    }).then(function(response) {
+                        // console.log("Get Success");
+                        // console.log('response:', response);
+                        // console.log('query table:', query.table);
+                        var objectParam = query.table;
+
+                        switch (objectParam) {
+                            case "victim_ethnicity":
+                                objectParam += '_' + query.textSpecial;
+                                // console.log('new ethnicity OP:', objectParam);
+                                break;
+                            case "victim_gender":
+                                objectParam += '_' + query.text;
+                                // console.log('new gender OP:', objectParam);
+                                break;
+                            case "victim_age":
+                                objectParam += '_' + query.text;
+                                // console.log('new age OP:', objectParam);
+                                break;
+                            case "contact_type":
+                                objectParam += '_' + query.text;
+                                // console.log('new age OP:', objectParam);
+                                break;
+                        };
+
+                        $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
+                    }, function() {
+                        // console.log("Get Error");
+                    });
+                }
+            });
+            // console.log($scope.federalInfo);
+        }
+    };
 
     //Where the Playground dropdowns code starts
-    // var counter = 0;
     $scope.newSearch = true;
     $scope.playground = {};
     $scope.selectedCategories;
@@ -1141,10 +1138,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     };
 
     $scope.submitting = function() {
-<<<<<<< HEAD
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
-            alert("Please enter in a Date before Proceeding");
+            $scope.showMessage = true;
+            $scope.message = "Please enter in a Date before Proceeding";
         } else {
+            $scope.showMessage = false;
             $scope.playgroundInfo = {};
             $scope.showFields = true;
             $scope.newSearch = false;
@@ -1261,7 +1259,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
       playgroundInfo[tableAddition].aSecond = aSecond;
       return playgroundInfo;
     };
-
     $scope.resetSearch = function() {
         $scope.showFields = false;
         $scope.newSearch = true;
@@ -1274,27 +1271,34 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.playground = {};
     }
     $scope.blackHole = function() {
-        $scope.showFields = true;
-        $scope.newSearch = false;
-        $scope.showTotalVictim = true;
-        var data = {};
-        data.start = $scope.playground.startDate;
-        data.end = $scope.playground.endDate;
-        $http({
-            method: "POST",
-            url: '/reportRoute/playground/victim',
-            data: data
-        }).then(function(response) {
-            console.log("Get Success");
-            console.log('response:', response);
-            $scope.victimObject = response.data;
-            console.log($scope.victimObject);
-            $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
-            console.log($scope.victimParameters);
-            getNonVictim(data);
-        }, function() {
-            console.log("Get Error");
-        });
+        if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
+            $scope.showMessage = true;
+            $scope.message = "Please enter in a Date before Proceeding";
+        } else {
+          // $scope.showMessage = true;
+          //   $scope.message = "Your PDF Download will begin shortly";
+            $scope.showFields = true;
+            // $scope.newSearch = false;
+            $scope.showTotalVictim = true;
+            var data = {};
+            data.start = $scope.playground.startDate;
+            data.end = $scope.playground.endDate;
+            $http({
+                method: "POST",
+                url: '/reportRoute/playground/victim',
+                data: data
+            }).then(function(response) {
+                // console.log("Get Success");
+                // console.log('response:', response);
+                $scope.victimObject = response.data;
+                // console.log($scope.victimObject);
+                $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
+                // console.log($scope.victimParameters);
+                getNonVictim(data);
+            }, function() {
+                // console.log("Get Error");
+            });
+        }
     }
 
     function getNonVictim(data) {
@@ -1304,32 +1308,32 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             url: '/reportRoute/playground/nonVictim',
             data: data
         }).then(function(response) {
-            console.log("Get Success");
-            console.log('response:', response);
+            // console.log("Get Success");
+            // console.log('response:', response);
             $scope.nonVictimObject = response.data;
-            console.log($scope.nonVictimObject);
+            // console.log($scope.nonVictimObject);
             $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
-            console.log($scope.nonVictimParameters);
+            $scope.makePDF();
+            // console.log($scope.nonVictimParameters);
         }, function() {
-            console.log("Get Error");
+            // console.log("Get Error");
         });
     }
     var feebleAttempt = [];
 
     function populatePDFArrays() {
         var victimHeader = $scope.victimParameters;
-        console.log(victimHeader);
+        // console.log(victimHeader);
         feebleAttempt.push(victimHeader);
         console.log(feebleAttempt);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
             $scope.victimParameters.forEach(function(parameter) {
-                console.log(parameter);
                 if ($scope.victimObject[objectNumber][parameter] == null) {
                     $scope.victimObject[objectNumber][parameter] = "null";
                 }
-                console.log(arrayObject[parameter].toString());
+                // console.log(arrayObject[parameter].toString());
                 if (arrayObject[parameter].toString() == "") {
                     arrayObject[parameter] = "null";
                 }
@@ -1341,9 +1345,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             feebleAttempt.push(standin);
             console.log(feebleAttempt);
         });
-        console.log(feebleAttempt.length);
+        // console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 190);
-        console.log(widthTotal);
+        // console.log(widthTotal);
 
         var docDefinition = {
             pageSize: {
@@ -1362,6 +1366,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         $scope.resetSearch();
         $scope.open($scope.confirmation);
     }
+
     $scope.makePDF = function() {
         populatePDFArrays();
     }
@@ -1391,7 +1396,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "total_new",
         infoTable: "victim",
         text: "NEW",
-
     }, {
         //Question 5A
         bound: "showAIndian",
@@ -1399,35 +1403,30 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         text: "Native American",
         textSpecial: "native_american",
-
     }, {
         bound: "showAsian",
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "Asian",
         textSpecial: "asian",
-
     }, {
         bound: "showBlack",
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "African American/Black",
         textSpecial: "african_american_black",
-
     }, {
         bound: "showLatino",
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "Chican@/Latin@",
         textSpecial: "chicano_latino",
-
     }, {
         bound: "showPacificIslander",
         table: "victim_ethnicity",
         infoTable: "victim",
         text: "Native Hawaiian/Pacific Islander",
         textSpecial: "hawaiian_pacific_islander",
-
     }, {
         bound: "showCaucassian",
         table: "victim_ethnicity",
@@ -1561,7 +1560,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         text: "true",
     }, {
-        //fix this;
         bound: "violenceAdultAbuseFamily",
         table: "violence_adult_child_family",
         infoTable: "victim",

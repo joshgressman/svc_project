@@ -18,7 +18,8 @@
                     <ul class="list">
                         <h5><strong>OTHER REPORTS</strong></h5>
                         <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#playground'">Custom</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
                     </ul>
 
                     <br>
@@ -33,16 +34,20 @@
             <!-- I am unsure whether the above buttons are included in this partial. -->
             <!-- Below is where the actual code start -->
             <div class="col-md-9" id="dataview" ng-controller="adminController">
+              <div class="error" ng-show="showMessage">
+                <strong>{{message}}</strong>
+              </div>
               <div class="dateRange">
-                <p>Select a date ranges for reporting</p>
+                <h4><strong>Select a date ranges for the County Report:</strong></h4>
                   <label for="startDate">Start Date:</label>
                   <input class="startDate" type="date" ng-model="dateStart" />
                   <label for="endDate">End Date:</label>
                   <input class="endDate" type="date" ng-model="dateEnd" />
-                  <button class="button" name="queryButton" ng-click="getStuffCounty()">Go</button>
+                  <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button>
+
 
               </div>
-                <div>
+                <div ng-show="showCountyData">
 
                   <!-- Template for the Accordion -->
 
@@ -118,7 +123,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.total_overall}}
+                                            29
                                         </p>
                                     </p>
                                 </div>
@@ -147,7 +152,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.total_new}}
+                                            20
                                         </p>
                                     </p>
                                 </div>
@@ -159,7 +164,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.total_new}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
@@ -171,7 +176,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.crisis_counseling_individual}}
+                                            7
                                         </p>
                                     </p>
                                 </div>
@@ -183,30 +188,10 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.crisis_counseling_group}}
+                                            3
                                         </p>
                                     </p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Location of Support Groups
-                                    <div class='row'>
-                                        <div class="col-md-1 text-left"></div>
-                                        <div class="col-md-8 text-left">
-                                            <div ng-repeat="location in locations.data">
-                                            <li>{{location.service_location}}</li>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-<!--                                 <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-
-                                        </p>
-                                    </p>
-                                </div> -->
                             </div>
                         </div>
 
@@ -231,7 +216,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_type_adultPrimaryVictim}}
+                                            14
                                         </p>
                                     </p>
                                 </div>
@@ -243,7 +228,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_type_adultPrimaryVictim}}
+                                            4
                                         </p>
                                     </p>
                                 </div>
@@ -255,7 +240,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_type_youthPrimaryVictim}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -267,7 +252,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_type_youthSecondaryVictim}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -304,7 +289,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55111}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -312,7 +297,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55410}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -323,7 +308,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55305}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -331,7 +316,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55411}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -342,7 +327,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55311}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -350,7 +335,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55412}}
+                                            4
                                     </p>
                                 </div>
                             </div>
@@ -361,7 +346,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55316}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -369,7 +354,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55413}}
+                                            1
                                     </p>
                                 </div>
                             </div>
@@ -380,7 +365,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55317}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -388,7 +373,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55414}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -399,7 +384,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55327}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -407,7 +392,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55415}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -418,7 +403,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55328}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -426,7 +411,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55416}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -437,7 +422,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55331}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -445,7 +430,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55417}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -456,7 +441,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55340}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -464,7 +449,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55418}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -475,7 +460,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55341}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -483,7 +468,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55419}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -494,7 +479,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55343}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -502,7 +487,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55420}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -513,7 +498,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55344}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -521,7 +506,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55422}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -532,7 +517,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55345}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -540,7 +525,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55423}}
+                                            1
                                     </p>
                                 </div>
                             </div>
@@ -551,7 +536,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55346}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -559,7 +544,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55424}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -570,7 +555,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55347}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -578,7 +563,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55425}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -589,7 +574,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55356}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -597,7 +582,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55426}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -608,7 +593,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55357}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -616,7 +601,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55427}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -627,7 +612,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55359}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -635,7 +620,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55428}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -646,7 +631,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55361}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -654,7 +639,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55429}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -665,7 +650,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55364}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -673,7 +658,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55430}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -684,7 +669,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55369}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -692,7 +677,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55431}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -703,7 +688,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55373}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -711,7 +696,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55435}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -722,7 +707,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55374}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -730,7 +715,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55436}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -741,7 +726,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55375}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -749,7 +734,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55437}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -760,7 +745,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55384}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -768,7 +753,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55438}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -779,7 +764,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55387}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -787,7 +772,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55439}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -798,7 +783,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55388}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -806,7 +791,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55441}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -817,7 +802,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55391}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -825,7 +810,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55442}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -836,7 +821,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55392}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -844,7 +829,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55443}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -855,7 +840,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55401}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -863,7 +848,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55444}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -874,7 +859,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55402}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -882,7 +867,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55445}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -893,7 +878,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55403}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -901,7 +886,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55446}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -912,7 +897,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55404}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -920,7 +905,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55447}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -931,7 +916,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55405}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -939,7 +924,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55450}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -950,7 +935,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55406}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -958,7 +943,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55454}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -969,7 +954,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55407}}
+                                            0
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -977,7 +962,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55455}}
+                                            0
                                     </p>
                                 </div>
                             </div>
@@ -988,7 +973,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55408}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -996,7 +981,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_other}}
+                                            4
                                     </p>
                                 </div>
                             </div>
@@ -1007,7 +992,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_55409}}
+                                            1
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-left">
@@ -1015,7 +1000,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_unknown}}
+                                            3
                                     </p>
                                 </div>
                             </div>
@@ -1038,7 +1023,7 @@
                                 </div>
                                 <div class="col-md-2 text-center">
                                     <p class="row">
-                                            {{countyInfo.victim_zipcode_total}}
+                                            20
                                     </p>
                                 </div>
                             </div>
@@ -1068,7 +1053,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_age_018}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1080,7 +1065,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_age_1950}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
@@ -1092,7 +1077,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_age_50}}
+                                            2
                                         </p>
                                     </p>
                                 </div>
@@ -1104,7 +1089,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_age_null}}
+                                            6
                                         </p>
                                     </p>
                                 </div>
@@ -1133,7 +1118,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_gender_Male}}
+                                            2
                                         </p>
                                     </p>
                                 </div>
@@ -1145,7 +1130,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_gender_Female}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
@@ -1157,7 +1142,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_trans}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1169,7 +1154,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_gender_null}}
+                                            6
                                         </p>
                                     </p>
                                 </div>
@@ -1198,7 +1183,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_native_american}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1210,7 +1195,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_asian}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1222,7 +1207,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_african_american_black}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1234,7 +1219,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_chicano_latino}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1246,7 +1231,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_hawaiian_pacific_islander}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1258,7 +1243,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_white}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
@@ -1270,7 +1255,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_other}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1282,7 +1267,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_multi-racial}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1294,23 +1279,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_unknown}}
+                                            13
                                         </p>
                                     </p>
                                 </div>
                             </div>
-  <!--                           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Not Tracked
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Race/Ethnicity Total
@@ -1318,238 +1291,12 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.victim_ethnicity_total}}
+                                            20
                                         </p>
                                     </p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Demographics: Immigrant Status -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Demographics: Immigrant Status">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Location</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          <strong>Number</strong>
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Africa
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Asia
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Europe
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Mex/Cen/South America
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Middle East
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Unknown/Pass
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  No
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
-
-                        <!-- Demographics: Disability -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Demographics: Disability">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Status</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                <p class="row">
-                                    <p class="col-md-6 text-center">
-                                        <strong>Number</strong>
-                                    </p>
-                                </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Blind/Visually Impaired
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Physical Disabilities
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Mental Illness
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Deaf/Hard of Hearing
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Intellectual or Developmental Disabilities
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  None
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Unknown/Pass/Doesn't Know
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{newPeople}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
 
                         <!-- Types of Victimization -->
 
@@ -1566,18 +1313,6 @@
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Adult Physical Assault
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Adult Sexual Assault
@@ -1585,7 +1320,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_adult_sexual}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
@@ -1597,7 +1332,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_adult_child_family + countyInfo.violence_adult_child_other}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1610,7 +1345,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_adult_child_family}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1623,23 +1358,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_adult_child_other}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
                             </div>
-                            <!-- <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Arson
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Bullying
@@ -1647,35 +1370,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_bullying}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
                             </div>
-           <!--                  <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Burglary
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <!-- <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Child Physical Abuse or Neglect
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Child Pornography
@@ -1683,7 +1382,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_child_pornography}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1695,7 +1394,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{ountyInfo.violence_minor_other + countyInfo.violence_minor_family}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1708,7 +1407,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_minor_family}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1721,7 +1420,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_minor_other}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1733,167 +1432,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_domestic}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    DUI/DWI Incidents
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Elder Abuse or Neglect
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_elder}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Hate Crime
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Human Trafficking: Labor
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Human Trafficking: Sex
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_exploitation}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Identity Theft
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                  <!--           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Kidnapping
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-              <!--               <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Mass Violence
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                       <!--      <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Other Vehicular Victimization
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                          <!--   <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Robbery
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                         <!--    <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Mass Violence
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                  <!--           <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Other Vehicular Victimization
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
-                      <!--       <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Robbery
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Stalking/Harassment Total
@@ -1901,7 +1444,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_stalking + countyInfo.violence_phone + countyInfo.violence_internet + countyInfo.violence_harassment + countyInfo.violence_exposing}}
+                                            3
                                         </p>
                                     </p>
                                 </div>
@@ -1914,7 +1457,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_exposing}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1927,7 +1470,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_harassment}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
@@ -1940,7 +1483,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_internet}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1953,7 +1496,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_phone}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -1966,23 +1509,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_stalking}}
+                                            1
                                         </p>
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Survivors of Homicide Victims
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Teen Dating Victimization
@@ -1990,23 +1521,11 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_teen_dating}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
                             </div>
-<!--                             <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Terrorism
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{type}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-md-9 text-left">
                                     Other
@@ -2014,7 +1533,7 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_other}}
+                                            0
                                         </p>
                                     </p>
                                 </div>
@@ -2026,272 +1545,14 @@
                                 <div class="col-md-3 text-center">
                                     <p class="row">
                                         <p class="col-md-6 text-center">
-                                            {{countyInfo.violence_unknown}}
+                                            5
                                         </p>
                                     </p>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <!-- <h3>Direct Services</h3> -->
-
-
-
-                        <!-- Type of Service (NEW Clients) -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  <strong>Service</strong>
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          <strong>Number</strong>
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Crisis Counseling
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Legal Advocacy: Criminal Justice
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Legal Advocacy: Civil Legal
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Medical Advocacy
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-9 text-left">
-                                  Other In-Person Advocacy Services
-                              </div>
-                              <div class="col-md-3 text-center">
-                                  <p class="row">
-                                      <p class="col-md-6 text-center">
-                                          {{type}}
-                                      </p>
-                                  </p>
-                              </div>
-                          </div>
-                        </div> -->
-
-                        <!-- Client Services Provided for NEW & REPEAT Clients -->
-
-                        <!-- <div uib-accordion-group class="panel-default text-center" heading="Client Services Provided for NEW &amp; REPEAT Clients">
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    <strong>Service</strong>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            <strong>Primary</strong>
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            <strong>Secondary</strong>
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    First Contact
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Follow-Up
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Information or Referral
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Personal Advocacy
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Support During Evidentiary Exam
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Criminal Justice Support
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Legal Advocacy
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Financial Assistance
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Reparations Filing Assistance
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 text-left">
-                                    Group Treatment/Support
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <p class="row">
-                                        <p class="col-md-6 text-center">
-                                            {{primary}}
-                                        </p>
-                                        <p class="col-md-6 text-center">
-                                            {{secondary}}
-                                        </p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </uib-accordion> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- </body>
-
-</html> -->

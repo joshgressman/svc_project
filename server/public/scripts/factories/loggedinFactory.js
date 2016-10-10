@@ -1,5 +1,4 @@
 myApp.factory('loggedinFactory', ['$http', function($http) {
-  console.log('loggedin factory running');
 
 var user = '';
 

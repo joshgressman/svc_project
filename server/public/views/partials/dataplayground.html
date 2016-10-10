@@ -1,13 +1,6 @@
 <div ng-app="myApp">
     <div ng-controller="adminController" class="container">
         <div class="row">
-            <!-- <div class="col-md-2" id="dataside">
-                <ul class="nav">
-                    <li><button class="button" Onclick="window.location.href='#reports'">Federal</button></li>
-                    <li><button class="button" Onclick="window.location.href='#countyReport'">County</button></li>
-                    <li><button class="button" Onclick="window.location.href='#admin'">Home</button></li>
-                </ul>
-            </div> -->
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
                    <h4 class="sidebarTitle">Custom Report Page</h4>
@@ -19,32 +12,36 @@
                         <h5><strong>OTHER REPORTS</strong></h5>
                         <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
                         <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
                     </ul>
 
                     <br>
 
                     <ul  class="list">
                         <h5><strong>ACTIONS</strong></h5>
-                        <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-md-9" id="dataview">
-                <h3>Custom Report</h3>
+                <div class="error" ng-show="showMessage">
+                  <strong>{{message}}</strong>
+                </div>
                 <div class="dateRange">
-                    <h4><strong>Select a date ranges for reporting</strong></h4>
+                    <h4><strong>Select a date range for the Custom Report</strong></h4>
                     <label for="startDate">Start Date:</label>
                     <input class="startDate" type="date" ng-model="playground.startDate" />
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="playground.endDate" />
+                    <span ng-show="newSearch"><button class="btn btn-default" ng-click="blackHole()">Get All</button></span>
                 </div>
 
 
                 <!-- start dynamic dropdowns -->
                 <div ng-show="newSearch">
                     <div>
-                        <label for="pickAThing">Select a Category</label>
+                        <label class="verticalNegotiation horizontalNegotiation" for="pickAThing">Select a Category</label>
                         <select class="dropDownPlayground" multiple ng-model="selectedCategories" ng-change="checkSelection()">
                           <!-- <option value="typeOfVictim">Type of Victim/Survivor</option> -->
                             <option value="age">Age</option>
@@ -63,11 +60,12 @@
                             <option value="ethnicity">Race/Ethnicity</option>
                             <option value="supportedOnCall">Supported on Call</option>
                             <option value="transgender">Transgender</option>
-                            <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
-                            <option value="victimizationTypes">Types of Victimization: Totals</option>
+<!--                             <option value="typeOfServiceNew">Type of Service (NEW Clients)</option>
+ -->                            <option value="victimizationTypes">Types of Victimization: Totals</option>
                             <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
                             <option value="showCounties">Zip Codes</option>
                         </select>
+                        <button class="btn btn-default verticalNegotiation" ng-click="submitting()">Go</button>
                     </div>
                     <div class="checkBoxHome">
                         <div class="checkBoxList" ng-show="individualsServiced">
@@ -1052,11 +1050,10 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-default" ng-click="submitting()">Submit Request</button>
-                    <button class="btn btn-default" ng-click="blackHole()">Get All</button>
                 </div>
-                <div ng-hide="newSearch">
-                    <button ng-click="resetSearch()">Do Another Search</button>
+                <div ng-hide="newSearch" class="horizontalNegotiation">
+                    <button class="btn btn-default" ng-click="resetSearch()">Do Another Search</button>
+                    <!-- <button ng-show="showTotalVictim" class="btn btn-default" ng-click="makePDF()">Download PDF</button> -->
                 </div>
                 <div>
                     <div ng-show="showFields">
@@ -1080,73 +1077,12 @@
                         </div>
                         <uib-accordion close-others="oneAtATime">
                             <div ng-show="typeOfVictim" uib-accordion-group class="panel-default text-center" heading="Victim/Survivor Information">
-                                <!-- <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Type of Victim/Survivor</strong>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="adultPrimary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adult Primary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="adultSecondary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adult Secondary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="youthPrimary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Youth Primary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="youthSecondary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Youth Secondary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <div ng-show="showIndividual" uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period">
                                 <div class="row ">
                                     <div class="col-md-4 text-left">
-<!--                                         <strong>Type of Survivor/Victim</strong>
- -->                                    </div>
+                                    </div>
                                     <div class="col-md-2 text-center">
                                         <strong>Adult Primary</strong>
                                     </div>
@@ -1157,7 +1093,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1199,8 +1135,7 @@
                             <div ng-show="showNewIndividual" uib-accordion-group class="panel-default text-center" heading="NEW individuals who recieved services during the reporting period">
                                 <div class="row ">
                                     <div class="col-md-4 text-left">
-<!--                                         <strong>Type of Survivor/Victim</strong>
- -->                                    </div>
+                                    </div>
                                     <div class="col-md-2 text-center">
                                         <strong>Adult Primary</strong>
                                     </div>
@@ -1211,7 +1146,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1265,7 +1200,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -4600,7 +4535,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -4947,22 +4882,6 @@
                                         </div>
                                     </div>
                                 </div>
-<!--
-                                <div ng-show="showNotReportedRace" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Reported
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                            <p class="col-md-6 text-center">
-                                                {{secondary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div> -->
                                 <div ng-show="showEthnicityTotal" class="row">
                                     <div class="row">
                                         <div class="col-md-4 text-left">Race/Ethnicity Totals</div>
@@ -5022,7 +4941,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -5429,7 +5348,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -5872,13 +5791,13 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
                                 <div ng-show="showMale" class="row">
                                     <div class="row">
-                                        <div class="col-md-4 text-left">Male</div>
+                                        <div class="col-md-4 text-left"><strong>Male</strong></div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
                                     <div class="row">
@@ -5887,16 +5806,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Male.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5905,23 +5824,22 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.aPrime}}
+                                          {{playgroundInfo.victim_gender_Male.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.aSecond}}
+                                          {{playgroundInfo.victim_gender_Male.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Male.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.ySecond}}
+                                          {{playgroundInfo.victim_gender_Male.ySecond}}
                                         </div>
                                     </div>
                                 </div>
-
                                 <div ng-show="showFemale" class="row">
                                     <div class="row">
-                                        <div class="col-md-4 text-left">Female</div>
+                                        <div class="col-md-4 text-left"><strong>Female</strong></div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
                                     <div class="row">
@@ -5930,16 +5848,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.aPrime / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Female.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.aSecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Female.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Female.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5948,16 +5866,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.aPrime}}
+                                          {{playgroundInfo.victim_gender_Female.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.aSecond}}
+                                          {{playgroundInfo.victim_gender_Female.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Female.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.ySecond}}
+                                          {{playgroundInfo.victim_gender_Female.ySecond}}
                                         </div>
                                     </div>
                                 </div>
@@ -6150,7 +6068,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -6212,7 +6130,7 @@
                                         <strong>Youth Primary</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <strong>Youth Secondary</strong>
+                                        <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
                                 </div>
 
@@ -6259,19 +6177,6 @@
                                         </div>
                                     </div>
                                 </div>
-<!--
-                                <div ng-show="violenceAdultAbuseTotal" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adults Sexual Abused/Assaulted as Children Total
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{type}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div> -->
                                 <div ng-show="violenceAdultAbuseFamily" class="row">
                                     <div class="row">
                                         <div class="col-md-12 text-left">
@@ -6372,16 +6277,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.aPrime / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_total.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.aSecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_total.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_total.yPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
+                                          {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -6390,16 +6295,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.aPrime}}
+                                          {{playgroundInfo.victim_gender_total.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.aSecond}}
+                                          {{playgroundInfo.victim_gender_total.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_total.yPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.ySecond}}
+                                          {{playgroundInfo.victim_gender_total.ySecond}}
                                         </div>
                                     </div>
                                 </div>
@@ -7596,32 +7501,6 @@
                                 </div>
                             </div>
                         </uib-accordion>
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-9">
-                                <div ng-show="showTotalVictim">
-                                    <!-- <table ng-model="victimObject" ng-repeat="thing in victimObject">
-                                        <tr>
-                                            <th colspan="2" class="tableCenter">Table Start</th>
-                                        </tr>
-                                        <tr>
-                                            <div ng-model="victimParameters" ng-repeat="parameter in victimParameters">
-                                                <th class="newRow tableCenter">
-                                                    <strong>{{parameter}}</strong>
-                                                </th>
-                                                <td class="newRow tableCenter">
-                                                    {{thing[parameter]}}
-                                                </td>
-                                            </div>
-                                        </tr>
-                                    </table> -->
-                                    <button ng-click="makePDF()">Download PDF</button>
-                                </div>
-                            </div>
-                            <div class="col-md-3"></div>
-                        </div>
-                        <div ng-show="showTotalNonVictim">
-                        </div>
                     </div>
                 </div>
             </div>

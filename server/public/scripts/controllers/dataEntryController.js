@@ -5,8 +5,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
     $scope.isLoggedIn = function() {
         loggedinFactory.isLoggedIn().then(function(response) {
-            console.log('The person logged in:', response);
-            console.log('the type of the person logged in:', response.user_type)
             $scope.user = response;
             if (response.user_type == 'admin') {
                 $scope.check = true;
@@ -22,7 +20,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
     $scope.myFunction = function() {
         window.print();
-    }
+    };
 
     $scope.customers = [
         // {
@@ -38,10 +36,88 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         // details: 'Some Nicky Details',
         // }
     ];
+    $scope.form = {
+        counselor: null,
+        date: null,
+        sTime: null,
+        eTime: null,
+        location: null,
+        county: null,
+        clientNumber: null,
+        zipCode: null,
+        victimType: '',
+        svcPrompt: null,
+        previousContact: null,
+        previousVisit: null,
+        transportation: null,
+        counseling: null,
+        supportGroup: null,
+        lawEnforcementInterview: null,
+        prosecutionRelatedAdvocacy: null,
+        courtAdvocacy: null,
+        assistOFP_HRO: null,
+        immigrationSupport: null,
+        interventionWithOthers: null,
+        forensicExamSupport: null,
+        accompanyMedicalAppt: null,
+        accompanyDentalAppt: null,
+        crisis_counseling: null,
+        infoAndReferral: null,
+        info_crimjustice: null,
+        other_emergency_justice: null,
+        safeAtHome: null,
+        emergencyFinancialAsst: null,
+        reparationsClaimAsst: null,
+        svcServices: null,
+        otherAgencyReferral: null,
+        otherServicesReferral: null,
+        adultSexAssault: null,
+        adultAbusedAsChild_family: null,
+        adultAbusedAsChild_other: null,
+        exposing: null,
+        minorCSA_family: null,
+        minorCSA_other: null,
+        obscenePhoneCall: null,
+        exploitation_trafficking: null,
+        sexualHarassment: null,
+        stalking: null,
+        internetRelated: null,
+        unknownViolence: null,
+        bullying: null,
+        childPorn: null,
+        domesticViolence: null,
+        elderAbuse: null,
+        teenDating: null,
+        sexualViolenceOther: null,
+        sexualViolenceOther_specify: null,
+        age: null,
+        gender: null,
+        trans: null,
+        orientation: null,
+        blind_visImpair: null,
+        physDisabled: null,
+        mentDisabled: null,
+        deafHardHearing: null,
+        devDisabled: null,
+        notDisabled: null,
+        unknownDisabled: null,
+        otherDisabled: null,
+        otherDisabled_specify: null,
+        ethnicBackground: null,
+        immigrantStatus: null,
+        homeless: null,
+        limitedEnglish: null,
+        veteran: null,
+        supported: null,
+        advocacyType: null,
+        multiple: null,
+        formId: null,
+        other_ethnicBackground: null,
+        other_immigrantStatus: null
+    }
 
     // MODAL WINDOW
     $scope.open = function(_confirmation) {
-
         var modalInstance = $uibModal.open({
             controller: "ModalInstanceCtrl",
             templateUrl: 'myModalContent.html',
@@ -136,40 +212,27 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
     // var victimizationCount = [];
 
-
     $scope.submitVictimForm = function() {
             if ($scope.form.date == null) {
+                $scope.showMessage = true
                 $scope.message = "Please enter a date before submitting your request.";
             } else {
+                $scope.showMessage = false
                 var standinObject = $scope.thing;
-                console.log(standinObject);
                 var thingArray = Object.getOwnPropertyNames(standinObject);
-                console.log(thingArray);
                 var potato = {};
                 thingArray.forEach(function(propertyName) {
                     potato[propertyName] = standinObject[propertyName];
-                    console.log(standinObject);
-                    console.log(potato);
                 });
                 var formArray = Object.getOwnPropertyNames(potato);
                 formArray.forEach(function(parameter) {
                     var parameterName = potato[parameter];
-                    console.log(potato[parameter]);
-                    console.log(parameterName);
                     $scope.form[parameterName] = true;
                 });
                 var data = $scope.form;
-                // var count = victimizationCount.length;
-                // console.log(count);
-                //formats input date into workable format;
                 data.date_entered = new Date();
 
-                console.log('sending to server...', data);
                 $http.post('/dataRoute/victim', data).then(function(response) {
-                        console.log('success');
-                        $scope.confirmation = response.data[0].id;
-                        console.log($scope.confirmation);
-                        $scope.confirmation = 23;
                         $scope.form = {
                             counselor: null,
                             date: null,
@@ -249,12 +312,24 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
-                        $scope.open($scope.confirmation);
-                        $scope.message = "Form Submited."
+                        alert("Submissions successful of Form #20");
+
+                        $http.get('/dataRoute/presentation_victim').then(function(response) {
+                                var formSubmittedId = response.data.length - 1;
+                                $scope.confirmation = formSubmittedId;
+                                $scope.open($scope.confirmation);
+                                $scope.message = "Form Submited."
+                                    // $scope.showMessage = true;
+                                    // $scope.message = "Form " + response.data[formSubmittedId].id + " Submitted.";
+                            },
+                            function(response) {
+                                $scope.showMessage = true;
+                                $scope.message = "Please try again.";
+                            });
                     },
                     function(response) {
-                        console.log('error');
-                        $scope.message = "Please try again."
+                        $scope.showMessage = true;
+                        $scope.message = "Please try again.";
                     });
             }
         }
@@ -263,31 +338,32 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
     $scope.update = {}
 
     $scope.searchUpdate = function() {
-        var data = {};
-        var id = $scope.formId;
-        var info = Object.getOwnPropertyNames($scope.table);
-        $scope[info[0]] = true;
-        if (info[0] == "phone") {
-            info[0] = "victim";
+        if ($scope.formId == null) {
+            $scope.showMessage = true
+            $scope.message = "Please enter a date before submitting your request.";
+        } else {
+            // console.log($scope.formId);
+            $scope.showMessage = false
+            var data = {};
+            var id = $scope.formId;
+            var info = Object.getOwnPropertyNames($scope.table);
+            $scope[info[0]] = true;
+            if (info[0] == "phone") {
+                info[0] = "victim";
+            }
+            data.table = info[0];
+            data.number = parseInt($scope.formId);
+            $http({
+                method: "POST",
+                url: '/reportRoute/county/edit',
+                data: data
+            }).then(function(response) {
+                $scope.update = response.data[0];
+            });
         }
-        data.table = info[0];
-        data.number = parseInt($scope.formId);
-        // console.log(data.number);
-        $http({
-            method: "POST",
-            url: '/reportRoute/county/edit',
-            data: data
-        }).then(function(response) {
-            // console.log("Get Success");
-            // console.log(response);
-            $scope.update = response.data[0];
-
-            // console.log($scope.update);
-        });
     }
 
     ////////////UPDATE FORM /////////////////////////
-
     $scope.updateForm = function() {
         var data = {}
         var route = '/dataRoute/victim/';
@@ -333,7 +409,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
             // $scope.update = response.data[0];
             // console.log($scope.update);
         });
-
     }
-    ///**********END OF CONTROLLER***************************************///////
+}
+///**********END OF CONTROLLER***************************************///////
 }]);
