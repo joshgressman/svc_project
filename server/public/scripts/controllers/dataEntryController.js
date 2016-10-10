@@ -312,7 +312,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
-                        // alert("Submissions successful of Form #20");
+                        // alert("Submissions successful of Form #20")
 
                         $http.get('/dataRoute/presentation_victim').then(function(response) {
                                 var formSubmittedId = response.data.length -1;

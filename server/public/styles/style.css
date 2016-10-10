@@ -97,7 +97,7 @@ margin-top: -40px;
 .login_page {
   margin: 0 auto;
   margin-top: 100px;
-  width: 250px;
+  width: 350px;
 }
 
 #headText {
@@ -135,6 +135,7 @@ margin-top: -40px;
   margin-bottom: 50px;
 }
 .formSubmit {
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 .moveButton{
@@ -327,6 +328,9 @@ margin-top: 10px;
 .updateButton {
   margin-top: 10px;
   margin-botton: 30px;
+}
+.formHeader {
+  border-bottom: solid 1px gray;
 }
 .panel-default >.panel-heading {
     background-color: rgb(32, 106, 145);

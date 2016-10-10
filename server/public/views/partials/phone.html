@@ -18,9 +18,7 @@
                         <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
                         <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
                     </ul>
-
                     <br>
-
                     <ul class="list">
                         <h5><strong>ACTIONS</strong></h5>
                         <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
@@ -48,6 +46,8 @@
                 </div>
                 <form>
                     <div id="svcAdvocacy">
+                    <h3 class="formHeader">Telephone Contact Form </h3>
+
                         <div class="advocayType">
                             <label for="advocayType">Type of Advocacy:</label>
                             <input class="" type="text" ng-model="form.advocacyType" value="phone" placeholder="Phone Advocacy" readonly/>
@@ -117,41 +117,41 @@
                 <input type="radio" name="serviceStatus" value="First contact ever crisis counseling"> First contact ever crisis counseling
                 <input type="radio" name="serviceStatus" value="Follow-up crisis counseling"> Follow-up crisis counseling
               </div> -->
-                        <div class="otherClientServices">
-                            <label for="otherClientServices">Services/Information Provided (check all that apply):</label>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" ng-value=true>Crisis counseling
-                            </div>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" ng-value=true>Information and/or referral
-                            </div>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" ng-value=true>Information about criminal justice process
-                            </div>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" ng-value=true>Other emergency justice-related assistance
-                            </div>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" ng-value=true>Emergency financial assistance
-                            </div>
-                            <div>
-                                <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" ng-value=true>Reperations claims assistance
-                            </div>
-                        </div>
-                        <div class="referrals">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="svcServicesReferral">SVC services:</label>
-                                        <input class="svcServices" type="text" ng-model="form.svcServices" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="otherAgencyReferral">Other advocacy agency:</label>
-                                        <input class="otherAgencyInput" type="text" ng-model="form.otherAgencyReferral" />
-                                    </td>
-
+              <div class="otherClientServices">
+                <h3 class="formHeader">Telephone Services Provided</h3>
+                <label for="otherClientServices">Services/Information Provided (check all that apply):</label>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" ng-value=true>Crisis counseling
+                </div>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.infoAndReferral" ng-value=true>Information and/or referral
+                </div>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.info_crimjustice" ng-value=true>Information about criminal justice process
+                </div>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.other_emergency_justice" ng-value=true>Other emergency justice-related assistance
+                </div>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.emergencyFinancialAsst" ng-value=true>Emergency financial assistance
+                </div>
+                <div>
+                  <input type="checkbox" name="clientService" ng-model="form.reparationsClaimAsst" ng-value=true>Reperations claims assistance
+                </div>
+              </div>
+              <div class="referrals">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="svcServicesReferral">SVC services:</label>
+                            <input class="svcServices" type="text" ng-model="form.svcServices" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="otherAgencyReferral">Other advocacy agency:</label>
+                            <input class="otherAgencyInput" type="text" ng-model="form.otherAgencyReferral" />
+                        </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -160,7 +160,6 @@
                                     </td>
 
                                 </tr>
-
                             </table>
                         </div>
                     </div>
@@ -261,7 +260,6 @@
                             <input type="radio" name="transgender" ng-model="trans" ng-value="false"> No
                             <input type="radio" name="transgender" ng-model="trans" ng-value="null"> Unknown/Pass
                             <div>
-                                <!-- <label for="pronouns">Preferred Gender Pronouns:</label>
                     <input class="pronounInput" type="text" ng-model="form.pronouns" /> -->
                                 <label for="sexualOrientation">Sexual Orientation:</label>
                                 <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->
