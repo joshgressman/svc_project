@@ -1,13 +1,6 @@
 <div ng-app="myApp">
     <div ng-controller="adminController" class="container">
         <div class="row">
-            <!-- <div class="col-md-2" id="dataside">
-                <ul class="nav">
-                    <li><button class="button" Onclick="window.location.href='#reports'">Federal</button></li>
-                    <li><button class="button" Onclick="window.location.href='#countyReport'">County</button></li>
-                    <li><button class="button" Onclick="window.location.href='#admin'">Home</button></li>
-                </ul>
-            </div> -->
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
                    <h4 class="sidebarTitle">Custom Report Page</h4>
@@ -19,6 +12,7 @@
                         <h5><strong>OTHER REPORTS</strong></h5>
                         <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
                         <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#playground'">Custom</a></li>
                     </ul>
 
                     <br>
@@ -40,13 +34,14 @@
                     <input class="startDate" type="date" ng-model="playground.startDate" />
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="playground.endDate" />
+                    <span ng-show="newSearch"><button class="btn btn-default" ng-click="blackHole()">Get All</button></span>
                 </div>
 
 
                 <!-- start dynamic dropdowns -->
                 <div ng-show="newSearch">
                     <div>
-                        <label for="pickAThing">Select a Category</label>
+                        <label class="verticalNegotiation horizontalNegotiation" for="pickAThing">Select a Category</label>
                         <select class="dropDownPlayground" multiple ng-model="selectedCategories" ng-change="checkSelection()">
                           <!-- <option value="typeOfVictim">Type of Victim/Survivor</option> -->
                             <option value="age">Age</option>
@@ -70,6 +65,7 @@
                             <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
                             <option value="showCounties">Zip Codes</option>
                         </select>
+                        <button class="btn btn-default verticalNegotiation" ng-click="submitting()">Go</button>
                     </div>
                     <div class="checkBoxHome">
                         <div class="checkBoxList" ng-show="individualsServiced">
@@ -1054,12 +1050,10 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-default" ng-click="submitting()">Submit Request</button>
-                    <button class="btn btn-default" ng-click="blackHole()">Get All</button>
                 </div>
-                <div ng-hide="newSearch">
+                <div ng-hide="newSearch" class="horizontalNegotiation">
                     <button class="btn btn-default" ng-click="resetSearch()">Do Another Search</button>
-                    <button ng-show="showTotalVictim" class="btn btn-default" ng-click="makePDF()">Download PDF</button>
+                    <!-- <button ng-show="showTotalVictim" class="btn btn-default" ng-click="makePDF()">Download PDF</button> -->
                 </div>
                 <div>
                     <div ng-show="showFields">
