@@ -33,6 +33,9 @@
             <!-- I am unsure whether the above buttons are included in this partial. -->
             <!-- Below is where the actual code start -->
             <div class="col-md-9" id="dataview" ng-controller="adminController">
+              <div class="error" ng-show="showMessage">
+                <strong>{{message}}</strong>
+              </div>
               <div class="dateRange">
                 <h4><strong>Select a date ranges for the County Report:</strong></h4>
                   <label for="startDate">Start Date:</label>

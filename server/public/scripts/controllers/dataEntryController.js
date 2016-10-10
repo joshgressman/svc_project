@@ -106,8 +106,10 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
     $scope.submitVictimForm = function() {
             if ($scope.form.date == null) {
+              $scope.showMessage = true
                 $scope.message = "Please enter a date before submitting your request.";
             } else {
+              $scope.showMessage = false
                 var standinObject = $scope.thing;
                 var thingArray = Object.getOwnPropertyNames(standinObject);
                 var potato = {};
@@ -203,10 +205,19 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
-                        $scope.message = "Form Submited."
+                        $http.get('/dataRoute/presentation_victim').then(function(response) {
+                          var formSubmittedId = response.data.length-1;
+                          $scope.showMessage = true;
+                          $scope.message = "Form " + response.data[formSubmittedId].id +  " Submitted.";
+                        },
+                        function(response) {
+                            $scope.showMessage = true;
+                            $scope.message = "Please try again.";
+                        });
                     },
                     function(response) {
-                        $scope.message = "Please try again."
+                        $scope.showMessage = true;
+                        $scope.message = "Please try again.";
                     });
             }
         }

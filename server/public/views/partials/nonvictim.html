@@ -1,199 +1,194 @@
 <div>
 
-  <div class="alert alert-success" id="alert">
-    <Strong class="grayAlert">SVC NonVictim Contact Form: </Strong> Please ensure you are using the GREEN form on this page.
-  </div>
-<div class="container">
-
-  <div class="row">
-    <!-- <div class="col-md-2" id="dataside">
-      <ul class = "nav">
-        <li><button id="telephone" Onclick="window.location.href='#phone'" >Telephone</button></li>
-        <li><button id="inperson" Onclick="window.location.href='#inperson'">In-Person</button></li>
-        <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
-        <li><button id="back" Onclick="window.location.href='#data'">&#8678 Back</button></li>
-      </ul>
-    </div> -->
-    <div class="col-md-2 col-sm-4 sidebar1">
-        <div class="logo">
-           <h4 class="sidebarTitle">Data Entry Page</h4>
-            <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
-        </div>
-        <br>
-        <div class="left-navigation">
-            <ul class="list">
-                <h5><strong>FORMS</strong></h5>
-                <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
-            </ul>
-
-            <br>
-
-            <ul  class="list">
-                <h5><strong>ACTIONS</strong></h5>
-                <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
-            </ul>
-        </div>
+    <div class="alert alert-success" id="alert">
+        <Strong class="grayAlert">SVC NonVictim Contact Form: </Strong> Please ensure you are using the GREEN form on this page.
     </div>
-    <div class="col-md-9" id="dataview">
-      <!-- <button onclick="print()">Print this page</button> -->
-      <form ng-submit="submitNonVictimForm()">
-        <div class="advocacyType">
-            <label for="advocacyType">Type of Advocacy:</label>
-            <input class="" type="text" ng-model="form.advocacyType" value="NonVictim" placeholder="NonVictim" readonly/>
+    <div class="container">
 
-        </div>
-         <div id="svcAdvocacy">
-             <div class="counselor">
-                 <label for="counselorName">Advocate/Counselor Name:</label>
-                 <input class="counselorInput" type="text" ng-model="form.counselor" />
-             </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <div class="logo">
+                    <h4 class="sidebarTitle">Data Entry Page</h4>
+                    <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+                </div>
+                <br>
+                <div class="left-navigation">
+                    <ul class="list">
+                        <h5><strong>FORMS</strong></h5>
+                        <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+                    </ul>
 
-             <div class="date">
-                 <label for="date">Date:</label>
-                 <input class="dateInput" type="date" ng-model="form.date" />
-             </div>
+                    <br>
 
-             <!-- With 'time' dates come out translated into a 24-hour format -->
+                    <ul class="list">
+                        <h5><strong>ACTIONS</strong></h5>
+                        <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9" id="dataview">
+                <div class="error" ng-show="showMessage">
+                    <strong>{{message}}</strong>
+                </div>
+                <form ng-submit="submitNonVictimForm()">
+                    <div class="advocacyType">
+                        <label for="advocacyType">Type of Advocacy:</label>
+                        <input class="" type="text" ng-model="form.advocacyType" value="NonVictim" placeholder="NonVictim" readonly/>
 
-             <div class="startTime">
-                 <label for="startTime">Start Time:</label>
-                 <input class="sTimeInput" type="time" ng-model="form.sTime" />
-             </div>
+                    </div>
+                    <div id="svcAdvocacy">
+                        <div class="counselor">
+                            <label for="counselorName">Advocate/Counselor Name:</label>
+                            <input class="counselorInput" type="text" ng-model="form.counselor" />
+                        </div>
 
-             <!-- With 'time' dates come out translated into a 24-hour format -->
+                        <div class="date">
+                            <label for="date">Date:</label>
+                            <input class="dateInput" type="date" ng-model="form.date" />
+                        </div>
 
-             <div class="endTime">
-                 <label for="endTime">End Time:</label>
-                 <input class="eTimeInput" type="time" ng-model="form.eTime" />
-             </div>
-             <div class="callerName">
+                        <!-- With 'time' dates come out translated into a 24-hour format -->
 
-                 <label for="callerName">Name:</label>
-                 <input class="callerInput" type="text" ng-model="form.callerName" />
-             </div>
-             <div class="callerPhone">
-                 <label for="callerPhone">Phone Number:</label>
-                 <input class="callerPhone" type="number" ng-model="form.callerPhone" />
-             </div>
-             <div class="callerZip">
-                 <label for="callerZip">Zip Code:</label>
-                 <input class="callerZip" type="number" ng-model="form.callerZip" />
-             </div>
-             <div class="county">
-                 <label for="county">County:</label>
-                 <input type="radio" name="location" ng-model="form.county" value="Hennepin">Hennepin
-                 <input type="radio" name="location" ng-model="form.county" value="Scott">Scott
-                 <input type="radio" name="location" ng-model="form.county" value="Carver">Carver
-                 <input type="radio" name="location" ng-model="form.county" value="">Other </>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-             </div>
+                        <div class="startTime">
+                            <label for="startTime">Start Time:</label>
+                            <input class="sTimeInput" type="time" ng-model="form.sTime" />
+                        </div>
 
-             <div class="callerType">
-                 <label for="callerType">Type of Caller:</label>
-                 <select ng-model="form.callerType">
+                        <!-- With 'time' dates come out translated into a 24-hour format -->
+
+                        <div class="endTime">
+                            <label for="endTime">End Time:</label>
+                            <input class="eTimeInput" type="time" ng-model="form.eTime" />
+                        </div>
+                        <div class="callerName">
+
+                            <label for="callerName">Name:</label>
+                            <input class="callerInput" type="text" ng-model="form.callerName" />
+                        </div>
+                        <div class="callerPhone">
+                            <label for="callerPhone">Phone Number:</label>
+                            <input class="callerPhone" type="number" ng-model="form.callerPhone" />
+                        </div>
+                        <div class="callerZip">
+                            <label for="callerZip">Zip Code:</label>
+                            <input class="callerZip" type="number" ng-model="form.callerZip" />
+                        </div>
+                        <div class="county">
+                            <label for="county">County:</label>
+                            <input type="radio" name="location" ng-model="form.county" value="Hennepin">Hennepin
+                            <input type="radio" name="location" ng-model="form.county" value="Scott">Scott
+                            <input type="radio" name="location" ng-model="form.county" value="Carver">Carver
+                            <input type="radio" name="location" ng-model="form.county" value="">Other
+                            </>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                        </div>
+
+                        <div class="callerType">
+                            <label for="callerType">Type of Caller:</label>
+                            <select ng-model="form.callerType">
                      <option  value="">Select One</option>
                      <option  value="caseConsultation">Case Consultation</option>
                      <option  value="generalInformation">General Information</option>
                      <option  value="medicalAdvocacy">Medical Advocacy</option>
                  </select>
-             </div>
-             <div class="svcSource">
-                 <label for="svcSource">How did the caller hear about SVC?</label>
-                 <input class="svcSource" type="text" ng-model="form.svcSource" />
-             </div>
-           </div>
-             <div id="organization">
-             <strong>Organization/Person Calling</strong>
-             <div class="medical">
-                 <label for="medical">Medical:</label>
-                 <input class="medicalInput" type="text" ng-model="form.medical" />
-             </div>
-             <div class="school">
-                 <label for="school">School:</label>
-                 <input class="schoolInput" type="text" ng-model="form.school" />
-             </div>
-             <div class="govtSocial">
-                 <label for="govtSocial">Government Social Service:</label>
-                 <input class="govtSocialInput" type="text" ng-model="form.govtSocial" />
-             </div>
-             <div class="communityMember">
-                 <label for="communityMember">Community Member:</label>
-                 <input class="communityMemberInput" type="text" ng-model="form.communityMember" />
-             </div>
-             <div class="lawEnforcer">
-                 <label for="lawEnforcer">Law Enforcer:</label>
-                 <input class="lawEnforcerInput" type="text" ng-model="form.lawEnforcer" />
-             </div>
-             <div class="legalSystem">
-                 <label for="legalSystem">Legal System:</label>
-                 <input class="legalSystemInput" type="text" ng-model="form.legalSystem" />
-             </div>
-             <div class="citySocial">
-                 <label for="citySocial">City Social Service:</label>
-                 <input class="citySocialInput" type="text" ng-model="form.citySocial" />
-             </div>
-             <div class="otherOrganization">
-                 <label for="otherOrganization">Other:</label>
-                 <input class="otherOrganizationInput" type="text" ng-model="form.otherOraganization" />
-             </div>
-         </div>
-         <div class="referral">
-           <p>Caller Referral</p>
-           <div class="medicalReferral">
-               <label for="medicalReferral">Medical:</label>
-               <input class="medicalReferralInput" type="text" ng-model="form.medicalReferral" />
-           </div>
-           <div class="schoolReferral">
-               <label for="schoolReferral">School:</label>
-               <input class="schoolInputReferral" type="text" ng-model="form.schoolReferral" />
-           </div>
-           <div class="govtSocialReferral">
-               <label for="govtSocialReferral">Government Social Service:</label>
-               <input class="govtSocialReferralInput" type="text" ng-model="form.govtSocialReferral" />
-           </div>
-           <div class="communityMemberReferral">
-               <label for="communityMemberReferral">Community Member:</label>
-               <input class="communityMemberReferralInput" type="text" ng-model="form.communityMemberReferral" />
-           </div>
-           <div class="lawEnforcerReferral">
-               <label for="lawEnforcerReferral">Law Enforcer:</label>
-               <input class="lawEnforcerReferral" type="text" ng-model="form.lawEnforcerReferral" />
-           </div>
-           <div class="legalSystemReferral">
-               <label for="legalSystemReferral">Legal System:</label>
-               <input class="legalSystemInputReferral" type="text" ng-model="form.legalSystemReferral" />
-           </div>
-           <div class="citySocialReferral">
-               <label for="citySocialReferral">City Social Service:</label>
-               <input class="citySocialInputReferral" type="text" ng-model="form.citySocialReferral" />
-           </div>
-           <div class="otherOrganizationReferral">
-               <label for="otherOrganizationReferral">Other:</label>
-               <input class="otherOrganizationInputReferral" type="text" ng-model="form.otherOraganizationReferral" />
-           </div>
-         </div>
-         <div class="advocacyRequest">
-           <div class="advacacyLocation">
+                        </div>
+                        <div class="svcSource">
+                            <label for="svcSource">How did the caller hear about SVC?</label>
+                            <input class="svcSource" type="text" ng-model="form.svcSource" />
+                        </div>
+                    </div>
+                    <div id="organization">
+                        <strong>Organization/Person Calling</strong>
+                        <div class="medical">
+                            <label for="medical">Medical:</label>
+                            <input class="medicalInput" type="text" ng-model="form.medical" />
+                        </div>
+                        <div class="school">
+                            <label for="school">School:</label>
+                            <input class="schoolInput" type="text" ng-model="form.school" />
+                        </div>
+                        <div class="govtSocial">
+                            <label for="govtSocial">Government Social Service:</label>
+                            <input class="govtSocialInput" type="text" ng-model="form.govtSocial" />
+                        </div>
+                        <div class="communityMember">
+                            <label for="communityMember">Community Member:</label>
+                            <input class="communityMemberInput" type="text" ng-model="form.communityMember" />
+                        </div>
+                        <div class="lawEnforcer">
+                            <label for="lawEnforcer">Law Enforcer:</label>
+                            <input class="lawEnforcerInput" type="text" ng-model="form.lawEnforcer" />
+                        </div>
+                        <div class="legalSystem">
+                            <label for="legalSystem">Legal System:</label>
+                            <input class="legalSystemInput" type="text" ng-model="form.legalSystem" />
+                        </div>
+                        <div class="citySocial">
+                            <label for="citySocial">City Social Service:</label>
+                            <input class="citySocialInput" type="text" ng-model="form.citySocial" />
+                        </div>
+                        <div class="otherOrganization">
+                            <label for="otherOrganization">Other:</label>
+                            <input class="otherOrganizationInput" type="text" ng-model="form.otherOraganization" />
+                        </div>
+                    </div>
+                    <div class="referral">
+                        <p>Caller Referral</p>
+                        <div class="medicalReferral">
+                            <label for="medicalReferral">Medical:</label>
+                            <input class="medicalReferralInput" type="text" ng-model="form.medicalReferral" />
+                        </div>
+                        <div class="schoolReferral">
+                            <label for="schoolReferral">School:</label>
+                            <input class="schoolInputReferral" type="text" ng-model="form.schoolReferral" />
+                        </div>
+                        <div class="govtSocialReferral">
+                            <label for="govtSocialReferral">Government Social Service:</label>
+                            <input class="govtSocialReferralInput" type="text" ng-model="form.govtSocialReferral" />
+                        </div>
+                        <div class="communityMemberReferral">
+                            <label for="communityMemberReferral">Community Member:</label>
+                            <input class="communityMemberReferralInput" type="text" ng-model="form.communityMemberReferral" />
+                        </div>
+                        <div class="lawEnforcerReferral">
+                            <label for="lawEnforcerReferral">Law Enforcer:</label>
+                            <input class="lawEnforcerReferral" type="text" ng-model="form.lawEnforcerReferral" />
+                        </div>
+                        <div class="legalSystemReferral">
+                            <label for="legalSystemReferral">Legal System:</label>
+                            <input class="legalSystemInputReferral" type="text" ng-model="form.legalSystemReferral" />
+                        </div>
+                        <div class="citySocialReferral">
+                            <label for="citySocialReferral">City Social Service:</label>
+                            <input class="citySocialInputReferral" type="text" ng-model="form.citySocialReferral" />
+                        </div>
+                        <div class="otherOrganizationReferral">
+                            <label for="otherOrganizationReferral">Other:</label>
+                            <input class="otherOrganizationInputReferral" type="text" ng-model="form.otherOraganizationReferral" />
+                        </div>
+                    </div>
+                    <div class="advocacyRequest">
+                        <div class="advacacyLocation">
 
-               <label>Is this an advocacy request?</label>
-               <input type="radio" name="request" ng-model="form.request" ng-value="true"> Yes
-               <input type="radio" name="request" ng-model="form.request" ng-value="false"> No
-             </br>
-               <label for="advacacyLocation">If yes, where to?:</label>
-               <input class="advacacyLocation" type="text" ng-model="form.advacacyLocation" />
-           </div>
-           <div>
-                <label>Is this an medical advocacy request?</label>
-                <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="true"> Yes
-                <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="false"> No
-           </div>
-           <div class="dispatched">
-               <label for="dispatched">If yes, was an advocate dispatched?:</label>
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
-           </div>
-<!--            <div class="responded">
+                            <label>Is this an advocacy request?</label>
+                            <input type="radio" name="request" ng-model="form.request" ng-value="true"> Yes
+                            <input type="radio" name="request" ng-model="form.request" ng-value="false"> No
+                            </br>
+                            <label for="advacacyLocation">If yes, where to?:</label>
+                            <input class="advacacyLocation" type="text" ng-model="form.advacacyLocation" />
+                        </div>
+                        <div>
+                            <label>Is this an medical advocacy request?</label>
+                            <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="true"> Yes
+                            <input type="radio" name="request" ng-model="form.medicalAdvocacyRequest" ng-value="false"> No
+                        </div>
+                        <div class="dispatched">
+                            <label for="dispatched">If yes, was an advocate dispatched?:</label>
+                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
+                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
+                        </div>
+                        <!--            <div class="responded">
              <label for="responded">If yes, who responded?:</label>
              <input class="responded" type="text" ng-model="form.advocateResponded" />
            </div>
@@ -201,17 +196,17 @@
              <label for="reason">If no, why not?:</label>
              <input class="reason" type="text" ng-model="form.advocateReason" />
            </div> -->
-           <div class="responded">
-             <label for="responded">If yes, who responded?:</label>
-             <input class="responded" type="text" ng-model="form.responded" />
-           </div>
-           <div class="reason">
-             <label for="reason">If no, why not?:</label>
-             <input class="reason" type="text" ng-model="form.reason" />
-           </div>
-         </div>
+                        <div class="responded">
+                            <label for="responded">If yes, who responded?:</label>
+                            <input class="responded" type="text" ng-model="form.responded" />
+                        </div>
+                        <div class="reason">
+                            <label for="reason">If no, why not?:</label>
+                            <input class="reason" type="text" ng-model="form.reason" />
+                        </div>
+                    </div>
 
-         <!-- <div class="medicalAdvocacyRequest">
+                    <!-- <div class="medicalAdvocacyRequest">
            <div class="medicalAdvacacyLocation">
 
                <label>Is this an medical advocacy request?</label>
@@ -237,9 +232,9 @@
            </div>
 
          </div> -->
-         <input id="subBtn" class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="formIdCount()"/>
-     </form>
-  </div>
-  </div>
-</div>
+                    <input id="subBtn" class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="formIdCount()" />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

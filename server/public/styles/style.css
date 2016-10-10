@@ -19,6 +19,13 @@
 .tableCenter{
   text-align: center;
 }
+
+.error{
+  background-color: #085078;
+  color: #fff;
+  margin: 0 5px 5px 5px;
+}
+
 body {
   font: "Roboto", "Helvetica Neue", Helvetica, Ariel, sans-sesrif;
   background-color: rgb(241,241,241);

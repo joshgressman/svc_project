@@ -35,8 +35,11 @@
             <!-- ng-app="myApp" -->
 
             <div class="col-md-9" id="dataview" ng-controller="adminController">
+              <div class="error" ng-show="showMessage">
+                <strong>{{message}}</strong>
+              </div>
                 <div class="dateRange">
-                    <h4><strong>Select a date ranges for the Federal Report:</strong></h4>
+                    <h4><strong>Select a date range for the Federal Report:</strong></h4>
                     <label for="startDate">Start Date:</label>
                     <input class="startDate" type="date" ng-model="dateStart" />
                     <label for="endDate">End Date:</label>
