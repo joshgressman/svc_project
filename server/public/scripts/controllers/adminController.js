@@ -1332,7 +1332,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             $scope.victimParameters.forEach(function(parameter) {
                 // console.log("2nd for loop running");
                 if ($scope.victimObject[objectNumber][parameter] == null) {
-                    $scope.victimObject[objectNumber][parameter] = "null";
+                    $scope.victimObject[objectNumber][parameter] = "-";
                 }
                 // console.log(arrayObject[parameter].toString());
                 if (arrayObject[parameter].toString() == "") {
@@ -1343,7 +1343,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
             feebleAttempt.push(standin);
         });
         // console.log(feebleAttempt.length);
-        var widthTotal = (feebleAttempt.length * 190);
+        var widthTotal = (feebleAttempt.length * 200);
         // console.log(widthTotal);
 
         var docDefinition = {
