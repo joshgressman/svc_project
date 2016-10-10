@@ -109,6 +109,27 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
 
   $scope.submitVictimForm = function() {
+      if ($scope.form.date == null) {
+        $scope.message = "Please enter a date before submitting your request.";
+    } else {
+        var standinObject = $scope.thing;
+        console.log(standinObject);
+        var thingArray = Object.getOwnPropertyNames(standinObject);
+        console.log(thingArray);
+        var potato = {};
+        thingArray.forEach(function(propertyName) {
+            potato[propertyName] = standinObject[propertyName];
+            console.log(standinObject);
+            console.log(potato);
+        });
+        var formArray = Object.getOwnPropertyNames(potato);
+        formArray.forEach(function(parameter) {
+            var parameterName = potato[parameter];
+            console.log(potato[parameter]);
+            console.log(parameterName);
+            $scope.form[parameterName] = true;
+        });
+
       var data = $scope.form;
       // var count = victimizationCount.length;
       // console.log(count);
@@ -205,6 +226,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
           $scope.message = "Please try again."
         });
       }
+  }
 ///Search & update victim and non victim form
       $scope.table = {};
       $scope.update = {}
