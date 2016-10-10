@@ -291,7 +291,6 @@ margin-top: 10px;
     /*border-top: solid thin grey;*/
   }
 
-/*accordian*/
 
 /* Keri css fixes*/
 .userEntry {
@@ -362,7 +361,10 @@ margin-top: 10px;
     padding-left: 35px;
 }.main-content{
 text-align:center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85eedca5c86f942e495a6890848810fd11e9600a
 }
 
 #success{
