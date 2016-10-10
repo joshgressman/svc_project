@@ -26,7 +26,7 @@
             <ul class="list">
                 <h5><strong>FORMS</strong></h5>
                 <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In-Person</a></li>
                 <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
             </ul>
 
@@ -43,8 +43,9 @@
 
       <form>
           <div id="svcAdvocacy">
-            <div class="advocayType">
-                <label for="advocayType">Type of Advocacy:</label>
+            <h3 class="formHeader">Telephone Contact Form </h3>
+            <div class="advocacyType">
+                <label for="advocacyType">Type of Advocacy:</label>
                 <input class="" type="text" ng-model="form.advocacyType" value="phone" placeholder="Phone Advocacy" readonly/>
 
             </div>
@@ -113,6 +114,7 @@
                 <input type="radio" name="serviceStatus" value="Follow-up crisis counseling"> Follow-up crisis counseling
               </div> -->
               <div class="otherClientServices">
+                <h3 class="formHeader">Telephone Services Provided</h3>
                 <label for="otherClientServices">Services/Information Provided (check all that apply):</label>
                 <div>
                   <input type="checkbox" name="clientService" ng-model="form.crisis_counseling" ng-value=true>Crisis counseling
@@ -166,9 +168,10 @@
           </div>
           <div ng-show="newFiscalYear" class="demoCollection">
             <div class="alert alert-info">
-              <strong>Demographic Information Goes Here:</strong>
+              <strong>Demographic information required for this client</strong>
             </div>
               <div class="sexualViolence">
+                  <h3 class="formHeader">Demographics</h3>
                   <label for="sexualViolence">Type of Sexual Violence</label>
                   <table>
                     <tr>

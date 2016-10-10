@@ -83,7 +83,7 @@ margin-top: -40px;
 .login_page {
   margin: 0 auto;
   margin-top: 100px;
-  width: 250px;
+  width: 350px;
 }
 
 #headText {
@@ -117,6 +117,7 @@ margin-top: -40px;
     padding-top: 10px;
 }
 .formSubmit {
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 
@@ -266,10 +267,7 @@ margin-top: 10px;
     /*border-top: solid thin grey;*/
   }
 /*accordian*/
-<<<<<<< HEAD
 
-=======
->>>>>>> fce659ea27db326d7c6a907124b7ed9a436368bf
 
 /* Keri css fixes*/
 .userEntry {
@@ -282,6 +280,9 @@ margin-top: 10px;
 .updateButton {
   margin-top: 10px;
   margin-botton: 30px;
+}
+.formHeader {
+  border-bottom: solid 1px gray;
 }
 .panel-default >.panel-heading {
     background-color: rgb(32, 106, 145);

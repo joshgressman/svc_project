@@ -111,6 +111,26 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
 
   $scope.submitVictimForm = function() {
+    if ($scope.form.date == null) {
+     $scope.message = "Please enter a date before submitting your request.";
+    } else {
+     var standinObject = $scope.thing;
+     console.log(standinObject);
+     var thingArray = Object.getOwnPropertyNames(standinObject);
+     console.log(thingArray);
+     var potato = {};
+     thingArray.forEach(function(propertyName) {
+         potato[propertyName] = standinObject[propertyName];
+         console.log(standinObject);
+         console.log(potato);
+     });
+     var formArray = Object.getOwnPropertyNames(potato);
+     formArray.forEach(function(parameter) {
+         var parameterName = potato[parameter];
+         console.log(potato[parameter]);
+         console.log(parameterName);
+         $scope.form[parameterName] = true;
+      });
       var data = $scope.form;
       // var count = victimizationCount.length;
       // console.log(count);
@@ -207,6 +227,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
           $scope.message = "Please try again."
         });
       }
+    }
 ///Search & update victim and non victim form
       $scope.table = {};
       $scope.update = {}
@@ -228,42 +249,16 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
             data: data
         }).then(function(response) {
             // console.log("Get Success");
-<<<<<<< HEAD
             // console.log(response);
             $scope.update = response.data[0];
             // console.log($scope.update);
         });
-=======
-            console.log(response);
-              $scope.update = response.data[0];
-              // console.log($scope.update);
-      });
->>>>>>> 8cb1620f1b5a83496da61dc624b1676d1d63653d
+
     }
 
     ////////////UPDATE FORM /////////////////////////
 
-<<<<<<< HEAD
-    $scope.updateForm = function() {
-        var data = {}
-            // var info = Object.getOwnPropertyNames($scope.table);
-        var id = parseInt($scope.update.id);
-        data = $scope.update;
-        console.log("update id", id);
-        console.log("update data", data);
-        $http({
-            method: "PUT",
-            url: '/dataRoute/victim/' + id,
-            data: data
-        }).then(function(response) {
-            console.log("Get Success");
-            console.log(response);
-            // $scope.update = response.data[0];
-            console.log($scope.update);
-        });
-    }
 
-=======
 $scope.updateForm = function () {
   var data = {}
   var route = '/dataRoute/victim/';
@@ -288,14 +283,11 @@ $scope.updateForm = function () {
         // console.log($scope.update);
 });
 }
->>>>>>> 8cb1620f1b5a83496da61dc624b1676d1d63653d
 
 
     ///////////////////////////////////////////////////
 
-<<<<<<< HEAD
-    ///////////DELETE FORM////////////////////////////
-=======
+
  ///////////DELETE FORM////////////////////////////
 $scope.deleteForm = function () {
   var data = {}
@@ -308,16 +300,15 @@ $scope.deleteForm = function () {
   $http({
       method: "DELETE",
       url: route + id,
-  }).then(function(response) {
+    }).then(function(response) {
       console.log("DELETE Success");
       console.log(response);
         // $scope.update = response.data[0];
         // console.log($scope.update);
->>>>>>> 8cb1620f1b5a83496da61dc624b1676d1d63653d
 
-});
+    });
+  }
 
-}
 
     ////////////////////////////////////////////////
 

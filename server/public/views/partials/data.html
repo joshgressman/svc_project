@@ -10,6 +10,8 @@
                 <li><button id="admin" ng-show="check" Onclick="location.href='#admin'">Back to Admin</button></li>
             </ul>
         </div> -->
+        <div class="col-md-1">
+        </div>
         <div class="col-md-2 col-sm-4 sidebar1" data-ng-init="isLoggedIn()">
             <div class="logo">
                <h4 class="sidebarTitle">Data Entry Page</h4>
@@ -33,7 +35,7 @@
             </div>
         </div>
 
-        <div class="col-md-9" id="insDiv">
+        <div class="col-md-8" id="insDiv">
 
             <div>
                 <script type="text/ng-template" id="group-template.html">
@@ -60,8 +62,8 @@
 
                     <div uib-accordion-group class="panel-default text-center" heading="Instructions" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                         <div class="row">
-                            <div class="col-md-9 text-left">
-                                
+                            <div class="col-md-8 text-left">
+
                                 <p>
                                   SVC input forms are color coded to repersent the type of service that was provided. Pink forms are for telephone services, yellow is for in-person services and green is for non-victim services.
                                 </p>
@@ -79,5 +81,6 @@
                 </uib-accordion>
             </div>
         </div>
+      
     </div>
 </div>
