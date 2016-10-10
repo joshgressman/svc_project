@@ -1348,6 +1348,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
     $scope.makePDF = function() {
             populatePDFArrays();
         }
+    }
         //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1
@@ -1526,11 +1527,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         text: null,
     }, {
-    //     bound: "showGenderNotTracked",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: "Not Tracked"
-    // }, {
+
         //Question 6A
         bound: "violenceAdultSexual",
         table: "violence_adult_sexual",
@@ -1539,12 +1536,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
 
     }, {
 
-
-
-
-
-
-    // }, {
         bound: "violenceAdultAbuseFamily",
         table: "violence_adult_child_family",
         infoTable: "victim",
@@ -1569,17 +1560,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true",
 
     }, {
-
-
-
-
-
-
-
-
-
-
-    // }, {
         bound: "violenceDomestic",
         table: "violence_domestic",
         infoTable: "victim",
@@ -1598,8 +1578,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         text: "true",
 
     }, {
-
-
 
         bound: "violenceStalkingInternet",
         table: "violence_internet",
@@ -2115,13 +2093,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_zipcode",
         infoTable: "victim",
         text: "55455",
-
     }, {
         bound: "countyOther",
         table: "victim_zipcode",
         infoTable: "victim",
         text: "other",
-
     }, {
         bound: "countyUnknown",
         table: "victim_zipcode",
@@ -2137,31 +2113,26 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         table: "victim_gender",
         infoTable: "victim",
         text: "Male",
-
     }, {
         bound: "showFemale",
         table: "victim_gender",
         infoTable: "victim",
         text: "Female",
-
     }, {
         bound: "showNonBinary",
         table: "victim_gender",
         infoTable: "victim",
         text: "Non-Binary",
-
     }, {
         bound: "showOtherGender",
         table: "victim_gender",
         infoTable: "victim",
         text: "Other",
-
     }, {
         bound: "showGenderNotReported",
         table: "victim_gender",
         infoTable: "victim",
         text: null,
-
     }, {
         bound: "showGenderTotal",
         table: "victim_gender_total",
@@ -2208,38 +2179,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         infoTable: "victim",
         table: "disability_unknown",
         text: "true"
-    }, {
-    // }, {
-    //     bound: "adultPrimary",
-    //     table: "victim_type",
-    //     infoTable: "victim",
-    //     text: "true",
-    //     textSpecial: "adultPrimaryVictim",
-    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
-    // }, {
-    //     bound: "adultSecondary",
-    //     table: "victim_type",
-    //     infoTable: "victim",
-    //     text: "true",
-    //     textSpecial: "adultSecondaryVictim",
-    //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
-
-        // }, {
-        //     bound: "youthPrimary",
-        //     table: "victim_type",
-        //     infoTable: "victim",
-        //     text: "true",
-        //     textSpecial: "youthPrimaryVictim",
-        //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
-
-        // }, {
-        //     bound: "youthSecondary",
-        //     table: "victim_type",
-        //     infoTable: "victim",
-        //     text: "true",
-        //     textSpecial: "youthSecondaryVictim",
-        //       victimType: [{adultPrimary: "adultPrimary", youthPrimary: "youthPrimary"},{adultSecondary: "adultSecondary", youthSecondary: "youthSecondary"},{adultPrimary: "adultPrimary", adultSecondary: "adultSecondary"},{youthPrimary: "youthPrimary", youthSecondary: "youthSecondary"}]
-
     }, {
         bound: "individualCounseling",
         table: "crisis_counseling_individual",
