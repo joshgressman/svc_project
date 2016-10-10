@@ -1314,11 +1314,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         var victimHeader = $scope.victimParameters;
         console.log(victimHeader);
         feebleAttempt.push(victimHeader);
+        console.log(feebleAttempt);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
             $scope.victimParameters.forEach(function(parameter) {
-                console.log("2nd for loop running");
+                console.log(parameter);
                 if ($scope.victimObject[objectNumber][parameter] == null) {
                     $scope.victimObject[objectNumber][parameter] = "null";
                 }
@@ -1326,9 +1327,13 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
                 if (arrayObject[parameter].toString() == "") {
                     arrayObject[parameter] = "null";
                 }
-                standin.push(arrayObject[parameter].toString());
+                var objectThing = arrayObject[parameter].toString();
+                console.log(objectThing);
+                standin.push(objectThing);
+                // console.log(standin);
             });
             feebleAttempt.push(standin);
+            console.log(feebleAttempt);
         });
         console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 190);
@@ -1349,11 +1354,25 @@ myApp.controller('adminController', ['$scope', '$http', '$location', function($s
         };
         pdfMake.createPdf(docDefinition).download('getAllReports.pdf');
         $scope.resetSearch();
+        $scope.open($scope.confirmation);
     }
     $scope.makePDF = function() {
-            populatePDFArrays();
-        }
-        //End code for Playground dropdowns
+        populatePDFArrays();
+    }
+    $scope.open = function(_confirmation) {
+
+        var modalInstance = $uibModal.open({
+            controller: "ModalInstanceCtrl",
+            templateUrl: 'myModalContent.html',
+            resolve: {
+                confirmation: function() {
+                    return _confirmation;
+                }
+            }
+        });
+
+    };
+    //End code for Playground dropdowns
     var playgroundObjectArray = [{
         //Question 1
         bound: "showIndividual",

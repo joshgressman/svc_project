@@ -1,4 +1,4 @@
-myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
+myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
@@ -25,6 +25,38 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
   $scope.myFunction = function() {
       window.print();
   }
+
+  $scope.customers = [
+    // {
+    // name: 'Ricky',
+    // details: 'Some Details for Ricky',
+    // },
+    // {
+    // name: 'Dicky',
+    // details: 'Some Dicky Details',
+    // },
+    // {
+    // name: 'Nicky',
+    // details: 'Some Nicky Details',
+    // }
+];
+
+// MODAL WINDOW
+$scope.open = function (_confirmation) {
+
+    var modalInstance = $uibModal.open({
+      controller: "ModalInstanceCtrl",
+      templateUrl: 'myModalContent.html',
+        resolve: {
+            confirmation: function()
+            {
+                return _confirmation;
+            }
+        }
+         });
+
+};
+//End MODAL WINDOW
   $scope.form = {
     counselor: null,
     date: null,
@@ -138,7 +170,9 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
       console.log('sending to server...', data);
       $http.post('/dataRoute/victim', data).then(function(response) {
         console.log('success');
-
+        $scope.confirmation = response.data[0].id;
+        console.log($scope.confirmation);
+        $scope.confirmation = 23;
        $scope.form = {
          counselor: null,
          date: null,
@@ -218,6 +252,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
          other_ethnicBackground: null,
          other_immigrantStatus: null
        }
+       $scope.open($scope.confirmation);
        $scope.message = "Form Submited."
         },
         function(response) {
@@ -249,6 +284,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
             // console.log("Get Success");
             // console.log(response);
             $scope.update = response.data[0];
+
             // console.log($scope.update);
         });
     }
@@ -269,7 +305,8 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
         }).then(function(response) {
             console.log("Get Success");
             console.log(response);
-            // $scope.update = response.data[0];
+            $scope.confirmation = 26;
+            $scope.open($scope.confirmation);
             console.log($scope.update);
         });
     }
@@ -287,6 +324,8 @@ $scope.deleteForm = function () {
       method: "DELETE",
       url: route + id,
   }).then(function(response) {
+    $scope.confirmation = 26;
+    $scope.open($scope.confirmation);
       console.log("DELETE Success");
       console.log(response);
         // $scope.update = response.data[0];
