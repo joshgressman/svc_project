@@ -137,6 +137,20 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', functio
                 });
         }
     }
+    $scope.open = function (_confirmation) {
+
+        var modalInstance = $uibModal.open({
+          controller: "ModalInstanceCtrl",
+          templateUrl: 'myModalContent.html',
+            resolve: {
+                confirmation: function()
+                {
+                    return _confirmation;
+                }
+            }
+             });
+
+    };
 
 
 

@@ -21,6 +21,8 @@ myApp.controller('userController', ['$scope', '$http', '$location', function($sc
               username: '',
               password: ''
             };
+            $scope.confirmation = 26;
+            $scope.open($scope.confirmation);
           $location.path('/admin');
           },
           function(response) {
@@ -28,4 +30,18 @@ myApp.controller('userController', ['$scope', '$http', '$location', function($sc
           });
       }
     }
+    $scope.open = function (_confirmation) {
+
+        var modalInstance = $uibModal.open({
+          controller: "ModalInstanceCtrl",
+          templateUrl: 'myModalContent.html',
+            resolve: {
+                confirmation: function()
+                {
+                    return _confirmation;
+                }
+            }
+             });
+
+    };
 }]);

@@ -4,7 +4,6 @@
         <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
     </div>
     <div class="container">
-
         <div class="row">
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
@@ -30,6 +29,20 @@
             </div>
 
             <div class="col-md-9" id="dataview">
+              <div>
+                  <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+                  <script type="text/ng-template" id="myModalContent.html">
+                      <div class="modal-header">
+                          <h3>Submit Success!</h3>
+                      </div>
+                      <div class="modal-body">
+                          Form Confirmation #: {{confirmation}}
+                      </div>
+                      <div class="modal-footer">
+
+                      </div>
+                  </script>
+              </div>
                 <div class="error" ng-show="showMessage">
                     <strong>{{message}}</strong>
                 </div>
