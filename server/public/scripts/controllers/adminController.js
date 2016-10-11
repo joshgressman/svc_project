@@ -1,4 +1,4 @@
-myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
     $scope.myFunction = function() {
             window.print();
