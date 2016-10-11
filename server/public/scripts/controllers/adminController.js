@@ -1,5 +1,6 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
+console.log("Admin is running");
     $scope.myFunction = function() {
             window.print();
         }

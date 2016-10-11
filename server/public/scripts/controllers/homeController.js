@@ -1,4 +1,5 @@
 myApp.controller('homeController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory){
+  console.log("homeController is running");
 
   // $scope.check = false;
   // $scope.loggedinFactory = loggedinFactory;
