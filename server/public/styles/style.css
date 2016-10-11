@@ -133,7 +133,7 @@ padding-left: 200px;
     /*margin-bottom: 50px;*/
 }
 .verticalAdjustments{
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .formSubmit {
   margin-top: 10px;
@@ -437,3 +437,6 @@ text-align:center;
   margin-left: 4px;
 }
 
+.kim_lower{
+  margin-bottom: 10px;
+}
