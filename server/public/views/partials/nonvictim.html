@@ -1,5 +1,4 @@
 <div>
-
   <div class="alert alert-success" id="alert">
     <Strong class="grayAlert">SVC NonVictim Contact Form: </Strong> Please ensure you are using the GREEN form on this page.
   </div>
@@ -195,25 +194,17 @@
                <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">Yes
                <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">No
            </div>
-<!--            <div class="responded">
-             <label for="responded">If yes, who responded?:</label>
-             <input class="responded" type="text" ng-model="form.advocateResponded" />
-           </div>
-           <div class="reason">
-             <label for="reason">If no, why not?:</label>
-             <input class="reason" type="text" ng-model="form.advocateReason" />
-           </div> -->
-           <div class="responded">
-             <label for="responded">If yes, who responded?:</label>
-             <input class="responded" type="text" ng-model="form.responded" />
-           </div>
-           <div class="reason">
-             <label for="reason">If no, why not?:</label>
-             <input class="reason" type="text" ng-model="form.reason" />
-           </div>
-         </div>
+                        <div class="responded">
+                            <label for="responded">If yes, who responded?:</label>
+                            <input class="responded" type="text" ng-model="form.responded" />
+                        </div>
+                        <div class="reason">
+                            <label for="reason">If no, why not?:</label>
+                            <input class="reason" type="text" ng-model="form.reason" />
+                        </div>
+                    </div>
 
-         <!-- <div class="medicalAdvocacyRequest">
+                    <!-- <div class="medicalAdvocacyRequest">
            <div class="medicalAdvacacyLocation">
 
                <label>Is this an medical advocacy request?</label>
@@ -239,9 +230,9 @@
            </div>
 
          </div> -->
-         <input id="subBtn" class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="formIdCount()"/>
-     </form>
-  </div>
-  </div>
-</div>
+                    <input id="subBtn" class="formSubmit btn btn-default" type="submit" name="submit" value="Submit" ng-click="formIdCount()" />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

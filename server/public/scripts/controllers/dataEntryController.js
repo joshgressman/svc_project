@@ -1,13 +1,10 @@
-myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
-    console.log("Data Entry Running FOOL");
+myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
 
     $scope.isLoggedIn = function() {
         loggedinFactory.isLoggedIn().then(function(response) {
-            console.log('The person logged in:', response);
-            console.log('the type of the person logged in:', response.user_type)
             $scope.user = response;
             if (response.user_type == 'admin') {
                 $scope.check = true;
@@ -27,8 +24,22 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
     function myFunction() {
         location.reload();
-    }
+    };
 
+    // MODAL WINDOW
+    $scope.open = function(_confirmation) {
+        var modalInstance = $uibModal.open({
+            controller: "ModalInstanceCtrl",
+            templateUrl: 'myModalContent.html',
+            resolve: {
+                confirmation: function() {
+                    return _confirmation;
+                }
+            }
+        });
+
+    };
+    //End MODAL WINDOW
     $scope.form = {
         counselor: null,
         date: null,
@@ -111,38 +122,27 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
 
     // var victimizationCount = [];
 
-
     $scope.submitVictimForm = function() {
             if ($scope.form.date == null) {
+                $scope.showMessage = true
                 $scope.message = "Please enter a date before submitting your request.";
             } else {
+                $scope.showMessage = false
                 var standinObject = $scope.thing;
-                console.log(standinObject);
                 var thingArray = Object.getOwnPropertyNames(standinObject);
-                console.log(thingArray);
                 var potato = {};
                 thingArray.forEach(function(propertyName) {
                     potato[propertyName] = standinObject[propertyName];
-                    console.log(standinObject);
-                    console.log(potato);
                 });
                 var formArray = Object.getOwnPropertyNames(potato);
                 formArray.forEach(function(parameter) {
                     var parameterName = potato[parameter];
-                    console.log(potato[parameter]);
-                    console.log(parameterName);
                     $scope.form[parameterName] = true;
                 });
                 var data = $scope.form;
-                // var count = victimizationCount.length;
-                // console.log(count);
-                //formats input date into workable format;
                 data.date_entered = new Date();
 
-                console.log('sending to server...', data);
                 $http.post('/dataRoute/victim', data).then(function(response) {
-                        console.log('success');
-
                         $scope.form = {
                             counselor: null,
                             date: null,
@@ -222,11 +222,22 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
                             other_ethnicBackground: null,
                             other_immigrantStatus: null
                         }
-                        $scope.message = "Form Submited."
+                        $http.get('/dataRoute/presentation_victim').then(function(response) {
+                                var formSubmittedId = response.data.length - 1;
+                                $scope.confirmation = formSubmittedId;
+                                $scope.open($scope.confirmation);
+                                $scope.message = "Form Submited."
+                                    // $scope.showMessage = true;
+                                    // $scope.message = "Form " + response.data[formSubmittedId].id + " Submitted.";
+                            },
+                            function(response) {
+                                $scope.showMessage = true;
+                                $scope.message = "Please try again.";
+                            });
                     },
                     function(response) {
-                        console.log('error');
-                        $scope.message = "Please try again."
+                        $scope.showMessage = true;
+                        $scope.message = "Please try again.";
                     });
             }
         }
@@ -235,25 +246,54 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
     $scope.update = {}
 
     $scope.searchUpdate = function() {
-        var data = {};
-        var id = $scope.formId;
-        var info = Object.getOwnPropertyNames($scope.table);
-        $scope[info[0]] = true;
-        if (info[0] == "phone") {
-            info[0] = "victim";
+        if ($scope.formId == null) {
+            $scope.showMessage = true
+            $scope.message = "Please enter a date before submitting your request.";
+        } else {
+            // console.log($scope.formId);
+            $scope.showMessage = false
+            var data = {};
+            var id = $scope.formId;
+            var info = Object.getOwnPropertyNames($scope.table);
+            $scope[info[0]] = true;
+            if (info[0] == "phone") {
+                info[0] = "victim";
+            }
+            data.table = info[0];
+            data.number = parseInt($scope.formId);
+            $http({
+                method: "POST",
+                url: '/reportRoute/county/edit',
+                data: data
+            }).then(function(response) {
+                $scope.update = response.data[0];
+            });
         }
-        data.table = info[0];
-        data.number = parseInt($scope.formId);
-        // console.log(data.number);
+    }
+
+    ////////////UPDATE FORM /////////////////////////
+    $scope.updateForm = function() {
+        var data = {}
+        var route = '/dataRoute/victim/';
+        console.log('type', $scope.table);
+        if ($scope.table.nonvictim == true) {
+            route = '/dataRoute/nonvictim/';
+        }
+        console.log('route', route);
+        // var info = Object.getOwnPropertyNames($scope.table);
+        var id = parseInt($scope.update.id);
+        data = $scope.update;
+        console.log("update id", id);
+        console.log("update data", data);
         $http({
-            method: "POST",
-            url: '/reportRoute/county/edit',
+            method: "PUT",
+            url: route + id,
             data: data
         }).then(function(response) {
-            // console.log("Get Success");
-            // console.log(response);
-            $scope.update = response.data[0];
-            // console.log($scope.update);
+            console.log("PUT Success");
+            console.log(response);
+            $scope.confirmation = 26;
+            $scope.open($scope.confirmation);
         });
     }
 
@@ -296,16 +336,13 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', 'logged
             url: route + id,
         }).then(function(response) {
             confirm('Are you sure you want to delete this entry?');
-            myFunction()
+            myFunction();
             console.log("DELETE Success");
             console.log(response);
             // $scope.update = response.data[0];
             // console.log($scope.update);
         });
     }
-
-
-    ////////////////////////////////////////////////
 
     ///**********END OF CONTROLLER***************************************///////
 }]);
