@@ -24,6 +24,7 @@
   background-color: #085078;
   color: #fff;
   margin: 0 5px 5px 5px;
+  height: 20px;
 }
 
 .verticalNegotiation{
@@ -410,3 +411,29 @@ text-align:center;
 .kimInput{
   margin-left: 29px;
 }
+.kimMakeFit{
+    font-size: 13px;
+}
+.kimMakeFitX{
+    font-size: 12.5px;
+}
+.kim_padding_top{
+  margin-top: -10px;
+  padding-bottom: 5px;
+}
+.ageInput{
+  width: 50px;
+}
+.zipCodeInput{
+  width: 100px;
+}
+.kimFormHeader {
+  border-bottom: solid 1px gray;
+}
+.kim_print_button{
+  margin-top: 15px;
+}
+.kim_home{
+  margin-left: 4px;
+}
+

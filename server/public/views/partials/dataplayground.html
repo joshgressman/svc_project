@@ -40,7 +40,7 @@
                   </script>
               </div>
                 <div class="error" ng-show="showMessage">
-                    <strong>{{message}}</strong>
+                    <strong><center>{{message}}</strong></center>
                 </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Custom Report</strong></h4>
@@ -50,11 +50,12 @@
                     <input class="endDate" type="date" ng-model="playground.endDate" />
                     <span ng-show="newSearch"><button class="btn btn-default" ng-click="blackHole()">Get All</button></span>
                 </div>
+                <div class="kimFormHeader"></div>
 
 
                 <!-- start dynamic dropdowns -->
                 <div ng-show="newSearch">
-                    <div>
+                    <div class="kim_print_button">
                         <label class="verticalNegotiation horizontalNegotiation" for="pickAThing">Select a Category</label>
                         <select class="dropDownPlayground" multiple ng-model="selectedCategories" ng-change="checkSelection()">
                           <!-- <option value="typeOfVictim">Type of Victim/Survivor</option> -->
@@ -1065,7 +1066,7 @@
                     </div>
                 </div>
                 <div ng-hide="newSearch" class="horizontalNegotiation">
-                    <button class="btn btn-default" ng-click="resetSearch()">Do Another Search</button>
+                    <button class="btn btn-default kim_print_button" ng-click="resetSearch()">Do Another Search</button>
                     <!-- <button ng-show="showTotalVictim" class="btn btn-default" ng-click="makePDF()">Download PDF</button> -->
                 </div>
                 <div>

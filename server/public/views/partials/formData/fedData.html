@@ -37,7 +37,7 @@
 
             <div class="col-md-9" id="dataview" ng-controller="adminController">
               <div class="error" ng-show="showMessage">
-                <strong>{{message}}</strong>
+                <strong><center>{{message}}</strong></center>
               </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Federal Report:</strong></h4>
@@ -47,6 +47,7 @@
                     <input class="endDate" type="date" ng-model="dateEnd" />
                     <button class="btn btn-default" name="queryButton" ng-click="getStuffFederal()">Go</button>
                 </div>
+                <div class="kimFormHeader"></div>
                 <div>
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
@@ -66,7 +67,7 @@
                     </script>
                     <div ng-show="showFedData">
                         <p>
-                            <button class="btn btn-default"><a href="#federalPrint">Go To Print Page</a></button>
+                            <button class="btn btn-default kim_print_button"><a href="#federalPrint">Go To Print Page</a></button>
                             <!-- <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button> -->
                         </p>
 
@@ -94,7 +95,7 @@
 
                             <!-- //Individuals who received services during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period - Duplicated" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period: Duplicated" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
@@ -123,7 +124,7 @@
 
                             <!-- //NEW individuals who received services during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period - Unduplicated">
+                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period: Unduplicated">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
@@ -757,7 +758,7 @@
 
                             <!-- Types of Victimization: Special classification of individuals -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special classification of individuals">
+                            <div uib-accordion-group class="panel-default text-center" heading="Special Classification of Individuals">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Types of Victimization</strong>

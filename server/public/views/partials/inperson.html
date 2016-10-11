@@ -144,24 +144,29 @@
                 <input type="radio" name="serviceStatus" value="Follow-up crisis counseling"> Follow-up crisis counseling -->
             </div>
             <div class="counseling">
-              <label for="counseling"> Crisis Counseling:</label>
+              <label for="counseling"> Crisis Counseling:</label><br>
+              <div class="kim_padding_top kim_padding">
               <input type="radio" name="counseling" ng-model="thing.counseling" value="counseling" > One-to-One Counseling
               <input type="radio" name="counseling" ng-model="thing.counseling" value="supportGroup" > Support Group
             </div>
             <div class="legalAdvocacyCriminal">
-              <label for="legalAdvocacy">Legal Advocacy Criminal Justice Process:</label>
+              <label for="legalAdvocacy">Legal Advocacy Criminal Justice Process:</label><br>
+              <div class="kim_padding_top kim_padding">
               <input type="radio" name="legalAdvocacyCriminal" ng-model="thing.legalAdvocacyCriminal" value="lawEnforcementInterview"> Law enforcement interview
-              <input type="radio" name="legalAdvocacyCriminal" ng-model="thing.legalAdvocacyCriminal" value="prosecutionRelatedAdvocacy"> Prosecution related advocacy
-              <input type="radio" name="legalAdvocacyCriminal" ng-model="thing.legalAdvocacyCriminal" value="courtAdvocacy"> Court advocacy (criminal case)
+              <input type="radio" name="legalAdvocacyCriminal" ng-model="thing.legalAdvocacyCriminal" value="prosecutionRelatedAdvocacy">Prosecution related advocacy
+              <input type="radio" name="legalAdvocacyCriminal" ng-model="thing.legalAdvocacyCriminal" value="courtAdvocacy">Court advocacy (criminal case)
             </div>
             <div class="legalAdvocacyCivil">
-              <label for="legalAdvocacy">Legal Advocacy Civil Justice Process:</label>
-              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="assistOFP_HRO"> Assistance obtaining OFP or HRO
-              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="immigrationSupport"> Immigration related support (U Visa, ect.)
-              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="immigrationSupport"> Intervention with landloard, acedemic institution or creditor
+              <label for="legalAdvocacy">Legal Advocacy Civil Justice Process:</label><br>
+              <div class="kim_padding_top kim_padding">
+              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="assistOFP_HRO"> <span class="kimMakeFitX">Assistance obtaining OFP or HRO</span>
+              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="immigrationSupport"> <span class="kimMakeFitX">Immigration related support (U Visa, ect.)</span>
+              <input type="radio" name="legalAdvocacyCivil" ng-model="thing.legalAdvocacyCivil" value="immigrationSupport"> <span class="kimMakeFitX">Intervention with landloard, acedemic institution or creditor </span>
+              </div>
             </div>
             <div class="medicalAdvocacy">
-              <label for="medicalAdvocacy">Medical Advocacy:</label>
+              <label for="medicalAdvocacy">Medical Advocacy:</label><br>
+              <div class="kim_padding_top kim_padding">      
               <input type="radio" name="medicalAdvocacy" ng-model="thing.medicalAdvocacy" value="forensicExamSupport"> Forensic exam support
               <input type="radio" name="medicalAdvocacy" ng-model="thing.medicalAdvocacy" value="accompanyMedicalAppt"> Accompaniment to medical appointment
               <input type="radio" name="medicalAdvocacy" ng-model="thing.medicalAdvocacy" value="accompanyDentalAppt"> Accompaniment to dental appointment
@@ -321,7 +326,7 @@
                                             <input type="checkbox" name="disability" ng-model="form.blind_visImpair" ng-value="true">Blind/Visually Impaired
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="disability" ng-model="form.physDisabled" ng-value="true">Physical disabilities
+                                            <input type="checkbox" name="disability" ng-model="form.physDisabled" ng-value="true"><span class="makeFit">Physical disabilities</span>
                                         </td>
                                         <td>
                                             <input type="checkbox" name="disability" ng-model="form.mentDisabled" ng-value="true">Mental illness
@@ -332,13 +337,13 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="disability" ng-model="form.devDisabled" ng-value="true">Intellectual or developmental disabilities
+                                            <input type="checkbox" name="disability" ng-model="form.devDisabled" ng-value="true"><span class="makeFit">Intellectual or developmental disabilities</span>
                                         </td>
                                         <td>
                                             <input type="checkbox" name="disability" ng-model="form.notDisabled" ng-value="true">None
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="disability" ng-model="form.unknownDisabled" ng-value="true">Unknown/pass/doesn't know
+                                            <input type="checkbox" name="disability" ng-model="form.unknownDisabled" ng-value="true"><span class="makeFit">Unknown/pass/doesn't know</span>
                                         </td>
                                         <td>
                                             <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
