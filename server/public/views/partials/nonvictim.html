@@ -24,7 +24,7 @@
             <ul class="list">
                 <h5><strong>FORMS</strong></h5>
                 <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In-Person</a></li>
                 <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
             </ul>
 
@@ -39,6 +39,7 @@
     <div class="col-md-9" id="dataview">
       <!-- <button onclick="print()">Print this page</button> -->
       <form ng-submit="submitNonVictimForm()">
+        <h3 class="formHeader">Non-victim Contact Form</h3>
         <div class="advocacyType">
             <label for="advocacyType">Type of Advocacy:</label>
             <input class="" type="text" ng-model="form.advocacyType" value="NonVictim" placeholder="NonVictim" readonly/>
@@ -104,7 +105,7 @@
              </div>
            </div>
              <div id="organization">
-             <strong>Organization/Person Calling</strong>
+             <h4><strong>Organization/Person Calling</strong></h4>
              <div class="medical">
                  <label for="medical">Medical:</label>
                  <input class="medicalInput" type="text" ng-model="form.medical" />
@@ -139,7 +140,7 @@
              </div>
          </div>
          <div class="referral">
-           <p>Caller Referral</p>
+           <h3 class="formHeader">Caller Referral</h3>
            <div class="medicalReferral">
                <label for="medicalReferral">Medical:</label>
                <input class="medicalReferralInput" type="text" ng-model="form.medicalReferral" />
@@ -174,6 +175,7 @@
            </div>
          </div>
          <div class="advocacyRequest">
+           <h3 class="formHeader">Advocacy Request</h3>
            <div class="advacacyLocation">
 
                <label>Is this an advocacy request?</label>
@@ -190,8 +192,8 @@
            </div>
            <div class="dispatched">
                <label for="dispatched">If yes, was an advocate dispatched?:</label>
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
-               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
+               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">Yes
+               <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">No
            </div>
 <!--            <div class="responded">
              <label for="responded">If yes, who responded?:</label>

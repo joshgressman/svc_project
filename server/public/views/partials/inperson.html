@@ -24,7 +24,7 @@
             <ul class="list">
                 <h5><strong>FORMS</strong></h5>
                 <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In-Person</a></li>
                 <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
             </ul>
 
@@ -41,12 +41,10 @@
 
       <form name="victimForm">
         <div id="svcAdvocacy">
-          <div class="advocayType">
-              <label for="advocayType">Type of Advocacy:</label>
-              <input class="phone" type="text" ng-model="form.advocacyType" ng-init="form.advocacyType='in-person'" value="in-person"  placeholder="In-Person Advocacy" readonly/>
-
-          </div>
-
+          <h3 class="formHeader">In-Person Contact Form</h3>
+          <div class="advocacyType">
+              <label for="advocacyType">Type of Advocacy:</label>
+              <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
 
             <div class="counselor">
                 <label for="counselorName">Advocate/Counselor Name:</label>
@@ -139,7 +137,7 @@
             </div>
 
             <div class="clientServices">
-              <h4>In-Person Services Provided</h4>
+              <h3 class="formHeader">In-Person Services Provided</h3>
                 <!-- <label for="serviceStatus">Client Services Provided:</label>
                 <input type="radio" name="serviceStatus" value="First contact ever crisis counseling"> First contact ever crisis counseling
                 <input type="radio" name="serviceStatus" value="Follow-up crisis counseling"> Follow-up crisis counseling -->
@@ -183,7 +181,7 @@
                 </div>
             </div>
             <div class="referrals">
-              <h4>Referrals (please fill in name of organization)</h4>
+              <h3 class="formHeader">Referrals (please fill in name of organization)</h3>
                 <table>
                     <tr>
                         <td>
@@ -212,8 +210,9 @@
         <div ng-show="newFiscalYear" class="demoCollection">
           <div ng-show="newFiscalYear" class="demoCollection">
             <div class="alert alert-info">
-              <strong>Demographic Information</strong>
+              <strong>Demographic information required for this client</strong>
             </div>
+            <h3 class="formHeader">Demographics</h3></h3>
             <div class="sexualViolence">
                 <label for="sexualViolence">Type of Sexual Violence</label>
                 <table>
