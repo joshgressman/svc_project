@@ -41,9 +41,11 @@
 
       <form name="victimForm">
         <div id="svcAdvocacy">
-          <div class="advocacyType">
-              <label for="advocacyType">Type of Advocacy:</label>
-              <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
+          <div class="advocayType">
+              <label for="advocayType">Type of Advocacy:</label>
+              <input class="phone" type="text" ng-model="form.advocacyType" ng-init="form.advocacyType='in-person'" value="in-person"  placeholder="In-Person Advocacy" readonly/>
+
+          </div>
 
 
             <div class="counselor">
