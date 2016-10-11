@@ -56,7 +56,7 @@ router.post('/federal/:id', function(req, res) {
             // console.log('ethnicity:', query);
         } else if (table == "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('gender:', query);
+            // console.log('gender:', query);
 
         } else if (table ==  "disability_total_unique") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
@@ -217,7 +217,7 @@ router.post('/county/:id', function(req, res) {
         //     console.log('hotline:', query);
         } else if (table ==  "locations") {
             query = selectDistinct + hennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('SPECIAL', query);
+            // console.log('SPECIAL', query);
         } else if (text == null){
             query = stringQueryWhere + hennepin + " AND (" + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "')";
             // console.log(query);
@@ -340,7 +340,7 @@ router.post('/playground/victim/:id', function(req, res) {
             // console.log('gender:', query);
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('immigrant:', query);                
+            // console.log('immigrant:', query);                
         } else if (text == null) {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground nulls:', query);
