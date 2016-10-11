@@ -1332,7 +1332,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', "$uibModal"
             var standin = [];
             $scope.victimParameters.forEach(function(parameter) {
                 if ($scope.victimObject[objectNumber][parameter] == null) {
-                    $scope.victimObject[objectNumber][parameter] = "null";
+                    $scope.victimObject[objectNumber][parameter] = "-";
                 }
                 // console.log(arrayObject[parameter].toString());
                 if (arrayObject[parameter].toString() == "") {
