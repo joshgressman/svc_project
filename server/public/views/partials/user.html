@@ -19,10 +19,9 @@
           <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
           <script type="text/ng-template" id="myModalContent.html">
               <div class="modal-header">
-                  <h3>Submit Success!</h3>
               </div>
               <div class="modal-body">
-                  Form Confirmation #: {{confirmation}}
+                  <h3><center>New User Added</center></h3>
               </div>
               <div class="modal-footer">
 
@@ -34,7 +33,7 @@
       <form ng-submit="addUser()">
         <div>
             <label for="username">Email:</label>
-            <input type="email" ng-model="user.username" />
+            <input type="email" ng-model="user.username" class="kimInput" />
         </div>
         <div>
             <label for="password">Password:</label>

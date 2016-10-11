@@ -1370,18 +1370,18 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     $scope.makePDF = function() {
         populatePDFArrays();
     }
-    $scope.open = function(_confirmation) {
+    // $scope.open = function(_confirmation) {
 
-        var modalInstance = $uibModal.open({
-            controller: "ModalInstanceCtrl",
-            templateUrl: 'myModalContent.html',
-            resolve: {
-                confirmation: function() {
-                    return _confirmation;
-                }
-            }
-        });
-    }
+    //     var modalInstance = $uibModal.open({
+    //         controller: "ModalInstanceCtrl",
+    //         templateUrl: 'myModalContent.html',
+    //         resolve: {
+    //             confirmation: function() {
+    //                 return _confirmation;
+    //             }
+    //         }
+    //     });
+    // }
     };
     //End code for Playground dropdowns
     var playgroundObjectArray = [{

@@ -231,7 +231,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                 });
                 var data = $scope.form;
                 data.date_entered = new Date();
-
+                console.log(data);
                 $http.post('/dataRoute/victim', data).then(function(response) {
                         $scope.form = {
                             counselor: null,
@@ -316,6 +316,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
                         $http.get('/dataRoute/presentation_victim').then(function(response) {
                                 var formSubmittedId = response.data.length -1;
+                                console.log(formSubmittedId);
                                 var number = response.data[formSubmittedId].id;
 
                                 console.log(response.data);

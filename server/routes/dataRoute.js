@@ -16,8 +16,8 @@ router.get("/presentation_victim", function(req, res) {
             console.log(err);
             res.sendStatus(500);
         }
-        console.log("SELECT * FROM victim");
-        client.query("SELECT * FROM victim",
+        console.log("SELECT * FROM victim ORDER BY id ASC");
+        client.query("SELECT * FROM victim ORDER BY id ASC",
             function(err, result) {
                 done();
                 console.log("Result", result);

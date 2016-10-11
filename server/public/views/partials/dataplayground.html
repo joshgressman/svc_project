@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @kmaimn
- Unwatch 5
-  Star 2
- Fork 1 joshgressman/svc_project
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: corey Find file Copy pathsvc_project/server/public/views/partials/dataplayground.html
-e086b8d  7 hours ago
-@coreypeck coreypeck Fixed merge issues
-3 contributors @coreypeck @kmaimn @kerij
-RawBlameHistory     
-7523 lines (7367 sloc)  481 KB
 <div ng-app="myApp">
     <div ng-controller="adminController" class="container">
         <div class="row">
@@ -89,10 +72,10 @@ RawBlameHistory
                             <option value="inPersonOther">Other In Person Advocacy</option>
                             <option value="phoneServicesProvided">Phone Services Provided</option>
                             <option value="ethnicity">Race/Ethnicity</option>
+                            <option value="victimizationTypesSpecial">Special Classification of Victims</option>                            
                             <option value="supportedOnCall">Supported on Call</option>
                             <option value="transgender">Transgender</option>
                             <option value="victimizationTypes">Types of Victimization: Totals</option>
-                            <option value="victimizationTypesSpecial">Types of Victimization: Special</option>
                             <option value="showCounties">Zip Codes</option>
                         </select>
                         <button class="btn btn-default verticalNegotiation" ng-click="submitting()">Go</button>
@@ -347,7 +330,7 @@ RawBlameHistory
                             </table>
                         </div>
                         <div class="checkBoxList" ng-show="victimizationTypesSpecial">
-                            <h4>Victimization Types (Special):</h4>
+                            <h4>Special Classification of Victims:</h4>
                             <table>
                                 <tr>
                                     <td>
@@ -892,7 +875,7 @@ RawBlameHistory
                                 </tr>
                             </table>
                         </div>
-                        <div class="checkBoxList" ng-show="typeOfServiceNew">
+                        <!-- <div class="checkBoxList" ng-show="typeOfServiceNew">
                             <h4>Type of Service (NEW Clients):</h4>
                             <table>
                                 <tr>
@@ -925,9 +908,9 @@ RawBlameHistory
                                     </td>
                                 </tr>
                             </table>
-                        </div>
+                        </div> -->
                         <div class="checkBoxList" ng-show="inPersonCrisis">
-                            <h4>In Person Crisis Counseling:</h4>
+                            <h4>In-Person Crisis Counseling:</h4>
                             <div>
                                 <input type="checkbox" ng-model="playground.individualCounseling" value="true">One-to-One Counseling
                             </div>
@@ -936,7 +919,7 @@ RawBlameHistory
                             </div>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonLegalCriminal">
-                            <h4>In Person Legal Advocacy (Criminal):</h4>
+                            <h4>In-Person Legal Advocacy (Criminal):</h4>
                             <div>
                                 <input type="checkbox" ng-model="playground.lawEnforcement" value="true">Law Enforcement Interview
                             </div>
@@ -948,7 +931,7 @@ RawBlameHistory
                             </div>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonLegalCivil">
-                            <h4>In Person Legal Advocacy (Civil):</h4>
+                            <h4>In-Person Legal Advocacy (Civil):</h4>
                             <table>
                                 <tr>
                                     <td>
@@ -972,7 +955,7 @@ RawBlameHistory
                             </table>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonMedical">
-                            <h4>In Person Medical Advocacy:</h4>
+                            <h4>In-Person Medical Advocacy:</h4>
                             <div>
                                 <input type="checkbox" ng-model="playground.forensicExam" value="true">Forensic Exam Support
                             </div>
@@ -984,7 +967,7 @@ RawBlameHistory
                             </div>
                         </div>
                         <div class="checkBoxList" ng-show="inPersonOther">
-                            <h4>Other In Person Advocacy:</h4>
+                            <h4>Other In-Person Advocacy:</h4>
                             <div>
                                 <input type="checkbox" ng-model="playground.informationReferral" value="true">Information and Referral
                             </div>
@@ -5827,7 +5810,7 @@ RawBlameHistory
 
                                 <div ng-show="showMale" class="row">
                                     <div class="row">
-                                        <div class="col-md-4 text-left"><strong>Male</strong></div>
+                                        <div class="col-md-4 text-left kim_padding"><strong>Male</strong></div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
                                     <div class="row">
@@ -5836,16 +5819,16 @@ RawBlameHistory
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
+                                            45%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
+                                            18%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.yPrime / total) * 100 | number:1}}%
+                                            27%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
+                                            10%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5854,22 +5837,22 @@ RawBlameHistory
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.aPrime}}
+                                             5
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.aSecond}}
+                                             2
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.yPrime}}
+                                             3
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Male.ySecond}}
+                                             1
                                         </div>
                                     </div>
                                 </div>
                                 <div ng-show="showFemale" class="row">
                                     <div class="row">
-                                        <div class="col-md-4 text-left"><strong>Female</strong></div>
+                                        <div class="col-md-4 text-left kim_padding"><strong>Female</strong></div>
                                         <div class="col-md-8 text-center"> </div>
                                     </div>
                                     <div class="row">
@@ -5878,16 +5861,16 @@ RawBlameHistory
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.aPrime / total) * 100 | number:1}}%
+                                            47%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.aSecond / total) * 100 | number:1}}%
+                                            18%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.yPrime / total) * 100 | number:1}}%
+                                            27%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
+                                            10%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5896,16 +5879,16 @@ RawBlameHistory
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.aPrime}}
+                                            34
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.aSecond}}
+                                            13
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.yPrime}}
+                                            20
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Female.ySecond}}
+                                             6
                                         </div>
                                     </div>
                                 </div>
@@ -6297,7 +6280,7 @@ RawBlameHistory
 
                                 <div ng-show="violenceBullying" class="row">
                                     <div class="row">
-                                        <div class="col-md-12 text-left">
+                                        <div class="col-md-12 text-left kim_padding">
                                             <strong>Bullying</strong>
                                         </div>
                                     </div>
@@ -6307,16 +6290,16 @@ RawBlameHistory
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.aPrime / total) * 100 | number:1}}%
+                                            30%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.aSecond / total) * 100 | number:1}}%
+                                            10%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.yPrime / total) * 100 | number:1}}%
+                                            40%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
+                                            20%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -6325,16 +6308,16 @@ RawBlameHistory
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.aPrime}}
+                                             3
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.aSecond}}
+                                             1
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.yPrime}}
+                                             4
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_total.ySecond}}
+                                             2
                                         </div>
                                     </div>
                                 </div>
@@ -7537,5 +7520,3 @@ RawBlameHistory
         </div>
     </div>
 </div>
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
