@@ -705,66 +705,6 @@
                         </div>
                         <uib-accordion close-others="oneAtATime">
                             <div ng-show="typeOfVictim" uib-accordion-group class="panel-default text-center" heading="Victim/Survivor Information">
-                                <!-- <div class="row">
-                                    <div class="col-md-9 text-left">
-                                        <strong>Type of Victim/Survivor</strong>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="adultPrimary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adult Primary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="adultSecondary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Adult Secondary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="youthPrimary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Youth Primary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div ng-show="youthSecondary" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Youth Secondary Victim/Survivor
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{people}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <div ng-show="showIndividual" uib-accordion-group class="panel-default text-center" heading="Individuals who recieved services during the reporting period">
@@ -4208,8 +4148,6 @@
                                 </div>    
                             </div>
 
-                            <!-- The Rows are currently misaligned, this can be fixed by adjusting the padding. It would be preferable to adjust the padding on the text (The left) rather than the numbers (the right) -->
-
                             <div ng-show="ethnicity" uib-accordion-group class="panel-default text-center" heading="Demographics: Race/Ethnicity">
                                 <div class="row">
                                     <div class="col-md-4 text-left">
@@ -4572,22 +4510,7 @@
                                         </div>
                                     </div>
                                 </div>
-<!--                                 
-                                <div ng-show="showNotReportedRace" class="row">
-                                    <div class="col-md-9 text-left">
-                                        Not Reported
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                {{primary}}
-                                            </p>
-                                            <p class="col-md-6 text-center">
-                                                {{secondary}}
-                                            </p>
-                                        </p>
-                                    </div>
-                                </div> -->
+
                                 <div ng-show="showEthnicityTotal" class="row">
                                     <div class="row">
                                         <div class="col-md-4 text-left">Race/Ethnicity Totals</div>
@@ -5403,9 +5326,8 @@
                                 </div>
                             </div>
 
-<!-- FIX THIS -->
-
-                            <div ng-show="typeOfServiceNew" uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
+<!-- REMOVED SINCE INFO IS ALREADY REPORTED IN OTHER SECTIONS -->
+<!--                             <div ng-show="typeOfServiceNew" uib-accordion-group class="panel-default text-center" heading="Type of Service (NEW Clients)">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Service</strong>
@@ -5480,7 +5402,7 @@
                                 </div>
                             </div>
 
-<!-- FIX THIS  -->
+FIX THIS  -->
 
                             <div ng-show="genderIdentity" uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
                                 <div class="row">
