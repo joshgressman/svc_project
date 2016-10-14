@@ -1292,33 +1292,34 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                 // console.log('response:', response);
                 $scope.victimObject = response.data;
                 // console.log($scope.victimObject);
+                console.log(response.data[0]);
                 $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
+                            $scope.makePDF();
                 // console.log($scope.victimParameters);
-                getNonVictim(data);
+                // getNonVictim(data);
             }, function() {
                 // console.log("Get Error");
             });
         }
     }
 
-    function getNonVictim(data) {
-        $scope.showTotalNonVictim = true;
-        $http({
-            method: "POST",
-            url: '/reportRoute/playground/nonVictim',
-            data: data
-        }).then(function(response) {
-            // console.log("Get Success");
-            // console.log('response:', response);
-            $scope.nonVictimObject = response.data;
-            // console.log($scope.nonVictimObject);
-            $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
-            $scope.makePDF();
-            // console.log($scope.nonVictimParameters);
-        }, function() {
-            // console.log("Get Error");
-        });
-    }
+    // function getNonVictim(data) {
+    //     $scope.showTotalNonVictim = true;
+    //     $http({
+    //         method: "POST",
+    //         url: '/reportRoute/playground/nonVictim',
+    //         data: data
+    //     }).then(function(response) {
+    //         // console.log("Get Success");
+    //         // console.log('response:', response);
+    //         $scope.nonVictimObject = response.data;
+    //         // console.log($scope.nonVictimObject);
+    //         $scope.nonVictimParameters = Object.getOwnPropertyNames(response.data[0]);
+    //         // console.log($scope.nonVictimParameters);
+    //     }, function() {
+    //         // console.log("Get Error");
+    //     });
+    // }
     var feebleAttempt = [];
 
     function populatePDFArrays() {
@@ -1364,7 +1365,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         };
         pdfMake.createPdf(docDefinition).download('getAllReports.pdf');
         $scope.resetSearch();
-        $scope.open($scope.confirmation);
+        // $scope.open($scope.confirmation);
     }
 
     $scope.makePDF = function() {

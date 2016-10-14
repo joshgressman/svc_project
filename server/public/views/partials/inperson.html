@@ -29,12 +29,12 @@
                 <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
                 <script type="text/ng-template" id="myModalContent.html">
                     <div class="modal-header">
-                        <h3>Submit Success!</h3>
+                        <h3>Successful Entry</h3>
                     </div>
                     <div class="modal-body">
-                        <h4><strong>Form Confirmation #: {{confirmation}}</strong></h4>
-                    </div>
-                    <div class="modal-footer">
+                        <h4><strong>Confirmation #: {{confirmation}}</strong></h4>
+                    <!-- </div> -->
+                    <!-- <div class="modal-footer"> -->
 
                     </div>
                 </script>
@@ -301,9 +301,9 @@
                                 <input type="radio" name="gender" ng-model="form.gender" value="other"> Other
                                 </br>
                                 <label for="transgender">Transgender:</label>
-                                <input type="radio" name="transgender" ng-model="form.trans" ng-value="true"> Yes
-                                <input type="radio" name="transgender" ng-model="form.trans" ng-value="false"> No
-                                <input type="radio" name="transgender" ng-model="form.trans" ng-value="null"> Unknown/Pass
+                                <input type="radio" name="transgender" ng-model="form.trans" value="true"> Yes
+                                <input type="radio" name="transgender" ng-model="form.trans" value="false"> No
+                                <input type="radio" name="transgender" ng-model="form.trans" value="null"> Unknown/Pass
                                 <div class="sexualOrientation">
                                     <label for="sexualOrientation">Sexual Orientation:</label>
                                     <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->

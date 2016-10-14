@@ -440,3 +440,9 @@ text-align:center;
 .kim_lower{
   margin-bottom: 10px;
 }
+
+.modal-header{
+  background-color: #085078;
+  color: #fff;
+}
+
