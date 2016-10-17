@@ -23,20 +23,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         window.print();
     };
 
-    $scope.customers = [
-        // {
-        // name: 'Ricky',
-        // details: 'Some Details for Ricky',
-        // },
-        // {
-        // name: 'Dicky',
-        // details: 'Some Dicky Details',
-        // },
-        // {
-        // name: 'Nicky',
-        // details: 'Some Nicky Details',
-        // }
-    ];
     $scope.form = {
         counselor: null,
         date: null,

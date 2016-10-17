@@ -90,15 +90,26 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
                         medicalAdvocacyRequest: null,
                     };
                     $http.get('/dataRoute/presentation_nonvictim').then(function(response) {
-                      var formSubmittedId = response.data.length-1;
+                      var formSubmittedId = response.data.length -1;
+                      console.log(formSubmittedId);
+                      var number = response.data[formSubmittedId].id;
+
+                      console.log(response.data);
+                      console.log(number);
+                      $scope.confirmation = number;
+                      $scope.open($scope.confirmation);
+                      $scope.message = "Form Submited."
+                          // $scope.showMessage = true;
+                          // $scope.message = "Form " + response.data[formSubmittedId].id + " Submitted.";
+                  },
+                  function(response) {
                       $scope.showMessage = true;
-                      $scope.message = "Form " + response.data[formSubmittedId].id +  " Submitted.";
-                    },
-                    function(response) {
-                        $scope.showMessage = true;
-                        $scope.message = "Please try again.";
-                    });
-                },
+                      $scope.message = "Please try again.";
+                  });
+          // },
+            },
+
+
                 function(response) {
                     console.log('error');
                     $scope.form = {
