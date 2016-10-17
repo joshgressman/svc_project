@@ -1,5 +1,5 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
-  console.log("nonVictimController is running");
+  // console.log("nonVictimController is running");
 
     $scope.print = function() {
         window.print();
@@ -48,13 +48,13 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
             $scope.message = "Please enter a Date before submitting the form";
         } else {
             var data = $scope.form;
-            console.log(data);
+            // console.log(data);
 
             data.date_entered = new Date();
 
-            console.log('sending to server non vict data', data);
+            // console.log('sending to server non vict data', data);
             $http.post('/dataRoute/nonvictim', data).then(function(response) {
-                    console.log('success');
+                    // console.log('success');
                     $scope.form = {
                         counselor: null,
                         date: null,
@@ -91,11 +91,11 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
                     };
                     $http.get('/dataRoute/presentation_nonvictim').then(function(response) {
                       var formSubmittedId = response.data.length -1;
-                      console.log(formSubmittedId);
+                      // console.log(formSubmittedId);
                       var number = response.data[formSubmittedId].id;
 
-                      console.log(response.data);
-                      console.log(number);
+                      // console.log(response.data);
+                      // console.log(number);
                       $scope.confirmation = number;
                       $scope.open($scope.confirmation);
                       $scope.message = "Form Submited."
@@ -111,7 +111,7 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
 
 
                 function(response) {
-                    console.log('error');
+                    // console.log('error');
                     $scope.form = {
                         counselor: null,
                         date: null,

@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.accordionSpacing{
+  margin-top: 10px;
+}
+
 .error{
   background-color: #085078;
   color: #fff;

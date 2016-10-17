@@ -779,8 +779,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
             var swapToEnd = $scope.dateStart;
-            console.log(swapToStart);
-            console.log(swapToEnd);
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
             $scope.dateStart = swapToStart;
             $scope.dateEnd = swapToEnd;
           }
@@ -880,8 +880,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
             var swapToEnd = $scope.dateStart;
-            console.log(swapToStart);
-            console.log(swapToEnd);
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
             $scope.dateStart = swapToStart;
             $scope.dateEnd = swapToEnd;
           }
@@ -1162,8 +1162,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
             var swapToEnd = $scope.dateStart;
-            console.log(swapToStart);
-            console.log(swapToEnd);
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
             $scope.dateStart = swapToStart;
             $scope.dateEnd = swapToEnd;
           }
@@ -1197,14 +1197,14 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                             $scope.begin = $scope.playground.age.start;
                             $scope.end = $scope.playground.age.end;
                         }
-                        console.log('data to send to server:', data);
+                        // console.log('data to send to server:', data);
                         $http({
                             method: "POST",
                             url: '/reportRoute/playground/victim/' + object.table,
                             data: data
                         }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
+                        // console.log("Get Success");
+                        // console.log('response:', response);
                         var playgroundInfo = {};
                         var aPrime = 0;
                         var aSecond = 0;
@@ -1241,7 +1241,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                             //     playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                             //     break;
                             case "victim_zipcode":
-                            console.log("victim zipcode Running");
+                            // console.log("victim zipcode Running");
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
@@ -1262,13 +1262,11 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                         }
                         // $scope.playgroundInfo[objectParam].total = parseInt(playgroundInfo[objectParam].yPrime + playgroundInfo[objectParam].ySecond);
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
+                        // console.log('hello', $scope.playgroundInfo);
                         $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('hello again', $scope.total);
-
-
+                        // console.log('hello again', $scope.total);
                     }, function() {
-                        console.log("Get Error");
+                        // console.log("Get Error");
                     });
                     // });
                 }
@@ -1317,7 +1315,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                 // console.log('response:', response);
                 $scope.victimObject = response.data;
                 // console.log($scope.victimObject);
-                console.log(response.data[0]);
+                // console.log(response.data[0]);
                 $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
                             $scope.makePDF();
                 // console.log($scope.victimParameters);
@@ -1351,7 +1349,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         var victimHeader = $scope.victimParameters;
         // console.log(victimHeader);
         feebleAttempt.push(victimHeader);
-        console.log(feebleAttempt);
+        // console.log(feebleAttempt);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
@@ -1364,12 +1362,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                     arrayObject[parameter] = "null";
                 }
                 var objectThing = arrayObject[parameter].toString();
-                console.log(objectThing);
+                // console.log(objectThing);
                 standin.push(objectThing);
                 // console.log(standin);
             });
             feebleAttempt.push(standin);
-            console.log(feebleAttempt);
+            // console.log(feebleAttempt);
         });
         // console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 200);
