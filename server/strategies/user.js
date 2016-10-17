@@ -5,12 +5,12 @@ var encryptLib = require('../modules/encryption');
 var pg = require('pg');
 
 var config = {
-  user: 'kimmai', //env var: PGUSER
+  user: 'coreypeck', //env var: PGUSER
   database: 'svc', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT
   max: 1000, // max number of clients in the pool
-  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  idleTimeoutMillis: 1500, // how long a client is allowed to remain idle before being closed
 };
 
 

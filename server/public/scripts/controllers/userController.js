@@ -1,4 +1,5 @@
 myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
+  console.log("userController is running");
 
   $scope.user = {
     username: '',
