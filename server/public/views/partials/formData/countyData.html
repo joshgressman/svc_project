@@ -1,1573 +1,1567 @@
  {{confirmation}}
- <div  ng-app="myApp">
+<div ng-app="myApp">
 
-     <div class="container">
-         <div class="row">
-             <div class="col-md-2 col-sm-4 sidebar1">
-                 <div class="logo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <div class="logo">
                     <h4 class="sidebarTitle">County Report Page</h4>
-                     <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
-                 </div>
-                 <br>
-                 <div class="left-navigation">
-                     <ul class="list">
-                         <h5><strong>OTHER REPORTS</strong></h5>
-                         <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
-                         <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
-                         <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
-                     </ul>
+                    <!-- <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo"> -->
+                </div>
+                <br>
+                <div class="left-navigation">
+                    <ul class="list">
+                        <h5><strong>OTHER REPORTS</strong></h5>
+                        <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
+                    </ul>
 
-                     <br>
+                    <br>
 
-                     <ul  class="list">
-                         <h5><strong>ACTIONS</strong></h5>
-                         <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
-                     </ul>
-                 </div>
-             </div>
+                    <ul class="list">
+                        <h5><strong>ACTIONS</strong></h5>
+                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                    </ul>
+                </div>
+            </div>
 
-             <!-- I am unsure whether the above buttons are included in this partial. -->
-             <!-- Below is where the actual code start -->
-             <div class="col-md-9" id="dataview" ng-controller="adminController">
-               <div class="dateRange">
-                 <P>Select a date ranges for reporting</P>
-                   <label for="startDate">Start Date:</label>
-                   <input class="startDate" type="date" ng-model="dateStart" />
-                   <label for="endDate">End Date:</label>
-                   <input class="endDate" type="date" ng-model="dateEnd" />
-                   <button class="button" name="queryButton" ng-click="getStuffCounty()">Go</button>
+            <!-- I am unsure whether the above buttons are included in this partial. -->
+            <!-- Below is where the actual code start -->
+            <div class="col-md-9" id="dataview" ng-controller="adminController">
+                <div class="dateRange">
+                    <P>Select a date ranges for reporting</P>
+                    <label for="startDate">Start Date:</label>
+                    <input class="startDate" type="date" ng-model="dateStart" />
+                    <label for="endDate">End Date:</label>
+                    <input class="endDate" type="date" ng-model="dateEnd" />
+                    <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button>
 
-               </div>
-                 <div>
+                </div>
+                <div>
+                    <!-- Template for the Accordion -->
 
-                   <!-- Template for the Accordion -->
-
-                     <script type="text/ng-template" id="group-template.html">
-                         <div class="panel panel-default">
-                             <div class="panel-heading">
-                                 <h4 class="panel-title">
+                    <script type="text/ng-template" id="group-template.html">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
                            <a href class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
                              <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
                                {{heading}}
                              </span>
                            </a>
                          </h4>
-                             </div>
-                             <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                                 <div class="panel-body" style="text-align: right" ng-transclude></div>
-                             </div>
-                         </div>
-                     </script>
+                            </div>
+                            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                                <div class="panel-body" style="text-align: right" ng-transclude></div>
+                            </div>
+                        </div>
+                    </script>
 
-                     <!-- End Template -->
-
-                     <p>
-
-
-                       <button><a href="/views/countyRep.html">Go To Print Page</a></button>
-
-                         <!-- <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button> -->
-                     </p>
-
-
-                     <div class="checkbox">
-                         <label>
+                    <!-- End Template -->
+                    <div ng-show="showCountyData">
+                        <p>
+                            <button class="btn btn-default"><a href="/views/countyRep.html">Go To Print Page</a></button>
+                        </p>
+                        <div class="checkbox">
+                            <label>
                        <input type="checkbox" ng-model="oneAtATime">
                        Open only one at a time
                      </label>
-                     </div>
-                     <uib-accordion close-others="oneAtATime">
+                        </div>
+                        <uib-accordion close-others="oneAtATime">
 
-                         <!-- Individuals who received services during the reporting period -->
+                            <!-- Individuals who received services during the reporting period -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Hennepin County residents who received services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Type of Individual</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Number</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Total Clients Served (Duplicated)
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.total_overall}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Hennepin County residents who received services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Type of Individual</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Total Clients Served (Duplicated)
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.total_overall}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- NEW individuals who received services during the reporting period -->
+                            <!-- NEW individuals who received services during the reporting period -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="NEW Hennepin County residents who recieved services during the reporting period">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Type of Individual</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Number</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Total Clients Served During the Reporting Period
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.total_new}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Total Clients Served in Advocacy Program
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.total_new}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Total Clients Served in Individual Counseling Program
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.crisis_counseling_individual}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Total Clients Served in Group Counseling Program
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.crisis_counseling_group}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Location of Support Groups
-                                     <div class='row'>
-                                         <div class="col-md-1 text-left"></div>
-                                         <div class="col-md-8 text-left">
-                                             <div ng-repeat="location in locations.data">
-                                             <li>{{location.service_location}}</li>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="NEW Hennepin County residents who recieved services during the reporting period">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Type of Individual</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Total Clients Served During the Reporting Period
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.total_new}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Total Clients Served in Advocacy Program
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.total_new}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Total Clients Served in Individual Counseling Program
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.crisis_counseling_individual}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Total Clients Served in Group Counseling Program
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.crisis_counseling_group}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Location of Support Groups
+                                        <div class='row'>
+                                            <div class="col-md-1 text-left"></div>
+                                            <div class="col-md-8 text-left">
+                                                <div ng-repeat="location in locations.data">
+                                                    <li>{{location.service_location}}</li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- By victim type -->
-                         <div uib-accordion-group class="panel-default text-center" heading="NEW Hennepin County residents by victim type who recieved services during the reporting period">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Type of Individual</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Number</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Adult Primary Victim/Survivor
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_type_adultPrimaryVictim}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Adult Secondary Victim/Survivor
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_type_adultPrimaryVictim}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Youth Primary Victim/Survivor
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_type_youthPrimaryVictim}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Youth Secondary Victim/Survivor
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_type_youthSecondaryVictim}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
-                         <!-- Hennepin County Zip Code Totals -->
+                            <!-- By victim type -->
+                            <div uib-accordion-group class="panel-default text-center" heading="NEW Hennepin County residents by victim type who recieved services during the reporting period">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Type of Individual</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Adult Primary Victim/Survivor
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_type_adultPrimaryVictim}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Adult Secondary Victim/Survivor
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_type_adultPrimaryVictim}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Youth Primary Victim/Survivor
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_type_youthPrimaryVictim}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Youth Secondary Victim/Survivor
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_type_youthSecondaryVictim}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hennepin County Zip Code Totals -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Hennepin County Zip Code Totals">
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     <strong>Zip Code</strong>
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             <strong>Total</strong>
-                                     </p>
-                                 </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Hennepin County Zip Code Totals">
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        <strong>Zip Code</strong>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            <strong>Total</strong>
+                                        </p>
+                                    </div>
 
-                                 <div class="row">
-                                     <div class="col-md-4 text-left">
-                                         <strong>Zip Code</strong>
-                                     </div>
-                                     <div class="col-md-2 text-center">
-                                         <p class="row">
-                                                 <strong>Total</strong>
-                                         </p>
-                                     </div>
-                                 </div>
-                             </div>
+                                    <div class="row">
+                                        <div class="col-md-4 text-left">
+                                            <strong>Zip Code</strong>
+                                        </div>
+                                        <div class="col-md-2 text-center">
+                                            <p class="row">
+                                                <strong>Total</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55111
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55111}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55410
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55410}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55111
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55111}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55410
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55410}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55305
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55305}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55411
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55411}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55305
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55305}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55411
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55411}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55311
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55311}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55412
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55412}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55311
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55311}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55412
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55412}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55316
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55316}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55413
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55413}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55316
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55316}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55413
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55413}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55317
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55317}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55414
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55414}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55317
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55317}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55414
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55414}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55327
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55327}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55415
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55415}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55327
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55327}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55415
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55415}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55328
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55328}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55416
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55416}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55328
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55328}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55416
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55416}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55331
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55331}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55417
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55417}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55331
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55331}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55417
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55417}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55340
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55340}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55418
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55418}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55340
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55340}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55418
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55418}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55341
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55341}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55419
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55419}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55341
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55341}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55419
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55419}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55343
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55343}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55420
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55420}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55343
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55343}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55420
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55420}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55344
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55344}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55422
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55422}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55344
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55344}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55422
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55422}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55345
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55345}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55423
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55423}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55345
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55345}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55423
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55423}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55346
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55346}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55424
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55424}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55346
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55346}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55424
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55424}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55347
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55347}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55425
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55425}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55347
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55347}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55425
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55425}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55356
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55356}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55426
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55426}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55356
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55356}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55426
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55426}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55357
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55357}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55427
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55427}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55357
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55357}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55427
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55427}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55359
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55359}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55428
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55428}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55359
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55359}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55428
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55428}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55361
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55361}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55429
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55429}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55361
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55361}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55429
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55429}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55364
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55364}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55430
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55430}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55364
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55364}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55430
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55430}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55369
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55369}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55431
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55431}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55369
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55369}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55431
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55431}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55373
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55373}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55435
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55435}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55373
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55373}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55435
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55435}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55374
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55374}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55436
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55436}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55374
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55374}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55436
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55436}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55375
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55375}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55437
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55437}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55375
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55375}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55437
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55437}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55384
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55384}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55438
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55438}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55384
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55384}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55438
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55438}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55387
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55387}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55439
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55439}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55387
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55387}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55439
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55439}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55388
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55388}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55441
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55441}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55388
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55388}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55441
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55441}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55391
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55391}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55442
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55442}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55391
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55391}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55442
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55442}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55392
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55392}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55443
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55443}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55392
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55392}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55443
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55443}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55401
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55401}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55444
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55444}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55401
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55401}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55444
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55444}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55402
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55402}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55445
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55445}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55402
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55402}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55445
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55445}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55403
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55403}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55446
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55446}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55403
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55403}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55446
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55446}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55404
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55404}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55447
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55447}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55404
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55404}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55447
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55447}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55405
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55405}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55450
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55450}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55405
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55405}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55450
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55450}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55406
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55406}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55454
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55454}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55406
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55406}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55454
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55454}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55407
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55407}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     55455
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55455}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55407
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55407}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        55455
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55455}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55408
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55408}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     Other
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_other}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55408
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55408}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        Other
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_other}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
-                                     55409
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_55409}}
-                                     </p>
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     Unknown
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_unknown}}
-                                     </p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
+                                        55409
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_55409}}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        Unknown
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_unknown}}
+                                        </p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-12 text-left">
-                                     <p class="row"></p>
-                                 </div>
-                             </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-left">
+                                        <p class="row"></p>
+                                    </div>
+                                </div>
 
-                             <div class="row">
-                                 <div class="col-md-4 text-left">
+                                <div class="row">
+                                    <div class="col-md-4 text-left">
 
-                                 </div>
-                                 <div class="col-md-2 text-center">
+                                    </div>
+                                    <div class="col-md-2 text-center">
 
-                                 </div>
-                                 <div class="col-md-4 text-left">
-                                     Total
-                                 </div>
-                                 <div class="col-md-2 text-center">
-                                     <p class="row">
-                                             {{countyInfo.victim_zipcode_total}}
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
+                                    </div>
+                                    <div class="col-md-4 text-left">
+                                        Total
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="row">
+                                            {{countyInfo.victim_zipcode_total}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- The Rows are currently misaligned, this can be fixed by adjusting the padding. It would be preferable to adjust the padding on the text (The left) rather than the numbers (the right) -->
+                            <!-- The Rows are currently misaligned, this can be fixed by adjusting the padding. It would be preferable to adjust the padding on the text (The left) rather than the numbers (the right) -->
 
-                         <!-- Demographics: Age -->
+                            <!-- Demographics: Age -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Age Range</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Total</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     0 - 18 years
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_age_018}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     19 - 50 years
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_age_1950}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     50+ years
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_age_50}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Unknown
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_age_null}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Age">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Age Range</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Total</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        0 - 18 years
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_age_018}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        19 - 50 years
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_age_1950}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        50+ years
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_age_50}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Unknown
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_age_null}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- Demographics: Gender Identity -->
+                            <!-- Demographics: Gender Identity -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Gender Identity</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Number</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Male
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_gender_Male}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Female
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_gender_Female}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Transgender
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_trans}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Unknown
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_gender_null}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Gender Identity">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Gender Identity</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Male
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_gender_Male}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Female
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_gender_Female}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Transgender
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_trans}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Unknown
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_gender_null}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- Demographics: Race/Ethnicity -->
+                            <!-- Demographics: Race/Ethnicity -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Demographics: Race/Ethnicity">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Race/Ethnicity</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Primary</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     American Indian of Alaskan Native
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_native_american}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Asian
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_asian}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Black or African American
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_african_american_black}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Hispanic or Latino
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_chicano_latino}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Native Hawaiian or Other Pacific Islander
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_hawaiian_pacific_islander}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     White Non-Latino or Caucasian
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_white}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Some Other Race
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_other}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Multiple Races
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_multi-racial}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Not Reported
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_unknown}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Race/Ethnicity Total
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.victim_ethnicity_total}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Demographics: Race/Ethnicity">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Race/Ethnicity</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Primary</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        American Indian of Alaskan Native
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_native_american}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Asian
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_asian}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Black or African American
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_african_american_black}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Hispanic or Latino
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_chicano_latino}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Native Hawaiian or Other Pacific Islander
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_hawaiian_pacific_islander}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        White Non-Latino or Caucasian
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_white}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Some Other Race
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_other}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Multiple Races
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_multi-racial}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Not Reported
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_unknown}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Race/Ethnicity Total
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.victim_ethnicity_total}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                         <!-- Types of Victimization -->
+                            <!-- Types of Victimization -->
 
-                         <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization">
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     <strong>Victimization Types</strong>
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             <strong>Number</strong>
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Adult Sexual Assault
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_adult_sexual}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Adult Sexually Abused/Assaulted as Children Total
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_adult_child_family + countyInfo.violence_adult_child_other}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Adult Sexually Abused/Assaulted as Children by Family
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_adult_child_family}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Adult Sexually Abused/Assaulted as Children by Other
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_adult_child_other}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Bullying
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_bullying}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Child Pornography
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_child_pornography}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Child Sexual Abuse/Assault Total
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{ountyInfo.violence_minor_other + countyInfo.violence_minor_family}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Child Sexual Abuse/Assault by Family
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_minor_family}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Child Sexual Abuse/Assault by Other
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_minor_other}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Domestic And/Or Family Violence
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_domestic}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Elder Abuse or Neglect
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_elder}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Human Trafficking: Sex
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_exploitation}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Stalking/Harassment Total
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_stalking + countyInfo.violence_phone + countyInfo.violence_internet + countyInfo.violence_harassment + countyInfo.violence_exposing}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Stalking/Harassment - Exposing
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_exposing}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Stalking/Harassment - Harassment
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_harassment}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Stalking/Harassment - Internet
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_internet}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Stalking/Harassment - Phone
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_phone}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-1 text-left"></div>
-                                 <div class="col-md-8 text-left">
-                                     Stalking/Harassment - Stalking
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_stalking}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Teen Dating Victimization
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_teen_dating}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Other
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_other}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-9 text-left">
-                                     Unknown/Pass/Doesn't Know
-                                 </div>
-                                 <div class="col-md-3 text-center">
-                                     <p class="row">
-                                         <p class="col-md-6 text-center">
-                                             {{countyInfo.violence_unknown}}
-                                         </p>
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
-                     </uib-accordion>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
+                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization">
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        <strong>Victimization Types</strong>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                <strong>Number</strong>
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Adult Sexual Assault
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_adult_sexual}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Adult Sexually Abused/Assaulted as Children Total
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_adult_child_family + countyInfo.violence_adult_child_other}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Adult Sexually Abused/Assaulted as Children by Family
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_adult_child_family}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Adult Sexually Abused/Assaulted as Children by Other
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_adult_child_other}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Bullying
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_bullying}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Child Pornography
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_child_pornography}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Child Sexual Abuse/Assault Total
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{ountyInfo.violence_minor_other + countyInfo.violence_minor_family}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Child Sexual Abuse/Assault by Family
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_minor_family}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Child Sexual Abuse/Assault by Other
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_minor_other}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Domestic And/Or Family Violence
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_domestic}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Elder Abuse or Neglect
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_elder}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Human Trafficking: Sex
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_exploitation}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Stalking/Harassment Total
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_stalking + countyInfo.violence_phone + countyInfo.violence_internet + countyInfo.violence_harassment + countyInfo.violence_exposing}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Stalking/Harassment - Exposing
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_exposing}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Stalking/Harassment - Harassment
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_harassment}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Stalking/Harassment - Internet
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_internet}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Stalking/Harassment - Phone
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_phone}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 text-left"></div>
+                                    <div class="col-md-8 text-left">
+                                        Stalking/Harassment - Stalking
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_stalking}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Teen Dating Victimization
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_teen_dating}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Other
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_other}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-left">
+                                        Unknown/Pass/Doesn't Know
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <p class="row">
+                                            <p class="col-md-6 text-center">
+                                                {{countyInfo.violence_unknown}}
+                                            </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
