@@ -1,5 +1,5 @@
 myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
-  console.log("userController is running");
+  // console.log("userController is running");
 
   $scope.user = {
     username: '',
@@ -15,9 +15,9 @@ myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal',
         if($scope.user.username == '' || $scope.user.password == '') {
           $scope.message = "You must enter a username and password to create a new user.";
         } else {
-          console.log('sending to server...', data);
+          // console.log('sending to server...', data);
           $http.post('/register', data).then(function(response) {
-          console.log('success');
+          // console.log('success');
           $scope.user = {
               username: '',
               password: ''
@@ -27,7 +27,7 @@ myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal',
           $location.path('/admin');
           },
           function(response) {
-            console.log('error');
+            // console.log('error');
           });
       }
     }

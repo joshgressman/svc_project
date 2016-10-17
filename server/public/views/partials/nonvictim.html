@@ -24,7 +24,7 @@
             <ul class="list">
                 <h5><strong>FORMS</strong></h5>
                 <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In-Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
                 <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
             </ul>
 
@@ -38,7 +38,23 @@
     </div>
     <div class="col-md-9" id="dataview">
       <!-- <button onclick="print()">Print this page</button> -->
+      <div>
+          <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+          <script type="text/ng-template" id="myModalContent.html">
+              <div class="modal-header">
+                  <h3>Submit Success!</h3>
+              </div>
+              <div class="modal-body">
+                  Form Confirmation #: {{confirmation}}
+              </div>
+              <div class="modal-footer">
 
+              </div>
+          </script>
+      </div>
+        <div class="error" ng-show="showMessage">
+            <strong>{{message}}</strong>
+        </div>
       <form ng-submit="submitNonVictimForm()">
         <h3 class="formHeader">Non-Victim Contact Form</h3>
         <div class="advocacyType">
@@ -194,8 +210,8 @@
                         </div>
                         <div class="dispatched">
                             <label for="dispatched">If yes, was an advocate dispatched?:</label>
-                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">YES
-                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">NO
+                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="true">Yes
+                            <input type="radio" name="dispatched" ng-model="form.dispatched" ng-value="false">No
                         </div>
                         <div class="responded">
                             <label for="responded">If yes, who responded?:</label>

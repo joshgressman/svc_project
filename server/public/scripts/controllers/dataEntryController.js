@@ -1,5 +1,5 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
-  console.log("dataEntryController is running");
+  // console.log("dataEntryController is running");
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
@@ -23,20 +23,6 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         window.print();
     };
 
-    $scope.customers = [
-        // {
-        // name: 'Ricky',
-        // details: 'Some Details for Ricky',
-        // },
-        // {
-        // name: 'Dicky',
-        // details: 'Some Dicky Details',
-        // },
-        // {
-        // name: 'Nicky',
-        // details: 'Some Nicky Details',
-        // }
-    ];
     $scope.form = {
         counselor: null,
         date: null,
@@ -232,7 +218,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
                 });
                 var data = $scope.form;
                 data.date_entered = new Date();
-                console.log(data);
+                // console.log(data);
                 $http.post('/dataRoute/victim', data).then(function(response) {
                         $scope.form = {
                             counselor: null,
@@ -317,11 +303,11 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
                         $http.get('/dataRoute/presentation_victim').then(function(response) {
                                 var formSubmittedId = response.data.length -1;
-                                console.log(formSubmittedId);
+                                // console.log(formSubmittedId);
                                 var number = response.data[formSubmittedId].id;
 
-                                console.log(response.data);
-                                console.log(number);
+                                // console.log(response.data);
+                                // console.log(number);
                                 $scope.confirmation = number;
                                 $scope.open($scope.confirmation);
                                 $scope.message = "Form Submited."
@@ -372,24 +358,24 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
     $scope.updateForm = function() {
         var data = {}
         var route = '/dataRoute/victim/';
-        console.log('type', $scope.table);
+        // console.log('type', $scope.table);
         if ($scope.table.nonvictim == true) {
             route = '/dataRoute/nonvictim/';
         }
-        console.log('route', route);
+        // console.log('route', route);
         // var info = Object.getOwnPropertyNames($scope.table);
         var id = parseInt($scope.update.id);
         data = $scope.update;
-        console.log("update id", id);
-        console.log("update data", data);
+        // console.log("update id", id);
+        // console.log("update data", data);
         $http({
             method: "PUT",
             url: route + id,
             data: data
         }).then(function(response) {
-            console.log("PUT Success");
-            console.log(response);
-            $scope.confirmation = 26;
+            // console.log("PUT Success");
+            // console.log(response);
+            // $scope.confirmation = 26;
             $scope.open($scope.confirmation);
         });
     }
@@ -402,15 +388,15 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         if ($scope.table.nonvictim == true) {
             route = '/dataRoute/nonvictim/';
         }
-        console.log('id', id);
+        // console.log('id', id);
         $http({
             method: "DELETE",
             url: route + id,
         }).then(function(response) {
-            $scope.confirmation = 26;
+            // $scope.confirmation = 26;
             $scope.open($scope.confirmation);
-            console.log("DELETE Success");
-            console.log(response);
+            // console.log("DELETE Success");
+            // console.log(response);
             // $scope.update = response.data[0];
             // console.log($scope.update);
         });

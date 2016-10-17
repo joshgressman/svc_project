@@ -26,7 +26,7 @@
 
                     <ul class="list">
                         <h5><strong>ACTIONS</strong></h5>
-                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">&#8678 Back to Admin</a></a></li>
                     </ul>
                 </div>
             </div>
@@ -35,10 +35,10 @@
             <!-- Below is where the actual code start -->
             <!-- ng-app="myApp" -->
 
-            <div class="col-md-9" id="dataview">
-              <div class="error" ng-show="showMessage">
-                <strong><center>{{message}}</strong></center>
-              </div>
+            <div class="col-md-9" id="dataview" ng-controller="adminController">
+                <div class="error" ng-show="showMessage">
+                    <strong>{{message}}</strong>
+                </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Federal Report:</strong></h4>
                     <label for="startDate">Start Date:</label>
@@ -46,8 +46,8 @@
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="dateEnd" />
                     <button class="btn btn-default" name="queryButton" ng-click="getStuffFederal()">Go</button>
+                    <button ng-show="showFedData" class="btn btn-default"><a href="#federalPrint"><span class="stylelessLink">Print</span></a></button>
                 </div>
-                <div class="kimFormHeader"></div>
                 <div>
                     <script type="text/ng-template" id="group-template.html">
                         <div class="panel panel-default">
@@ -66,87 +66,78 @@
                         </div>
                     </script>
                     <div ng-show="showFedData">
-                        <p>
-                            <button class="btn btn-default kim_print_button"><a href="#federalPrint">Go To Print Page</a></button>
-                            <!-- <button type="button" class="btn btn-default btn-sm" ng-click="">Print</button> -->
-                        </p>
-
                         <div class="checkbox">
                             <label>
-                      <input type="checkbox" ng-model="oneAtATime">
-                      Open only one at a time
-                    </label>
-                    </div>
-                    <div>
-                        <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
-                        <script type="text/ng-template" id="myModalContent.html">
-                            <div class="modal-header">
-                                <h3>Submit Success!</h3>
-                            </div>
-                            <div class="modal-body">
-                                Form Confirmation #: {{confirmation}}
-                            </div>
-                            <div class="modal-footer">
+                            <input type="checkbox" ng-model="oneAtATime">
+                            Open only one at a time
+                            </label>
+                        </div>
+                        <div>
+                            <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+                            <script type="text/ng-template" id="myModalContent.html">
+                                <div class="modal-header">
+                                    <h3>Submit Success!</h3>
+                                </div>
+                                <div class="modal-body">
+                                    Form Confirmation #: {{confirmation}}
+                                </div>
+                                <div class="modal-footer">
 
-                            </div>
-                        </script>
-                    </div>
-                    <uib-accordion close-others="oneAtATime">
+                                </div>
+                            </script>
+                        </div>
+                        <uib-accordion close-others="oneAtATime">
 
                             <!-- //Individuals who received services during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period: Duplicated" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Total Individuals
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                1,017
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.total_overall}}
+
+
                                     </div>
                                 </div>
                             </div>
 
                             <!-- //NEW individuals who received services during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period: Unduplicated">
+                            <div uib-accordion-group class="panel-default text-center" heading="NEW individuals who received services during the reporting period">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Type of Individual</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         New Individuals
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                299
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.total_new}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -159,131 +150,120 @@
                                         <strong>Race/Ethnicity</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Primary</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         American Indian of Alaskan Native
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                16
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_native_american}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Asian
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                4
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_asian}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Black or African American
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                22
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_african_american_black}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Hispanic or Latino
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                12
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_chicano_latino}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
-                                        Native Hawaiian or Other Pacific Islander
+                                        Natice Hawaiian or Other Pacific Islander
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_hawaiian_pacific_islander}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         White Non-Latino or Caucasian
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                139
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_white}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Some Other Race
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                6
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_other}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Multiple Races
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                25
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_multi-racial}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Not Reported
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                75
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_unknown}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Race/Ethnicity Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                299
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_ethnicity_total}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -296,83 +276,76 @@
                                         <strong>Gender Identity</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Male
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                33
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_Male}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Female
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                218
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_Female}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Non-Binary
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                5
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_Non-binary}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Other
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                3
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_Other}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Not Reported
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                40
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_unknown}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                299
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_gender_total}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -385,478 +358,439 @@
                                         <strong>Age Range</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         0 - 12 years
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_012}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         13 - 17 years
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                19
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_1317}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         18 - 24 years
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                95
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_1824}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         25 - 59 years
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                121
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_2559}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         60+ years
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                4
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_60}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Not Reported
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                60
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_null}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                299
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_age_total}}
+
+
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Types of Victimization: total number during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Total number during the reporting period">
+                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: total number during the reporting period">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Victimization Types</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Adult Sexual Assault
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                144
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_adult_sexual}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Adult Sexually Abused/Assaulted as Children Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                30
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_adult_child_other + federalInfo.violence_adult_child_family}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Adult Sexually Abused/Assaulted as Children by Family
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                14
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_adult_child_family}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Adult Sexually Abused/Assaulted as Children by Other
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                16
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_adult_child_other}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Bullying
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                1
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_bullying}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Child Pornography
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_child_pornography}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Child Sexual Abuse/Assault Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                27
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_minor_other + federalInfo.violence_minor_family}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Child Sexual Abuse/Assault by Family
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                20
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_minor_family}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Child Sexual Abuse/Assault by Other
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                7
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_minor_other}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Domestic And/Or Family Violence
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_domestic}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Elder Abuse or Neglect
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_elder}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Human Trafficking: Sex
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                5
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_exploitation}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Stalking/Harassment Total
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                12
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_exposing + federalInfo.violence_harassment + federalInfo.violence_internet + federalInfo.violence_phone + federalInfo.violence_stalking}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Stalking/Harassment - Exposing
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                1
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_exposing}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Stalking/Harassment - Harassment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                4
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_harassment}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Stalking/Harassment - Internet
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                4
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_internet}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Stalking/Harassment - Phone
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_phone}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-1 text-left"></div>
                                     <div class="col-md-8 text-left">
                                         Stalking/Harassment - Stalking
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                3
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_stalking}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Teen Dating Victimization
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_teen_dating}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Other
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                4
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_other}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Unknown/Pass/Doesn't Know
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                76
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.violence_unknown}}
+
+
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Types of Victimization: Special classification of individuals -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Special Classification of Individuals">
+                            <div uib-accordion-group class="panel-default text-center" heading="Types of Victimization: Special classification of individuals">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Types of Victimization</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Deaf/Hard of Hearing
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                1
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.disability_deaf}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Homeless
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.homeless}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Immigrants/Refugees/Asylum Seekers
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                11
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_immigrant_total}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         LGBTQ
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                34
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.victim_sexual_orientation_total}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Veterans
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.veteran}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Victims with Disabilities: Cognitive/Physical/Mental
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                89
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.disability_total_unique}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Victims with Limited English Proficiency
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.limited_english}}
+
+
                                     </div>
                                 </div>
                             </div>
-
                             <h3>Direct Services</h3>
 
                             <!-- Individuals assisted with a victim compensation application during the reporting period -->
@@ -867,88 +801,81 @@
                                         <strong>Type of Individual</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Number</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Number</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Individuals Assisted
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                30
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.exception_compensation_unique}}
+
+
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Individuals who received services during the reporting period -->
 
-                            <div uib-accordion-group class="panel-default text-center" heading="Individuals who received services during the reporting period">
+                            <div uib-accordion-group class="panel-default text-center" heading="Total services provided during the reporting period">
                                 <div class="row">
                                     <div class="col-md-9 text-left">
                                         <strong>Service</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Serviced</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Serviced</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Information/Referral
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                64
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.information_referral}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Personal Advocacy/Accompaniment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                142
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.personal_advocacy_unique}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Emotional Support or Safety Services
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                631
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.total_new}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         Criminal/Civil Justice System
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.criminal_civic_unique}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -961,59 +888,54 @@
                                         <strong>Service Details</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Serviced</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Serviced</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (A1) Information about the criminal justice process
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                36
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.criminal_justice_unique}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (A2) Information about victims rights
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                145
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.contact_type_in-person}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (A3) Referral to other victim suppost programs
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.referral_agency}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (A4) Referral to other services, supports, resources
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                801
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.referral_other}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -1026,83 +948,76 @@
                                         <strong>Service Details</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Serviced</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Serviced</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B1) Victim Advocacy/Accompaniment to Emergency Medical Care
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.medical_advocacy_unique}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B2) Victim Advocacy/Accompaniment to Medical Forensic Exam
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                64
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.medical_exam_support}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B3) Law Enforcement Interview Advocacy/Accompaniment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_law_enforcement_interview}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B6) Immigration Assistance
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_immigration}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B7) Intervention with Employer, Creditor, Landlord, or Academic Institution
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_intervention}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (B9 Transportation Assistance)
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                8
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.transportation}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -1115,71 +1030,65 @@
                                         <strong>Service Details</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Serviced</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Serviced</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (C1) Crisis Intervention
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                209
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.total_overall}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (C2) Hotline/Crisis Counseling
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                631
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.contact_type_phone}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (C4) Individual Counseling
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                142
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.crisis_counseling_individual}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (C5) Support Groups
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                173
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.crisis_counseling_group}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (C7) Emergency Financial Assistance
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                24
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.emergency_financial}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -1192,83 +1101,76 @@
                                         <strong>Service Details</strong>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                <strong>Serviced</strong>
-                                            </p>
-                                        </p>
+
+                                        <strong>Serviced</strong>
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E4) Civil Legal Assistance in Obtaining Protection or Restraining Order
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                37
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_oft_hro}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E6) Other Emergency-Justice Related Assistance
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                7
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.other_emergency_justice}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E7) Immigration Assistance
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_immigrantion}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E8) Prosecution Interview Advocacy/Accompaniment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_prosecution_related}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E9) Law Enforcement Interview Advocacy/Accompaniment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                0
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_law_enforcement_interview}}
+
+
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row accordionSpacing">
                                     <div class="col-md-9 text-left">
                                         (E10) Criminal Advocacy/Accompaniment
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <p class="row">
-                                            <p class="col-md-6 text-center">
-                                                29
-                                            </p>
-                                        </p>
+
+                                        {{federalInfo.legal_court_advocacy}}
+
+
                                     </div>
                                 </div>
                             </div>

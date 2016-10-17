@@ -32,7 +32,7 @@ app.use(session({
 // app.use(function(req, res, next) {
 //   console.log("REQ: ", req.url);
 //   if(req.url == '/favicon.ico'){
-    
+//     return;
 //   }
 // });
 

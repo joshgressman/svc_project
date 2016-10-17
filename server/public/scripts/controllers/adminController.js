@@ -1,6 +1,6 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
-console.log("Admin is running");
+// console.log("Admin is running");
     $scope.myFunction = function() {
             window.print();
         }
@@ -776,6 +776,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter a start and end date before proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showCountyData = true;
             countyObjectArray.forEach(function(query, index) {
                 var data = {};
@@ -869,6 +877,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter a date range before proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             // console.log($scope.endDate);
             $scope.showFedData = true;
             federalObjectArray.forEach(function(query, index) {
@@ -1143,6 +1159,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showMessage = false;
             $scope.playgroundInfo = {};
             $scope.showFields = true;
@@ -1175,14 +1199,14 @@ console.log("Admin is running");
                             $scope.begin = $scope.playground.age.start;
                             $scope.end = $scope.playground.age.end;
                         }
-                        console.log('data to send to server:', data);
+                        // console.log('data to send to server:', data);
                         $http({
                             method: "POST",
                             url: '/reportRoute/playground/victim/' + object.table,
                             data: data
                         }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
+                        // console.log("Get Success");
+                        // console.log('response:', response);
                         var playgroundInfo = {};
                         var aPrime = 0;
                         var aSecond = 0;
@@ -1216,7 +1240,7 @@ console.log("Admin is running");
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
                             case "victim_zipcode":
-                            console.log("victim zipcode Running");
+                            // console.log("victim zipcode Running");
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
@@ -1275,12 +1299,13 @@ console.log("Admin is running");
 
                         }else{
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
+                        // console.log('hello', $scope.playgroundInfo);
                         $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('hello again', $scope.total);
+                        // console.log('hello again', $scope.total);
                         }
+
                     }, function() {
-                        console.log("Get Error");
+                        // console.log("Get Error");
                     });
                     // });
                 }
@@ -1329,7 +1354,7 @@ console.log("Admin is running");
                 // console.log('response:', response);
                 $scope.victimObject = response.data;
                 // console.log($scope.victimObject);
-                console.log(response.data[0]);
+                // console.log(response.data[0]);
                 $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
                             $scope.makePDF();
                 // console.log($scope.victimParameters);
@@ -1363,7 +1388,7 @@ console.log("Admin is running");
         var victimHeader = $scope.victimParameters;
         // console.log(victimHeader);
         feebleAttempt.push(victimHeader);
-        console.log(feebleAttempt);
+        // console.log(feebleAttempt);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
@@ -1376,12 +1401,12 @@ console.log("Admin is running");
                     arrayObject[parameter] = "null";
                 }
                 var objectThing = arrayObject[parameter].toString();
-                console.log(objectThing);
+                // console.log(objectThing);
                 standin.push(objectThing);
                 // console.log(standin);
             });
             feebleAttempt.push(standin);
-            console.log(feebleAttempt);
+            // console.log(feebleAttempt);
         });
         // console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 200);
