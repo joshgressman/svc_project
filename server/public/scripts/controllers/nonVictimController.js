@@ -4,7 +4,9 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
     $scope.print = function() {
         window.print();
     }
-
+    function updateScroll() {
+    window.scrollBy(0, -9000);
+    }
     $scope.nonVictimInfo = {};
 
     $scope.form = {
@@ -46,6 +48,7 @@ myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibMo
         if ($scope.form.date == null) {
           $scope.showMessage = true;
             $scope.message = "Please enter a Date before submitting the form";
+            updateScroll();
         } else {
             var data = $scope.form;
             // console.log(data);

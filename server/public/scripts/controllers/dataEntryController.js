@@ -18,7 +18,9 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         isFirstOpen: true,
         isFirstDisabled: false
     };
-
+    function updateScroll() {
+    window.scrollBy(0, -9000);
+    }
     $scope.myFunction = function() {
         window.print();
     };
@@ -203,6 +205,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
             if ($scope.form.date == null) {
                 $scope.showMessage = true
                 $scope.message = "Please enter a date before submitting your request.";
+                updateScroll();
             } else {
                 $scope.showMessage = false
                 var standinObject = $scope.thing;
@@ -333,6 +336,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
         if ($scope.formId == null) {
             $scope.showMessage = true
             $scope.message = "Please enter a date before submitting your request.";
+            updateScroll();
         } else {
             $scope.showMessage = false
             var data = {};

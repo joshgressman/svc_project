@@ -20,7 +20,9 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
-
+    function updateScroll() {
+    window.scrollBy(0, -9000);
+    }
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
@@ -775,6 +777,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         if ($scope.dateStart == "" || $scope.dateEnd == "") {
             $scope.showMessage = true;
             $scope.message = "Please enter a start and end date before proceeding";
+            updateScroll();
         } else {
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
@@ -876,6 +879,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         if ($scope.dateStart == "" || $scope.dateEnd == "") {
             $scope.showMessage = true;
             $scope.message = "Please enter a date range before proceeding";
+            updateScroll();
         } else {
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
@@ -1158,6 +1162,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
+            updateScroll();
         } else {
           if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
             var swapToStart = $scope.dateEnd;
@@ -1297,6 +1302,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
+            updateScroll();
         } else {
           // $scope.showMessage = true;
           //   $scope.message = "Your PDF Download will begin shortly";
