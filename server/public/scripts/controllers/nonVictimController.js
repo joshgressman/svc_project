@@ -1,4 +1,5 @@
 myApp.controller('nonVictimController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
+  console.log("nonVictimController is running");
 
     $scope.print = function() {
         window.print();

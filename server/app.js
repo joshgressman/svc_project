@@ -29,9 +29,17 @@ app.use(session({
    cookie: {maxage: 60000, secure: false}
 }));
 
+app.use(function(req, res, next) {
+  console.log("REQ: ", req.url);
+  if(req.url == '/favicon.ico'){
+    
+  }
+});
+
 // start up passport sessions
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 //set app.use for route here;
 app.use('/reportRoute', reportRoute);

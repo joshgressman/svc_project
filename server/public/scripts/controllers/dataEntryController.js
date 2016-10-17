@@ -1,4 +1,5 @@
 myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
+  console.log("dataEntryController is running");
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
