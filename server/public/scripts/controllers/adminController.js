@@ -1,6 +1,6 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
-console.log("Admin is running");
+// console.log("Admin is running");
     $scope.myFunction = function() {
             window.print();
         }
@@ -776,6 +776,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter a start and end date before proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            console.log(swapToStart);
+            console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showCountyData = true;
             countyObjectArray.forEach(function(query, index) {
                 var data = {};
@@ -869,6 +877,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter a date range before proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            console.log(swapToStart);
+            console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             // console.log($scope.endDate);
             $scope.showFedData = true;
             federalObjectArray.forEach(function(query, index) {
@@ -1143,6 +1159,14 @@ console.log("Admin is running");
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            console.log(swapToStart);
+            console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showMessage = false;
             $scope.playgroundInfo = {};
             $scope.showFields = true;
