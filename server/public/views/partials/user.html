@@ -46,6 +46,21 @@
         </div>
         <input class="btn btn-default" type="submit" name="submit" value="Submit" />
       </form>
+
+      <table class="userArea table table-striped">
+        <thead>
+          <th><p>Users:</p></th>
+        </thead>
+        <tbody data-ng-init="getUser()">
+          <tr class="userBox" ng-repeat="user in users">
+            <td class="userName col-md-8">{{user.username}}</td>
+            <td class="col-md-3">{{user.user_type}}</td>
+            <td class="col-md-1"><div class="btn btn-default" name="delete" ng-click="deleteUser(user.id)">Delete</div></td>
+
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
