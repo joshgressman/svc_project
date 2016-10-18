@@ -29,6 +29,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
     $scope.showCountyData = false;
     $scope.dateStart = "";
     $scope.dateEnd = "";
+    $scope.total = {};
 
     function updateScroll() {
     window.scrollBy(0, -9000);
@@ -1298,10 +1299,9 @@ loggedinFactory.isLoggedIn().then(function(response) {
 
                         }else{
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
-                        $scope.total = {};
+                        // console.log('hello', $scope.playgroundInfo);
                         $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('total', $scope.total);
+                        // console.log('total', $scope.total);
                         }
 
                     }, function() {
@@ -2195,7 +2195,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
         text: "other",
     }, {
         bound: "countyUnknown",
-        table: "victim_zipcode",
+        table: "victim_zipcode_unknown",
         infoTable: "victim",
         text: "unknown",
     }, {
