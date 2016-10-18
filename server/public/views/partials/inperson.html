@@ -1,39 +1,38 @@
-<div>
-  <div class="alert alert-warning" id="alert">
-    <strong class="grayAlert">SVC In-Person Contact Form: </strong> Please ensure you are using the YELLOW form on this page.
-  </div>
   <div class="container">
+    <div class="alert alert-warning" id="alert">
+      <strong class="grayAlert">SVC In-Person Contact Form: </strong> Please ensure you are using the YELLOW form on this page.
+    </div>
     <div class="row">
       <div class="col-md-2 col-sm-4 sidebar1">
         <div class="logo">
           <h4 class="sidebarTitle">Data Entry Page</h4>
         </div>
-      </br>
-      <div class="left-navigation">
+        </br>
+        <div class="left-navigation">
+          <ul class="list">
+            <h5><strong>FORMS</strong></h5>
+            <li><a class="menuList" Onclick="window.location.href='#phone'"><i class="fa fa-phone"></i> Telephone</a></li>
+            <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
+            <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
+          </ul>
+        </br>
         <ul class="list">
-          <h5><strong>FORMS</strong></h5>
-          <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-          <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
-          <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+          <h5><strong>ACTIONS</strong></h5>
+          <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
         </ul>
-      </br>
-      <ul class="list">
-        <h5><strong>ACTIONS</strong></h5>
-        <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
-      </ul>
+      </div>
     </div>
-  </div>
-  <div class="col-md-9" id="dataview">
-    <div>
-      <script type="text/ng-template" id="myModalContent.html">
+    <div class="col-md-9" id="dataview">
+      <div>
+        <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
           <h3>Successful Entry</h3>
         </div>
         <div class="modal-body">
           <h4><strong>Confirmation #: {{confirmation}}</strong></h4>
         </div>
-      </script>
-    </div>
+        </script>
+      </div>
     <div class="error" ng-show="showMessage">
       <strong><span class="verticalSpacing">{{message}}</span></strong>
     </div>
@@ -42,7 +41,7 @@
         <h3 class="formHeader">In-Person Contact Form</h3>
         <div class="advocacyType">
           <label for="advocacyType">Type of Advocacy:</label>
-          <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
+            <input class="phone" type="text" ng-model="form.advocacyType" ng-init="form.advocacyType='in-person'" ng-value="In-person"  placeholder="In-Person Advocacy" readonly/>
           <div class="counselor">
             <label for="counselorName">Advocate/Counselor Name:</label>
             <input class="counselorInput" type="text" ng-model="form.counselor" />
@@ -174,7 +173,7 @@
               </div>
             </div>
             <div class="referrals">
-              <h3 class="formHeader">Referrals (please fill in name of organization)</h3>
+              <h3 class="formHeader">Referrals</h3>Please fill in name of organization
               <table>
                 <tr>
                   <td>
@@ -267,7 +266,7 @@
                     <input type="checkbox" name="sexualViolence" ng-model="form.teenDating" ng-value="true">Teen Dating
                   </td>
                   <td>
-                    <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                    <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" placeholder="Other Sexual Violence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                   </td>
                 </tr>
               </table>
@@ -332,7 +331,7 @@
                       <input type="checkbox" name="disability" ng-model="form.unknownDisabled" ng-value="true"><span class="makeFit">Unknown/pass/doesn't know</span>
                     </td>
                     <td>
-                      <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                      <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" placeholder="Other Disability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                     </td>
                   </tr>
                 </table>
@@ -367,7 +366,7 @@
                     <option value="No">No</option>
                     <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                   </select>
-                  <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                  <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Other Immigration" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 </div>
                 <div>
                   <label for="otherStatus">Other (check all that apply):</label>

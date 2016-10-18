@@ -1,10 +1,7 @@
-<div>
-
+<div class="container">
   <div class="alert alert-success" id="alert">
     <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the GREEN form on this page.
   </div>
-<div class="container">
-
   <div class="row">
     <!-- <div class="col-md-2" id="dataside">
       <ul class = "nav">
@@ -23,9 +20,9 @@
         <div class="left-navigation">
             <ul class="list">
                 <h5><strong>FORMS</strong></h5>
-                <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
-                <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#phone'"><i class="fa fa-phone"></i> Telephone</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
+                <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
             </ul>
 
             <br>
@@ -122,7 +119,7 @@
                         </div>
                     </div>
                     <div id="organization">
-                        <strong>Organization/Person Calling</strong>
+                        <h3 class="formHeader">Organization/Person Calling</h3>
                         <div class="medical">
                             <label for="medical">Medical:</label>
                             <input class="medicalInput" type="text" ng-model="form.medical" />

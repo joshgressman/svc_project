@@ -24,6 +24,10 @@
   margin-top: 10px;
 }
 
+.noMarginTop{
+  margin-top: 0px;
+}
+
 .error{
   background-color: #085078;
   color: #fff;
@@ -81,7 +85,7 @@ input[type="checkbox"] {
 
 #alert{
 padding-left: 200px;
-
+margin-bottom: 0px;
 }
 
 .grayAlert{
@@ -92,6 +96,7 @@ padding-left: 200px;
 
 .container {
   overflow: hidden;
+  padding: 0px;
 }
 
 .logout {
@@ -130,10 +135,11 @@ padding-left: 200px;
   /*border: solid gray;*/
   /*border-width: thin;
   border-radius: 4px;*/
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     background-color: rgb(241,241,241);
+    padding-left: 20px;
     /*overflow: scroll;*/
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     /*margin-bottom: 50px;*/
 }
 .verticalAdjustments{
@@ -372,7 +378,7 @@ margin-top: 10px;
     padding: 0px;
     min-height: 100%;
     height: 750px;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
     border-radius: 4px;
     /*margin-bottom: -1500px;
     padding-bottom: 1500px;*/
@@ -399,6 +405,7 @@ margin-top: 10px;
 }
 .sidebarTitle {
     color: rgba(255, 255, 255, 0.5);
+    padding-left: 15px;
     text-align: center;
 }
 .list> li, h5 {

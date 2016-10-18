@@ -1,10 +1,8 @@
-<div>
-
-    <div class="alert alert-danger" id="alert">
-        <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
-    </div>
-    <div class="container">
-        <div class="row">
+<div class="container">
+  <div class="alert alert-danger" id="alert">
+      <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
+  </div>
+        <div class="row noMarginTop">
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
                     <h4 class="sidebarTitle">Data Entry Page</h4>
@@ -14,9 +12,9 @@
                 <div class="left-navigation">
                     <ul class="list">
                         <h5><strong>FORMS</strong></h5>
-                        <li><a class="menuList" Onclick="window.location.href='#phone'">Telephone</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#inperson'">In Person</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#nonvictim'">Non-Victim</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#phone'"><i class="fa fa-phone"></i> Telephone</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
                     </ul>
                     <br>
                     <ul class="list">
@@ -41,7 +39,7 @@
                       </div>
                   </script>
               </div>
-                <div class="error" ng-show="showMessage">
+                <div class="error" ng-if="showMessage">
                     <strong>{{message}}</strong>
                 </div>
                 <form>
@@ -239,7 +237,7 @@
                                         <input type="checkbox" name="sexualViolence" ng-model="form.teenDating" ng-value="true">Teen Dating
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                        <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" placeholder="Other Sexual Violence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                                     </td>
                                 </tr>
                             </table>
@@ -263,7 +261,6 @@
                             <input type="radio" name="transgender" ng-model="trans" ng-value="false"> No
                             <input type="radio" name="transgender" ng-model="trans" ng-value="null"> Unknown/Pass
                             <div>
-                    <input class="pronounInput" type="text" ng-model="form.pronouns" /> -->
                                 <label for="sexualOrientation">Sexual Orientation:</label>
                                 <!-- <input class="orientationInput" type="text" ng-model="form.orientation" /> -->
                                 <select ng-model="form.orientation">
@@ -306,7 +303,7 @@
                                             <input type="checkbox" name="disability" ng-model="form.notDisabled" ng-value="true">None
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                            <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" placeholder="Other Disability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                                         </td>
                                     </tr>
                             </table>
@@ -342,7 +339,7 @@
                   <option value="No">No</option>
                   <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                 </select>
-                            <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                            <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Other Immigration" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                         </div>
                         <div>
                             <label for="otherStatus">Other (check all that apply):</label>
