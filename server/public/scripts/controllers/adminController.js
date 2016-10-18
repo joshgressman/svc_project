@@ -33,7 +33,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
     function updateScroll() {
     window.scrollBy(0, -9000);
     }
- 
+
     //federalObjectArray will send parameters to the server side queries; table = column name, text/textSpecial = query text
     $scope.federalInfo = {};
     var federalObjectArray = [{
@@ -1010,7 +1010,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
                                 // console.log('new age OP:', objectParam);
                                 break;
                         };
-                        
+
                         //assigns count value;
                         $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
                     }, function() {
@@ -1275,29 +1275,16 @@ loggedinFactory.isLoggedIn().then(function(response) {
                             case "medical_request":
                                 objectParam = object.table;
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
-<<<<<<< HEAD
-                                console.log($scope.playgroundInfo[objectParam]);
+                                // console.log($scope.playgroundInfo[objectParam]);
                                 noVictimTypes = true;
                                 noVictimTypes = true;
-=======
-                                // console.log($scope.playgroundInfo[objectParam]);    
-                                noVictimTypes = true;  
-                                noVictimTypes = true;                            
->>>>>>> 4300a4f25d0b036e59f3a78fc47f4218fe6155e6
                                 break;
                             case "advocacy_request":
                                 objectParam = object.table;
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
-<<<<<<< HEAD
-                                console.log($scope.playgroundInfo[objectParam]);
+                                // console.log($scope.playgroundInfo[objectParam]);
                                 noVictimTypes = true;
-                                break;
-=======
-                                // console.log($scope.playgroundInfo[objectParam]);    
-                                noVictimTypes = true;                            
                                 break; 
->>>>>>> 4300a4f25d0b036e59f3a78fc47f4218fe6155e6
-
                             default:
                                 playgroundInfo[object.table] = {};
                                 playgroundInfo[object.table].yPrime = yPrime;
@@ -1459,7 +1446,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
     // }
     };
     //End code for Playground dropdowns
-    
+
     //query information for custom reports;
     var playgroundObjectArray = [{
         //Question 1
