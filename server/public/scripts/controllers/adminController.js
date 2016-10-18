@@ -12,6 +12,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         isFirstOpen: true,
         isFirstDisabled: false
     };
+    $scope.total = {};
 
     //End accordion code
 
@@ -1285,13 +1286,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                         }
 
                         if(noVictimTypes == true){
-
+                            return;
                         }else{
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
-                        $scope.total = {};
+                        // console.log('hello', $scope.playgroundInfo);
                         $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('total', $scope.total);
+                        // console.log('total', $scope.total);
                         }
 
                     }, function() {
@@ -1579,42 +1579,6 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         textSpecial: "total",
         text: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other' OR victim_immigrant is null)",
     }, {
-        //Question 5B
-    //     bound: "showMale",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: "Male",
-    //     textSpecial: "Male",
-
-    // }, {
-    //     bound: "showFemale",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: "Female",
-    //     textSpecial: "Female",
-
-    // }, {
-    //     bound: "showNonBinary",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: "Non-Binary",
-    //     textSpecial: "nonbinary",
-
-    // }, {
-    //     bound: "showOtherGender",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: "Other",
-    //     textSpecial: "Other",
-
-    // }, {
-    //     bound: "showGenderNotReported",
-    //     table: "victim_gender",
-    //     infoTable: "victim",
-    //     text: null,
-    //     textSpecial: null,
-
-    // }, {
         //Question 6A
         bound: "violenceAdultSexual",
         table: "violence_adult_sexual",

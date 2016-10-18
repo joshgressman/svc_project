@@ -423,7 +423,9 @@ text-align:center;
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 /*data playground styling*/
-
+.custom_left{
+  padding-left: 25px;
+}
 
 
 /*kims fixes for presentation*/
