@@ -40,7 +40,7 @@
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="dateEnd" />
                     <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button>
-                    <button ng-show="showCountyData" class="btn btn-default"><a href="/views/countyRep.html"><span class="stylelessLink">Print</span></a></button>
+                    <button ng-show="showCountyData" class="btn btn-default" Onclick="window.location.href='#countyPrint'"><span class="stylelessLink">Print</span></button>
                 </div>
                 <div>
                     <!-- Template for the Accordion -->
@@ -64,9 +64,6 @@
 
                     <!-- End Template -->
                     <div ng-show="showCountyData">
-                        <p>
-                            <button class="btn btn-default" Onclick="window.location.href='#countyPrint'">Go To Print Page</button>
-                        </p>
                         <div class="checkbox">
                             <label>
                             <div class="checkbox">

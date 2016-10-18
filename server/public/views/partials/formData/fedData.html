@@ -46,7 +46,7 @@
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="dateEnd" />
                     <button class="btn btn-default" name="queryButton" ng-click="getStuffFederal()">Go</button>
-                    <button ng-show="showFedData" class="btn btn-default"><a class="stylelessLink" href="#federalPrint"><span class="stylelessLink">Print</span></a></button>
+                    <button ng-show="showFedData" class="btn btn-default" Onclick="window.location.href='#federalPrint'"><span class="stylelessLink">Print</span></button>
 
                 </div>
                 <div>
@@ -67,11 +67,6 @@
                         </div>
                     </script>
                     <div ng-show="showFedData">
-                        <p>
-                            <button class="btn btn-default" Onclick="window.location.href='#federalPrint'">Go To Print Page</button>
-
-                        </p>
-
                         <div class="checkbox">
                             <label>
                             <input type="checkbox" ng-model="oneAtATime">
