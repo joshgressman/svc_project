@@ -416,6 +416,10 @@ text-align:center;
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+/*data playground styling*/
+
+
+
 /*kims fixes for presentation*/
 .kim_padding{
   padding-left: 20px;

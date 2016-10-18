@@ -65,34 +65,34 @@
                             <option value="genderIdentity">Gender Identity</option>
                             <option value="immigrantStatus">Immigrant Country</option>
                             <option value="individualsServiced">Individuals Serviced</option>
-                            <option value="inPersonCrisis">In Person Crisis Counseling</option>
-                            <option value="inPersonLegalCivil">In Person Legal Advocacy: Civil</option>
-                            <option value="inPersonLegalCriminal">In Person Legal Advocacy: Criminal</option>
-                            <option value="inPersonMedical">In Person Medical Advocacy</option>
+                            <option value="inPersonCrisis">In-Person Crisis Counseling</option>
+                            <option value="inPersonLegalCivil">In-Person Legal Advocacy: Civil</option>
+                            <option value="inPersonLegalCriminal">In-Person Legal Advocacy: Criminal</option>
+                            <option value="inPersonMedical">In-Person Medical Advocacy</option>
                             <option value="nonVictimAdvocacy">Non-Victim Advocacy</option>
-                            <option value="inPersonOther">Other In Person Advocacy</option>
+                            <option value="inPersonOther">Other In-Person Advocacy</option>
                             <option value="phoneServicesProvided">Phone Services Provided</option>
                             <option value="ethnicity">Race/Ethnicity</option>
                             <option value="victimizationTypesSpecial">Special Classification of Victims</option>
                             <option value="supportedOnCall">Supported on Call</option>
                             <option value="transgender">Transgender</option>
                             <option value="victimizationTypes">Types of Victimization: Totals</option>
-                            <option value="showCounties">Zip Codes</option>
+                            <option value="showCounties">Hennpin County Zip Codes</option>
                         </select>
                         <button class="btn btn-default verticalNegotiation" ng-click="submitting()">Go</button>
                     </div>
                     <div class="checkBoxHome">
                         <div class="checkBoxList" ng-show="individualsServiced">
-                            <h4>Individuals Serviced:</h4>
+                            <h4>Individuals Served:</h4>
                             <tr>
                                 <td>
                                     <div>
-                                        <input type="checkbox" ng-model="playground.showIndividual" value="true">individualsServiced
+                                        <input type="checkbox" ng-model="playground.showIndividual" value="true">Individuals Served
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="checkbox" ng-model="playground.showNewIndividual" value="true">newIndividualsServiced
+                                        <input type="checkbox" ng-model="playground.showNewIndividual" value="true">New Individuals Served
                                     </div>
                                 </td>
                             </tr>
@@ -217,11 +217,6 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" ng-model="playground.violenceAdultAbuseTotal" value="true"><span class="makeFit">Adult Sexually Abused/Assaulted Total</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
                                             <input type="checkbox" ng-model="playground.violenceAdultAbuseFamily" value="true"><span class="makeFit">Adult Sexually Abused/Assaulted by Family</span>
                                         </div>
                                     </td>
@@ -244,11 +239,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" ng-model="playground.violenceChildAbuseTotal" value="true">Child Sexual Abuse/Assault Total
-                                        </div>
-                                    </td>
                                     <td>
                                         <div>
                                             <input type="checkbox" ng-model="playground.violenceChildAbuseFamily" value="true"><span class="makeFit">Child Sexual Abuse/Assault by Family</span>
@@ -278,11 +268,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" ng-model="playground.violenceStalkingTotal" value="true">Stalking/Harassment - Total
-                                        </div>
-                                    </td>
                                     <td>
                                         <div>
                                             <input type="checkbox" ng-model="playground.violenceStalkingExposing" value="true">Stalking/Harassment - Exposing
@@ -1015,7 +1000,7 @@
                         <div class="checkBoxList" ng-show="contactType">
                             <h4>Contact Type:</h4>
                             <div>
-                                <input type="checkbox" ng-model="playground.inPersonContact" value="true">In Person Contact
+                                <input type="checkbox" ng-model="playground.inPersonContact" value="true">In-Person Contact
                             </div>
                             <div>
                                 <input type="checkbox" ng-model="playground.phoneContact" value="true">Phone Contact
@@ -1082,16 +1067,16 @@
                                         <strong>Percentage</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_overall.aPrime / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_overall.aPrime / total.total_overall) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_overall.aSecond / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_overall.aSecond / total.total_overall) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_overall.yPrime / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_overall.yPrime / total.total_overall) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_overall.ySecond / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_overall.ySecond / total.total_overall) * 100 | number:1}}%
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1135,16 +1120,16 @@
                                         <strong>Percentage</strong>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_new.aPrime / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_new.aPrime / total.total_new) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_new.aSecond / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_new.aSecond / total.total_new) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_new.yPrime / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_new.yPrime / total.total_new) * 100 | number:1}}%
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        {{(playgroundInfo.total_new.ySecond / total) * 100 | number:1}}%
+                                        {{(playgroundInfo.total_new.ySecond / total.total_new) * 100 | number:1}}%
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1196,16 +1181,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55111.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55111.aPrime / total.victim_zipcode_55111) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55111.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55111.aSecond / total.victim_zipcode_55111) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55111.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55111.yPrime / total.victim_zipcode_55111) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55111.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55111.ySecond / total.victim_zipcode_55111) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1241,16 +1226,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55305.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55305.aPrime / total.victim_zipcode_55305) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55305.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55305.aSecond / total.victim_zipcode_55305) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55305.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55305.yPrime / total.victim_zipcode_55305) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55305.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55305.ySecond / total.victim_zipcode_55305) * 100 | number:1}}%
                                         </div>
                                     </div>
 
@@ -1285,16 +1270,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55311.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55311.aPrime / total.victim_zipcode_55311) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55311.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55311.aSecond / total.victim_zipcode_55311) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55311.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55311.yPrime / total.victim_zipcode_55311) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55311.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55311.ySecond / total.victim_zipcode_55311) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1328,16 +1313,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55316.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55316.aPrime / total.victim_zipcode_55316) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55316.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55316.aSecond / total.victim_zipcode_55316) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55316.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55316.yPrime / total.victim_zipcode_55316) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55316.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55316.ySecond / total.victim_zipcode_55316) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1371,16 +1356,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55317.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55317.aPrime / total.victim_zipcode_55317) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55317.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55317.aSecond / total.victim_zipcode_55317) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55317.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55317.yPrime / total.victim_zipcode_55317) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55317.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55317.ySecond / total.victim_zipcode_55317) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1414,16 +1399,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55327.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55327.aPrime / total.victim_zipcode_55327) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55327.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55327.aSecond / total.victim_zipcode_55327) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55327.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55327.yPrime / total.victim_zipcode_55327) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55327.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55327.ySecond / total.victim_zipcode_55327) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1457,16 +1442,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55328.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55328.aPrime / total.victim_zipcode_55328) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55328.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55328.aSecond / total.victim_zipcode_55328) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55328.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55328.yPrime / total.victim_zipcode_55328) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55328.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55328.ySecond / total.victim_zipcode_55328) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1500,16 +1485,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55331.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55331.aPrime / total.victim_zipcode_55331) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55331.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55331.aSecond / total.victim_zipcode_55331) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55331.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55331.yPrime / total.victim_zipcode_55331) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55331.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55331.ySecond / total.victim_zipcode_55331) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1543,16 +1528,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55340.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55340.aPrime / total.victim_zipcode_55340) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55340.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55340.aSecond / total.victim_zipcode_55340) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55340.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55340.yPrime / total.victim_zipcode_55340) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55340.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55340.ySecond / total.victim_zipcode_55340) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1586,16 +1571,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55341.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55341.aPrime / total.victim_zipcode_55341) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55341.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55341.aSecond / total.victim_zipcode_55341) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55341.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55341.yPrime / total.victim_zipcode_55341) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55341.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55341.ySecond / total.victim_zipcode_55341) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1629,16 +1614,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55343.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55343.aPrime / total.victim_zipcode_55343) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55343.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55343.aSecond / total.victim_zipcode_55343) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55343.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55343.yPrime / total.victim_zipcode_55343) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55343.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55343.ySecond / total.victim_zipcode_55343) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1672,16 +1657,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55344.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55344.aPrime / total.victim_zipcode_55344) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55344.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55344.aSecond / total.victim_zipcode_55344) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55344.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55344.yPrime / total.victim_zipcode_55344) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55344.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55344.ySecond / total.victim_zipcode_55344) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1715,16 +1700,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55345.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55345.aPrime / total.victim_zipcode_55345) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55345.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55345.aSecond / total.victim_zipcode_55345) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55345.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55345.yPrime / total.victim_zipcode_55345) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55345.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55345.ySecond / total.victim_zipcode_55345) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1758,16 +1743,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55346.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55346.aPrime / total.victim_zipcode_55346) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55346.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55346.aSecond / total.victim_zipcode_55346) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55346.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55346.yPrime / total.victim_zipcode_55346) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55346.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55346.ySecond / total.victim_zipcode_55346) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1800,16 +1785,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55347.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55347.aPrime / total.victim_zipcode_55347) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55347.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55347.aSecond / total.victim_zipcode_55347) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55347.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55347.yPrime / total.victim_zipcode_55347) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55347.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55347.ySecond / total.victim_zipcode_55347) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1843,16 +1828,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55356.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55356.aPrime / total.victim_zipcode_55356) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55356.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55356.aSecond / total.victim_zipcode_55356) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55356.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55356.yPrime / total.victim_zipcode_55356) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55356.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55356.ySecond / total.victim_zipcode_55356) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1886,16 +1871,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55357.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55357.aPrime / total.victim_zipcode_55357) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55357.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55357.aSecond / total.victim_zipcode_55357) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55357.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55357.yPrime / total.victim_zipcode_55357) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55357.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55357.ySecond / total.victim_zipcode_55357) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1929,16 +1914,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55359.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55359.aPrime / total.victim_zipcode_55359) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55359.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55359.aSecond / total.victim_zipcode_55359) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55359.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55359.yPrime / total.victim_zipcode_55359) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55359.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55359.ySecond / total.victim_zipcode_55359) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1972,16 +1957,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55361.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55361.aPrime / total.victim_zipcode_55361) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55361.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55361.aSecond / total.victim_zipcode_55361) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55361.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55361.yPrime / total.victim_zipcode_55361) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55361.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55361.ySecond / total.victim_zipcode_55361) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2015,16 +2000,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55364.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55364.aPrime / total.victim_zipcode_55364) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55364.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55364.aSecond / total.victim_zipcode_55364) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55364.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55364.yPrime / total.victim_zipcode_55364) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55364.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55364.ySecond / total.victim_zipcode_55364) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2058,16 +2043,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55369.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55369.aPrime / total.victim_zipcode_55369) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55369.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55369.aSecond / total.victim_zipcode_55369) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55369.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55369.yPrime / total.victim_zipcode_55369) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55369.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55369.ySecond / total.victim_zipcode_55369) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2101,16 +2086,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55373.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55373.aPrime / total.victim_zipcode_55373) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55373.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55373.aSecond / total.victim_zipcode_55373) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55373.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55373.yPrime / total.victim_zipcode_55373) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55373.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55373.ySecond / total.victim_zipcode_55373) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2144,16 +2129,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55374.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55374.aPrime / total.victim_zipcode_55374) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55374.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55374.aSecond / total.victim_zipcode_55374) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55374.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55374.yPrime / total.victim_zipcode_55374) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55374.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55374.ySecond / total.victim_zipcode_55374) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2187,16 +2172,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55375.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55375.aPrime / total.victim_zipcode_55375) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55375.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55375.aSecond / total.victim_zipcode_55375) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55375.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55375.yPrime / total.victim_zipcode_55375) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55375.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55375.ySecond / total.victim_zipcode_55375) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2230,16 +2215,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55384.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55384.aPrime / total.victim_zipcode_55384) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55384.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55384.aSecond / total.victim_zipcode_55384) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55384.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55384.yPrime / total.victim_zipcode_55384) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55384.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55384.ySecond / total.victim_zipcode_55384) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2273,16 +2258,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55387.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55387.aPrime / total.victim_zipcode_55387) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55387.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55387.aSecond / total.victim_zipcode_55387) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55387.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55387.yPrime / total.victim_zipcode_55387) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55387.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55387.ySecond / total.victim_zipcode_55387) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2316,16 +2301,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55388.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55388.aPrime / total.victim_zipcode_55388) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55388.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55388.aSecond / total.victim_zipcode_55388) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55388.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55388.yPrime / total.victim_zipcode_55388) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55388.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55388.ySecond / total.victim_zipcode_55388) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2359,16 +2344,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55391.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55391.aPrime / total.victim_zipcode_55391) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55391.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55391.aSecond / total.victim_zipcode_55391) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55391.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55391.yPrime / total.victim_zipcode_55391) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55391.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55391.ySecond / total.victim_zipcode_55391) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2402,16 +2387,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55392.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55392.aPrime / total.victim_zipcode_55392) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55392.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55392.aSecond / total.victim_zipcode_55392) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55392.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55392.yPrime / total.victim_zipcode_55392) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55392.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55392.ySecond / total.victim_zipcode_55392) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2445,16 +2430,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55401.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55401.aPrime / total.victim_zipcode_55401) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55401.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55401.aSecond / total.victim_zipcode_55401) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55401.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55401.yPrime / total.victim_zipcode_55401) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55401.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55401.ySecond / total.victim_zipcode_55401) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2488,16 +2473,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55402.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55402.aPrime / total.victim_zipcode_55402) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55402.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55402.aSecond / total.victim_zipcode_55402) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55402.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55402.yPrime / total.victim_zipcode_55402) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55402.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55402.ySecond / total.victim_zipcode_55402) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2531,16 +2516,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55403.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55403.aPrime / total.victim_zipcode_55403) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55403.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55403.aSecond / total.victim_zipcode_55403) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55403.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55403.yPrime / total.victim_zipcode_55403) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55403.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55403.ySecond / total.victim_zipcode_55403) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2574,16 +2559,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55404.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55404.aPrime / total.victim_zipcode_55404) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55404.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55404.aSecond / total.victim_zipcode_55404) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55404.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55404.yPrime / total.victim_zipcode_55404) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55404.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55404.ySecond / total.victim_zipcode_55404) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2617,16 +2602,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55405.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55405.aPrime / total.victim_zipcode_55405) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55405.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55405.aSecond / total.victim_zipcode_55405) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55405.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55405.yPrime / total.victim_zipcode_55405) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55405.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55405.ySecond / total.victim_zipcode_55405) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2660,16 +2645,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55406.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55406.aPrime / total.victim_zipcode_55406) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55406.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55406.aSecond / total.victim_zipcode_55406) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55406.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55406.yPrime / total.victim_zipcode_55406) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55406.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55406.ySecond / total.victim_zipcode_55406) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2703,16 +2688,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55407.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55407.aPrime / total.victim_zipcode_55407) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55407.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55407.aSecond / total.victim_zipcode_55407) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55407.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55407.yPrime / total.victim_zipcode_55407) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55407.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55407.ySecond / total.victim_zipcode_55407) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2746,16 +2731,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55408.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55408.aPrime / total.victim_zipcode_55408) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55408.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55408.aSecond / total.victim_zipcode_55408) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55408.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55408.yPrime / total.victim_zipcode_55408) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55408.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55408.ySecond / total.victim_zipcode_55408) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2789,16 +2774,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55409.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55409.aPrime / total.victim_zipcode_55409) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55409.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55409.aSecond / total.victim_zipcode_55409) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55409.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55409.yPrime / total.victim_zipcode_55409) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55409.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55409.ySecond / total.victim_zipcode_55409) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2832,16 +2817,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55410.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55410.aPrime / total.victim_zipcode_55410) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55410.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55410.aSecond / total.victim_zipcode_55410) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55410.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55410.yPrime / total.victim_zipcode_55410) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55410.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55410.ySecond / total.victim_zipcode_55410) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2875,16 +2860,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55411.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55411.aPrime / total.victim_zipcode_55411) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55411.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55411.aSecond / total.victim_zipcode_55411) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55411.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55411.yPrime / total.victim_zipcode_55411) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55411.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55411.ySecond / total.victim_zipcode_55411) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2918,16 +2903,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55412.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55412.aPrime / total.victim_zipcode_55412) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55412.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55412.aSecond / total.victim_zipcode_55412) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55412.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55412.yPrime / total.victim_zipcode_55412) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55412.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55412.ySecond / total.victim_zipcode_55412) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -2961,16 +2946,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55413.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55413.aPrime / total.victim_zipcode_55413) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55413.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55413.aSecond / total.victim_zipcode_55413) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55413.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55413.yPrime / total.victim_zipcode_55413) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55413.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55413.ySecond / total.victim_zipcode_55413) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3004,16 +2989,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55414.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55414.aPrime / total.victim_zipcode_55414) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55414.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55414.aSecond / total.victim_zipcode_55414) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55414.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55414.yPrime / total.victim_zipcode_55414) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55414.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55414.ySecond / total.victim_zipcode_55414) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3047,16 +3032,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55415.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55415.aPrime / total.victim_zipcode_55415) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55415.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55415.aSecond / total.victim_zipcode_55415) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55415.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55415.yPrime / total.victim_zipcode_55415) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55415.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55415.ySecond / total.victim_zipcode_55415) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3090,16 +3075,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55416.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55416.aPrime / total.victim_zipcode_55416) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55416.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55416.aSecond / total.victim_zipcode_55416) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55416.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55416.yPrime / total.victim_zipcode_55416) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55416.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55416.ySecond / total.victim_zipcode_55416) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3133,16 +3118,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55417.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55417.aPrime / total.victim_zipcode_55417) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55417.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55417.aSecond / total.victim_zipcode_55417) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55417.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55417.yPrime / total.victim_zipcode_55417) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55417.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55417.ySecond / total.victim_zipcode_55417) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3176,16 +3161,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55418.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55418.aPrime / total.victim_zipcode_55418) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55418.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55418.aSecond / total.victim_zipcode_55418) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55418.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55418.yPrime / total.victim_zipcode_55418) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55418.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55418.ySecond / total.victim_zipcode_55418) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3219,16 +3204,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55419.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55419.aPrime / total.victim_zipcode_55419) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55419.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55419.aSecond / total.victim_zipcode_55419) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55419.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55419.yPrime / total.victim_zipcode_55419) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55419.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55419.ySecond / total.victim_zipcode_55419) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3262,16 +3247,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55420.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55420.aPrime / total.victim_zipcode_55420) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55420.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55420.aSecond / total.victim_zipcode_55420) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55420.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55420.yPrime / total.victim_zipcode_55420) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55420.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55420.ySecond / total.victim_zipcode_55420) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3305,16 +3290,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55422.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55422.aPrime / total.victim_zipcode_55422) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55422.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55422.aSecond / total.victim_zipcode_55422) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55422.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55422.yPrime / total.victim_zipcode_55422) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55422.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55422.ySecond / total.victim_zipcode_55422) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3348,16 +3333,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55423.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55423.aPrime / total.victim_zipcode_55423) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55423.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55423.aSecond / total.victim_zipcode_55423) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55423.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55423.yPrime / total.victim_zipcode_55423) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55423.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55423.ySecond / total.victim_zipcode_55423) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3391,16 +3376,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55424.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55424.aPrime / total.victim_zipcode_55424) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55424.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55424.aSecond / total.victim_zipcode_55424) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55424.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55424.yPrime / total.victim_zipcode_55424) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55424.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55424.ySecond / total.victim_zipcode_55424) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3434,16 +3419,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55425.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55425.aPrime / total.victim_zipcode_55425) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55425.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55425.aSecond / total.victim_zipcode_55425) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55425.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55425.yPrime / total.victim_zipcode_55425) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55425.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55425.ySecond / total.victim_zipcode_55425) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3477,16 +3462,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55426.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55426.aPrime / total.victim_zipcode_55426) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55426.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55426.aSecond / total.victim_zipcode_55426) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55426.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55426.yPrime / total.victim_zipcode_55426) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55426.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55426.ySecond / total.victim_zipcode_55426) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3520,16 +3505,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55427.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55427.aPrime / total.victim_zipcode_55427) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55427.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55427.aSecond / total.victim_zipcode_55427) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55427.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55427.yPrime / total.victim_zipcode_55427) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55427.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55427.ySecond / total.victim_zipcode_55427) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3563,16 +3548,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55428.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55428.aPrime / total.victim_zipcode_55428) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55428.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55428.aSecond / total.victim_zipcode_55428) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55428.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55428.yPrime / total.victim_zipcode_55428) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55428.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55428.ySecond / total.victim_zipcode_55428) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3606,16 +3591,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55429.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55429.aPrime / total.victim_zipcode_55429) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55429.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55429.aSecond / total.victim_zipcode_55429) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55429.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55429.yPrime / total.victim_zipcode_55429) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55429.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55429.ySecond / total.victim_zipcode_55429) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3649,16 +3634,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55430.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55430.aPrime / total.victim_zipcode_55430) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55430.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55430.aSecond / total.victim_zipcode_55430) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55430.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55430.yPrime / total.victim_zipcode_55430) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55430.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55430.ySecond / total.victim_zipcode_55430) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3692,16 +3677,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55431.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55431.aPrime / total.victim_zipcode_55431) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55431.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55431.aSecond / total.victim_zipcode_55431) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55431.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55431.yPrime / total.victim_zipcode_55431) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55431.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55431.ySecond / total.victim_zipcode_55431) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3735,16 +3720,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55435.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55435.aPrime / total.victim_zipcode_55435) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55435.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55435.aSecond / total.victim_zipcode_55435) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55435.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55435.yPrime / total.victim_zipcode_55435) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55435.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55435.ySecond / total.victim_zipcode_55435) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3778,16 +3763,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55436.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55436.aPrime / total.victim_zipcode_55436) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55436.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55436.aSecond / total.victim_zipcode_55436) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55436.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55436.yPrime / total.victim_zipcode_55436) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55436.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55436.ySecond / total.victim_zipcode_55436) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3821,16 +3806,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55437.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55437.aPrime / total.victim_zipcode_55437) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55437.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55437.aSecond / total.victim_zipcode_55437) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55437.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55437.yPrime / total.victim_zipcode_55437) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55437.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55437.ySecond / total.victim_zipcode_55437) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3864,16 +3849,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55438.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55438.aPrime / total.victim_zipcode_55438) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55438.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55438.aSecond / total.victim_zipcode_55438) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55438.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55438.yPrime / total.victim_zipcode_55438) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55438.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55438.ySecond / total.victim_zipcode_55438) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3907,16 +3892,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55439.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55439.aPrime / total.victim_zipcode_55439) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55439.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55439.aSecond / total.victim_zipcode_55439) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55439.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55439.yPrime / total.victim_zipcode_55439) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55439.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55439.ySecond / total.victim_zipcode_55439) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3950,16 +3935,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55441.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55441.aPrime / total.victim_zipcode_55441) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55441.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55441.aSecond / total.victim_zipcode_55441) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55441.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55441.yPrime / total.victim_zipcode_55441) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55441.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55441.ySecond / total.victim_zipcode_55441) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -3993,16 +3978,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55442.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55442.aPrime / total.victim_zipcode_55442) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55442.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55442.aSecond / total.victim_zipcode_55442) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55442.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55442.yPrime / total.victim_zipcode_55442) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55442.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55442.ySecond / total.victim_zipcode_55442) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4036,16 +4021,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55443.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55443.aPrime / total.victim_zipcode_55443) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55443.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55443.aSecond / total.victim_zipcode_55443) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55443.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55443.yPrime / total.victim_zipcode_55443) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55443.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55443.ySecond / total.victim_zipcode_55443) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4079,16 +4064,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55444.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55444.aPrime / total.victim_zipcode_55444) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55444.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55444.aSecond / total.victim_zipcode_55444) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55444.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55444.yPrime / total.victim_zipcode_55444) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55444.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55444.ySecond / total.victim_zipcode_55444) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4122,16 +4107,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55445.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55445.aPrime / total.victim_zipcode_55445) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55445.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55445.aSecond / total.victim_zipcode_55445) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55445.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55445.yPrime / total.victim_zipcode_55445) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55445.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55445.ySecond / total.victim_zipcode_55445) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4165,16 +4150,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55446.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55446.aPrime / total.victim_zipcode_55446) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55446.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55446.aSecond / total.victim_zipcode_55446) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55446.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55446.yPrime / total.victim_zipcode_55446) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55446.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55446.ySecond / total.victim_zipcode_55446) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4208,16 +4193,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55447.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55447.aPrime / total.victim_zipcode_55447) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55447.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55447.aSecond / total.victim_zipcode_55447) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55447.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55447.yPrime / total.victim_zipcode_55447) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55447.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55447.ySecond / total.victim_zipcode_55447) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4251,16 +4236,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55450.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55450.aPrime / total.victim_zipcode_55450) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55450.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55450.aSecond / total.victim_zipcode_55450) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55450.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55450.yPrime / total.victim_zipcode_55450) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55450.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55450.ySecond / total.victim_zipcode_55450) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4294,16 +4279,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55454.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55454.aPrime / total.victim_zipcode_55454) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55454.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55454.aSecond / total.victim_zipcode_55454) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55454.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55454.yPrime / total.victim_zipcode_55454) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55454.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55454.ySecond / total.victim_zipcode_55454) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4337,16 +4322,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55455.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55455.aPrime / total.victim_zipcode_55455) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55455.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55455.aSecond / total.victim_zipcode_55455) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55455.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55455.yPrime / total.victim_zipcode_55455) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_55455.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_55455.ySecond / total.victim_zipcode_55455) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4380,16 +4365,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_other.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_other.aPrime / total.victim_zipcode_other) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_other.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_other.aSecond / total.victim_zipcode_other) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_other.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_other.yPrime / total.victim_zipcode_other) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_other.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_other.ySecond / total.victim_zipcode_other) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -4423,16 +4408,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_unknown.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_unknown.aPrime / total.victim_zipcode_unknown) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_unknown.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_unknown.aSecond / total.victim_zipcode_unknown) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_unknown.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_unknown.yPrime / total.victim_zipcode_unknown) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_zipcode_unknown.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_zipcode_unknown.ySecond / total.victim_zipcode_unknown) * 100 | number:1}}%
                                         </div>
                                     </div>
                                     <div class="row">
@@ -5708,16 +5693,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.aPrime / total.victim_gender_Male) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.aSecond / total.victim_gender_Male) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.yPrime / total.victim_gender_Male) * 100 | number:1}}%
                                         </div>                                                                        
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Male.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_Male.ySecond / total.victim_gender_Male) * 100 | number:1}}%
                                         </div>
                                     </div>     
                                     <div class="row">
@@ -5794,16 +5779,16 @@
                                             <strong>Percentage</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Non-Binary.aPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_nonbinary.aPrime / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Non-Binary.aSecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_nonbinary.aSecond / total) * 100 | number:1}}%
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Non-Binary.yPrime / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_nonbinary.yPrime / total) * 100 | number:1}}%
                                         </div>                                                                        
                                         <div class="col-md-2 text-center">
-                                            {{(playgroundInfo.victim_gender_Non-Binary.ySecond / total) * 100 | number:1}}%
+                                            {{(playgroundInfo.victim_gender_nonbinary.ySecond / total) * 100 | number:1}}%
                                         </div>
                                     </div>     
                                     <div class="row">
@@ -5812,16 +5797,16 @@
                                             <strong>Total</strong>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Non-Binary.aPrime}}
+                                            {{playgroundInfo.victim_gender_nonbinary.aPrime}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Non-Binary.aSecond}}
+                                            {{playgroundInfo.victim_gender_nonbinary.aSecond}}
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Non-Binary.yPrime}}
+                                            {{playgroundInfo.victim_gender_nonbinary.yPrime}}
                                         </div>                                                                        
                                         <div class="col-md-2 text-center">
-                                            {{playgroundInfo.victim_gender_Non-Binary.ySecond}}
+                                            {{playgroundInfo.victim_gender_nonbinary.ySecond}}
                                         </div>
                                     </div>
                                 </div>

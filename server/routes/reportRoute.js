@@ -48,16 +48,12 @@ router.post('/federal/:id', function(req, res) {
         } else if (table == "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-        // } else if (table ==  "victim_victimization_count") {
-        //     query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        //     // console.log('victimization count:', query);
         } else if (table ==  "victim_ethnicity_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('ethnicity:', query);
         } else if (table == "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('gender:', query);
-
+            // console.log('gender:', query);
         } else if (table ==  "disability_total_unique") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('disability_total_unique:', query);
@@ -76,15 +72,9 @@ router.post('/federal/:id', function(req, res) {
         } else if (table ==  "exception_compensation_unique") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('exception_compensation_unique:', query);
-
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);
-        // } else if (text == "hotline_crisis") {
-        //     stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
-        //     greaterThanOrEqual = " contact_date >= "
-        //     query = stringQueryWhere + "'" + text + "'" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        //     // console.log('hotline:', query);
         } else if (text == "true"){
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log(query);
@@ -167,12 +157,9 @@ router.post('/county/:id', function(req, res) {
             res.sendStatus(500);
         }
         if (text == "TOTAL") {
-            // stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
-            // greaterThanOrEqual = " contact_date >= ";
             query = stringQueryWhere + hennepin + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('total:', query);
         } else if (text == "NEW") {
-            // checkFirstTimer = " (victim_prior_contact is false AND victim_prior_oct is null) OR (victim_prior_contact is true AND victim_prior_oct is true) ";
             query = stringQueryWhere + hennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('new:', query);
         } else if (table ==  "victim_zipcode") {
@@ -199,25 +186,15 @@ router.post('/county/:id', function(req, res) {
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('sexual orientation:', query);
-
-        // } else if (table ==  "victim_victimization_count") {
-        //     query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        //     // console.log('victimization count:', query);
-
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + hennepin + " AND " + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);
-        // } else if (text == "hotline_crisis") {
-        //     stringQueryWhere = "SELECT COUNT (*) FROM victim WHERE";
-        //     greaterThanOrEqual = " contact_date >= "
-        //     query = stringQueryWhere + "'" + text + "'" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        //     console.log('hotline:', query);
         } else if (table ==  "locations") {
             query = selectDistinct + hennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('SPECIAL', query);
+            // console.log('SPECIAL', query);
         } else if (text == null){
             query = stringQueryWhere + hennepin + " AND (" + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "')";
             // console.log(query);
@@ -244,6 +221,7 @@ router.post('/county/:id', function(req, res) {
     });
 });
 
+//special query to pull location names;
 router.post('/county/locations', function (req, res) {
     var selectDistinct = "SELECT DISTINCT service_location FROM victim WHERE "
     var hennepin = "(victim_zipcode = 55111 OR victim_zipcode = 55305 OR victim_zipcode = 55311 OR victim_zipcode = 55316 OR victim_zipcode = 55317 OR victim_zipcode = 55327 OR victim_zipcode = 55328 OR victim_zipcode = 55331 OR victim_zipcode = 55340 OR victim_zipcode = 55341 OR victim_zipcode = 55343 OR victim_zipcode = 55344 OR victim_zipcode = 55345 OR victim_zipcode = 55346 OR victim_zipcode = 55347 OR victim_zipcode = 55356 OR victim_zipcode = 55357 OR victim_zipcode = 55359 OR victim_zipcode = 55361 OR victim_zipcode = 55364 OR victim_zipcode = 55369 OR victim_zipcode = 55373 OR victim_zipcode = 55374 OR victim_zipcode = 55375 OR victim_zipcode = 55384 OR victim_zipcode = 55387 OR victim_zipcode = 55388 OR victim_zipcode = 55391 OR victim_zipcode = 55392 OR victim_zipcode = 55401 OR victim_zipcode = 55402 OR victim_zipcode = 55403 OR victim_zipcode = 55404 OR victim_zipcode = 55405 OR victim_zipcode = 55406 OR victim_zipcode = 55407 OR victim_zipcode = 55408 OR victim_zipcode = 55409 OR victim_zipcode = 55410 OR victim_zipcode = 55411 OR victim_zipcode = 55412 OR victim_zipcode = 55413 OR victim_zipcode = 55414 OR victim_zipcode = 55415 OR victim_zipcode = 55416 OR victim_zipcode = 55417 OR victim_zipcode = 55418 OR victim_zipcode = 55419 OR victim_zipcode = 55420 OR victim_zipcode = 55422 OR victim_zipcode = 55423 OR victim_zipcode = 55424 OR victim_zipcode = 55425 OR victim_zipcode = 55426 OR victim_zipcode = 55427 OR victim_zipcode = 55428 OR victim_zipcode = 55429 OR victim_zipcode = 55230 OR victim_zipcode = 55431 OR victim_zipcode = 55435 OR victim_zipcode = 55436 OR victim_zipcode = 55437 OR victim_zipcode = 55438 OR victim_zipcode = 55439 OR victim_zipcode = 55441 OR victim_zipcode = 55442 OR victim_zipcode = 55443 OR victim_zipcode = 55444 OR victim_zipcode = 55445 OR victim_zipcode = 55446 OR victim_zipcode = 55447 OR victim_zipcode = 55450 OR victim_zipcode = 55454 OR victim_zipcode = 55455)";
@@ -260,7 +238,7 @@ router.post('/county/locations', function (req, res) {
         }
 
         query = selectDistinct + hennepin + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-        console.log('SPECIAL', query);
+        // console.log('SPECIAL', query);
 
         client.query(query,
             function(err, result) {
@@ -279,7 +257,6 @@ router.post('/county/locations', function (req, res) {
 });
 
 //GETPOST for Playground;
-
 router.post('/playground/victim/:id', function(req, res) {
 
     var stringQueryWhere = "SELECT (victim_type) FROM victim WHERE ";
@@ -306,7 +283,6 @@ router.post('/playground/victim/:id', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
 
         if (text == "TOTAL") {
-
             query = "SELECT (victim_type) FROM victim where contact_date >= '" + dateStart + "' AND contact_date < '" + dateEnd + "'";
             // console.log('playground total:', query);
         } else if (text == "NEW") {
@@ -337,17 +313,17 @@ router.post('/playground/victim/:id', function(req, res) {
         } else if (table ==  "victim_sexual_orientation_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
         } else if (table ==  "victim_gender_total") {
-            query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
         } else if (table ==  "information_referral") {
             query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('gender:', query);
+            // console.log('gender:', query);
         } else if (table ==  "emergency_financial") {
             query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('gender:', query);
+            // console.log('gender:', query);
         } else if (table ==  "reparations_claims") {
             query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('gender:', query);                                      
+            // console.log('gender:', query);                                      
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('immigrant:', query);                
@@ -385,8 +361,6 @@ router.post('/playground/victim/:id', function(req, res) {
     });
 });
 
-   
-
 //GET ALL for data playground report;
 
 router.post('/playground/nonVictim', function(req, res) {
@@ -412,9 +386,6 @@ router.post('/playground/nonVictim', function(req, res) {
             });
     });
 });
-
-
-
 
 router.post('/playground/victim', function(req, res) {
     var start = req.body.start;

@@ -3,7 +3,26 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
     $scope.thing = {};
-
+    function checkFiscal(){
+      var date = new Date();
+      var day = date.getDate();
+      var month = date.getMonth();
+      if(day == 1 && month == 9){
+        var year = date.getFullYear();
+        // console.log(year);
+        return year;
+      }else if(day > 1 && month >= 9 && month <= 11){
+        var year = date.getFullYear();
+        // console.log(year);
+        return year;
+      }else{
+        var year = date.getFullYear();
+        year -= 1;
+        // console.log(year);
+        return year;
+      }
+    }
+    $scope.checkOctoberFirst = checkFiscal();
     $scope.isLoggedIn = function() {
         loggedinFactory.isLoggedIn().then(function(response) {
             $scope.user = response;

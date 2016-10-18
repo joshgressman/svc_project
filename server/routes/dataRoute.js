@@ -10,6 +10,7 @@ if (process.env.DATABASE_URL != undefined) {
     connectionString = 'postgres://localhost:5432/svc';
 }
 
+//get victim number for confirmation box;
 router.get("/presentation_victim", function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -29,6 +30,8 @@ router.get("/presentation_victim", function(req, res) {
             });
     });
 });
+
+//get nonvictim number for confirmation box;
 router.get("/presentation_nonvictim", function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -83,7 +86,6 @@ router.post('/victim', function(req, res) {
             });
     });
 });
-
 
 router.post('/nonvictim', function(req, res) {
     var newNonVictim = req.body;
