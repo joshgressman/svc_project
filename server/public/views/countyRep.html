@@ -18,14 +18,13 @@
   <body ng-app="myApp" class="noStyle">
       <div ng-controller="adminController">
           <h4 id="headText">County Print Reporting</h4>
-
           <div class="dateRange">
               <p>Select a date ranges for reporting</p>
               <label for="startDate">Start Date:</label>
               <input class="startDate" type="date" ng-model="dateStart" />
               <label for="endDate">End Date:</label>
               <input class="endDate" type="date" ng-model="dateEnd" />
-              <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button> <button onclick="print()">Print this page</button>
+              <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button> <button class="btn btn-default" onclick="print()">Print</button>
           </div>
           <div class="reportContainer">
 
@@ -166,7 +165,7 @@
               <p class="reportsText">Unknown/Pass/Doesn't Know: {{countyInfo.violence_unknown}}</p>
 
               <!-- <button Onclick="window.location.href='#admin'">Back</button> -->
-              <button Onclick="window.location.href='#admin'">Back</button>
+              <button class="btn btn-default" Onclick="window.location.href='#countyReport'">&#8678 Back</button>
           </div>
       </div>
   </body>

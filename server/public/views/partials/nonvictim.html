@@ -33,6 +33,9 @@
             </ul>
         </div>
     </div>
+    <div class="error" ng-show="showMessage">
+        <strong>{{message}}</strong>
+    </div>
     <div class="col-md-9" id="dataview">
       <!-- <button onclick="print()">Print this page</button> -->
       <div>
@@ -49,9 +52,6 @@
               </div>
           </script>
       </div>
-        <div class="error" ng-show="showMessage">
-            <strong>{{message}}</strong>
-        </div>
       <form ng-submit="submitNonVictimForm()">
         <h3 class="formHeader">Non-Victim Contact Form</h3>
         <div class="advocacyType">

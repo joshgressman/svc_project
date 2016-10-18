@@ -31,6 +31,7 @@
 .error{
   background-color: #085078;
   color: #fff;
+  width: 100%;
   margin: 0 5px 5px 5px;
   height: 20px;
 }

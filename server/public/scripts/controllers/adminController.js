@@ -831,6 +831,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
 
                     //assigns count value;
                     $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
+                    console.log($scope.countyInfo);
                     // console.log(response.data[0]);
                     // console.log($scope.countyInfo);
                 }, function() {
@@ -1285,7 +1286,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
                                 // console.log($scope.playgroundInfo[objectParam]);
                                 noVictimTypes = true;
-                                break; 
+                                break;
                             default:
                                 playgroundInfo[object.table] = {};
                                 playgroundInfo[object.table].yPrime = yPrime;

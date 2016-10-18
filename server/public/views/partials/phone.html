@@ -24,7 +24,9 @@
                     </ul>
                 </div>
             </div>
-
+            <div class="error" ng-if="showMessage">
+                <strong>{{message}}</strong>
+            </div>
             <div class="col-md-9" id="dataview">
               <div>
                   <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
@@ -40,9 +42,6 @@
                       </div>
                   </script>
               </div>
-                <div class="error" ng-if="showMessage">
-                    <strong>{{message}}</strong>
-                </div>
                 <form>
                     <div id="svcAdvocacy">
                     <h3 class="formHeader">Telephone Contact Form </h3>
