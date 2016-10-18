@@ -358,7 +358,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$timeo
     $scope.searchUpdate = function() {
         if ($scope.formId == null) {
             $scope.showMessage = true
-            $scope.message = "Please enter a date before submitting your request.";
+            $scope.message = "Please enter form number before submitting your request.";
             updateScroll();
         } else {
             $scope.showMessage = false

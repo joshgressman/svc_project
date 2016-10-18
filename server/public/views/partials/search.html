@@ -46,7 +46,7 @@
                       </div>
                       <div class="modal-body">
                           <!-- Form Confirmation #: {{confirmation}} -->
-                      <h3><center>Update Successful!</center></h3>
+                      <h3><center>Delete Successful!</center></h3>
                      <!--  </div>
                       <div class="modal-footer"> -->
 
@@ -110,7 +110,7 @@
                             <input type="radio" name="previousContact" ng-model="update.victim_prior_contact" ng-click="previousVisit = true" ng-value="true">Yes
                             <input type="radio" name="previousContact" ng-model="update.victim_prior_contact" ng-click="newFiscalYear = true" ng-value="false">No
                         </div>
-                        <div ng-show="previousVisit" class="dateCheck">
+                        <div class="dateCheck">
                             <label for="dateCheck">If YES, was contact made before October 1st?</label>
                             <input type="radio" name="previousVisit" ng-model="update.victim_prior_oct" ng-click="newFiscalYear = true" ng-value="true">Yes
                             <input type="radio" name="previousVisit" ng-model="update.victim_prior_oct" ng-click="newFiscalYear = false" ng-value="false">No
@@ -168,7 +168,7 @@
                         <input type="radio" name="supported" ng-model="update.supported_on_call" ng-value="false">No
                     </div>
                     <div class="demoCollection">
-                        
+
                         <div class="sexualViolence">
                             <label for="sexualViolence">Type of Sexual Violence</label>
                             <table>
@@ -326,6 +326,7 @@
                                 <!-- <option ng-model="form.ethnicBackground" value="Other">Other</option> -->
                             </select>
                             <input type="text" ng-model="form.ethnicBackground" name="otherEthnicBackground" placeholder="Other Ethnicity" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+<br />
                             <label for="immigrantStatus">Immigrant Status:</label>
                             <select ng-model="update.victim_immigrant">
                                 <option value="">Select One</option>
@@ -339,7 +340,7 @@
                                 <option value="No">No</option>
                                 <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                             </select>
-                            <input type="text" ng-model="update.victim_immigrant_other_specify" name="other.immigrantStatus" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                            <input type="text" ng-model="update.victim_immigrant_other_specify" name="other.immigrantStatus" placeholder="Other Immigration" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                             <div>
                                 <label for="otherStatus">Other (check all that apply):</label>
                                 <div>
@@ -459,13 +460,6 @@
                             <input type="radio" name="transportation" ng-model="update.transportation" ng-value="true">Yes
                             <input type="radio" name="transportation" ng-model="update.transportation" ng-value="false">No
                         </div>
-
-                        <div>
-                            <div class="alert alert-info">
-                                <strong>Demographic Information Needed:</strong> Please enter information below
-                            </div>
-                        </div>
-
                         <div class="clientServices">
                             <h4>In-Person Services Provided</h4>
                             <!-- <label for="serviceStatus">Client Services Provided:</label>
@@ -539,9 +533,7 @@
                     </div>
 
                     <div class="demoCollection">
-                        <div class="alert alert-info">
-                            <strong>Demographic Information Goes Here</strong>
-                        </div>
+
                         <div class="sexualViolence">
                             <label for="sexualViolence">Type of Sexual Violence</label>
                             <table>
@@ -696,6 +688,7 @@
 
                                     </select>
                             <input type="text" ng-model="update.victim_ethnicity_other_specify" name="otherEthnicBackground" placeholder="Other Ethnicity" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                            <br>
                             <label for="immigrantStatus">Immigrant Status:</label>
                             <select ng-model="update.victim_immigrant">
                                         <option value="">Select One</option>
