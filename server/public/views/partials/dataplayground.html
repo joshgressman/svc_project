@@ -23,7 +23,9 @@
                     </ul>
                 </div>
             </div>
-
+            <div class="error" ng-show="showMessage">
+                <strong>{{message}}</strong>
+            </div>
             <div class="col-md-9" id="dataview">
               <div>
                   <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
@@ -38,9 +40,6 @@
 
                       </div>
                   </script>
-              </div>
-              <div class="error" ng-show="showMessage">
-                  <strong>{{message}}</strong>
               </div>
                 <div class="dateRange">
                     <h4><strong>Select a date range for the Custom Report</strong></h4>
