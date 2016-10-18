@@ -33,6 +33,7 @@
                   <strong>{{message}}</strong>
               </div>
                 <div class="dateRange">
+
                     <h4><strong>Select a date range for the County Report: </strong></h4>
                     <label for="startDate">Start Date:</label>
                     <input class="startDate" type="date" ng-model="dateStart" />
@@ -63,6 +64,11 @@
 
                     <!-- End Template -->
                     <div ng-show="showCountyData">
+                        <p>
+                            <button class="btn btn-default" Onclick="window.location.href='#countyPrint'">Go To Print Page</button>
+                        </p>
+                        <div class="checkbox">
+                            <label>
                             <div class="checkbox">
                                 <label>
                        <input type="checkbox" ng-model="oneAtATime">
