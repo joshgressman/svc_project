@@ -42,7 +42,7 @@
         <h3 class="formHeader">In-Person Contact Form</h3>
         <div class="advocacyType">
           <label for="advocacyType">Type of Advocacy:</label>
-          <input class="" type="text" ng-model="form.advocacyType" value="in-person" placeholder="In-Person Advocacy" readonly/>
+            <input class="phone" type="text" ng-model="form.advocacyType" ng-init="form.advocacyType='in-person'" ng-value="In-person"  placeholder="In-Person Advocacy" readonly/>
           <div class="counselor">
             <label for="counselorName">Advocate/Counselor Name:</label>
             <input class="counselorInput" type="text" ng-model="form.counselor" />
@@ -267,7 +267,7 @@
                     <input type="checkbox" name="sexualViolence" ng-model="form.teenDating" ng-value="true">Teen Dating
                   </td>
                   <td>
-                    <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                    <input type="checkbox" name="sexualViolence" ng-model="form.sexualViolenceOther" ng-value="true">Other: <input type="text" ng-model="form.sexualViolenceOther_specify" name="otherViolence" placeholder="Other Sexual Violence" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                   </td>
                 </tr>
               </table>
@@ -332,7 +332,7 @@
                       <input type="checkbox" name="disability" ng-model="form.unknownDisabled" ng-value="true"><span class="makeFit">Unknown/pass/doesn't know</span>
                     </td>
                     <td>
-                      <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                      <input type="checkbox" name="disability" ng-model="form.otherDisabled" ng-value="true">Other: <input type="text" ng-model="form.otherDisabled_specify" name="otherDisability" placeholder="Other Disability" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                     </td>
                   </tr>
                 </table>
@@ -367,7 +367,7 @@
                     <option value="No">No</option>
                     <!-- <option ng-model="form.immigrantStatus" value="Other">Other</option> -->
                   </select>
-                  <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Immigration Status" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                  <input type="text" ng-model="form.other_immigrantStatus" name="other_immigrantStatus" placeholder="Other Immigration" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                 </div>
                 <div>
                   <label for="otherStatus">Other (check all that apply):</label>
