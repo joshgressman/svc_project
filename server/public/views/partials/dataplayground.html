@@ -1059,6 +1059,9 @@
                                     <div class="col-md-2 text-center">
                                         <strong><span class="makeFit">Youth Secondary</span></strong>
                                     </div>
+                                    <div class="col-md-1 text-center">
+                                        <strong><span class="makeFit">Unknown</span></strong>
+                                    </div>                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 text-left">
@@ -1075,6 +1078,9 @@
                                     </div>
                                     <div class="col-md-2 text-center">
                                         {{(playgroundInfo.total_overall.ySecond / total.total_overall) * 100 | number:1}}%
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        {{(playgroundInfo.total_overall.noValue / total.total_overall) * 100 | number:1}}%
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1093,6 +1099,9 @@
                                     <div class="col-md-2 text-center">
                                         {{playgroundInfo.total_overall.ySecond}}
                                     </div>
+                                    <div class="col-md-1 text-center">
+                                        {{(playgroundInfo.total_overall.noValue}}
+                                    </div>                                    
                                 </div>
                             </div>
 
