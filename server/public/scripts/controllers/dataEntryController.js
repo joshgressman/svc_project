@@ -1,4 +1,4 @@
-myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
+myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$timeout', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $timeout, $uibModal, loggedinFactory) {
   // console.log("dataEntryController is running");
     $scope.check = false;
     $scope.loggedinFactory = loggedinFactory;
@@ -43,6 +43,10 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
     $scope.myFunction = function() {
         window.print();
     };
+
+    function refreshPage() {
+    location.reload();
+}
 
     $scope.form = {
         counselor: null,
@@ -354,7 +358,7 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
     $scope.searchUpdate = function() {
         if ($scope.formId == null) {
             $scope.showMessage = true
-            $scope.message = "Please enter a date before submitting your request.";
+            $scope.message = "Please enter form number before submitting your request.";
             updateScroll();
         } else {
             $scope.showMessage = false
@@ -405,24 +409,24 @@ myApp.controller('dataEntryController', ['$scope', '$http', '$location', '$uibMo
 
     ///////////DELETE FORM////////////////////////////
     $scope.deleteForm = function() {
+       var confirmDelete = confirm('Are you sure you want to delete this entry?');
+       if(confirmDelete == false){
+         return;
+       } else {
         var data = {}
         var id = parseInt($scope.update.id);
         var route = '/dataRoute/victim/';
         if ($scope.table.nonvictim == true) {
             route = '/dataRoute/nonvictim/';
         }
-        // console.log('id', id);
         $http({
             method: "DELETE",
             url: route + id,
         }).then(function(response) {
-            // $scope.confirmation = 26;
             $scope.open($scope.confirmation);
-            // console.log("DELETE Success");
-            // console.log(response);
-            // $scope.update = response.data[0];
-            // console.log($scope.update);
+            $timeout(refreshPage,1000);
         });
+}
     }
 
 ///**********END OF CONTROLLER***************************************///////
