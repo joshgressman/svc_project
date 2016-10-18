@@ -10,17 +10,30 @@
 
             <ul  class="list">
                 <h5><strong>ACTIONS</strong></h5>
-                <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">&#8678 Back to Admin</a></li>
             </ul>
         </div>
     </div>
     <div class="col-md-9 userEntry">
+      <div>
+          <!-- <button class="btn btn-default" ng-click="open()">DoneDoneDone</button> -->
+          <script type="text/ng-template" id="myModalContent.html">
+              <div class="modal-header">
+              </div>
+              <div class="modal-body">
+                  <h4><center>New User Added</center></h4>
+              <!-- div>
+              <div class="modal-footer"> -->
+
+              </div>
+          </script>
+      </div>
       <h3>Add an application user:</h3>
       <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
       <form ng-submit="addUser()">
         <div>
             <label for="username">Email:</label>
-            <input type="email" ng-model="user.username" />
+            <input type="email" ng-model="user.username" class="kimInput" />
         </div>
         <div>
             <label for="password">Password:</label>

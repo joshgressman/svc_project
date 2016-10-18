@@ -1,4 +1,5 @@
-myApp.controller('userController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
+myApp.controller('userController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
+  // console.log("userController is running");
 
   loggedinFactory.isLoggedIn().then(function(response) {
       console.log('The person logged in:', response);
@@ -24,18 +25,22 @@ myApp.controller('userController', ['$scope', '$http', '$location', 'loggedinFac
         if($scope.user.username == '' || $scope.user.password == '') {
           $scope.message = "You must enter a username and password to create a new user.";
         } else {
-          console.log('sending to server...', data);
+          // console.log('sending to server...', data);
           $http.post('/register', data).then(function(response) {
-          console.log('success');
+          // console.log('success');
           $scope.user = {
               username: '',
               password: ''
             };
+
+            $scope.confirmation = 26;
+            $scope.open($scope.confirmation);
           $location.path('/users');
           $scope.getUser();
+
           },
           function(response) {
-            console.log('error');
+            // console.log('error');
           });
       }
   }
@@ -55,5 +60,20 @@ myApp.controller('userController', ['$scope', '$http', '$location', 'loggedinFac
           $scope.getUser();
         });
       }
+
+    $scope.open = function (_confirmation) {
+
+        var modalInstance = $uibModal.open({
+          controller: "ModalInstanceCtrl",
+          templateUrl: 'myModalContent.html',
+            resolve: {
+                confirmation: function()
+                {
+                    return _confirmation;
+                }
+            }
+             });
+
+    };
 
 }]);

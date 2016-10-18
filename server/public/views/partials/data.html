@@ -2,14 +2,6 @@
 
 <div class="container">
     <div class="row">
-        <!-- <div class="col-md-2" id="dataside" data-ng-init="isLoggedIn()">
-            <ul class="nav">
-                <li><button id="telephone" Onclick="window.location.href='#phone'" >Telephone</button></li>
-                <li><button id="inperson" Onclick="window.location.href='#inperson'">In-Person</button></li>
-                <li><button id="nonvictim" Onclick="window.location.href='#nonvictim'">Non-Victim</button></li>
-                <li><button id="admin" ng-show="check" Onclick="location.href='#admin'">Back to Admin</button></li>
-            </ul>
-        </div> -->
 
         <div class="col-md-2 col-sm-4 sidebar1" data-ng-init="isLoggedIn()">
             <div class="logo">
@@ -29,7 +21,7 @@
 
                 <ul  class="list" ng-show="check">
                     <h5><strong>ACTIONS</strong></h5>
-                    <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">Back to Admin</a></li>
+                    <li><a  id="admin" class="menuList" Onclick="location.href='#admin'">&#8678 Back to Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -60,22 +52,17 @@
                     <!-- //Individuals who received services during the reporting period -->
 
                     <div uib-accordion-group class="panel-default text-center" heading="Instructions" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                        <div class="row">
-                            <div class="col-md-9 text-left">
-
+                        <div class="row text-left adminInstructions">
                                 <p>
-                                  SVC input forms are color coded to repersent the type of service that was provided. Pink forms are for telephone services, yellow is for in-person services and green is for non-victim services.
-                                </p>
+                                  SVC input forms are color coded to repersent the type of service that was provided. Pink forms are for telephone services, yellow is for in-person services and green is for non-victim services.</p>
                                 <p>
-                                  The required data entry portal for your form can be found on the screen to the left. Select the form that
-                                  matches the type of form you're entering.
+                                  The required data entry portal for your form can be found on the left hand side of your screen. Select the form that matches the type of form you're entering.
                                 </p>
-
                             </div>
-
                         </div>
-
                     </div>
+
+
 
                 </uib-accordion>
             </div>
