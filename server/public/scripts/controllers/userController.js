@@ -1,4 +1,14 @@
-myApp.controller('userController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('userController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
+
+  loggedinFactory.isLoggedIn().then(function(response) {
+      console.log('The person logged in:', response);
+      console.log('the type of the person logged in:', response.user_type)
+      // $scope.user = response;
+      if (response.user_type !== 'admin') {
+          console.log('send home');
+          $location.path('/home');
+      }
+  });
 
   $scope.user = {
     username: '',
@@ -21,11 +31,29 @@ myApp.controller('userController', ['$scope', '$http', '$location', function($sc
               username: '',
               password: ''
             };
-          $location.path('/admin');
+          $location.path('/users');
+          $scope.getUser();
           },
           function(response) {
             console.log('error');
           });
       }
-    }
+  }
+
+  $scope.getUser = function() {
+      console.log('called getUser');
+      $http.get('/getUser').then(function(response) {
+        console.log(response.data);
+        $scope.users = response.data;
+      });
+  }
+
+  $scope.deleteUser = function(userID){
+        console.log(userID);
+        $http.delete('/deleteUser/' + userID).then(function(){
+          console.log('delete went through');
+          $scope.getUser();
+        });
+      }
+
 }]);

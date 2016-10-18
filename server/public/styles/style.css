@@ -149,18 +149,12 @@ width: 110px;
 height: 30px;
 }
 
-#nonvictim:hover {
-  background-color: lightgreen;
-}
 
 .button{
   width: 110px;
   height: 30px;
 }
 
-.button:hover {
-  background-color: lightgreen;
-}
 
 .inlineNav {
   list-style: none;
@@ -198,10 +192,7 @@ height: 30px;
   height: 30px;
 }
 
-#back:hover {
-  background-color: rgb(20, 160, 225);
-  color: white;
-}
+
 
 #searchBox {
 margin: 20px 0 0 100px;
@@ -218,9 +209,7 @@ background-color: lightgray;
   width: 110px;
   height: 30px;
 }
-.adminBtn:hover {
-  background-color: lightgreen;
-}
+
 
 #resultsForm{
 margin-top: 10px;
@@ -273,13 +262,18 @@ margin-top: 10px;
 .userEntry {
   padding-top: 20px;
 }
+
+.userArea {
+  margin-top: 20px;
+}
+
 .adminInstructions {
   padding-left: 10px;
   padding-right: 10px;
 }
 .updateButton {
   margin-top: 10px;
-  margin-botton: 30px;
+  margin-bottom: 30px;
 }
 .formHeader {
   border-bottom: solid 1px gray;
@@ -342,6 +336,7 @@ margin-top: 10px;
     color: white;
     font-weight: bolder;
     padding-left: 35px;
+    cursor: default;
 }.main-content{
 text-align:center;
 }

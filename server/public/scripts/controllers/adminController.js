@@ -1,4 +1,16 @@
-myApp.controller('adminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('adminController', ['$scope', '$http', '$location', 'loggedinFactory', function($scope, $http, $location, loggedinFactory) {
+
+
+    loggedinFactory.isLoggedIn().then(function(response) {
+        console.log('The person logged in:', response);
+        console.log('the type of the person logged in:', response.user_type)
+        // $scope.user = response;
+        if (response.user_type !== 'admin') {
+            console.log('send home');
+            $location.path('/home');
+        }
+    });
+
 
     $scope.myFunction = function() {
             window.print();
