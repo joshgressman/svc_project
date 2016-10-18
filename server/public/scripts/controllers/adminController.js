@@ -1,6 +1,6 @@
 myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
 
-console.log("Admin is running");
+// console.log("Admin is running");
     $scope.myFunction = function() {
             window.print();
         }
@@ -20,7 +20,9 @@ console.log("Admin is running");
     $scope.dateStart = "";
     $scope.dateEnd = "";
 
-
+    function updateScroll() {
+    window.scrollBy(0, -9000);
+    }
     //POST will need to send an object with the dates over. Can utilize Req.params to get info from the url (Table name most likely)
     //still need [0].(object named thing) for result.rows
     $scope.federalInfo = {};
@@ -775,7 +777,16 @@ console.log("Admin is running");
         if ($scope.dateStart == "" || $scope.dateEnd == "") {
             $scope.showMessage = true;
             $scope.message = "Please enter a start and end date before proceeding";
+            updateScroll();
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showCountyData = true;
             countyObjectArray.forEach(function(query, index) {
                 var data = {};
@@ -868,7 +879,16 @@ console.log("Admin is running");
         if ($scope.dateStart == "" || $scope.dateEnd == "") {
             $scope.showMessage = true;
             $scope.message = "Please enter a date range before proceeding";
+            updateScroll();
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             // console.log($scope.endDate);
             $scope.showFedData = true;
             federalObjectArray.forEach(function(query, index) {
@@ -1142,7 +1162,16 @@ console.log("Admin is running");
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
+            updateScroll();
         } else {
+          if((Date.parse($scope.dateEnd)) < (Date.parse($scope.dateStart))){
+            var swapToStart = $scope.dateEnd;
+            var swapToEnd = $scope.dateStart;
+            // console.log(swapToStart);
+            // console.log(swapToEnd);
+            $scope.dateStart = swapToStart;
+            $scope.dateEnd = swapToEnd;
+          }
             $scope.showMessage = false;
             $scope.playgroundInfo = {};
             $scope.showFields = true;
@@ -1154,9 +1183,11 @@ console.log("Admin is running");
             parameterArray.forEach(function(parameter) {
                 $scope[parameter] = true;
                 playgroundObjectArray.forEach(function(object) {
+                    console.log(object);
                     if (object.bound !== parameter) {
                         return;
                     } else {
+                        console.log(object);
                         // object.victimType.forEach(function(victimType, index){
                         var data = {};
                         // data.start = convertedStart;
@@ -1173,14 +1204,14 @@ console.log("Admin is running");
                             $scope.begin = $scope.playground.age.start;
                             $scope.end = $scope.playground.age.end;
                         }
-                        console.log('data to send to server:', data);
+                        // console.log('data to send to server:', data);
                         $http({
                             method: "POST",
                             url: '/reportRoute/playground/victim/' + object.table,
                             data: data
                         }).then(function(response) {
-                        console.log("Get Success");
-                        console.log('response:', response);
+                        // console.log("Get Success");
+                        // console.log('response:', response);
                         var playgroundInfo = {};
                         var aPrime = 0;
                         var aSecond = 0;
@@ -1203,6 +1234,7 @@ console.log("Admin is running");
                             }
                         });
                         var objectParam = object.table;
+                        var noVictimTypes = false;
                         switch (object.table) {
                             case "victim_ethnicity":
                                 objectParam += '_' + object.textSpecial;
@@ -1212,12 +1244,8 @@ console.log("Admin is running");
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
-                            // case "victim_age":
-                            //     objectParam += '_' + object.text;
-                            //     playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                            //     break;
                             case "victim_zipcode":
-                            console.log("victim zipcode Running");
+                            // console.log("victim zipcode Running");
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
@@ -1225,10 +1253,44 @@ console.log("Admin is running");
                                 objectParam += '_' + object.textSpecial;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
+                            case "victim_trans":
+                                objectParam += '_' + object.text;
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                break;                                
                             case "contact_type":
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
                                 break;
+                            case "supported_on_call":
+                                objectParam += '_' + object.text;
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                break;
+                            case "information_referral":
+                                objectParam += '_' + object.text;
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                break;
+                            case "emergency_financial":
+                                objectParam += '_' + object.text;
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                break; 
+                            case "reparations_claims":
+                                objectParam += '_' + object.text;
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                break;                                                                                                 
+                            case "medical_request":
+                                objectParam = object.table;                            
+                                $scope.playgroundInfo[objectParam] = response.data[0].count;
+                                console.log($scope.playgroundInfo[objectParam]);    
+                                noVictimTypes = true;  
+                                noVictimTypes = true;                            
+                                break;
+                            case "advocacy_request":
+                                objectParam = object.table;                            
+                                $scope.playgroundInfo[objectParam] = response.data[0].count;
+                                console.log($scope.playgroundInfo[objectParam]);    
+                                noVictimTypes = true;                            
+                                break; 
+
                             default:
                                 playgroundInfo[object.table] = {};
                                 playgroundInfo[object.table].yPrime = yPrime;
@@ -1237,14 +1299,18 @@ console.log("Admin is running");
                                 playgroundInfo[object.table].aSecond = aSecond;
                         }
                         // $scope.playgroundInfo[objectParam].total = parseInt(playgroundInfo[objectParam].yPrime + playgroundInfo[objectParam].ySecond);
-                        $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
-                        $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('hello again', $scope.total);
+                        if(noVictimTypes == true){
 
+
+                        }else{
+                        $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
+                        // console.log('hello', $scope.playgroundInfo);
+                        $scope.total = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
+                        // console.log('hello again', $scope.total);
+                        }
 
                     }, function() {
-                        console.log("Get Error");
+                        // console.log("Get Error");
                     });
                     // });
                 }
@@ -1275,6 +1341,7 @@ console.log("Admin is running");
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
+            updateScroll();
         } else {
           // $scope.showMessage = true;
           //   $scope.message = "Your PDF Download will begin shortly";
@@ -1293,7 +1360,7 @@ console.log("Admin is running");
                 // console.log('response:', response);
                 $scope.victimObject = response.data;
                 // console.log($scope.victimObject);
-                console.log(response.data[0]);
+                // console.log(response.data[0]);
                 $scope.victimParameters = Object.getOwnPropertyNames(response.data[0]);
                             $scope.makePDF();
                 // console.log($scope.victimParameters);
@@ -1327,7 +1394,7 @@ console.log("Admin is running");
         var victimHeader = $scope.victimParameters;
         // console.log(victimHeader);
         feebleAttempt.push(victimHeader);
-        console.log(feebleAttempt);
+        // console.log(feebleAttempt);
         $scope.victimObject.forEach(function(arrayObject, index) {
             var objectNumber = index;
             var standin = [];
@@ -1340,12 +1407,12 @@ console.log("Admin is running");
                     arrayObject[parameter] = "null";
                 }
                 var objectThing = arrayObject[parameter].toString();
-                console.log(objectThing);
+                // console.log(objectThing);
                 standin.push(objectThing);
                 // console.log(standin);
             });
             feebleAttempt.push(standin);
-            console.log(feebleAttempt);
+            // console.log(feebleAttempt);
         });
         // console.log(feebleAttempt.length);
         var widthTotal = (feebleAttempt.length * 200);
@@ -1666,7 +1733,7 @@ console.log("Admin is running");
     }, {
         //Question 6B
         bound: "victimSpecialMultiple",
-        table: "victim_multiple ",
+        table: "victim_multiple",
         infoTable: "victim",
         text: "true",
 
@@ -2280,7 +2347,8 @@ console.log("Admin is running");
         bound: "informationReferral",
         table: "information_referral",
         infoTable: "victim",
-        text: "true",
+        text: "inperson",
+        textSpecial: " AND contact_type iLIKE 'in-person'",
 
     }, {
         bound: "safeAtHome",
@@ -2292,13 +2360,15 @@ console.log("Admin is running");
         bound: "emergencyFinancial",
         table: "emergency_financial",
         infoTable: "victim",
-        text: "true",
+        text: "inperson",
+        textSpecial: " AND contact_type iLIKE 'in-person'",
 
     }, {
         bound: "reparationsClaims",
         table: "reparations_claims",
         infoTable: "victim",
-        text: "true",
+        text: "inperson",
+        textSpecial: " AND contact_type iLIKE 'in-person'",
 
     }, {
         bound: "yesTrans",
@@ -2328,7 +2398,8 @@ console.log("Admin is running");
         bound: "phoneInformation",
         table: "information_referral",
         infoTable: "victim",
-        text: "true",
+        text: "phone",
+        textSpecial: " AND contact_type iLIKE 'phone'",
 
     }, {
         bound: "phoneCriminalJustice",
@@ -2346,13 +2417,15 @@ console.log("Admin is running");
         bound: "phoneEmergencyFinancial",
         table: "emergency_financial",
         infoTable: "victim",
-        text: "true",
+        text: "phone",
+        textSpecial: " AND contact_type iLIKE 'phone'",
 
     }, {
         bound: "phoneEmergencyClaims",
         table: "reparations_claims",
         infoTable: "victim",
-        text: "true",
+        text: "phone",
+        textSpecial: " AND contact_type iLIKE 'phone'",
 
     }, {
         bound: "supported",
@@ -2365,7 +2438,11 @@ console.log("Admin is running");
         table: "supported_on_call",
         infoTable: "victim",
         text: "false",
-
+    }, {
+        bound: "unknownSupported",
+        table: "supported_on_call",
+        infoTable: "victim",
+        text: null,
     }, {
         bound: "inPersonContact",
         table: "contact_type",
@@ -2379,14 +2456,41 @@ console.log("Admin is running");
 
     }, {
         bound: "nonVictimMedical",
-        table: "", //Columns being added for this. Check Later
+        table: "medical_request",
         infoTable: "nonvictim",
-        text: "true"
+        text: ""
     }, {
         bound: "nonVictimTotal",
-        table: "", //Columns being added for this. Check Later
+        table: "advocacy_request", 
         infoTable: "nonvictim",
+        text: ""
+    }, {
+        bound: "victimSpecialHomeless",
+        table: "homeless", 
+        infoTable: "victim",
         text: "true"
+    }, {
+        bound: "victimSpecialImmigrants",
+        table: "victim_immigrant_total",
+        infoTable: "victim",
+        textSpecial: "total",
+        text: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other' OR victim_immigrant is null)",
+    }, {
+        bound: "victimSpecialLGBTQ",
+        table: "victim_sexual_orientation_total", 
+        infoTable: "victim",
+        text: "true" ,
+        textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
+    }, {
+        bound: "victimSpecialVeterans",
+        table: "veteran", 
+        infoTable: "victim",
+        text: "true"
+    }, {
+        bound: "victimSpecialLimitedEnglish",
+        table: "limited_english", 
+        infoTable: "victim",
+        text: "true"             
     }];
     ///**********END OF CONTROLLER***************************************///////
 }]);

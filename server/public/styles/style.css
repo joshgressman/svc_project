@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.accordionSpacing{
+  margin-top: 10px;
+}
+
 .error{
   background-color: #085078;
   color: #fff;
@@ -214,11 +218,26 @@ height: 30px;
   width: 5px;
   height: 0px;
 }
-/*::-webkit-scrollbar-track {
-      background-color: #b46868;
-}*/
 ::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.2);
+}
+
+.adminWelcome{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.adminWelcomeText{
+  margin: 0 15px 10px 15px;
+}
+
+.stylelessLink{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 #formedit {
@@ -445,4 +464,3 @@ text-align:center;
   background-color: #085078;
   color: #fff;
 }
-

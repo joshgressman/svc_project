@@ -300,7 +300,8 @@ router.post('/playground/victim/:id', function(req, res) {
 
     var text = req.body.text;
     var textSpecial = req.body.textSpecial;
-    var table = req.params.id
+    var table = req.params.id;
+    var infoTable = req.params.infoTable;
 
     pg.connect(connectionString, function(err, client, done) {
 
@@ -338,15 +339,33 @@ router.post('/playground/victim/:id', function(req, res) {
         } else if (table ==  "victim_gender_total") {
             query = stringQueryWhere + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('gender:', query);
+        } else if (table ==  "information_referral") {
+            query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('gender:', query);
+        } else if (table ==  "emergency_financial") {
+            query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('gender:', query);
+        } else if (table ==  "reparations_claims") {
+            query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            console.log('gender:', query);                                      
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            console.log('immigrant:', query);                
+            // console.log('immigrant:', query);                
         } else if (text == null) {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground nulls:', query);
         } else if (text == "true") {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('playground trues:', query);                   
+            // console.log('playground trues:', query);
+        } else if (text == "false") {
+            query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('playground falses:', query);
+        } else if (table == "medical_request") {
+            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";                                        
+            // console.log('nonvictim query:', query);
+        } else if (table == "advocacy_request") {
+            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";                                        
+            // console.log('nonvictim query:', query);            
         } else {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('other queries:', query);
