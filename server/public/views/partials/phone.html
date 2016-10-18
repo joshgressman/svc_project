@@ -1,10 +1,8 @@
-<div>
-
-    <div class="alert alert-danger" id="alert">
-        <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
-    </div>
-    <div class="container">
-        <div class="row">
+<div class="container">
+  <div class="alert alert-danger" id="alert">
+      <Strong class="grayAlert">SVC Telephone Contact Form: </Strong> Please ensure you are using the PINK form on this page.
+  </div>
+        <div class="row noMarginTop">
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
                     <h4 class="sidebarTitle">Data Entry Page</h4>
@@ -14,7 +12,7 @@
                 <div class="left-navigation">
                     <ul class="list">
                         <h5><strong>FORMS</strong></h5>
-                        <li><a class="menuList" Onclick="window.location.href='#phone'">&#9743 Telephone</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#phone'"><i class="fa fa-phone"></i> Telephone</a></li>
                         <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
                         <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
                     </ul>
@@ -41,7 +39,7 @@
                       </div>
                   </script>
               </div>
-                <div class="error" ng-show="showMessage">
+                <div class="error" ng-if="showMessage">
                     <strong>{{message}}</strong>
                 </div>
                 <form>

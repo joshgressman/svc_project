@@ -10,9 +10,9 @@
                 <div class="left-navigation">
                     <ul class="list">
                         <h5><strong>OTHER REPORTS</strong></h5>
-                        <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#reports'"><span class="glyphicon glyphicon-briefcase"></span> Federal</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'"><span class="glyphicon glyphicon-list-alt"></span> County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#custom'"><i class="fa fa-bar-chart"></i> Custom</a></li>
                     </ul>
 
                     <br>
@@ -861,7 +861,7 @@
                                 </tr>
                             </table>
                         </div>
-                        
+
                         <div class="checkBoxList" ng-show="inPersonCrisis">
                             <h4>In-Person Crisis Counseling:</h4>
                             <div>
@@ -995,7 +995,7 @@
                             </div>
                             <div>
                                 <input type="checkbox" ng-model="playground.unknownSupported" value="true">Unknown
-                            </div>                            
+                            </div>
                         </div>
                         <div class="checkBoxList" ng-show="contactType">
                             <h4>Contact Type:</h4>
@@ -5700,11 +5700,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Male.yPrime / total.victim_gender_Male) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Male.ySecond / total.victim_gender_Male) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5718,7 +5718,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Male.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Male.ySecond}}
                                         </div>
@@ -5743,11 +5743,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Female.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Female.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5761,7 +5761,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Female.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Female.ySecond}}
                                         </div>
@@ -5786,11 +5786,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_nonbinary.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_nonbinary.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5804,7 +5804,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_nonbinary.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_nonbinary.ySecond}}
                                         </div>
@@ -5829,11 +5829,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Other.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_Other.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5847,7 +5847,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Other.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_Other.ySecond}}
                                         </div>
@@ -5872,11 +5872,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_null.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_null.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5890,7 +5890,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_null.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_null.ySecond}}
                                         </div>
@@ -5915,11 +5915,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_total.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_gender_total.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -5933,7 +5933,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_total.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_gender_total.ySecond}}
                                         </div>
@@ -6172,11 +6172,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.violence_bullying.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.violence_bullying.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -6190,7 +6190,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.violence_bullying.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.violence_bullying.ySecond}}
                                         </div>
@@ -6813,7 +6813,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div ng-show="victimizationTypesSpecial" uib-accordion-group class="panel-default text-center" heading="Special Classification of Victims">
                                 <div class="row">
                                     <div class="col-md-4 text-left">
@@ -6851,11 +6851,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.homeless.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.homeless.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -6869,7 +6869,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.homeless.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.homeless.ySecond}}
                                         </div>
@@ -6896,7 +6896,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_immigrant_total.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_immigrant_total.ySecond / total) * 100 | number:1}}%
                                         </div>
@@ -6915,14 +6915,14 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_immigrant_total.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_immigrant_total.ySecond}}
                                         </div>
                                     </div>
 
                                 </div>
-                                
+
                                 <div ng-show="victimSpecialLGBTQ" class="row">
                                     <div class="row">
                                         <div class="col-md-12 text-left">
@@ -6942,11 +6942,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_sexual_orientation_total.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_sexual_orientation_total.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -6960,13 +6960,13 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_sexual_orientation_total.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_sexual_orientation_total.ySecond}}
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div ng-show="victimSpecialVeterans" class="row">
                                     <div class="row">
                                         <div class="col-md-12 text-left">
@@ -6986,11 +6986,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.veteran.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.veteran.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7004,13 +7004,13 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.veteran.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.veteran.ySecond}}
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div ng-show="victimSpecialLimitedEnglish" class="row">
                                     <div class="row">
                                         <div class="col-md-12 text-left">
@@ -7030,11 +7030,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.limited_english.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.limited_english.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7048,13 +7048,13 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.limited_english.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.limited_english.ySecond}}
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div ng-show="victimSpecialMultiple" class="row">
                                     <div class="row">
                                         <div class="col-md-12 text-left">
@@ -7074,11 +7074,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_multiple.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_multiple.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7092,7 +7092,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_multiple.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_multiple.ySecond}}
                                         </div>
@@ -7138,11 +7138,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling_individual.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling_individual.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7156,7 +7156,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling_individual.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling_individual.ySecond}}
                                         </div>
@@ -7181,11 +7181,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling_group.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling_group.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7199,7 +7199,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling_group.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling_group.ySecond}}
                                         </div>
@@ -7224,11 +7224,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_law_enforcement_interview.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_law_enforcement_interview.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7242,7 +7242,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_law_enforcement_interview.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_law_enforcement_interview.ySecond}}
                                         </div>
@@ -7267,11 +7267,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_prosecution_related.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_prosecution_related.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7285,7 +7285,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_prosecution_related.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_prosecution_related.ySecond}}
                                         </div>
@@ -7310,11 +7310,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_court_advocacy.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_court_advocacy.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7328,7 +7328,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_court_advocacy.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_court_advocacy.ySecond}}
                                         </div>
@@ -7353,11 +7353,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_oft_hro.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_oft_hro.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7371,7 +7371,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_oft_hro.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_oft_hro.ySecond}}
                                         </div>
@@ -7396,11 +7396,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_immigration.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_immigration.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7414,7 +7414,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_immigration.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_immigration.ySecond}}
                                         </div>
@@ -7439,11 +7439,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_intervention.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.legal_intervention.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7457,7 +7457,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_intervention.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.legal_intervention.ySecond}}
                                         </div>
@@ -7482,11 +7482,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_exam_support.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_exam_support.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7500,7 +7500,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_exam_support.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_exam_support.ySecond}}
                                         </div>
@@ -7525,11 +7525,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_accompaniment_medical.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_accompaniment_medical.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7543,7 +7543,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_accompaniment_medical.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_accompaniment_medical.ySecond}}
                                         </div>
@@ -7568,11 +7568,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_accompaniment_dental.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.medical_accompaniment_dental.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7586,7 +7586,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_accompaniment_dental.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.medical_accompaniment_dental.ySecond}}
                                         </div>
@@ -7611,11 +7611,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_referral_inperson.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_referral_inperson.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7629,7 +7629,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_referral_inperson.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_referral_inperson.ySecond}}
                                         </div>
@@ -7654,11 +7654,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.safe_at_home.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.safe_at_home.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7672,7 +7672,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.safe_at_home.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.safe_at_home.ySecond}}
                                         </div>
@@ -7697,11 +7697,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.emergency_financial_inperson.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.emergency_financial_inperson.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7715,7 +7715,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.emergency_financial_inperson.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.emergency_financial_inperson.ySecond}}
                                         </div>
@@ -7741,11 +7741,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.reparations_claims_inperson.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.reparations_claims_inperson.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7759,7 +7759,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.reparations_claims_inperson.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.reparations_claims_inperson.ySecond}}
                                         </div>
@@ -7804,11 +7804,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_true.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_true.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7822,7 +7822,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_true.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_true.ySecond}}
                                         </div>
@@ -7847,11 +7847,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_false.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_false.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7865,7 +7865,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_false.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_false.ySecond}}
                                         </div>
@@ -7890,11 +7890,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_null.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.victim_trans_null.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7908,7 +7908,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_null.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.victim_trans_null.ySecond}}
                                         </div>
@@ -7953,11 +7953,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.crisis_counseling.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -7971,7 +7971,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.crisis_counseling.ySecond}}
                                         </div>
@@ -7996,11 +7996,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_referral_phone.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_referral_phone.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8014,7 +8014,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_referral_phone.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_referral_phone.ySecond}}
                                         </div>
@@ -8039,11 +8039,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_criminal_justice.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.information_criminal_justice.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8057,7 +8057,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_criminal_justice.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.information_criminal_justice.ySecond}}
                                         </div>
@@ -8082,11 +8082,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.other_emergency_justice.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.other_emergency_justice.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8100,7 +8100,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.other_emergency_justice.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.other_emergency_justice.ySecond}}
                                         </div>
@@ -8125,11 +8125,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.emergency_financial_phone.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.emergency_financial_phone.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8143,7 +8143,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.emergency_financial_phone.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.emergency_financial_phone.ySecond}}
                                         </div>
@@ -8168,11 +8168,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.reparations_claims_phone.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.reparations_claims_phone.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8186,7 +8186,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.reparations_claims_phone.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.reparations_claims_phone.ySecond}}
                                         </div>
@@ -8231,11 +8231,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_true.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_true.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8249,7 +8249,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_true.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_true.ySecond}}
                                         </div>
@@ -8274,11 +8274,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_false.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_false.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8292,7 +8292,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_false.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_false.ySecond}}
                                         </div>
@@ -8317,11 +8317,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_null.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.supported_on_call_null.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8335,12 +8335,12 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_null.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.supported_on_call_null.ySecond}}
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
 
                             <div ng-show="contactType" uib-accordion-group class="panel-default text-center" heading="Contact Type/Location">
@@ -8380,11 +8380,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.contact_type_in-person.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.contact_type_in-person.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8398,7 +8398,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.contact_type_in-person.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.contact_type_in-person.ySecond}}
                                         </div>
@@ -8423,11 +8423,11 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.contact_type_Phone.yPrime / total) * 100 | number:1}}%
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{(playgroundInfo.contact_type_Phone.ySecond / total) * 100 | number:1}}%
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-3 text-left">
@@ -8441,7 +8441,7 @@
                                         </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.contact_type_Phone.yPrime}}
-                                        </div>                                                                        
+                                        </div>
                                         <div class="col-md-2 text-center">
                                             {{playgroundInfo.contact_type_Phone.ySecond}}
                                         </div>

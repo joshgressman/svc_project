@@ -1,39 +1,38 @@
-<div>
-  <div class="alert alert-warning" id="alert">
-    <strong class="grayAlert">SVC In-Person Contact Form: </strong> Please ensure you are using the YELLOW form on this page.
-  </div>
   <div class="container">
+    <div class="alert alert-warning" id="alert">
+      <strong class="grayAlert">SVC In-Person Contact Form: </strong> Please ensure you are using the YELLOW form on this page.
+    </div>
     <div class="row">
       <div class="col-md-2 col-sm-4 sidebar1">
         <div class="logo">
           <h4 class="sidebarTitle">Data Entry Page</h4>
         </div>
-      </br>
-      <div class="left-navigation">
+        </br>
+        <div class="left-navigation">
+          <ul class="list">
+            <h5><strong>FORMS</strong></h5>
+            <li><a class="menuList" Onclick="window.location.href='#phone'"><i class="fa fa-phone"></i> Telephone</a></li>
+            <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
+            <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
+          </ul>
+        </br>
         <ul class="list">
-          <h5><strong>FORMS</strong></h5>
-          <li><a class="menuList" Onclick="window.location.href='#phone'">&#9743 Telephone</a></li>
-          <li><a class="menuList" Onclick="window.location.href='#inperson'"><span class="glyphicon glyphicon-user"></span> In Person</a></li>
-          <li><a class="menuList" Onclick="window.location.href='#nonvictim'">&#10010 Non-Victim</a></li>
+          <h5><strong>ACTIONS</strong></h5>
+          <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
         </ul>
-      </br>
-      <ul class="list">
-        <h5><strong>ACTIONS</strong></h5>
-        <li><a id="back" class="menuList" Onclick="window.location.href='#data'">&#8678 Back</a></li>
-      </ul>
+      </div>
     </div>
-  </div>
-  <div class="col-md-9" id="dataview">
-    <div>
-      <script type="text/ng-template" id="myModalContent.html">
+    <div class="col-md-9" id="dataview">
+      <div>
+        <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
           <h3>Successful Entry</h3>
         </div>
         <div class="modal-body">
           <h4><strong>Confirmation #: {{confirmation}}</strong></h4>
         </div>
-      </script>
-    </div>
+        </script>
+      </div>
     <div class="error" ng-show="showMessage">
       <strong><span class="verticalSpacing">{{message}}</span></strong>
     </div>
