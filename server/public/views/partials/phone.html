@@ -103,7 +103,7 @@
                             <input type="radio" name="previousContact" ng-model="form.previousContact" ng-click="newFiscalYear = true" ng-value="false">No
                         </div>
                         <div ng-show="previousVisit" class="dateCheck">
-                            <label for="dateCheck">If YES, was contact made before October 1st?</label>
+                            <label for="dateCheck">If YES, was contact made before October 1st, {{checkOctoberFirst}}</label>
                             <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = true" ng-value="true">Yes
                             <input type="radio" name="previousVisit" ng-model="form.previousVisit" ng-click="newFiscalYear = false" ng-value="false">No
                         </div>
