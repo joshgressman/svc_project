@@ -1,4 +1,14 @@
-myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', function($scope, $http, $location, $uibModal) {
+myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal', 'loggedinFactory', function($scope, $http, $location, $uibModal, loggedinFactory) {
+
+loggedinFactory.isLoggedIn().then(function(response) {
+    console.log('The person logged in:', response);
+    console.log('the type of the person logged in:', response.user_type)
+    // $scope.user = response;
+    if (response.user_type !== 'admin') {
+        console.log('send home');
+        $location.path('/home');
+    }
+});
 
 // console.log("Admin is running");
     $scope.myFunction = function() {
@@ -23,7 +33,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     function updateScroll() {
     window.scrollBy(0, -9000);
     }
- 
+
     //federalObjectArray will send parameters to the server side queries; table = column name, text/textSpecial = query text
     $scope.federalInfo = {};
     var federalObjectArray = [{
@@ -820,6 +830,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
 
                     //assigns count value;
                     $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
+                    console.log($scope.countyInfo);
                     // console.log(response.data[0]);
                     // console.log($scope.countyInfo);
                 }, function() {
@@ -1000,7 +1011,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                                 // console.log('new age OP:', objectParam);
                                 break;
                         };
-                        
+
                         //assigns count value;
                         $scope.federalInfo[objectParam] = parseInt(response.data[0].count);
                     }, function() {
@@ -1241,7 +1252,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                             case "victim_trans":
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;                                
+                                break;
                             case "contact_type":
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
@@ -1257,25 +1268,24 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                             case "emergency_financial":
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break; 
+                                break;
                             case "reparations_claims":
                                 objectParam += '_' + object.text;
                                 playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
-                                break;                                                                                                 
+                                break;
                             case "medical_request":
-                                objectParam = object.table;                            
+                                objectParam = object.table;
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
-                                // console.log($scope.playgroundInfo[objectParam]);    
-                                noVictimTypes = true;  
-                                noVictimTypes = true;                            
+                                // console.log($scope.playgroundInfo[objectParam]);
+                                noVictimTypes = true;
+                                noVictimTypes = true;
                                 break;
                             case "advocacy_request":
-                                objectParam = object.table;                            
+                                objectParam = object.table;
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
-                                // console.log($scope.playgroundInfo[objectParam]);    
-                                noVictimTypes = true;                            
-                                break; 
-
+                                // console.log($scope.playgroundInfo[objectParam]);
+                                noVictimTypes = true;
+                                break;
                             default:
                                 playgroundInfo[object.table] = {};
                                 playgroundInfo[object.table].yPrime = yPrime;
@@ -1437,7 +1447,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     // }
     };
     //End code for Playground dropdowns
-    
+
     //query information for custom reports;
     var playgroundObjectArray = [{
         //Question 1
@@ -2458,12 +2468,12 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: ""
     }, {
         bound: "nonVictimTotal",
-        table: "advocacy_request", 
+        table: "advocacy_request",
         infoTable: "nonvictim",
         text: ""
     }, {
         bound: "victimSpecialHomeless",
-        table: "homeless", 
+        table: "homeless",
         infoTable: "victim",
         text: "true"
     }, {
@@ -2474,20 +2484,20 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other' OR victim_immigrant is null)",
     }, {
         bound: "victimSpecialLGBTQ",
-        table: "victim_sexual_orientation_total", 
+        table: "victim_sexual_orientation_total",
         infoTable: "victim",
         text: "true" ,
         textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
     }, {
         bound: "victimSpecialVeterans",
-        table: "veteran", 
+        table: "veteran",
         infoTable: "victim",
         text: "true"
     }, {
         bound: "victimSpecialLimitedEnglish",
-        table: "limited_english", 
+        table: "limited_english",
         infoTable: "victim",
-        text: "true"             
+        text: "true"
     }];
     ///**********END OF CONTROLLER***************************************///////
 }]);

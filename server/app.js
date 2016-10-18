@@ -13,6 +13,8 @@ var dataRoute = require('./routes/dataRoute');
 var userRoute = require('./routes/userRoute');
 var register = require('./routes/register');
 var user = require('./routes/user');
+var getUser = require('./routes/getUser');
+var deleteUser = require('./routes/deleteUser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -47,6 +49,8 @@ app.use('/dataRoute', dataRoute);
 app.use('/userRoute', userRoute);
 app.use('/register', register);
 app.use('/user', user);
+app.use('/getUser', getUser);
+app.use('/deleteUser', deleteUser);
 app.use('/*', index);
 
 // app.get('/', function (req, res) {

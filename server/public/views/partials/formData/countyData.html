@@ -12,16 +12,16 @@
                 <div class="left-navigation">
                     <ul class="list">
                         <h5><strong>OTHER REPORTS</strong></h5>
-                        <li><a class="menuList" Onclick="window.location.href='#reports'">Federal</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#countyReport'">County</a></li>
-                        <li><a class="menuList" Onclick="window.location.href='#custom'">Custom</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#reports'"><span class="glyphicon glyphicon-briefcase"></span> Federal</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#countyReport'"><span class="glyphicon glyphicon-list-alt"></span> County</a></li>
+                        <li><a class="menuList" Onclick="window.location.href='#custom'"><i class="fa fa-bar-chart"></i> Custom</a></li>
                     </ul>
 
                     <br>
 
                     <ul class="list">
                         <h5><strong>ACTIONS</strong></h5>
-                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">&#8678 Back to Admin</a></li>
+                        <li><a id="admin" class="menuList" Onclick="location.href='#admin'">&#8678 Back</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <label for="endDate">End Date:</label>
                     <input class="endDate" type="date" ng-model="dateEnd" />
                     <button class="btn btn-default" name="queryButton" ng-click="getStuffCounty()">Go</button>
-                    <button ng-show="showCountyData" class="btn btn-default"><a href="/views/countyRep.html"><span class="stylelessLink">Print</span></a></button>
+                    <button ng-show="showCountyData" class="btn btn-default" Onclick="window.location.href='#countyPrint'"><span class="stylelessLink">Print</span></button>
                 </div>
                 <div>
                     <!-- Template for the Accordion -->
@@ -64,9 +64,6 @@
 
                     <!-- End Template -->
                     <div ng-show="showCountyData">
-                        <p>
-                            <button class="btn btn-default" Onclick="window.location.href='#countyPrint'">Go To Print Page</button>
-                        </p>
                         <div class="checkbox">
                             <label>
                             <div class="checkbox">
