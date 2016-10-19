@@ -21,7 +21,7 @@ passport.deserializeUser(function(id, done) {
       var query = client.query("SELECT * FROM users WHERE id = $1", [id]);
 
       query.on('row', function (row) {
-        console.log('User row', row);
+        // console.log('User row', row);
         user = row;
         done(null, user);
       });
@@ -44,21 +44,21 @@ passport.use('local', new localStrategy({
     usernameField: 'username'
     }, function(req, username, password, done){
 	    pool.connect(function (err, client) {
-	    	console.log('called local - pg');
+	    	// console.log('called local - pg');
 	    	var user = {};
         var query = client.query("SELECT * FROM users WHERE username = $1", [username]);
 
         query.on('row', function (row) {
-        	console.log('User obj', row);
+        	// console.log('User obj', row);
         	user = row;
 
           // Hash and compare
           if(encryptLib.comparePassword(password, user.password)) {
-            // all good!
-            console.log('matched');
+            // // all good!
+            // console.log('matched');
             done(null, user);
           } else {
-            console.log('nope');
+            // console.log('nope');
             done(null, false, {message: 'Incorrect credentials.'});
           }
 
