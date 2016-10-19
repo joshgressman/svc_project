@@ -1153,10 +1153,15 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     };
 
     $scope.submitting = function() {
+      var checkLength = Object.getOwnPropertyNames($scope.playground);
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
             updateScroll();
+        } else if (checkLength.length == 2){
+          $scope.showMessage = true;
+          $scope.message = "Please select a Category before Proceeding";
+          updateScroll();
         } else {
             if ((Date.parse($scope.playground.endDate)) < (Date.parse($scope.playground.startDate))) {
                 var swapToStart = $scope.playground.endDate;
