@@ -77,7 +77,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     }, {
         table: "victim_ethnicity",
         text: "Multi-Racial",
-        textSpecial: "multi-racial"
+        textSpecial: "multi_racial"
     }, {
         table: "victim_ethnicity",
         text: null,
@@ -88,19 +88,27 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     }, {
         //Question 5B
         table: "victim_gender",
-        text: "Male"
+        text: "Male",
+        textSpecial: "Male"
+
     }, {
         table: "victim_gender",
-        text: "Female"
+        text: "Female",
+        textSpecial: "Female"
+
     }, {
         table: "victim_gender",
-        text: "Non-binary"
+        text: "Non-binary",
+        textSpecial: "Nonbinary"
+
     }, {
         table: "victim_gender",
-        text: "Other"
+        text: "Other",
+        textSpecial: "Other"
     }, {
         table: "victim_gender",
-        text: null
+        text: null,
+        textSpecial: "unknown"
     }, {
         table: "victim_gender_total",
         textSpecial: "(victim_gender iLike 'Male' OR victim_gender iLike 'Female' OR victim_gender iLike 'Non-binary' OR victim_gender iLike 'other' OR victim_gender is null)"
@@ -128,7 +136,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     }, {
         table: "victim_age",
         text: null,
-        textSpecial: null
+        textSpecial: "victim_age is null"
     }, {
         table: "victim_age",
         text: "total",
@@ -187,7 +195,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: "true"
     }, {
         table: "violence_unknown",
-        text: null
+        text: "true"
     }, {
         //Question 6B
         table: "victim_multiple",
@@ -204,13 +212,13 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
 
     }, {
         table: "victim_sexual_orientation_total",
-        textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other')"
+        textSpecial: "(victim_sexual_orientation iLike 'lesbian' OR victim_sexual_orientation iLike 'gay' OR victim_sexual_orientation iLike 'bi-sexual' OR victim_sexual_orientation iLike 'other' OR victim_trans is true)"
     }, {
         table: "homeless",
         text: "true"
     }, {
         table: "victim_immigrant_total",
-        textSpecial: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other' OR victim_immigrant is null)"
+        textSpecial: "(victim_immigrant iLike 'Africa' OR victim_immigrant iLike 'Asia' OR victim_immigrant iLike 'Europe' OR victim_immigrant iLike 'Mex/Cen/So America' OR victim_immigrant iLike 'Middle East' OR victim_immigrant iLike 'Other')"
     }, {
         table: "veteran",
         text: "true"
@@ -236,7 +244,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: "(information_criminal_justice is true OR legal_law_enforcement_interview is true OR legal_prosecution_related is true OR legal_court_advocacy is true)"
     }, {
         table: "contact_type",
-        text: "in-person"
+        text: "inperson",
+        textSpecial: "in-person"
     }, {
         table: "referral_agency",
         text: "not null"
@@ -274,7 +283,8 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     }, {
         //Question 9C0-9C7 9C0: unduplicated totals; 9C1: totals
         table: "contact_type",
-        text: "phone"
+        text: "phone",
+        textSpecial: "phone"
     }, {
         table: "crisis_counseling_individual",
         text: "true"
@@ -745,7 +755,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: "true"
     }, {
         table: "violence_unknown",
-        text: null
+        text: "true"
     }, {
         table: "victim_multiple",
         text: "true"
@@ -1000,7 +1010,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                                 // console.log('new ethnicity OP:', objectParam);
                                 break;
                             case "victim_gender":
-                                objectParam += '_' + query.text;
+                                objectParam += '_' + query.textSpecial;
                                 // console.log('new gender OP:', objectParam);
                                 break;
                             case "victim_age":
@@ -1153,10 +1163,15 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
     };
 
     $scope.submitting = function() {
+      var checkLength = Object.getOwnPropertyNames($scope.playground);
         if ($scope.playground.startDate == undefined || $scope.playground.endDate == undefined) {
             $scope.showMessage = true;
             $scope.message = "Please enter in a Date before Proceeding";
             updateScroll();
+        } else if (checkLength.length == 2){
+          $scope.showMessage = true;
+          $scope.message = "Please select a Category before Proceeding";
+          updateScroll();
         } else {
             if ((Date.parse($scope.playground.endDate)) < (Date.parse($scope.playground.startDate))) {
                 var swapToStart = $scope.playground.endDate;
