@@ -1,7 +1,7 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
-// var connection = require('../modules/connection');
+var connectionString = require('../modules/connection');
 var pg = require('pg');
 
 var config = {
@@ -13,11 +13,8 @@ var config = {
   idleTimeoutMillis: 1500, // how long a client is allowed to remain idle before being closed
 };
 
+var pool = new pg.Pool(connectionString);
 
-//this initializes a connection pool
-//it will keep idle connections open for a 30 seconds
-//and set a limit of maximum 10 idle clients
-var pool = new pg.Pool(config);
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);

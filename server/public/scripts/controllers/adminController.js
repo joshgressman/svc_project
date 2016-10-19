@@ -1301,14 +1301,13 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
                             }
 
                             if (noVictimTypes == true) {
-
+                                return;
                             } else {
                                 $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
                                 // console.log('hello', $scope.playgroundInfo);
                                 $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond + $scope.playgroundInfo[objectParam].noValue);
                                 // console.log('total', $scope.total);
                             }
-
                         }, function() {
                             // console.log("Get Error");
                         });
