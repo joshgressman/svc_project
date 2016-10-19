@@ -76,6 +76,12 @@ router.post('/federal/:id', function(req, res) {
         } else if (text == null){
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log(query);
+        } else if (text == "not null"){
+            query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log(query);            
+        } else if (table == "contact_type"){
+            query = stringQueryWhere + table + iLike + "'" + textSpecial + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log(query);
         } else {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log(query);

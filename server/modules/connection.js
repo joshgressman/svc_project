@@ -15,7 +15,7 @@ if(process.env.DATABASE_URL != undefined) {
     };
 } else {
     connectionString = {
-      user: 'kerijackson', //env var: PGUSER
+      user: 'kimmai', //env var: PGUSER
       database: 'svc', //env var: PGDATABASE
       password: '', //env var: PGPASSWORD
       port: 5432, //env var: PGPORT
