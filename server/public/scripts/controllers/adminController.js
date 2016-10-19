@@ -745,7 +745,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
         text: "true"
     }, {
         table: "violence_unknown",
-        text: null
+        text: "true"
     }, {
         table: "victim_multiple",
         text: "true"
@@ -1228,7 +1228,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
                                     break;
                                 case null:
                                     noValue++;
-                                    break;                                    
+                                    break;
                             }
                         });
 
