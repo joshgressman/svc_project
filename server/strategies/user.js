@@ -4,6 +4,14 @@ var encryptLib = require('../modules/encryption');
 var connectionString = require('../modules/connection');
 var pg = require('pg');
 
+var config = {
+  user: 'coreypeck', //env var: PGUSER
+  database: 'svc', //env var: PGDATABASE
+  password: '', //env var: PGPASSWORD
+  port: 5432, //env var: PGPORT
+  max: 1000, // max number of clients in the pool
+  idleTimeoutMillis: 1500, // how long a client is allowed to remain idle before being closed
+};
 
 var pool = new pg.Pool(connectionString);
 
