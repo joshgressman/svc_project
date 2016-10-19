@@ -1304,9 +1304,9 @@ loggedinFactory.isLoggedIn().then(function(response) {
 
                         }else{
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        // console.log('hello', $scope.playgroundInfo);
+                        console.log('hello', $scope.playgroundInfo);
                         $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond + $scope.playgroundInfo[objectParam].noValue);
-                        // console.log('total', $scope.total);
+                        console.log('total', $scope.total);
                         }
 
                     }, function() {
