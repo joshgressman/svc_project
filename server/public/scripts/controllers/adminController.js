@@ -745,7 +745,7 @@ myApp.controller('adminController', ['$scope', '$http', '$location', '$uibModal'
         text: "true"
     }, {
         table: "violence_unknown",
-        text: null
+        text: "true"
     }, {
         table: "victim_multiple",
         text: "true"
