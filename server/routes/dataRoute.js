@@ -1,18 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = '';
+var connectionString = require('../modules/connection')
 
-if (process.env.DATABASE_URL != undefined) {
-    connectionString = process.env.DATABASE_URL + '?ssl=true';
-} else {
-    // running locally, use our local database instead (local db create for development process);
-    connectionString = 'postgres://localhost:5432/svc';
-}
+var pool = new pg.Pool(connectionString);
 
 //get victim number for confirmation box;
 router.get("/presentation_victim", function(req, res) {
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log(err);
             res.sendStatus(500);
@@ -33,7 +28,7 @@ router.get("/presentation_victim", function(req, res) {
 
 //get nonvictim number for confirmation box;
 router.get("/presentation_nonvictim", function(req, res) {
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log(err);
             res.sendStatus(500);
@@ -58,7 +53,7 @@ router.post('/victim', function(req, res) {
     var newVictim = req.body;
     console.log('new victim added:', newVictim);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -91,7 +86,7 @@ router.post('/nonvictim', function(req, res) {
     var newNonVictim = req.body;
     console.log('new non victim added:', newNonVictim);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG:', err);
             res.sendStatus(500);
@@ -122,7 +117,7 @@ router.put('/victim/:id', function(req, res) {
     console.log('Victim ID to change:', id);
     console.log('Modified info:', victim);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -227,7 +222,7 @@ router.put('/nonvictim/:id', function(req, res) {
     var nonVictim = req.body;
     console.log('NonVictim ID to change:', id);
     console.log('Modified info:', nonVictim);
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -286,7 +281,7 @@ router.delete('/victim/:id', function(req, res) {
     var id = req.params.id;
     console.log('VICTIM record to delete:', id);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -312,7 +307,7 @@ router.delete('/nonvictim/:id', function(req, res) {
     var id = req.params.id;
     console.log('NONVICTIM record to delete:', id);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
