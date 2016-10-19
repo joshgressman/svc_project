@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/svc';
+var connectionString = require('../modules/connection')
+
+var pool = new pg.Pool(connectionString);
 
 router.delete('/:userID', function(req, res) {
   var userID = req.params.userID;
 
-  pg.connect(connectionString, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err){
       res.sendStatus(500);
       console.log('error in DELETE, pg.connect', err, "\n \n \n \n ");

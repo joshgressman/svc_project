@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = '';
+var connectionString = require('../modules/connection')
 
-if (process.env.DATABASE_URL != undefined) {
-    connectionString = process.env.DATABASE_URL + '?ssl=true';
-} else {
-    // running locally, use our local database instead (local db create for development process);
-    connectionString = 'postgres://localhost:5432/svc';
-}
+var pool = new pg.Pool(connectionString);
 
 
 //POST-GET for federal reports;
@@ -28,7 +23,7 @@ router.post('/federal/:id', function(req, res) {
     var table = req.params.id
         // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG');
             res.sendStatus(500);
@@ -106,7 +101,7 @@ var table = req.body.table;
 var number = req.body.number;
 console.log(table);
 console.log(number);
-pg.connect(connectionString, function (err, client, done){
+pool.connect(function (err, client, done){
   if(err){
     res.sendStatus(500);
 
@@ -124,7 +119,7 @@ pg.connect(connectionString, function (err, client, done){
 
     });
 
-  
+
 
 
 
@@ -151,7 +146,7 @@ router.post('/county/:id', function(req, res) {
     var table = req.params.id
         // console.log('Date range of query: ' + dateStart + " - " + dateEnd);
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG');
             res.sendStatus(500);
@@ -231,7 +226,7 @@ router.post('/county/locations', function (req, res) {
     var dateStart = req.body.start;
     var dateEnd = req.body.end;
 
-    pg.connect(connectionString, function (err, client, done) {
+    pool.connect(function (err, client, done) {
         if (err) {
           console.log('ERROR, connection to PG', err);
           res.sendStatus(500);
@@ -269,7 +264,7 @@ router.post('/playground/victim/:id', function(req, res) {
     var query = "";
     var hennepin = "(victim_zipcode = 55111 OR victim_zipcode = 55305 OR victim_zipcode = 55311 OR victim_zipcode = 55316 OR victim_zipcode = 55317 OR victim_zipcode = 55327 OR victim_zipcode = 55328 OR victim_zipcode = 55331 OR victim_zipcode = 55340 OR victim_zipcode = 55341 OR victim_zipcode = 55343 OR victim_zipcode = 55344 OR victim_zipcode = 55345 OR victim_zipcode = 55346 OR victim_zipcode = 55347 OR victim_zipcode = 55356 OR victim_zipcode = 55357 OR victim_zipcode = 55359 OR victim_zipcode = 55361 OR victim_zipcode = 55364 OR victim_zipcode = 55369 OR victim_zipcode = 55373 OR victim_zipcode = 55374 OR victim_zipcode = 55375 OR victim_zipcode = 55384 OR victim_zipcode = 55387 OR victim_zipcode = 55388 OR victim_zipcode = 55391 OR victim_zipcode = 55392 OR victim_zipcode = 55401 OR victim_zipcode = 55402 OR victim_zipcode = 55403 OR victim_zipcode = 55404 OR victim_zipcode = 55405 OR victim_zipcode = 55406 OR victim_zipcode = 55407 OR victim_zipcode = 55408 OR victim_zipcode = 55409 OR victim_zipcode = 55410 OR victim_zipcode = 55411 OR victim_zipcode = 55412 OR victim_zipcode = 55413 OR victim_zipcode = 55414 OR victim_zipcode = 55415 OR victim_zipcode = 55416 OR victim_zipcode = 55417 OR victim_zipcode = 55418 OR victim_zipcode = 55419 OR victim_zipcode = 55420 OR victim_zipcode = 55422 OR victim_zipcode = 55423 OR victim_zipcode = 55424 OR victim_zipcode = 55425 OR victim_zipcode = 55426 OR victim_zipcode = 55427 OR victim_zipcode = 55428 OR victim_zipcode = 55429 OR victim_zipcode = 55230 OR victim_zipcode = 55431 OR victim_zipcode = 55435 OR victim_zipcode = 55436 OR victim_zipcode = 55437 OR victim_zipcode = 55438 OR victim_zipcode = 55439 OR victim_zipcode = 55441 OR victim_zipcode = 55442 OR victim_zipcode = 55443 OR victim_zipcode = 55444 OR victim_zipcode = 55445 OR victim_zipcode = 55446 OR victim_zipcode = 55447 OR victim_zipcode = 55450 OR victim_zipcode = 55454 OR victim_zipcode = 55455)";
     var notHennepin = "(victim_zipcode != 55111 AND victim_zipcode != 55305 AND victim_zipcode != 55311 AND victim_zipcode != 55316 AND victim_zipcode != 55317 AND victim_zipcode != 55327 AND victim_zipcode != 55328 AND victim_zipcode != 55331 AND victim_zipcode != 55340 AND victim_zipcode != 55341 AND victim_zipcode != 55343 AND victim_zipcode != 55344 AND victim_zipcode != 55345 AND victim_zipcode != 55346 AND victim_zipcode != 55347 AND victim_zipcode != 55356 AND victim_zipcode != 55357 AND victim_zipcode != 55359 AND victim_zipcode != 55361 AND victim_zipcode != 55364 AND victim_zipcode != 55369 AND victim_zipcode != 55373 AND victim_zipcode != 55374 AND victim_zipcode != 55375 AND victim_zipcode != 55384 AND victim_zipcode != 55387 AND victim_zipcode != 55388 AND victim_zipcode != 55391 AND victim_zipcode != 55392 AND victim_zipcode != 55401 AND victim_zipcode != 55402 AND victim_zipcode != 55403 AND victim_zipcode != 55404 AND victim_zipcode != 55405 AND victim_zipcode != 55406 AND victim_zipcode != 55407 AND victim_zipcode != 55408 AND victim_zipcode != 55409 AND victim_zipcode != 55410 AND victim_zipcode != 55411 AND victim_zipcode != 55412 AND victim_zipcode != 55413 AND victim_zipcode != 55414 AND victim_zipcode != 55415 AND victim_zipcode != 55416 AND victim_zipcode != 55417 AND victim_zipcode != 55418 AND victim_zipcode != 55419 AND victim_zipcode != 55420 AND victim_zipcode != 55422 AND victim_zipcode != 55423 AND victim_zipcode != 55424 AND victim_zipcode != 55425 AND victim_zipcode != 55426 AND victim_zipcode != 55427 AND victim_zipcode != 55428 AND victim_zipcode != 55429 AND victim_zipcode != 55230 AND victim_zipcode != 55431 AND victim_zipcode != 55435 AND victim_zipcode != 55436 AND victim_zipcode != 55437 AND victim_zipcode != 55438 AND victim_zipcode != 55439 AND victim_zipcode != 55441 AND victim_zipcode != 55442 AND victim_zipcode != 55443 AND victim_zipcode != 55444 AND victim_zipcode != 55445 AND victim_zipcode != 55446 AND victim_zipcode != 55447 AND victim_zipcode != 55450 AND victim_zipcode != 55454 AND victim_zipcode != 55455)";
-    
+
     var dateStart = req.body.startDate;
     var dateEnd = req.body.endDate;
     var start = req.body.start;
@@ -280,7 +275,7 @@ router.post('/playground/victim/:id', function(req, res) {
     var table = req.params.id;
     var infoTable = req.params.infoTable;
 
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
 
         if (text == "TOTAL") {
             query = "SELECT (victim_type) FROM victim where contact_date >= '" + dateStart + "' AND contact_date < '" + dateEnd + "'";
@@ -323,10 +318,10 @@ router.post('/playground/victim/:id', function(req, res) {
             // console.log('gender:', query);
         } else if (table ==  "reparations_claims") {
             query = stringQueryWhere + table + is + "true" + textSpecial + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('gender:', query);                                      
+            // console.log('gender:', query);
         } else if (table ==  "victim_immigrant_total") {
             query = stringQueryWhere + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
-            // console.log('immigrant:', query);                
+            // console.log('immigrant:', query);
         } else if (text == null) {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground nulls:', query);
@@ -337,11 +332,11 @@ router.post('/playground/victim/:id', function(req, res) {
             query = stringQueryWhere + table + is + text + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('playground falses:', query);
         } else if (table == "medical_request") {
-            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";                                        
+            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('nonvictim query:', query);
         } else if (table == "advocacy_request") {
-            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";                                        
-            // console.log('nonvictim query:', query);            
+            query = "SELECT COUNT (*) FROM nonvictim WHERE " + table + is + "true" + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
+            // console.log('nonvictim query:', query);
         } else {
             query = stringQueryWhere + table + iLike + "'" + text + "'" + checkFirstTimer + greaterThanOrEqual + "'" + dateStart + "'" + lessThan + "'" + dateEnd + "'";
             // console.log('other queries:', query);
@@ -366,7 +361,7 @@ router.post('/playground/victim/:id', function(req, res) {
 router.post('/playground/nonVictim', function(req, res) {
     var start = req.body.start;
     var end = req.body.end;
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -392,7 +387,7 @@ router.post('/playground/victim', function(req, res) {
     var end = req.body.end;
     console.log(start);
     console.log(end);
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);
@@ -413,7 +408,7 @@ router.post('/playground/victim', function(req, res) {
 });
 
 router.get('/playground', function(req, res) {
-    pg.connect(connectionString, function(err, client, done) {
+    pool.connect(function(err, client, done) {
         if (err) {
             console.log('ERROR, connection to PG', err);
             res.sendStatus(500);

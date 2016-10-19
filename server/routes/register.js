@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+var pg = require('pg')
 var path = require('path');
 
 // module with bcrypt functions
 var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
-var pg = require('pg');
+var pool = new pg.Pool(connection);
 
 // Handles POST request with new user data
 router.post('/', function(req, res, next) {
@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
   };
   console.log('new user:', saveUser);
 
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     client.query("INSERT INTO users (username, password, user_type) VALUES ($1, $2, $3) RETURNING id",
       [saveUser.username, saveUser.password, saveUser.user_type],
         function (err, result) {
