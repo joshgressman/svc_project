@@ -22,6 +22,9 @@
         </ul>
       </div>
     </div>
+    <div class="error" ng-show="showMessage">
+        <strong>{{message}}</strong>
+    </div>
     <div class="col-md-9" id="dataview">
       <div>
         <script type="text/ng-template" id="myModalContent.html">
@@ -33,9 +36,6 @@
         </div>
         </script>
       </div>
-    <div class="error" ng-show="showMessage">
-      <strong><span class="verticalSpacing">{{message}}</span></strong>
-    </div>
     <form name="victimForm">
       <div id="svcAdvocacy">
         <h3 class="formHeader">In-Person Contact Form</h3>

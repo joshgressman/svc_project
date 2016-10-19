@@ -4,7 +4,9 @@ var encryptLib = require('../modules/encryption');
 var connectionString = require('../modules/connection');
 var pg = require('pg');
 
+
 var pool = new pg.Pool(connectionString);
+
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);

@@ -29,6 +29,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
     $scope.showCountyData = false;
     $scope.dateStart = "";
     $scope.dateEnd = "";
+    $scope.total = {};
 
     function updateScroll() {
     window.scrollBy(0, -9000);
@@ -830,6 +831,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
 
                     //assigns count value;
                     $scope.countyInfo[objectParam] = parseInt(response.data[0].count);
+                    console.log($scope.countyInfo);
                     // console.log(response.data[0]);
                     // console.log($scope.countyInfo);
                 }, function() {
@@ -1208,6 +1210,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
                         var aSecond = 0;
                         var yPrime = 0;
                         var ySecond = 0;
+                        var noValue = 0;
                         response.data.forEach(function(spot) {
                             //incredemnts variable with each case of victim type;
                             switch (spot.victim_type) {
@@ -1223,6 +1226,9 @@ loggedinFactory.isLoggedIn().then(function(response) {
                                 case 'adultSecondaryVictim':
                                     aSecond++;
                                     break;
+                                case null:
+                                    noValue++;
+                                    break;                                    
                             }
                         });
 
@@ -1233,44 +1239,44 @@ loggedinFactory.isLoggedIn().then(function(response) {
                         switch (object.table) {
                             case "victim_ethnicity":
                                 objectParam += '_' + object.textSpecial;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "victim_gender":
                                 objectParam += '_' + object.textSpecial;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "victim_zipcode":
                             // console.log("victim zipcode Running");
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "victim_immigrant":
                                 objectParam += '_' + object.textSpecial;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "victim_trans":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "contact_type":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "supported_on_call":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "information_referral":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "emergency_financial":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "reparations_claims":
                                 objectParam += '_' + object.text;
-                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, playgroundInfo);
+                                playgroundInfo = nameSpecialTable(objectParam, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo);
                                 break;
                             case "medical_request":
                                 objectParam = object.table;
@@ -1284,23 +1290,23 @@ loggedinFactory.isLoggedIn().then(function(response) {
                                 $scope.playgroundInfo[objectParam] = response.data[0].count;
                                 // console.log($scope.playgroundInfo[objectParam]);
                                 noVictimTypes = true;
-                                break; 
+                                break;
                             default:
                                 playgroundInfo[object.table] = {};
                                 playgroundInfo[object.table].yPrime = yPrime;
                                 playgroundInfo[object.table].ySecond = ySecond;
                                 playgroundInfo[object.table].aPrime = aPrime;
                                 playgroundInfo[object.table].aSecond = aSecond;
+                                playgroundInfo[object.table].noValue = noValue;
                         }
 
                         if(noVictimTypes == true){
 
                         }else{
                         $scope.playgroundInfo[objectParam] = playgroundInfo[objectParam];
-                        console.log('hello', $scope.playgroundInfo);
-                        $scope.total = {};
-                        $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond);
-                        console.log('total', $scope.total);
+                        // console.log('hello', $scope.playgroundInfo);
+                        $scope.total[objectParam] = ($scope.playgroundInfo[objectParam].yPrime + $scope.playgroundInfo[objectParam].ySecond + $scope.playgroundInfo[objectParam].aPrime + $scope.playgroundInfo[objectParam].aSecond + $scope.playgroundInfo[objectParam].noValue);
+                        // console.log('total', $scope.total);
                         }
 
                     }, function() {
@@ -1311,12 +1317,13 @@ loggedinFactory.isLoggedIn().then(function(response) {
         });
     };
 
-    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, playgroundInfo){
+    function nameSpecialTable(tableAddition, yPrime, ySecond, aPrime, aSecond, noValue, playgroundInfo){
       playgroundInfo[tableAddition] = {};
       playgroundInfo[tableAddition].yPrime = yPrime;
       playgroundInfo[tableAddition].ySecond = ySecond;
       playgroundInfo[tableAddition].aPrime = aPrime;
       playgroundInfo[tableAddition].aSecond = aSecond;
+      playgroundInfo[tableAddition].noValue = noValue;
       return playgroundInfo;
     };
     $scope.resetSearch = function() {
@@ -2194,7 +2201,7 @@ loggedinFactory.isLoggedIn().then(function(response) {
         text: "other",
     }, {
         bound: "countyUnknown",
-        table: "victim_zipcode",
+        table: "victim_zipcode_unknown",
         infoTable: "victim",
         text: "unknown",
     }, {
